@@ -1,0 +1,36 @@
+{
+  "area": "number-theory",
+  "level": "L1",
+  "types": [
+    "theorem_stmt"
+  ],
+  "toolchain": {
+    "lean": "4.27.0-rc1",
+    "mathlib": "024fc398dbd3648262e78da99efa2ad9aeeb5d6f"
+  },
+  "translation_direction": "forward",
+  "id": "number-theory/L1/nt_gen_L1_011",
+  "problem_id": "nt_gen_L1_011",
+  "paper_id": "arXiv:0906.0696",
+  "paper_title": "An Elementary (Number Theory) Proof of Touchard's Congruence",
+  "subfields": [
+    "Bell numbers",
+    "modular combinatorics"
+  ],
+  "target_decl": "bell_prime_power_modEq",
+  "target_kind": "theorem",
+  "references": [
+    {
+      "source": "arXiv:0906.0696v1",
+      "item": "Lemma 3.1",
+      "url": "https://arxiv.org/abs/0906.0696v1"
+    }
+  ],
+  "metrics": {
+    "source_words": 230
+  },
+  "created_at": "2026-07-12T04:11:29+09:00",
+  "text": "\\begin{lemma}\nFor each nonnegative integer $n$, let $B_n$ be the $n$th Bell number, namely the number of partitions of an $n$-element set into nonempty subsets. For every positive integer $m$ and every prime $p$,\n\\[\nB_{p^m}\\equiv m+1\\pmod p.\n\\]\n\\end{lemma}\n",
+  "updated_at": "2026-07-12T12:57:39.332354+00:00",
+  "formalization_rules": "\\begin{lemma}\nFor each nonnegative integer $n$, let $B_n$ be the $n$th Bell number, namely the number of partitions of an $n$-element set into nonempty subsets. For every positive integer $m$ and every prime $p$,\n\\[\nB_{p^m}\\equiv m+1\\pmod p.\n\\]\n\\end{lemma}\n"
+}

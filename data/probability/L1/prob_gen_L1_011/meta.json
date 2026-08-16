@@ -1,0 +1,38 @@
+{
+  "id": "probability/L1/prob_gen_L1_011",
+  "paper_id": "arXiv:1306.1433",
+  "paper_title": "Tight Lower Bound on the Probability of a Binomial Exceeding its Expectation",
+  "area": "probability",
+  "level": "L1",
+  "problem_id": "prob_gen_L1_011",
+  "types": [
+    "def",
+    "theorem_stmt"
+  ],
+  "subfields": [
+    "BinomialDistribution",
+    "StochasticMonotonicity"
+  ],
+  "text": "\\begin{lemma}[Binomial upper-tail monotonicity between mean jumps]\nLet $m\\geq2$, let $1\\leq k\\leq m-1$, and let\n$p\\in(k/m,(k+1)/m]$. If $B(m,p)$ denotes a binomial random variable\nwith $m$ trials and success probability $p$, then\n\\[\n\\mathbb{P}_{X\\sim B(m,p)}\\!\\left(X\\geq\\mathbb{E}[X]\\right)\n\\geq\n\\mathbb{P}_{X\\sim B(m,k/m)}(X\\geq k+1).\n\\]\n\\end{lemma}\n",
+  "target_decl": "binomial_upper_tail_monotone_between_mean_jumps",
+  "target_kind": "theorem",
+  "references": [
+    {
+      "source": "arxiv",
+      "id": "arXiv:1306.1433v3",
+      "url": "https://arxiv.org/abs/1306.1433v3",
+      "item": "Lemma 1"
+    }
+  ],
+  "toolchain": {
+    "lean": "4.27.0-rc1",
+    "mathlib": "024fc398dbd3648262e78da99efa2ad9aeeb5d6f"
+  },
+  "metrics": {
+    "source_words": 204
+  },
+  "created_at": "2026-07-12T12:00:00+09:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-12T12:57:42.796314+00:00",
+  "formalization_rules": "\\begin{lemma}[Binomial upper-tail monotonicity between mean jumps]\nLet $m\\geq2$, let $1\\leq k\\leq m-1$, and let\n$p\\in(k/m,(k+1)/m]$. If $B(m,p)$ denotes a binomial random variable\nwith $m$ trials and success probability $p$, then\n\\[\n\\mathbb{P}_{X\\sim B(m,p)}\\!\\left(X\\geq\\mathbb{E}[X]\\right)\n\\geq\n\\mathbb{P}_{X\\sim B(m,k/m)}(X\\geq k+1).\n\\]\n\\end{lemma}\n"
+}

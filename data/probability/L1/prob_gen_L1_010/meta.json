@@ -1,0 +1,37 @@
+{
+  "id": "probability/L1/prob_gen_L1_010",
+  "paper_id": "arXiv:2109.04315",
+  "paper_title": "Yet another proof of the strong law of large numbers",
+  "area": "probability",
+  "level": "L1",
+  "problem_id": "prob_gen_L1_010",
+  "types": [
+    "theorem_stmt"
+  ],
+  "subfields": [
+    "RandomWalks",
+    "LimitTheorems"
+  ],
+  "text": "             \\begin{lemma} Let $X_{1}, X_{2}, \\dots $ be i.i.d.~r.v.~with $ \\mathbb{E}[X]>0$. Then $ \\inf_{n \\geq 0} (X_{1} + \\cdots + X_{n})$ is finite a.s.\n             \\end{lemma}\n",
+  "target_decl": "iid_positive_drift_partial_sums_bddBelow",
+  "target_kind": "theorem",
+  "references": [
+    {
+      "source": "arxiv",
+      "id": "arXiv:2109.04315v1",
+      "url": "https://arxiv.org/abs/2109.04315v1",
+      "item": "Lemma 1"
+    }
+  ],
+  "toolchain": {
+    "lean": "4.27.0-rc1",
+    "mathlib": "024fc398dbd3648262e78da99efa2ad9aeeb5d6f"
+  },
+  "metrics": {
+    "source_words": 204
+  },
+  "created_at": "2026-07-12T12:00:00+09:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-12T12:57:41.364974+00:00",
+  "formalization_rules": "             \\begin{lemma} Let $X_{1}, X_{2}, \\dots $ be i.i.d.~r.v.~with $ \\mathbb{E}[X]>0$. Then $ \\inf_{n \\geq 0} (X_{1} + \\cdots + X_{n})$ is finite a.s.\n             \\end{lemma}\n"
+}

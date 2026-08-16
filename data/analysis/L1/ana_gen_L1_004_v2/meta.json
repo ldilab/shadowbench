@@ -1,0 +1,23 @@
+{
+  "id": "analysis/L1/ana_gen_L1_004_v2",
+  "paper_id": "Stein-Chap4-Ex",
+  "paper_title": "",
+  "area": "analysis",
+  "level": "L1",
+  "problem_id": "ana_gen_L1_004_v2",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[exists_seq_finite_rank_strongly_convergent_to]\nConsider a separable Hilbert space $\\mathcal{H}$.\nShow that for any bounded operator $T$ there is a sequence $\\{T_n\\}$ of bounded operators of finite rank so that $T_n \\to T$ strongly as $n \\to \\infty$.\n\\end{theorem}\n\n\\begin{proof}\nLet $(g_k)_{k=1}^{\\infty}$ be a orthonormal basis of $\\mathcal{H}$. Let $T_n g_k = T g_k$ for $k \\le n$ and $T_n g_k = 0$ for $k > n$. Then each $T_n$ has finite rank (i.e. dimension of range is finite) and $\\|T_n g_k - T g_k\\| = 0$ for $n$ sufficiently large. For an arbitrary vector $g$, applying the triangle inequality gives $\\|T_n g - T g\\| = 0$ for $n$ sufficiently large.\n\\end{proof}",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 110
+  },
+  "created_at": "2026-04-24T02:03:52+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-05-24T16:05:17+00:00",
+  "formalization_rules": "open Filter TopologicalSpace\nopen scoped Topology\n\n/-\nFormalize in Lean the Theorem (exists_seq_finite_rank_strongly_convergent_to) from Text.\n\nThe theorem must be named `exists_seq_finite_rank_strongly_convergent_to`.\n   Matched text (candidate 0, theorem, label=exists_seq_finite_rank_strongly_convergent_to): \\begin{theorem}[exists_seq_finite_rank_strongly_convergent_to] Consider a separable Hilbert\n                                                                                             space $\\mathcal{H}$. Show that for any bounded operator $T$ there is a sequence $\\{T_n\\}$ of\n                                                                                             bounded operators of finite rank so that $T_n \\to T$ strongly as $n \\to \\infty$.\n                                                                                             \\end{theorem}\n-/"
+}

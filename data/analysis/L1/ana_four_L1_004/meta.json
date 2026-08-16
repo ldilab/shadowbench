@@ -1,0 +1,31 @@
+{
+  "area": "Analysis",
+  "created_at": "2026-01-01T11:26:35+00:00",
+  "id": "analysis/L1/ana_four_L1_004",
+  "level": "L1",
+  "metrics": {
+    "source_words": 55
+  },
+  "paper_id": "mathlib4",
+  "paper_title": "",
+  "problem_id": "ana_four_L1_004",
+  "references": [],
+  "subfields": [
+    "FourierTransform"
+  ],
+  "target_decl": "MeasureTheory.Integrable.fourierInv_fourier_eq",
+  "target_kind": "theorem",
+  "text": "\\begin{theorem}[MeasureTheory.Integrable.fourierInv_fourier_eq] Let $f$ be an integrable function on a finite-dimensional real inner product space. If its Fourier transform $\\mathcal{F} f$ is also integrable, then at every point where $f$ is continuous, the inverse Fourier transform of $\\mathcal{F} f$ equals $f$ itself; that is, $\\mathcal{F}^{-1}(\\mathcal{F} f)(v) = f(v)$ for all continuity\n points $v$ of $f$.\n\\end{theorem}\n",
+  "toolchain": {
+    "lean": "4.27.0-rc1"
+  },
+  "translation_direction": "backward",
+  "types": [
+    "theorem_stmt",
+    "def",
+    "proof"
+  ],
+  "updated_at": "2026-06-18T15:26:37.148333+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Filter MeasureTheory Complex Module Metric Real Bornology\nopen scoped Topology FourierTransform RealInnerProductSpace Complex\n\n/-\nFormalize in Lean the Theorem (MeasureTheory.Integrable.fourierInv_fourier_eq) from Text.\n\nThe theorem must be named `MeasureTheory.Integrable.fourierInv_fourier_eq`.\n   Matched text (candidate 0, theorem, label=MeasureTheory.Integrable.fourierInv_fourier_eq): \\begin{theorem}[MeasureTheory.Integrable.fourierInv_fourier_eq] Let $f$ be an integrable\n                                                                                              function on a finite-dimensional real inner product space. If its Fourier transform\n                                                                                              $\\mathcal{F} f$ is also integrable, then at every point where $f$ is continuous, the inverse\n                                                                                              Fourier transform of $\\mathcal{F} f$ equals $f$ itself; that is,\n                                                                                              $\\mathcal{F}^{-1}(\\mathcal{F} f)(v) = f(v)$ for all continuity points $v$ of $f$. \\end{t…\n-/\n"
+}

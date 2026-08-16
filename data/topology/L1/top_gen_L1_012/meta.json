@@ -1,0 +1,25 @@
+{
+  "id": "topology/L1/top_gen_L1_012",
+  "paper_id": "mathlib4",
+  "paper_title": "",
+  "area": "topology",
+  "level": "L1",
+  "problem_id": "top_gen_L1_012",
+  "types": [
+    "def",
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{definition}[skyscraperPresheaf]\n    Let $X$ be a topological space. $p_0 \\in X$. Let $\\mathcal{C}$ be a category with a terminal object and $A \\in \\text{Ob}(\\mathcal{C})$ be an object of $\\mathcal{C}$. A skyscraper sheaf $\\mathcal{F}$ with value $A$ is a presheaf on $X$ with values in $\\mathcal{C}$ such that\n    $\\mathcal{F}(U) = A$ if $p_0 \\in U$ and $\\mathcal{F}(U) = 1_\\mathcal{C}$ if $p_0 \\notin U$ where $1_\\mathcal{C}$ is some terminal object of $\\mathcal{C}$.\n\\end{definition}\n\n\\begin{theorem}[skyscraperPresheaf_isSheaf]\n    A skyscraper presheaf with value $A$ is a sheaf.\n\\end{theorem}\n\\begin{proof}\n    Consider the obvious continuous map $f: * \\to X$ from the one-point space to $X$ such that $f(*) = p_0$. Let $\\mathcal{F}$ be a skyscraper presheaf on $X$ at $p_0$ with value $A$, and $\\mathcal{G}$ a skyscraper presheaf on $*$ with value $A$. We claim that\n    \\begin{align*}\n        \\mathcal{F} = f_*\\mathcal{G}\n    \\end{align*}\n    Indeed, for an open set $U \\subseteq X$, we have\n    \\begin{align*}\n        (f_*\\mathcal{G})(U) = \\mathcal{G}(f^{-1}(U)) = \\mathcal{G}(*) = A, \\quad p_0 \\in U \\\\\n        (f_*\\mathcal{G})(U) = \\mathcal{G}(f^{-1}(U)) = \\mathcal{G}(\\emptyset) = 1_\\mathcal{C}, \\quad p_0 \\notin U\n    \\end{align*}\n    so that $\\mathcal{F} = f_*\\mathcal{G}$.\n\n    Note that on the one-point space, a presheaf is a sheaf if and only if its value at empty set is a terminal object. Hence, a skyscraper presheaf $\\mathcal{G}$ is a sheaf on $*$. Meanwhile, since the pushforward of a sheaf is a sheaf, $\\mathcal{F} = f_*\\mathcal{G}$ is a sheaf on $X$ as well.\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 228
+  },
+  "created_at": "2026-02-27T03:35:57+00:00",
+  "translation_direction": "backward",
+  "updated_at": "2026-05-24T15:26:41+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open TopologicalSpace TopCat CategoryTheory CategoryTheory.Limits Opposite\nopen scoped AlgebraicGeometry\n\n/-\nFormalize in Lean the following named items from Text.\n\n1. Definition (skyscraperPresheaf)\n   The definition must be named `skyscraperPresheaf`.\n   Matched text (candidate 0, definition, label=skyscraperPresheaf): \\begin{definition}[skyscraperPresheaf] Let $X$ be a topological space. $p_0 \\in X$. Let\n                                                                     $\\mathcal{C}$ be a category with a terminal object and $A \\in \\text{Ob}(\\mathcal{C})$ be an\n                                                                     object of $\\mathcal{C}$. A skyscraper sheaf $\\mathcal{F}$ with value $A$ is a presheaf on\n                                                                     $X$ with values in $\\mathcal{C}$ such that $\\mathcal{F}(U) = A$ if $p_0 \\in U$ and\n                                                                     $\\mathcal{F}(U) = 1_\\mathcal{C}$ if $p_0 \\notin U$ where $1_\\mathc…\n2. Theorem (skyscraperPresheaf_isSheaf)\n   The theorem must be named `skyscraperPresheaf_isSheaf`.\n   Matched text (candidate 1, theorem, label=skyscraperPresheaf_isSheaf): \\begin{theorem}[skyscraperPresheaf_isSheaf] A skyscraper presheaf with value $A$ is a sheaf.\n                                                                          \\end{theorem}\n\nEvery listed named item must be formalized with exactly the stated Lean name.\n-/\n"
+}

@@ -1,0 +1,29 @@
+{
+  "area": "AlgebraicGeometry",
+  "created_at": "2025-12-26T02:23:39+00:00",
+  "id": "algebraic-geometry/L1/alg_sche_L1_001",
+  "level": "L1",
+  "metrics": {
+    "source_words": 83
+  },
+  "paper_id": "mathlib4",
+  "paper_title": "",
+  "problem_id": "alg_sche_L1_001",
+  "references": [],
+  "subfields": [
+    "Schemes"
+  ],
+  "target_decl": "functionField_isFractionRing_of_affine",
+  "target_kind": "theorem",
+  "text": "\\begin{theorem}[functionField_isFractionRing_of_affine] Let $R$ be an integral domain. Then the function field of the affine scheme $\\operatorname{Spec} R$ is isomorphic to the field of fractions of $R$. \\end{theorem}\n\\begin{proof}\nBy definition,  the function field is the stalk of the structure sheaf at  the generic point. But the generic point of $\\operatorname{Spec} R$ corresponds to the zero ideal, and the stalk at the generic point is the localization of $R$ at the zero prime ideal, which is precisely the field of fractions of $R$.\n\\end{proof}\n",
+  "toolchain": {
+    "lean": "4.27.0-rc1"
+  },
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "updated_at": "2026-07-03T19:10:18.909302+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open TopologicalSpace Opposite CategoryTheory CategoryTheory.Limits TopCat\n\n/-\nFormalize in Lean the Theorem (functionField_isFractionRing_of_affine) from Text.\n\nThe theorem must be named `functionField_isFractionRing_of_affine`.\n   Matched text (candidate 0, theorem, label=functionField_isFractionRing_of_affine): \\begin{theorem}[functionField_isFractionRing_of_affine] Let $R$ be an integral domain. Then\n                                                                                      the function field of the affine scheme $\\operatorname{Spec} R$ is isomorphic to the field\n                                                                                      of fractions of $R$. \\end{theorem}\n-/\n"
+}

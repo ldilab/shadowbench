@@ -1,0 +1,36 @@
+{
+  "area": "number-theory",
+  "level": "L1",
+  "types": [
+    "theorem_stmt"
+  ],
+  "toolchain": {
+    "lean": "4.27.0-rc1",
+    "mathlib": "024fc398dbd3648262e78da99efa2ad9aeeb5d6f"
+  },
+  "translation_direction": "forward",
+  "id": "number-theory/L1/nt_gen_L1_008",
+  "problem_id": "nt_gen_L1_008",
+  "paper_id": "arXiv:1108.2361",
+  "paper_title": "An Elementary Proof of a Congruence by Skula and Granville",
+  "subfields": [
+    "Fermat quotients",
+    "harmonic congruences"
+  ],
+  "target_decl": "fermat_quotient_two_sq_eq_harmonic_sums",
+  "target_kind": "theorem",
+  "references": [
+    {
+      "source": "arXiv:1108.2361v1",
+      "item": "Lemma 2.3",
+      "url": "https://arxiv.org/abs/1108.2361v1"
+    }
+  ],
+  "metrics": {
+    "source_words": 218
+  },
+  "created_at": "2026-07-12T03:55:39+09:00",
+  "text": "\\begin{lemma}\nLet $p\\ge 5$ be a prime. Define the Fermat quotient to base $2$ by\n\\[\nq_p(2)=\\frac{2^{p-1}-1}{p},\n\\]\nand define the harmonic numbers by $H_k=\\sum_{j=1}^{k}\\frac{1}{j}$. Then\n\\[\nq_p(2)^2\\equiv\n\\sum_{k=1}^{p-1}\\frac{H_k}{k\\cdot 2^k}\n-\\sum_{k=1}^{p-1}\\frac{2^k}{k^2}\n\\pmod p.\n\\]\n\\end{lemma}\n",
+  "updated_at": "2026-07-12T12:57:32.637316+00:00",
+  "formalization_rules": "\\begin{lemma}\nLet $p\\ge 5$ be a prime. Define the Fermat quotient to base $2$ by\n\\[\nq_p(2)=\\frac{2^{p-1}-1}{p},\n\\]\nand define the harmonic numbers by $H_k=\\sum_{j=1}^{k}\\frac{1}{j}$. Then\n\\[\nq_p(2)^2\\equiv\n\\sum_{k=1}^{p-1}\\frac{H_k}{k\\cdot 2^k}\n-\\sum_{k=1}^{p-1}\\frac{2^k}{k^2}\n\\pmod p.\n\\]\n\\end{lemma}\n"
+}

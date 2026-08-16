@@ -1,0 +1,23 @@
+{
+  "id": "geometry/L1/geo_gen_L1_011",
+  "paper_id": "Lee-Chap4-Ex",
+  "paper_title": "",
+  "area": "geometry",
+  "level": "L1",
+  "problem_id": "geo_gen_L1_011",
+  "types": [
+    "theorem_stmt"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[isInteriorPoint_of_bijective_mfderiv]\nSuppose $M$ is a smooth manifold (without boundary), $N$ is a smooth manifold with boundary, and $F: M \\to N$ is smooth. Show that if $p \\in M$ is a point such that $dF_p$ is nonsingular, then $F(p) \\in \\operatorname{Int} N$.\n\\end{theorem}",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 43
+  },
+  "created_at": "2026-02-23T18:24:22+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-05-17T13:18:38+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open scoped Manifold\nopen Set ContDiff\n\n/-\nFormalize in Lean the Theorem (isInteriorPoint_of_bijective_mfderiv) from Text.\n\nThe theorem must be named `isInteriorPoint_of_bijective_mfderiv`.\n   Matched text (candidate 0, theorem, label=isInteriorPoint_of_bijective_mfderiv): \\begin{theorem}[isInteriorPoint_of_bijective_mfderiv] Suppose $M$ is a smooth manifold\n                                                                                    (without boundary), $N$ is a smooth manifold with boundary, and $F: M \\to N$ is smooth. Show\n                                                                                    that if $p \\in M$ is a point such that $dF_p$ is nonsingular, then $F(p) \\in\n                                                                                    \\operatorname{Int} N$. \\end{theorem}\n-/"
+}

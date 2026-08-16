@@ -1,0 +1,23 @@
+{
+  "id": "analysis/L2/ana_gen_L2_008",
+  "paper_id": "Stein-Chap2-Ex",
+  "paper_title": "",
+  "area": "analysis",
+  "level": "L2",
+  "problem_id": "ana_gen_L2_008",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[intervalIntegrable_g_and_integral_g_eq_integral]\nSuppose $f$ is integrable on $[0, b]$, and\n\\[\ng(x) = \\int_x^b \\frac{f(t)}{t} dt \\quad \\text{for } 0 < x \\le b.\n\\]\nProve that $g$ is integrable on $[0, b]$ and\n\\[\n\\int_0^b g(x) dx = \\int_0^b f(t) dt.\n\\]\n\\end{theorem}\n\n\\begin{proof}\nWe first assume that \\(f(x) \\geq 0\\). Then \\(g(x) \\geq 0\\) as well.\nThis is enough, since in general we can write\n\\[\nf=f^{+}-f^{-},\n\\]\nand use the linearity of the Lebesgue integral.\n\nFor \\(f \\geq 0\\), Tonelli's theorem allows us to interchange the order of\nintegration. Thus\n\\[\n\\begin{aligned}\n\\int_{0}^{b} g(x)\\,dx\n&= \\int_{0}^{b} \\int_{x}^{b} \\frac{f(t)}{t}\\,dt\\,dx \\\\\n&= \\int_{0}^{b} \\int_{0}^{b}\n\\frac{f(t)}{t}\\chi_{\\{t\\geq x\\}}(t)\\,dx\\,dt \\\\\n&= \\int_{0}^{b} \\frac{f(t)}{t}\n\\int_{0}^{b}\\chi_{\\{x\\leq t\\}}(x)\\,dx\\,dt \\\\\n&= \\int_{0}^{b} \\frac{f(t)}{t}\n\\int_{0}^{t} dx\\,dt \\\\\n&= \\int_{0}^{b} \\frac{f(t)}{t}t\\,dt \\\\\n&= \\int_{0}^{b} f(t)\\,dt.\n\\end{aligned}\n\\]\nSince \\(f\\) is integrable on \\([0,b]\\), the last integral is finite. Hence\n\\(g\\) is integrable on \\([0,b]\\).\n\nFinally, applying the same argument to \\(f^{+}\\) and \\(f^{-}\\), and using\nlinearity, we obtain\n\\[\n\\int_{0}^{b} g(x)\\,dx=\\int_{0}^{b} f(t)\\,dt.\n\\]\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 165
+  },
+  "created_at": "2026-04-15T20:50:39+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-03T19:13:20.181801+00:00",
+  "formalization_rules": "open Set MeasureTheory\n\n/-\nFormalize in Lean the Theorem (intervalIntegrable_g_and_integral_g_eq_integral) from Text.\n\nThe theorem must be named `intervalIntegrable_g_and_integral_g_eq_integral`.\n   Matched text (candidate 0, theorem, label=intervalIntegrable_g_and_integral_g_eq_integral): \\begin{theorem}[intervalIntegrable_g_and_integral_g_eq_integral] Suppose $f$ is integrable\n                                                                                               on $[0, b]$, and \\[ g(x) = \\int_x^b \\frac{f(t)}{t} dt \\quad \\text{for } 0 < x \\le b. \\]\n                                                                                               Prove that $g$ is integrable on $[0, b]$ and \\[ \\int_0^b g(x) dx = \\int_0^b f(t) dt. \\]\n                                                                                               \\end{theorem}\n-/\n"
+}

@@ -1,0 +1,30 @@
+{
+  "area": "Algebra",
+  "created_at": "2026-01-02T04:17:22+00:00",
+  "id": "algebra/L1/alg_grob_L1_022",
+  "level": "L1",
+  "metrics": {
+    "source_words": 118
+  },
+  "paper_id": "Cox-Chap10",
+  "paper_title": "",
+  "problem_id": "alg_grob_L1_022",
+  "references": [],
+  "subfields": [
+    "grobner-basis"
+  ],
+  "target_decl": "monomial_set_union_distrib",
+  "target_kind": "lemma",
+  "text": "Lemma (monomial_set_union_distrib)\nCommutativity of union and monomial set\n\nLet $F, G \\subseteq R[\\sigma]$ be some finite subsets of multivariate polynomials, where $\\sigma$ is a set of variable symbols over which a monomial order $>$ is fixed, and $R$ is a commutative semiring. Let $\\mathrm{Mon}(F)$ be the entire set of monomials in some $f \\in F$. Then $\\mathrm{Mon}(F) \\cup \\mathrm{Mon}(G) = \\mathrm{Mon}(F \\cup G)$.\n\nProof)\nDenote by $\\mathrm{Mon}(f)$ for $f \\in R[\\sigma]$ the set of monomials in $f$. Then $\\mathrm{Mon}(F) = \\bigcup_{f \\in F} \\mathrm{Mon}(f)$. Using this, we obtain\n$$\n\\begin{aligned}\n\\mathrm{Mon}(F \\cup G)\n&= \\bigcup_{f \\in F \\cup G} \\mathrm{Mon}(f) \\\\\n&= \\bigcup_{f \\in F}  \\mathrm{Mon}(f) \\cup \\bigcup_{f \\in G} \\mathrm{Mon}(f) \\\\\n&= \\mathrm{Mon}(F) \\cup \\mathrm{Mon}(G).\n\\end{aligned}\n$$",
+  "toolchain": {
+    "lean": "4.27.0-rc1"
+  },
+  "translation_direction": "forward",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "updated_at": "2026-07-03T19:09:48.362849+00:00",
+  "custom_module": "no",
+  "formalization_rules": "/-\nFormalize in Lean the Lemma (monomial_set_union_distrib) from Text.\n\nThe lemma must be named `monomial_set_union_distrib`.\n   Matched text (candidate 0, lemma, label=monomial_set_union_distrib): Lemma (monomial_set_union_distrib) Commutativity of union and monomial set Let $F, G\n                                                                        \\subseteq R[\\sigma]$ be some finite subsets of multivariate polynomials, where $\\sigma$ is a\n                                                                        set of variable symbols over which a monomial order $>$ is fixed, and $R$ is a commutative\n                                                                        semiring. Let $\\mathrm{Mon}(F)$ be the entire set of monomials in some $f \\in F$. Then\n                                                                        $\\mathrm{Mon}(F) \\cup \\mathrm{Mon}(G) = \\mathrm{Mon}(F \\cup G)$.\n-/"
+}

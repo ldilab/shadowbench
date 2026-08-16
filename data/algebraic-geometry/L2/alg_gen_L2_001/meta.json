@@ -1,0 +1,23 @@
+{
+  "id": "algebraic-geometry/L2/alg_gen_L2_001",
+  "paper_id": "mathlib4",
+  "paper_title": "",
+  "area": "algebraic-geometry",
+  "level": "L2",
+  "problem_id": "alg_gen_L2_001",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{lemma}[smooth_of_grpObj_of_isAlgClosed]\nIf $G$ is a group scheme over an algebraically closed field $k$ that is reduced and locally of finite type, then $G$ is smooth over $k$.\n\\end{lemma}\n\n\\begin{proof}\nLet \\(U \\subseteq G\\) be the smooth locus of \\(f\\). Since smoothness is an open condition for morphisms locally of finite presentation, \\(U\\) is an open subset of \\(G\\). We must show that \\(U=G\\).\n\nSuppose for contradiction that \\(U \\neq G\\). Then \\(G \\setminus U\\) is a nonempty closed subset of \\(G\\).\n\nBecause \\(f\\) is locally of finite presentation over the field \\(k\\), the scheme \\(G\\) is Jacobson. On the other hand, since \\(k\\) is algebraically closed, hence perfect, and \\(G\\) is reduced, the smooth locus \\(U\\) is dense in \\(G\\). Therefore both \\(G \\setminus U\\) and \\(U\\) contain closed points. Choose closed points\n\\[\nx \\in G \\setminus U\n\\qquad\\text{and}\\qquad\ny \\in U.\n\\]\n\nSince \\(k\\) is algebraically closed, every closed point of \\(G\\) is a \\(k\\)-rational point. Thus \\(x\\) and \\(y\\) arise from morphisms\n\\[\nx,y : \\mathrm{Spec} k \\to G\n\\]\nover \\(\\mathrm{Spec} k\\).\n\nNow use the group structure on \\(G\\). For every \\(k\\)-point \\(a : \\mathrm{Spec} K \\to G\\), right translation by \\(a'\\) defines an automorphism of the group scheme \\(G\\) over \\(\\mathrm{Spec} k\\). In particular, right translation by \\(x\\) and by \\(y\\) are automorphisms of \\(G\\), so\n\\[\n\\alpha := R_{y} \\circ R_{x}^{-1}\n\\]\nis an automorphism of \\(G\\) over \\(\\mathrm{Spec} k\\). By construction, \\(\\alpha\\) sends \\(x\\) to \\(y\\); hence, on underlying topological points,\n\\[\n\\alpha(x)=y.\n\\]\n\nBecause \\(\\alpha\\) is an isomorphism over \\(\\mathrm{Spec} k\\), it preserves the smooth locus:\n\\[\n\\alpha^{-1}(U)=U.\n\\]\nSince \\(y\\in U\\), it follows that \\(x \\in U\\), contradicting the choice of \\(x \\in G \\setminus U\\).\n\nThis contradiction shows that \\(G \\setminus U\\) is empty. Therefore \\(U=G\\), so \\(f\\) is smooth.\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 301
+  },
+  "created_at": "2026-04-23T18:36:10+00:00",
+  "translation_direction": "backward",
+  "updated_at": "2026-07-03T19:10:23.084208+00:00",
+  "formalization_rules": "open CategoryTheory\n\n/-\nFormalize in Lean the Lemma (smooth_of_grpObj_of_isAlgClosed) from Text.\n\nThe lemma must be named `smooth_of_grpObj_of_isAlgClosed`.\n   Matched text (candidate 0, lemma, label=smooth_of_grpObj_of_isAlgClosed): \\begin{lemma}[smooth_of_grpObj_of_isAlgClosed] If $G$ is a group scheme over an\n                                                                             algebraically closed field $k$ that is reduced and locally of finite type, then $G$ is\n                                                                             smooth over $k$. \\end{lemma}\n-/\n"
+}

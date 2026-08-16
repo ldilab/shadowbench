@@ -1,0 +1,39 @@
+{
+  "id": "probability/L1/prob_gen_L1_017",
+  "paper_id": "arXiv:2301.05992",
+  "paper_title": "An elementary proof of anti-concentration for degree two non-negative Gaussian polynomials",
+  "area": "probability",
+  "level": "L1",
+  "problem_id": "prob_gen_L1_017",
+  "types": [
+    "def",
+    "theorem_stmt"
+  ],
+  "subfields": [
+    "AntiConcentration",
+    "GaussianDistributions",
+    "QuadraticForms"
+  ],
+  "text": "\\begin{lemma}[Small-ball bound for a Gaussian quadratic form]\nLet $x\\sim N(0,I_n)$ and let\n\\[\nQ=\n\\begin{pmatrix}\nq_{11} & q_{12}^{\\mathsf T}\\\\\nq_{12} & Q_{22}\n\\end{pmatrix}\n\\in\\mathbb{S}^{n+1}_{\\geq0}\n\\]\nbe positive semidefinite. Then, for every $\\varepsilon>0$,\n\\[\n\\mathbb{P}\\!\\left(\n\\begin{pmatrix}1\\\\x\\end{pmatrix}^{\\mathsf T}\nQ\n\\begin{pmatrix}1\\\\x\\end{pmatrix}\n\\leq\\varepsilon\\operatorname{Tr}(Q_{22})\n\\right)\n\\leq(e\\varepsilon)^{1/2}.\n\\]\n\\end{lemma}\n",
+  "target_decl": "gaussian_quadratic_small_ball",
+  "target_kind": "lemma",
+  "references": [
+    {
+      "source": "arxiv",
+      "id": "arXiv:2301.05992v1",
+      "url": "https://arxiv.org/abs/2301.05992v1",
+      "item": "Lemma 2.2"
+    }
+  ],
+  "toolchain": {
+    "lean": "4.27.0-rc1",
+    "mathlib": "024fc398dbd3648262e78da99efa2ad9aeeb5d6f"
+  },
+  "metrics": {
+    "source_words": 36
+  },
+  "created_at": "2026-07-12T12:00:00+09:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-12T14:04:26+00:00",
+  "formalization_rules": "\\begin{lemma}[Small-ball bound for a Gaussian quadratic form]\nLet $x\\sim N(0,I_n)$ and let\n\\[\nQ=\n\\begin{pmatrix}\nq_{11} & q_{12}^{\\mathsf T}\\\\\nq_{12} & Q_{22}\n\\end{pmatrix}\n\\in\\mathbb{S}^{n+1}_{\\geq0}\n\\]\nbe positive semidefinite. Then, for every $\\varepsilon>0$,\n\\[\n\\mathbb{P}\\!\\left(\n\\begin{pmatrix}1\\\\x\\end{pmatrix}^{\\mathsf T}\nQ\n\\begin{pmatrix}1\\\\x\\end{pmatrix}\n\\leq\\varepsilon\\operatorname{Tr}(Q_{22})\n\\right)\n\\leq(e\\varepsilon)^{1/2}.\n\\]\n\\end{lemma}\n"
+}

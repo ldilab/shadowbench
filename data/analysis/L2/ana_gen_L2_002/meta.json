@@ -1,0 +1,22 @@
+{
+  "id": "analysis/L2/ana_gen_L2_002",
+  "paper_id": "",
+  "paper_title": "",
+  "area": "analysis",
+  "level": "L2",
+  "problem_id": "ana_gen_L2_002",
+  "types": [
+    "theorem_stmt"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[open_disc_not_disjoint_union_rectangles]\nAn open disc in $\\mathbb{R}^2$ is not the disjoint union of open rectangles.\n\\end{theorem}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 15
+  },
+  "created_at": "2026-04-07T17:42:44+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-03T19:12:39.212991+00:00",
+  "formalization_rules": "open Euclidean\n\n/-\nFormalize in Lean the Theorem (open_disc_not_disjoint_union_rectangles) from Text.\n\nThe theorem must be named `open_disc_not_disjoint_union_rectangles`.\n   Matched text (candidate 0, theorem, label=open_disc_not_disjoint_union_rectangles): \\begin{theorem}[open_disc_not_disjoint_union_rectangles] An open disc in $\\mathbb{R}^2$ is\n                                                                                       not the disjoint union of open rectangles. \\end{theorem}\n-/\n"
+}

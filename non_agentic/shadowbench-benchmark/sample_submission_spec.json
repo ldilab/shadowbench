@@ -1,0 +1,25 @@
+{
+  "model_cmd": "models/qwen235b_remote/model.py",
+  "env": {
+    "VLLM_BASE_URL": "http://127.0.0.1:1235/v1",
+    "VLLM_MODEL": "Qwen3-235B-A22B",
+    "VLLM_MAX_TOKENS": "2048",
+    "VLLM_TEMPERATURE": "0.0",
+    "VLLM_CONNECT_TIMEOUT": "3.0",
+    "VLLM_READ_TIMEOUT": "540.0"
+  },
+  "eval": {
+    "num_problems": 3,
+    "areas": ["analysis", "topology", "algebra"],
+    "levels": ["L1", "L2"],
+    "seed": 1337,
+    "sampling": "hash"
+  },
+  "runtime": {
+    "docker_image": "shadowbench/lean-eval:lean4.26.0-data",
+    "eval_project_dir": "leanproblems",
+    "docker_network": "none",
+    "model_timeout_sec": 600,
+    "compile_timeout_sec": 180
+  }
+}

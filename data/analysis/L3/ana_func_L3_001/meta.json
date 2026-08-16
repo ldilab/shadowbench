@@ -1,0 +1,25 @@
+{
+  "id": "analysis/L3/ana_func_L3_001",
+  "paper_id": "Analysis_problem",
+  "paper_title": "",
+  "area": "analysis",
+  "level": "L3",
+  "problem_id": "ana_func_L3_001",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [
+    "Functional Analysis"
+  ],
+  "text": "\\begin{theorem}[exists_projection_near_of_approx_selfadj_idempotent]\nLet $\\mathcal A$ be a $C^*$-algebra. Show that for any $\\varepsilon > 0$ there exists a\n$\\delta_\\varepsilon > 0$ such that if $a \\in \\mathcal A$ obeys\n\\[\n    \\max\\left\\{\\|a-a^*\\|,\\ \\|a^2-a\\|\\right\\}\\le \\delta_\\varepsilon,\n\\]\nthen there exists a self-adjoint projection $p\\in \\mathcal A$ with\n\\[\n    \\|a-p\\|\\le \\varepsilon.\n\\]\n\\end{theorem}\n\n\\begin{proof}\nFix $\\varepsilon>0$. Choose $\\delta>0$ sufficiently small, to be specified later, and suppose\n$a\\in\\mathcal A$ satisfies\n\\[\n    \\max\\{\\|a-a^*\\|,\\|a^2-a\\|\\}\\le \\delta .\n\\]\nPut\n\\[\n    b=\\frac{a+a^*}{2}.\n\\]\nThen $b=b^*$ and\n\\[\n    \\|a-b\\|=\\frac12\\|a-a^*\\|\\le \\frac{\\delta}{2}.\n\\]\nMoreover,\n\\[\n    b^2-b\n    =\n    \\frac12\\bigl((a^2-a)+(a^2-a)^*\\bigr)\n    -\\frac14(a-a^*)^2,\n\\]\nso\n\\[\n    \\|b^2-b\\|\n    \\le\n    \\|a^2-a\\|+\\frac14\\|a-a^*\\|^2\n    \\le\n    \\delta+\\frac{\\delta^2}{4}.\n\\]\nSet\n\\[\n    \\eta:=\\delta+\\frac{\\delta^2}{4}.\n\\]\n\nSince $b$ is self-adjoint, $\\sigma(b)\\subset\\mathbb R$. By the spectral mapping theorem, for every\n$\\lambda\\in\\sigma(b)$,\n\\[\n    |\\lambda(\\lambda-1)|\n    =\n    |\\lambda^2-\\lambda|\n    \\le\n    \\|b^2-b\\|\n    \\le \\eta .\n\\]\nAssume $\\delta$ is chosen so that $\\eta<1/4$. Then $1/2\\notin\\sigma(b)$.\n\nDefine\n\\[\n    f:\\sigma(b)\\to\\mathbb C,\\qquad\n    f(\\lambda)=\n    \\begin{cases}\n    0, & \\lambda<1/2,\\\\\n    1, & \\lambda>1/2.\n    \\end{cases}\n\\]\nThis is continuous on $\\sigma(b)$. Let\n\\[\n    p=f(b)\n\\]\nvia the continuous functional calculus. Since $f$ is real-valued and $f^2=f$, we have\n\\[\n    p^*=p,\\qquad p^2=p.\n\\]\nThus $p$ is a self-adjoint projection.\n\nIt remains to estimate the distance. If $\\lambda\\in\\sigma(b)$ and $\\lambda<1/2$, then\n$|1-\\lambda|\\ge 1/2$, hence\n\\[\n    |\\lambda|\\le 2|\\lambda(1-\\lambda)|\\le 2\\eta.\n\\]\nIf $\\lambda>1/2$, then $|\\lambda|\\ge 1/2$, hence\n\\[\n    |\\lambda-1|\\le 2|\\lambda(\\lambda-1)|\\le 2\\eta.\n\\]\nThus\n\\[\n    |\\lambda-f(\\lambda)|\\le 2\\eta\n    \\qquad(\\lambda\\in\\sigma(b)).\n\\]\nBy the isometric property of the continuous functional calculus,\n\\[\n    \\|b-p\\|\n    =\n    \\|b-f(b)\\|\n    \\le 2\\eta.\n\\]\nTherefore\n\\[\n    \\|a-p\\|\n    \\le\n    \\|a-b\\|+\\|b-p\\|\n    \\le\n    \\frac{\\delta}{2}\n    +2\\left(\\delta+\\frac{\\delta^2}{4}\\right).\n\\]\n\nFinally choose\n\\[\n    0<\\delta_\\varepsilon\\le\n    \\min\\left\\{\\frac15,\\frac{\\varepsilon}{3}\\right\\}.\n\\]\nThen $\\eta<1/4$ and\n\\[\n    \\frac{\\delta_\\varepsilon}{2}\n    +2\\left(\\delta_\\varepsilon+\\frac{\\delta_\\varepsilon^2}{4}\\right)\n    \\le \\varepsilon.\n\\]\nHence $\\|a-p\\|\\le\\varepsilon$, as required.\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 260
+  },
+  "created_at": "2026-04-30T14:01:29+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-05-16T18:22:12+00:00",
+  "formalization_rules": "open scoped Topology\n\n/-\nFormalize in Lean the Theorem (exists_projection_near_of_approx_selfadj_idempotent) from Text.\n\nThe theorem must be named `exists_projection_near_of_approx_selfadj_idempotent`.\n   Matched text (candidate 0, theorem, label=exists_projection_near_of_approx_selfadj_idempotent): \\begin{theorem}[exists_projection_near_of_approx_selfadj_idempotent] Let $\\mathcal A$ be a\n                                                                                                   $C^*$-algebra. Show that for any $\\varepsilon > 0$ there exists a $\\delta_\\varepsilon > 0$\n                                                                                                   such that if $a \\in \\mathcal A$ obeys \\[ \\max\\left\\{\\|a-a^*\\|,\\ \\|a^2-a\\|\\right\\}\\le\n                                                                                                   \\delta_\\varepsilon, \\] then there exists a self-adjoint projection $p\\in \\mathcal A$ with \\[\n                                                                                                   \\|a-p\\|\\le \\varepsilon. \\] \\end{theorem}\n-/\n"
+}

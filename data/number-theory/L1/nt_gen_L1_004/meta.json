@@ -1,0 +1,36 @@
+{
+  "area": "number-theory",
+  "level": "L1",
+  "types": [
+    "theorem_stmt"
+  ],
+  "toolchain": {
+    "lean": "4.27.0-rc1",
+    "mathlib": "024fc398dbd3648262e78da99efa2ad9aeeb5d6f"
+  },
+  "translation_direction": "forward",
+  "id": "number-theory/L1/nt_gen_L1_004",
+  "problem_id": "nt_gen_L1_004",
+  "paper_id": "arXiv:2206.00589",
+  "paper_title": "Elementary Proofs of Representation by Ternary Quadratic Forms",
+  "subfields": [
+    "quadratic forms",
+    "local obstructions"
+  ],
+  "target_decl": "q3_not_represents_eleven_mul_nonresidue",
+  "target_kind": "theorem",
+  "references": [
+    {
+      "source": "arXiv:2206.00589v1",
+      "item": "Lemma 10",
+      "url": "https://arxiv.org/abs/2206.00589v1"
+    }
+  ],
+  "metrics": {
+    "source_words": 216
+  },
+  "created_at": "2026-07-12T03:55:39+09:00",
+  "text": "\\begin{lemma}\nDefine the ternary quadratic form\n\\[\nQ_3(x,y,z)=x^2+3y^2+2yz+4z^2.\n\\]\nLet $n$ be a nonnegative integer whose residue modulo $11$ is a quadratic nonresidue. Then $11n$ is not represented by $Q_3$ over the integers; that is, there are no $x,y,z\\in\\mathbb{Z}$ such that\n\\[\nQ_3(x,y,z)=11n.\n\\]\n\\end{lemma}\n",
+  "updated_at": "2026-07-12T12:57:24.258211+00:00",
+  "formalization_rules": "\\begin{lemma}\nDefine the ternary quadratic form\n\\[\nQ_3(x,y,z)=x^2+3y^2+2yz+4z^2.\n\\]\nLet $n$ be a nonnegative integer whose residue modulo $11$ is a quadratic nonresidue. Then $11n$ is not represented by $Q_3$ over the integers; that is, there are no $x,y,z\\in\\mathbb{Z}$ such that\n\\[\nQ_3(x,y,z)=11n.\n\\]\n\\end{lemma}\n"
+}

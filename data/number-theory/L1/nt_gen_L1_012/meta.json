@@ -1,0 +1,39 @@
+{
+  "area": "number-theory",
+  "level": "L1",
+  "types": [
+    "def",
+    "theorem_stmt"
+  ],
+  "toolchain": {
+    "lean": "4.27.0-rc1",
+    "mathlib": "024fc398dbd3648262e78da99efa2ad9aeeb5d6f"
+  },
+  "translation_direction": "forward",
+  "id": "number-theory/L1/nt_gen_L1_012",
+  "problem_id": "nt_gen_L1_012",
+  "paper_id": "arXiv:0906.0696",
+  "paper_title": "An Elementary (Number Theory) Proof of Touchard's Congruence",
+  "subfields": [
+    "BellNumbers",
+    "StirlingNumbers",
+    "CombinatorialIdentities"
+  ],
+  "target_decl": "bell_stirling_shift",
+  "target_kind": "theorem",
+  "references": [
+    {
+      "source": "arxiv",
+      "id": "arXiv:0906.0696v1",
+      "url": "https://arxiv.org/abs/0906.0696v1",
+      "item": "Theorem 1.4"
+    }
+  ],
+  "metrics": {
+    "source_words": 25
+  },
+  "created_at": "2026-07-12T04:11:29+09:00",
+  "text": "\\begin{theorem}\nLet $B_t$ denote the $t$th Bell number, the number of partitions of a $t$-element set, and let $S(n,k)$ denote the Stirling number of the second kind, the number of partitions of an $n$-element set into exactly $k$ nonempty subsets. For each positive integer $j$, define\n\\[\nP_j(x)=\\sum_{r=0}^{j}B_{j-r}\\binom{j}{r}x^r.\n\\]\nThen, for all positive integers $n$ and $j$,\n\\[\nB_{n+j}=\\sum_{k=1}^{n}P_j(k)S(n,k).\n\\]\n\\end{theorem}\n",
+  "updated_at": "2026-07-12T14:04:26+00:00",
+  "formalization_rules": "\\begin{theorem}\nLet $B_t$ denote the $t$th Bell number, the number of partitions of a $t$-element set, and let $S(n,k)$ denote the Stirling number of the second kind, the number of partitions of an $n$-element set into exactly $k$ nonempty subsets. For each positive integer $j$, define\n\\[\nP_j(x)=\\sum_{r=0}^{j}B_{j-r}\\binom{j}{r}x^r.\n\\]\nThen, for all positive integers $n$ and $j$,\n\\[\nB_{n+j}=\\sum_{k=1}^{n}P_j(k)S(n,k).\n\\]\n\\end{theorem}\n"
+}

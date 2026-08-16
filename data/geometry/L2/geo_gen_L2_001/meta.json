@@ -1,0 +1,23 @@
+{
+  "id": "geometry/L2/geo_gen_L2_001",
+  "paper_id": "",
+  "paper_title": "",
+  "area": "geometry",
+  "level": "L2",
+  "problem_id": "geo_gen_L2_001",
+  "types": [
+    "theorem_stmt"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[morleys_trisector_theorem]\\label{thm:morley_trisector}\nIn plane geometry, Morley's trisector theorem states that in any triangle, the three points of intersection of the adjacent angle trisectors form an equilateral triangle, called the \\textbf{first Morley triangle}.\n\nFormally, let $X, Y, Z$ be the intersections of the adjacent internal angle trisectors of a triangle $ABC$. Then the triangle $XYZ$ is equilateral.\n\\end{theorem}",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 56
+  },
+  "created_at": "2026-02-11T21:47:11+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-05-22T15:59:12+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open scoped EuclideanGeometry\n\n/-\nFormalize in Lean the Theorem (morleys_trisector_theorem) from Text.\n\nThe theorem must be named `morleys_trisector_theorem`.\n   Matched text (candidate 0, theorem, label=morleys_trisector_theorem): \\begin{theorem}[morleys_trisector_theorem]\\label{thm:morley_trisector} In plane geometry,\n                                                                         Morley's trisector theorem states that in any triangle, the three points of intersection of\n                                                                         the adjacent angle trisectors form an equilateral triangle, called the \\textbf{first Morley\n                                                                         triangle}. Formally, let $X, Y, Z$ be the intersections of the adjacent internal angle\n                                                                         trisectors of a triangle $ABC$. Then the triangle $XYZ$ is…\n-/"
+}

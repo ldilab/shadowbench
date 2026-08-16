@@ -1,0 +1,23 @@
+{
+  "id": "combinatorics/L1/com_gen_L1_002",
+  "paper_id": "",
+  "paper_title": "",
+  "area": "combinatorics",
+  "level": "L1",
+  "problem_id": "com_gen_L1_002",
+  "types": [
+    "theorem_stmt"
+  ],
+  "subfields": [],
+  "text": "\\begin{definition}[fintypeSubtypeWalkLength]\nLet \\(G\\) be a locally finite simple graph with vertex set \\(V\\).\nFor \\(n \\in \\mathbb{N}\\) and vertices \\(u,v \\in V\\), define a finite set\n\\[\n\\mathcal{W}_n(u,v)\n\\]\nof walks of length \\(n\\) from \\(u\\) to \\(v\\) recursively by:\n\\begin{itemize}\n\\item If \\(n=0\\), then \\(\\mathcal{W}_0(u,v)\\) consists of the trivial walk if \\(u=v\\), and is empty otherwise.\n\\item If \\(n+1\\), then \\(\\mathcal{W}_{n+1}(u,v)\\) consists of all walks obtained by choosing a neighbor\n\\(w\\) of \\(u\\) and prepending the edge \\(u\\sim w\\) to a walk in \\(\\mathcal{W}_n(w,v)\\).\n\\end{itemize}\n\\end{definition}\n\n\\begin{theorem}[set_walk_length_toFinset_eq]\nFor all \\(n \\in \\mathbb{N}\\) and vertices \\(u,v \\in V\\),\n\\[\n\\mathcal{W}_n(u,v)\n=\n\\{\\, p \\mid p \\text{ is a walk from } u \\text{ to } v \\text{ of length } n \\,\\}.\n\\]\n\\end{theorem}\n\n\\begin{proof}\nBy induction on \\(n\\).\nFor \\(n=0\\), the only walk of length zero is the trivial walk at a vertex.\nFor \\(n+1\\), every walk of length \\(n+1\\) is uniquely determined by its first edge and a walk\nof length \\(n\\) from the adjacent vertex to \\(v\\).\n\\end{proof}\n\n\\begin{theorem}[card_set_walk_length_eq]\nFor all \\(n \\in \\mathbb{N}\\) and vertices \\(u,v \\in V\\),\n\\[\n\\bigl|\\{\\, p \\mid p \\text{ is a walk from } u \\text{ to } v \\text{ of length } n \\,\\}\\bigr|\n=\n|\\mathcal{W}_n(u,v)|.\n\\]\n\\end{theorem}\n\n\\begin{proof}\nBy the previous theorem, \\(\\mathcal{W}_n(u,v)\\) contains exactly all walks of length \\(n\\)\nfrom \\(u\\) to \\(v\\).\nSince \\(G\\) is locally finite, this set is finite, so the cardinalities coincide.\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 251
+  },
+  "created_at": "2026-02-09T17:44:55+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-05-18T10:10:57.552355+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Finset Function\n\n/-\nFormalize in Lean the following named items from Text.\n\n1. Definition (fintypeSubtypeWalkLength)\n   The definition must be named `fintypeSubtypeWalkLength`.\n   Matched text (candidate 0, definition, label=fintypeSubtypeWalkLength): \\begin{definition}[fintypeSubtypeWalkLength] Let \\(G\\) be a locally finite simple graph with\n                                                                           vertex set \\(V\\). For \\(n \\in \\mathbb{N}\\) and vertices \\(u,v \\in V\\), define a finite set\n                                                                           \\[ \\mathcal{W}_n(u,v) \\] of walks of length \\(n\\) from \\(u\\) to \\(v\\) recursively by:\n                                                                           \\begin{itemize} \\item If \\(n=0\\), then \\(\\mathcal{W}_0(u,v)\\) consists of the trivial walk\n                                                                           if \\(u=v\\), and is empty otherwise. \\item If \\(n+1\\), then…\n2. Theorem (set_walk_length_toFinset_eq)\n   The theorem must be named `set_walk_length_toFinset_eq`.\n   Matched text (candidate 1, theorem, label=set_walk_length_toFinset_eq): \\begin{theorem}[set_walk_length_toFinset_eq] For all \\(n \\in \\mathbb{N}\\) and vertices \\(u,v\n                                                                           \\in V\\), \\[ \\mathcal{W}_n(u,v) = \\{\\, p \\mid p \\text{ is a walk from } u \\text{ to } v\n                                                                           \\text{ of length } n \\,\\}. \\] \\end{theorem}\n3. Theorem (card_set_walk_length_eq)\n   The theorem must be named `card_set_walk_length_eq`.\n   Matched text (candidate 2, theorem, label=card_set_walk_length_eq): \\begin{theorem}[card_set_walk_length_eq] For all \\(n \\in \\mathbb{N}\\) and vertices \\(u,v \\in\n                                                                       V\\), \\[ \\bigl|\\{\\, p \\mid p \\text{ is a walk from } u \\text{ to } v \\text{ of length } n\n                                                                       \\,\\}\\bigr| = |\\mathcal{W}_n(u,v)|. \\] \\end{theorem}\n\nEvery listed named item must be formalized with exactly the stated Lean name.\n-/\n"
+}

@@ -1,0 +1,26 @@
+{
+  "area": "Algebra",
+  "created_at": "2026-01-06T02:35:24+00:00",
+  "id": "algebra/L1/alg_gen_L1_017",
+  "level": "L1",
+  "metrics": {
+    "source_words": 116
+  },
+  "paper_id": "Cox-Chap2-Thm",
+  "paper_title": "",
+  "problem_id": "alg_gen_L1_017",
+  "references": [],
+  "subfields": [],
+  "target_decl": "mem_monomialIdeal_iff_divisible",
+  "target_kind": "lemma",
+  "text": "\\begin{lemma}[mem_monomialIdeal_iff_divisible]\\label{lem:mem_monomialIdeal_iff_divisible} % [Cox] 70p Lemma 2\n    Let $I = \\langle x^\\alpha \\mid \\alpha \\in A \\rangle$ be a monomial ideal.\n    Then a monomial $x^\\beta$ lies in $I$ if and only if $x^\\beta$ is divisible by $x^\\alpha$ for some $\\alpha \\in A$.\n\\end{lemma}\n\\begin{proof}\n  If $x^\\beta$ is a multiple of $x^\\alpha$ for some $\\alpha \\in A$, then $x^\\beta \\in I$ by the definition of ideal. \n  Conversely, if $x^\\beta \\in I$, then $x^\\beta = \\sum_{i=1}^s h_i x^{\\alpha(i)}$, where $h_i \\in k[x_1, \\dots, x_n]$ and $\\alpha(i) \\in A$. \n  If we expand each $h_i$ as a sum of terms, we obtain\n  \\[\n  x^\\beta = \\sum_{i=1}^s h_i x^{\\alpha(i)} = \\sum_{i=1}^s \\left(\\sum_j c_{i,j} x^{\\beta(i,j)}\\right) x^{\\alpha(i)} = \\sum_{i,j} c_{i,j} x^{\\beta(i,j)} x^{\\alpha(i)}.\n  \\]\n\\end{proof}",
+  "toolchain": {},
+  "translation_direction": "forward",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "updated_at": "2026-07-03T19:09:39.205000+00:00",
+  "custom_module": "no",
+  "formalization_rules": "/-\nFormalize in Lean the Lemma (mem_monomialIdeal_iff_divisible) from Text.\n\nThe lemma must be named `mem_monomialIdeal_iff_divisible`.\n   Matched text (candidate 0, lemma, label=mem_monomialIdeal_iff_divisible): \\begin{lemma}[mem_monomialIdeal_iff_divisible]\\label{lem:mem_monomialIdeal_iff_divisible} %\n                                                                             [Cox] 70p Lemma 2 Let $I = \\langle x^\\alpha \\mid \\alpha \\in A \\rangle$ be a monomial ideal.\n                                                                             Then a monomial $x^\\beta$ lies in $I$ if and only if $x^\\beta$ is divisible by $x^\\alpha$\n                                                                             for some $\\alpha \\in A$. \\end{lemma}\n-/"
+}

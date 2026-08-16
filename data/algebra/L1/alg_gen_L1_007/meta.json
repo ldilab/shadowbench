@@ -1,0 +1,23 @@
+{
+  "id": "algebra/L1/alg_gen_L1_007",
+  "paper_id": "Cox-Chap4-Ex",
+  "paper_title": "",
+  "area": "Algebra",
+  "level": "L1",
+  "problem_id": "alg_gen_L1_007",
+  "types": [
+    "theorem_stmt"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[isGCD_iff_span_least_principal]\nGiven polynomials $f,g,h$ in $k[x_1,\\dots,x_n]$, where\n$h=\\gcd(f,g)$ means that $h$ divides both $f$ and $g$ and is divisible by every common divisor of\n$f$ and $g$, prove that $h=\\gcd(f,g)$ if and only if $\\langle h\\rangle$ is the smallest\nprincipal ideal containing $\\langle f,g\\rangle$.\n\\end{theorem}\n\n\\begin{proof}\nSuppose \\(h=\\gcd(f,g)\\). Then \\(\\langle f,g\\rangle\\subseteq \\langle h\\rangle\\).\nIf \\(J=\\langle q\\rangle\\) is a principal ideal containing \\(\\langle f,g\\rangle\\), then\n\\(q\\mid f\\) and \\(q\\mid g\\). Hence \\(q\\mid h\\), and therefore\n\\(\\langle h\\rangle\\subseteq \\langle q\\rangle=J\\). Thus \\(\\langle h\\rangle\\) is the\nsmallest principal ideal containing \\(\\langle f,g\\rangle\\).\n\nConversely, suppose that \\(\\langle h\\rangle\\) is the smallest principal ideal\ncontaining \\(\\langle f,g\\rangle\\). Then \\(h\\mid f\\) and \\(h\\mid g\\). If \\(q\\) is\nany common divisor of \\(f\\) and \\(g\\), then\n\\(\\langle f,g\\rangle\\subseteq \\langle q\\rangle\\). By minimality,\n\\(\\langle h\\rangle\\subseteq \\langle q\\rangle\\), so \\(q\\mid h\\). Therefore\n\\(h=\\gcd(f,g)\\), up to multiplication by a unit.\n\\end{proof}",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 141
+  },
+  "created_at": "2025-12-25T17:50:47+00:00",
+  "updated_at": "2026-07-03T19:09:05.272202+00:00",
+  "custom_module": "no",
+  "translation_direction": "forward",
+  "formalization_rules": "open scoped BigOperators\nopen MvPolynomial\n\n/-\nFormalize in Lean the Theorem (isGCD_iff_span_least_principal) from Text.\n\nThe theorem must be named `isGCD_iff_span_least_principal`.\n   Matched text (candidate 0, theorem, label=isGCD_iff_span_least_principal): \\begin{theorem}[isGCD_iff_span_least_principal] Given polynomials $f,g,h$ in\n                                                                              $k[x_1,\\dots,x_n]$, where $h=\\gcd(f,g)$ means that $h$ divides both $f$ and $g$ and is\n                                                                              divisible by every common divisor of $f$ and $g$, prove that $h=\\gcd(f,g)$ if and only if\n                                                                              $\\langle h\\rangle$ is the smallest principal ideal containing $\\langle f,g\\rangle$.\n                                                                              \\end{theorem}\n-/"
+}

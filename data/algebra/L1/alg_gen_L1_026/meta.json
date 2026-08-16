@@ -1,0 +1,30 @@
+{
+  "area": "Algebra",
+  "created_at": "2026-01-15T14:14:21+00:00",
+  "id": "algebra/L1/alg_gen_L1_026",
+  "level": "L1",
+  "metrics": {
+    "source_words": 20
+  },
+  "paper_id": "Cox-Chap4-Ex",
+  "paper_title": "",
+  "problem_id": "alg_gen_L1_026",
+  "references": [],
+  "subfields": [],
+  "target_decl": "irredundant_iInf_ideals_not_isPrime",
+  "target_kind": "theorem",
+  "text": "\\begin{theorem}[irredundant_iInf_ideals_not_isPrime]\nShow that an irredundant intersection of at least two prime ideals is never prime.\n\\end{theorem}\n",
+  "toolchain": {
+    "lean": "4.27.0-rc1"
+  },
+  "translation_direction": "forward",
+  "types": [
+    "theorem_stmt"
+  ],
+  "updated_at": "2026-05-17T04:39:01+00:00",
+  "custom_module": "yes",
+  "custom_module_names": [
+    "ABM.Cox.Cox_Chapter4_Ex.Cox_Chapter4_Section6_Definition_append"
+  ],
+  "formalization_rules": "/-\nFormalize in Lean the Theorem (irredundant_iInf_ideals_not_isPrime) from Text.\n\nThe theorem must be named `irredundant_iInf_ideals_not_isPrime`.\n   Matched text (candidate 0, theorem, label=irredundant_iInf_ideals_not_isPrime): \\begin{theorem}[irredundant_iInf_ideals_not_isPrime] Show that an irredundant intersection\n                                                                                   of at least two prime ideals is never prime. \\end{theorem}\n-/\n"
+}

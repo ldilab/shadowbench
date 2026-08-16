@@ -1,0 +1,24 @@
+{
+  "id": "topology/L1/top_gen_L1_006",
+  "paper_id": "mathlib4",
+  "paper_title": "",
+  "area": "topology",
+  "level": "L1",
+  "problem_id": "top_gen_L1_006",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\n\\begin{theorem}[monodromy_theorem]\nLet $\\gamma_0,\\gamma_1:I\\to X$ be paths and let $\\gamma:I\\times I\\to X$ be a homotopy rel.\\ endpoints\nbetween them. Let $\\Gamma:I\\to C(I,E)$ be a family of continuous paths in $E$ such that\n\\[\np(\\Gamma(t)(s))=\\gamma(t,s)\\quad \\forall t,s\\in I,\n\\qquad\n\\Gamma(t)(0)=\\Gamma(0)(0)\\quad \\forall t\\in I.\n\\]\nThen $\\Gamma(t)(1)=\\Gamma(0)(1)$ for all $t\\in I$.\n\\end{theorem}\n\n\\begin{proof}\nDefine $G:I\\times I\\to E$ by $G(s,t)=\\Gamma(t)(s)$. Then for each fixed $t$, the map $s\\mapsto G(s,t)$\nis continuous, and by hypothesis the map $t\\mapsto G(0,t)$ is constant, hence continuous. Moreover\n\\[\np(G(s,t))=p(\\Gamma(t)(s))=\\gamma(t,s)= (\\gamma\\circ\\mathrm{swap})(s,t).\n\\]\nBy Theorem B, $G$ is continuous.\nNow consider the path $t\\mapsto G(1,t)$ in $E$. Its projection is\n$t\\mapsto p(G(1,t))=\\gamma(t,1)$, which is constant in $t$ because $\\gamma$ is a homotopy rel.\\ endpoints.\nSince $p$ is separated and $G(0,t)$ is constant, uniqueness of lifts forces $G(1,t)$ to be constant.\nThus $G(1,t)=G(1,0)$ for all $t$, i.e.\\ $\\Gamma(t)(1)=\\Gamma(0)(1)$.\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 139
+  },
+  "created_at": "2026-01-29T17:11:09+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-05-16T18:39:46+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Topology unitInterval\n\n/-\nFormalize in Lean the Theorem (monodromy_theorem) from Text.\n\nThe theorem must be named `monodromy_theorem`.\n   Matched text (candidate 0, theorem, label=monodromy_theorem): \\begin{theorem}[monodromy_theorem] Let $\\gamma_0,\\gamma_1:I\\to X$ be paths and let\n                                                                 $\\gamma:I\\times I\\to X$ be a homotopy rel.\\ endpoints between them. Let $\\Gamma:I\\to C(I,E)$\n                                                                 be a family of continuous paths in $E$ such that \\[ p(\\Gamma(t)(s))=\\gamma(t,s)\\quad \\forall\n                                                                 t,s\\in I, \\qquad \\Gamma(t)(0)=\\Gamma(0)(0)\\quad \\forall t\\in I. \\] Then\n                                                                 $\\Gamma(t)(1)=\\Gamma(0)(1)$ for all $t\\in I$. \\end{theorem}\n-/\n"
+}

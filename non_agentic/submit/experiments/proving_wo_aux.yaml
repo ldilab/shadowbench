@@ -1,0 +1,66 @@
+# experiments.yaml — list of experiments to submit (naive prompting baseline)
+#
+# every (model × max_tokens × temperature) cartesian-product combination is submitted
+# Copy this file and save one variant per experiment.
+#   submit/experiments/naive_prompting.yaml
+#   submit/experiments/cot_prompting.yaml  ...
+
+# ── sweep ─────────────────────────────────────────────────────────────────────
+models:
+   # ── Gemini ────────────────────────────────────────── 23.3%
+  - op/gemini-pro
+  # ── 1.1%
+  - op/gemini-flash
+
+  # ── Claude ────────────────────────────────────────── 9.4% / 9.1% / 0.8%
+  - op/claude-sonnet-4.6
+  - op/claude-opus-4.6
+  - op/claude-haiku-4.5
+
+  # ── GPT ───────────────────────────────────────────── 7.4% / 6.8% / 1.5%
+  - op/gpt-mini
+  - op/gpt-base
+  - op/gpt-nano
+
+max_tokens:
+  - 8192
+
+temperatures:
+  - 0.6
+
+# ── shared config ─────────────────────────────────────────────────────────────
+org: anonymous-org
+
+areas:
+  - algebra
+  - topology
+  - analysis
+  - number-theory
+  - logic
+  - category-theory
+  - probability
+  - geometry
+  - college-math-competition
+
+levels:
+  - L1
+  - L2
+  - L3
+  - L4
+
+prompt_components:
+  informal_statement:  true
+  informal_proof:      true
+  formalization_rules: true
+  imports:             true
+  aux_theorems:        true
+  formal_statement:    false
+  dpp:                 false
+
+# ── eval / bench config ───────────────────────────────────────────────────────
+two_phase_evaluation: true
+lean_version:         v4.27.0-rc1
+hidden_checker_only:  true
+hidden_checker_sets:
+  - 1
+  - 2

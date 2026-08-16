@@ -1,0 +1,25 @@
+{
+  "id": "combinatorics/L2/com_gen_L2_004",
+  "paper_id": "",
+  "paper_title": "",
+  "area": "combinatorics",
+  "level": "L2",
+  "problem_id": "com_gen_L2_004",
+  "types": [
+    "theorem_stmt",
+    "def",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{lemma}[IsExtremal]\nLet \\(V\\) be a finite vertex set, and let \\(p\\) be a property of simple graphs on \\(V\\).\nA simple graph \\(G\\) on \\(V\\) is called \\emph{extremal with respect to \\(p\\)} if\n\\[\np(G)\n\\quad\\text{and}\\quad\n\\text{for every simple graph } G' \\text{ on } V \\text{ with } p(G'),\n\\; |E(G')| \\le |E(G)|.\n\\]\n\\end{lemma}\n\n\\begin{theorem}[exists_isExtremal_iff_exists]\nLet \\(V\\) be a finite vertex set, and let \\(p\\) be a property of simple graphs on \\(V\\).\nThen the following are equivalent:\n\\[\n\\exists\\, G \\text{ on } V \\text{ such that } p(G)\n\\quad\\Longleftrightarrow\\quad\n\\exists\\, G \\text{ on } V \\text{ that is extremal with respect to } p.\n\\]\n\\end{theorem}\n\n\\begin{proof}\nThe forward implication is immediate, since any extremal graph satisfies \\(p\\) by definition.\n\nFor the reverse implication, assume there exists at least one simple graph on \\(V\\) satisfying \\(p\\).\nBecause the set of simple graphs on a fixed finite vertex set is finite, the number of edges\nattained among graphs satisfying \\(p\\) has a maximum.\nChoose a graph \\(G\\) satisfying \\(p\\) with the maximum possible number of edges.\nThen \\(G\\) satisfies \\(p\\), and for any other graph \\(G'\\) on \\(V\\) with \\(p(G')\\),\nwe have \\(|E(G')| \\le |E(G)|\\).\nThus \\(G\\) is extremal with respect to \\(p\\).\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 212
+  },
+  "created_at": "2026-02-09T18:55:35+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-03T19:13:29.926229+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Finset Fintype\n\n/-\nFormalize in Lean the following named items from Text.\n\n1. Lemma (IsExtremal)\n   The lemma must be named `IsExtremal`.\n   Matched text (candidate 0, lemma, label=IsExtremal): \\begin{lemma}[IsExtremal] Let \\(V\\) be a finite vertex set, and let \\(p\\) be a property of\n                                                        simple graphs on \\(V\\). A simple graph \\(G\\) on \\(V\\) is called \\emph{extremal with respect\n                                                        to \\(p\\)} if \\[ p(G) \\quad\\text{and}\\quad \\text{for every simple graph } G' \\text{ on } V\n                                                        \\text{ with } p(G'), \\; |E(G')| \\le |E(G)|. \\] \\end{lemma}\n2. Theorem (exists_isExtremal_iff_exists)\n   The theorem must be named `exists_isExtremal_iff_exists`.\n   Matched text (candidate 1, theorem, label=exists_isExtremal_iff_exists): \\begin{theorem}[exists_isExtremal_iff_exists] Let \\(V\\) be a finite vertex set, and let\n                                                                            \\(p\\) be a property of simple graphs on \\(V\\). Then the following are equivalent: \\[\n                                                                            \\exists\\, G \\text{ on } V \\text{ such that } p(G) \\quad\\Longleftrightarrow\\quad \\exists\\, G\n                                                                            \\text{ on } V \\text{ that is extremal with respect to } p. \\] \\end{theorem}\n\nEvery listed named item must be formalized with exactly the stated Lean name.\n-/\n"
+}

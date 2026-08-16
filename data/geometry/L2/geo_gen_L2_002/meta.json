@@ -1,0 +1,24 @@
+{
+  "id": "geometry/L2/geo_gen_L2_002",
+  "paper_id": "Lee-Chap2-Ex",
+  "paper_title": "",
+  "area": "geometry",
+  "level": "L2",
+  "problem_id": "geo_gen_L2_002",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[ballRnDiffeomorph]\n\\begin{enumerate}\n    \\item[(a)] Consider the maps $F: \\mathbb{B}^n \\to \\mathbb{R}^n$ and $G: \\mathbb{R}^n \\to \\mathbb{B}^n$ given by\n    \\[\n    F(x) = \\frac{x}{\\sqrt{1 - |x|^2}}, \\qquad G(y) = \\frac{y}{\\sqrt{1 + |y|^2}}.\n    \\]\n\n    These maps are smooth, and it is straightforward to compute that they are inverses of each other. Thus they are both diffeomorphisms, and therefore $\\mathbb{B}^n$ is diffeomorphic to $\\mathbb{R}^n$.\n\\end{enumerate}\n\\end{theorem}\n\n\\begin{proof}\nTo show that $F$ and $G$ are inverses, we first compute $|F(x)|^2$ for $x \\in \\mathbb{B}^n$:\n\\[\n|F(x)|^2 = \\frac{|x|^2}{1 - |x|^2}.\n\\]\nThen, substituting $F(x)$ into $G$, we have:\n\\[\nG(F(x)) = \\frac{F(x)}{\\sqrt{1 + |F(x)|^2}} = \\frac{\\frac{x}{\\sqrt{1 - |x|^2}}}{\\sqrt{1 + \\frac{|x|^2}{1 - |x|^2}}} = \\frac{\\frac{x}{\\sqrt{1 - |x|^2}}}{\\sqrt{\\frac{1 - |x|^2 + |x|^2}{1 - |x|^2}}} = \\frac{\\frac{x}{\\sqrt{1 - |x|^2}}}{\\frac{1}{\\sqrt{1 - |x|^2}}} = x.\n\\]\n\nSimilarly, for $y \\in \\mathbb{R}^n$, we compute $|G(y)|^2$:\n\\[\n|G(y)|^2 = \\frac{|y|^2}{1 + |y|^2}.\n\\]\nSubstituting $G(y)$ into $F$, we have:\n\\[\nF(G(y)) = \\frac{G(y)}{\\sqrt{1 - |G(y)|^2}} = \\frac{\\frac{y}{\\sqrt{1 + |y|^2}}}{\\sqrt{1 - \\frac{|y|^2}{1 + |y|^2}}} = \\frac{\\frac{y}{\\sqrt{1 + |y|^2}}}{\\sqrt{\\frac{1 + |y|^2 - |y|^2}{1 + |y|^2}}} = \\frac{\\frac{y}{\\sqrt{1 + |y|^2}}}{\\frac{1}{\\sqrt{1 + |y|^2}}} = y.\n\\]\n\nNext, we address smoothness:\n\\begin{itemize}\n    \\item $F$ is smooth on $\\mathbb{B}^n$ because the function $|x|^2 = \\sum (x^i)^2$ is smooth, and the denominator $\\sqrt{1 - |x|^2}$ is smooth and strictly positive for all $|x| < 1$.\n    \\item $G$ is smooth on $\\mathbb{R}^n$ because the denominator $\\sqrt{1 + |y|^2}$ is smooth and satisfies $\\sqrt{1 + |y|^2} \\ge 1$ for all $y \\in \\mathbb{R}^n$, so it never vanishes.\n\\end{itemize}\nSince $F$ and $G$ are smooth maps and $G = F^{-1}$, both are diffeomorphisms.\n\\end{proof}",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 261
+  },
+  "created_at": "2026-03-03T03:09:50+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-03T19:16:39.728453+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open scoped Manifold\nopen Real\n\n/-\nFormalize in Lean the Theorem (ballRnDiffeomorph) from Text.\n\nThe theorem must be named `ballRnDiffeomorph`.\n   Matched text (candidate 0, theorem, label=ballRnDiffeomorph): \\begin{theorem}[ballRnDiffeomorph] \\begin{enumerate} \\item[(a)] Consider the maps $F:\n                                                                 \\mathbb{B}^n \\to \\mathbb{R}^n$ and $G: \\mathbb{R}^n \\to \\mathbb{B}^n$ given by \\[ F(x) =\n                                                                 \\frac{x}{\\sqrt{1 - |x|^2}}, \\qquad G(y) = \\frac{y}{\\sqrt{1 + |y|^2}}. \\] These maps are\n                                                                 smooth, and it is straightforward to compute that they are inverses of each other. Thus they\n                                                                 are both diffeomorphisms, and therefore $\\mathbb{B}^n$ is diffe…\n-/"
+}

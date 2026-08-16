@@ -1,0 +1,22 @@
+{
+  "avgTimeSec": 5.766014337539673,
+  "categories": {
+    "2101": 100.0
+  },
+  "compileRate": 100.0,
+  "levels": {
+    "College": 100.0
+  },
+  "meta": {
+    "avgModelSec": 0.17626380920410156,
+    "benchmarkDir": "non_agentic/shadowbench-benchmark",
+    "dockerNetwork": "none",
+    "passed": 1,
+    "tasks": 1
+  },
+  "overall": 100.0,
+  "pass1": 100.0,
+  "pass5": 100.0,
+  "tokensPerTask": 0,
+  "usdPerTask": 0.0
+}

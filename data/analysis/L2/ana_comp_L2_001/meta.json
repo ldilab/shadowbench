@@ -1,0 +1,25 @@
+{
+  "id": "analysis/L2/ana_comp_L2_001",
+  "paper_id": "Wunsch_Chap2_Ex",
+  "paper_title": "",
+  "area": "analysis",
+  "level": "L2",
+  "problem_id": "ana_comp_L2_001",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [
+    "Complex Analysis"
+  ],
+  "text": "\\begin{theorem}[main_theorem]\nIf $g(x)[e^{2y} - e^{-2y}]$ is harmonic, $g(0) = 0, g'(0) = 1$, then $g(x)=\\frac{1}{2}\\sin(2x).$\n\\end{theorem}\n\n\\begin{proof}\nLet $f(x,y) = g(x)[e^{2y} - e^{-2y}]$. Then\n\\[\n\\frac{\\partial^2 f}{\\partial x^2} = g''(x)[e^{2y} - e^{-2y}], \\qquad \\frac{\\partial^2 f}{\\partial y^2} = 4g(x)[e^{2y} - e^{-2y}].\n\\]\nSince $f$ is harmonic, $\\Delta f = 0$ implies $g''(x) + 4g(x) = 0$, which has the general solution $g(x) = A\\sin(2x) + B\\cos(2x)$. \nApplying the initial conditions, $g(0) = B = 0$ and $g'(0) = 2A\\cos(0) = 1$, which gives $A = 1/2$. Therefore,\n\\[\ng(x) = \\frac{1}{2}\\sin(2x).\n\\]\n\\end{proof}",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 92
+  },
+  "created_at": "2026-04-23T04:23:25+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-05-24T12:08:58+00:00",
+  "formalization_rules": "/-\nFormalize in Lean the Theorem (main_theorem) from Text.\n\nThe theorem must be named `main_theorem`.\n   Matched text (candidate 0, theorem, label=main_theorem): \\begin{theorem}[main_theorem] If $g(x)[e^{2y} - e^{-2y}]$ is harmonic, $g(0) = 0, g'(0) =\n                                                            1$, then $g(x)=\\frac{1}{2}\\sin(2x).$ \\end{theorem}\n-/"
+}

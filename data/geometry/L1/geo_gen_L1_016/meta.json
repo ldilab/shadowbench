@@ -1,0 +1,24 @@
+{
+  "id": "geometry/L1/geo_gen_L1_016",
+  "paper_id": "Boyd_Chapter2_Ex",
+  "paper_title": "",
+  "area": "geometry",
+  "level": "L1",
+  "problem_id": "geo_gen_L1_016",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[hyperbolic_set_convex]\nShow that the hyperbolic set $S = \\{x \\in \\mathbb{R}_+^n \\mid \\prod_{i=1}^n x_i \\ge 1\\}$ is convex. \n\\textit{Hint:} If $a, b \\ge 0$ and $0 \\le \\theta \\le 1$, then $a^\\theta b^{1-\\theta} \\le \\theta a + (1-\\theta)b$.\n\\end{theorem}\n\n\\begin{proof}\nLet $x, y \\in S$ and let $\\theta \\in [0, 1]$. We need to show that $z = \\theta x + (1-\\theta)y \\in S$.\nSince $x_i \\ge 0$ and $y_i \\ge 0$ for all $i$, it is clear that $z_i = \\theta x_i + (1-\\theta)y_i \\ge 0$.\n\nNow we evaluate the product condition. According to the weighted AM-GM inequality (the hint provided):\n\\[ x_i^\\theta y_i^{1-\\theta} \\le \\theta x_i + (1-\\theta)y_i, \\quad \\forall i = 1, \\dots, n. \\]\nTaking the product over all $i$:\n\\[ \\prod_{i=1}^n (\\theta x_i + (1-\\theta)y_i) \\ge \\prod_{i=1}^n \\left( x_i^\\theta y_i^{1-\\theta} \\right) = \\left( \\prod_{i=1}^n x_i \\right)^\\theta \\left( \\prod_{i=1}^n y_i \\right)^{1-\\theta}. \\]\nSince $x, y \\in S$, we have $\\prod x_i \\ge 1$ and $\\prod y_i \\ge 1$. Substituting these into the inequality:\n\\[ \\prod_{i=1}^n z_i \\ge (1)^\\theta (1)^{1-\\theta} = 1. \\]\nThus $z \\in S$, which proves that the set $S$ is convex.\n\\end{proof}",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 189
+  },
+  "created_at": "2026-03-05T10:25:18+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-03T19:15:33.882008+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Finset Real\n\n/-\nFormalize in Lean the Theorem (hyperbolic_set_convex) from Text.\n\nThe theorem must be named `hyperbolic_set_convex`.\n   Matched text (candidate 0, theorem, label=hyperbolic_set_convex): \\begin{theorem}[hyperbolic_set_convex] Show that the hyperbolic set $S = \\{x \\in\n                                                                     \\mathbb{R}_+^n \\mid \\prod_{i=1}^n x_i \\ge 1\\}$ is convex. \\textit{Hint:} If $a, b \\ge 0$ and\n                                                                     $0 \\le \\theta \\le 1$, then $a^\\theta b^{1-\\theta} \\le \\theta a + (1-\\theta)b$. \\end{theorem}\n-/"
+}

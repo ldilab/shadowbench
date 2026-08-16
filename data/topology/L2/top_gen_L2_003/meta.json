@@ -1,0 +1,23 @@
+{
+  "id": "topology/L2/top_gen_L2_003",
+  "paper_id": "Lee-Chap10-Ex",
+  "paper_title": "",
+  "area": "topology",
+  "level": "L2",
+  "problem_id": "top_gen_L2_003",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[isProperMap_proj_iff_compactSpace]\nSuppose $\\pi : E \\to M$ is a fiber bundle with fiber $F$.\nThen $\\pi$ is a proper map if and only if $F$ is compact.\n\\end{theorem}\n\n\\begin{proof}\nBecause $\\pi : E \\to M$ is a fiber bundle projection, it is continuous, and for every $p \\in M$ there exists an open neighborhood $U$ of $p$ and a homeomorphism\n\\[\n\\Phi:\\pi^{-1}(U)\\to U\\times F\n\\]\nsuch that\n\\[\n\\pi|_{\\pi^{-1}(U)}=\\operatorname{pr}_1\\circ \\Phi,\n\\]\nwhere $\\operatorname{pr}_1:U\\times F\\to U$ is projection onto the first factor.\n\n\\medskip\n\\noindent $(\\Rightarrow)$ Suppose $\\pi$ is proper. For any $p\\in M$, the singleton $\\{p\\}$ is compact. Hence\n\\[\n\\pi^{-1}(\\{p\\})=\\pi^{-1}(p)\n\\]\nis compact. But each fiber $\\pi^{-1}(p)$ is homeomorphic to $F$, so $F$ is compact.\n\n\\medskip\n\\noindent $(\\Leftarrow)$ Suppose $F$ is compact. We will show that $\\pi$ is proper by proving that $\\pi$ is a continuous closed map with compact fibers (Proposition A.53(b)).\n\nFirst, for each $p\\in M$, the fiber $\\pi^{-1}(p)$ is homeomorphic to $F$, hence compact.\n\nNow let $C\\subseteq E$ be closed. We show that $\\pi(C)$ is closed in $M$. Let $p\\in M\\setminus \\pi(C)$. Choose a trivializing neighborhood $U$ of $p$ and a trivialization\n\\[\n\\Phi:\\pi^{-1}(U)\\to U\\times F.\n\\]\nThen $C\\cap \\pi^{-1}(U)$ is closed in $\\pi^{-1}(U)$, so $\\Phi(C\\cap \\pi^{-1}(U))$ is closed in $U\\times F$. Since $F$ is compact, the projection\n\\[\n\\operatorname{pr}_1:U\\times F\\to U\n\\]\nis a closed map. Therefore\n\\[\n\\pi(C)\\cap U\n=\n\\pi(C\\cap \\pi^{-1}(U))\n=\n\\operatorname{pr}_1\\bigl(\\Phi(C\\cap \\pi^{-1}(U))\\bigr)\n\\]\nis closed in $U$.\n\nBecause $p\\notin \\pi(C)$, we have\n\\[\np\\in U\\setminus (\\pi(C)\\cap U),\n\\]\nand this is an open neighborhood of $p$ in $M$ disjoint from $\\pi(C)$. Hence every point of $M\\setminus \\pi(C)$ has an open neighborhood contained in $M\\setminus \\pi(C)$, so $M\\setminus \\pi(C)$ is open. Thus $\\pi(C)$ is closed, and $\\pi$ is a closed map.\n\nTherefore $\\pi$ is a continuous closed map with compact fibers. By Proposition A.53(b), $\\pi$ is proper.\n\nHence $\\pi$ is proper if and only if $F$ is compact.\n\\end{proof}",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 316
+  },
+  "created_at": "2026-03-26T19:13:50+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-03T16:26:40.609329+00:00",
+  "formalization_rules": "open TopologicalSpace Bundle\n\n/-\nFormalize in Lean the Theorem (isProperMap_proj_iff_compactSpace) from Text.\n\nThe theorem must be named `isProperMap_proj_iff_compactSpace`.\n   Matched text (candidate 0, theorem, label=isProperMap_proj_iff_compactSpace): \\begin{theorem}[isProperMap_proj_iff_compactSpace] Suppose $\\pi : E \\to M$ is a fiber bundle\n                                                                                 with fiber $F$. Then $\\pi$ is a proper map if and only if $F$ is compact. \\end{theorem}\n-/"
+}

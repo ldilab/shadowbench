@@ -1,0 +1,31 @@
+{
+  "area": "Analysis",
+  "created_at": "2026-01-01T16:09:01+00:00",
+  "id": "analysis/L1/ana_comp_L1_001",
+  "level": "L1",
+  "metrics": {
+    "source_words": 294
+  },
+  "paper_id": "mathlib4",
+  "paper_title": "",
+  "problem_id": "ana_comp_L1_001",
+  "references": [],
+  "subfields": [
+    "ComplexAnalysis"
+  ],
+  "target_decl": "integral_boundary_rect_of_hasFDerivAt_real_off_countable",
+  "target_kind": "theorem",
+  "text": "\\begin{theorem}[integral_boundary_rect_of_hasFDerivAt_real_off_countable] Let $f : \\mathbb{C} \\to E$ be a function with values in a real normed vector space $E$.\nLet $z^{\\ast}, w^{\\ast} \\in \\mathbb{C}$.\nAssume the following:\n\n\\begin{enumerate}\n  \\item The function $f$ is continuous on the closed rectangle\n  \\[\n  R := [\\Re(z^{\\ast}),\\, \\Re(w^{\\ast})] \\times [\\Im(z^{\\ast}),\\, \\Im(w^{\\ast})] \\subset \\mathbb{C}.\n  \\]\n  \\item There exists a countable set $S \\subset \\mathbb{C}$ such that for every point $z \\in \\operatorname{int}(R) \\setminus S$, the function $f$ is\n  real differentiable at $z$, with partial derivatives\n  \\[\n  \\frac{\\partial f}{\\partial x}(z), \\qquad \\frac{\\partial f}{\\partial y}(z).\n  \\]\n  \\item The function\n  \\[\n  z \\longmapsto\n  i\\,\\frac{\\partial f}{\\partial x}(z)\n  \\;-\\;\n  \\frac{\\partial f}{\\partial y}(z)\n  \\]\n  is integrable on $R$.\n\\end{enumerate}\n\nThen the following identity holds:\n\\[\n\\int_{\\Re(z^{\\ast})}^{\\Re(w^{\\ast})}\nf\\bigl(x + i\\,\\Im(z^{\\ast})\\bigr)\\,dx\n\\;-\\;\n\\int_{\\Re(z^{\\ast})}^{\\Re(w^{\\ast})}\nf\\bigl(x + i\\,\\Im(w^{\\ast})\\bigr)\\,dx\n\\]\n\\[\n\\quad\n+\\;\ni \\int_{\\Im(z^{\\ast})}^{\\Im(w^{\\ast})}\nf\\bigl(\\Re(w^{\\ast}) + i\\,y\\bigr)\\,dy\n\\;-\\;\ni \\int_{\\Im(z^{\\ast})}^{\\Im(w^{\\ast})}\nf\\bigl(\\Re(z^{\\ast}) + i\\,y\\bigr)\\,dy\n\\]\n\\[\n=\\;\n\\int_{\\Re(z^{\\ast})}^{\\Re(w^{\\ast})}\n\\int_{\\Im(z^{\\ast})}^{\\Im(w^{\\ast})}\n\\left(\ni\\,\\frac{\\partial f}{\\partial x}(x+iy)\n-\n\\frac{\\partial f}{\\partial y}(x+iy)\n\\right)\n\\,dy\\,dx.\n\\]\n\\end{theorem}\n\n\\begin{proof}\nWe identify $\\mathbb{C}$ with $\\mathbb{R}^2$ via the linear isomorphism\n\\[\n(x,y) \\longmapsto x + i y.\n\\]\nDefine $F : \\mathbb{R}^2 \\to E$ by $F(x,y) := f(x+iy)$.\n\nBy continuity of $f$ on $R$, the function $F$ is continuous on\n$[\\Re(z^{\\ast}),\\Re(w^{\\ast})] \\times [\\Im(z^{\\ast}),\\Im(w^{\\ast})]$.\nThe exceptional set $S$ pulls back to a countable subset of $\\mathbb{R}^2$.\n\nFor every $(x,y)$ in the interior of the rectangle outside this exceptional set,\nthe chain rule shows that $F$ is differentiable with\n\\[\n\\frac{\\partial F}{\\partial x}(x,y)\n=\n\\frac{\\partial f}{\\partial x}(x+iy),\n\\qquad\n\\frac{\\partial F}{\\partial y}(x,y)\n=\n\\frac{\\partial f}{\\partial y}(x+iy).\n\\]\n\nA direct computation shows that the Green-type expression becomes\n\\[\n-\\,i\\,\\frac{\\partial F}{\\partial x}(x,y)\n+\n\\frac{\\partial F}{\\partial y}(x,y)\n=\n-\\left(\ni\\,\\frac{\\partial f}{\\partial x}(x+iy)\n-\n\\frac{\\partial f}{\\partial y}(x+iy)\n\\right).\n\\]\n\nApplying Green's theorem on rectangles (valid for functions differentiable\noutside a countable set) yields the stated identity.\n\\end{proof}",
+  "toolchain": {
+    "lean": "4.27.0-rc1"
+  },
+  "translation_direction": "backward",
+  "types": [
+    "theorem_stmt",
+    "def",
+    "proof"
+  ],
+  "updated_at": "2026-07-03T19:11:00.636964+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open TopologicalSpace Set MeasureTheory intervalIntegral Metric Filter Function\nopen scoped Interval Real NNReal ENNReal Topology\n\n/-\nFormalize in Lean the Theorem (integral_boundary_rect_of_hasFDerivAt_real_off_countable) from Text.\n\nThe theorem must be named `integral_boundary_rect_of_hasFDerivAt_real_off_countable`.\n   Matched text (candidate 0, theorem, label=integral_boundary_rect_of_hasFDerivAt_real_off_countable): \\begin{theorem}[integral_boundary_rect_of_hasFDerivAt_real_off_countable] Let $f :\n                                                                                                        \\mathbb{C} \\to E$ be a function with values in a real normed vector space $E$. Let\n                                                                                                        $z^{\\ast}, w^{\\ast} \\in \\mathbb{C}$. Assume the following: \\begin{enumerate} \\item The\n                                                                                                        function $f$ is continuous on the closed rectangle \\[ R := [\\Re(z^{\\ast}),\\, \\Re(w^{\\ast})]\n                                                                                                        \\times [\\Im(z^{\\ast}),\\, \\Im(w^{\\ast})] \\subset \\mathbb{C}. \\] \\item There…\n-/"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "combinatorics/L1/com_gen_L1_003",
+  "paper_id": "",
+  "paper_title": "",
+  "area": "combinatorics",
+  "level": "L1",
+  "problem_id": "com_gen_L1_003",
+  "types": [
+    "def",
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{definition}[IsBipartiteWith]\nLet \\(G\\) be a simple graph with vertex set \\(V\\), and let \\(s,t \\subseteq V\\).\nThe graph \\(G\\) is said to be \\emph{bipartite with respect to \\(s\\) and \\(t\\)} if:\n\\begin{enumerate}\n\\item the sets \\(s\\) and \\(t\\) are disjoint, and\n\\item for every edge \\(\\{v,w\\}\\) of \\(G\\), either \\(v \\in s\\) and \\(w \\in t\\),\n      or \\(v \\in t\\) and \\(w \\in s\\).\n\\end{enumerate}\n\\end{definition}\n\n\\begin{theorem}[IsBipartiteWith.symm]\nIf a simple graph \\(G\\) is bipartite with respect to sets \\(s\\) and \\(t\\),\nthen it is also bipartite with respect to \\(t\\) and \\(s\\).\n\\end{theorem}\n\n\\begin{proof}\nDisjointness is symmetric, so \\(t\\) and \\(s\\) are disjoint.\nMoreover, if an edge connects a vertex in \\(s\\) to a vertex in \\(t\\),\nthen the same edge connects a vertex in \\(t\\) to a vertex in \\(s\\) when the roles\nof the two sets are swapped.\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 149
+  },
+  "created_at": "2026-02-09T19:33:01+00:00",
+  "translation_direction": "backward",
+  "updated_at": "2026-05-18T10:11:04.140949+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Set\n\n/-\nFormalize in Lean the following named items from Text.\n\n1. Definition (IsBipartiteWith)\n   The definition must be named `IsBipartiteWith`.\n   Matched text (candidate 0, definition, label=IsBipartiteWith): \\begin{definition}[IsBipartiteWith] Let \\(G\\) be a simple graph with vertex set \\(V\\), and\n                                                                  let \\(s,t \\subseteq V\\). The graph \\(G\\) is said to be \\emph{bipartite with respect to \\(s\\)\n                                                                  and \\(t\\)} if: \\begin{enumerate} \\item the sets \\(s\\) and \\(t\\) are disjoint, and \\item for\n                                                                  every edge \\(\\{v,w\\}\\) of \\(G\\), either \\(v \\in s\\) and \\(w \\in t\\), or \\(v \\in t\\) and \\(w\n                                                                  \\in s\\). \\end{enumerate} \\end{definition}\n2. Theorem (IsBipartiteWith.symm)\n   The theorem must be named `IsBipartiteWith.symm`.\n   Matched text (candidate 1, theorem, label=IsBipartiteWith.symm): \\begin{theorem}[IsBipartiteWith.symm] If a simple graph \\(G\\) is bipartite with respect to\n                                                                    sets \\(s\\) and \\(t\\), then it is also bipartite with respect to \\(t\\) and \\(s\\).\n                                                                    \\end{theorem}\n\nEvery listed named item must be formalized with exactly the stated Lean name.\n-/\n"
+}

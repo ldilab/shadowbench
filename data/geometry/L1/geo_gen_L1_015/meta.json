@@ -1,0 +1,24 @@
+{
+  "id": "geometry/L1/geo_gen_L1_015",
+  "paper_id": "Boyd_Chapter2_Ex",
+  "paper_title": "",
+  "area": "geometry",
+  "level": "L1",
+  "problem_id": "geo_gen_L1_015",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[separatingHyperplanes_is_pointed]\nSuppose that $C$ and $D$ are disjoint subsets of $\\mathbb{R}^n$. Consider the set of $(a, b) \\in \\mathbb{R}^{n+1}$ for which $a^T x \\le b$ for all $x \\in C$, and $a^T x \\ge b$ for all $x \\in D$. Show that this set is a convex cone containing the origin. (which is the singleton $\\{0\\}$ if there is no hyperplane that separates $C$ and $D$).\n\\end{theorem}\n\n\\begin{proof}\nLet $S = \\{ (a, b) \\in \\mathbb{R}^n \\times \\mathbb{R} \\mid \\forall x \\in C, a^T x \\le b \\text{ and } \\forall x \\in D, a^T x \\ge b \\}$.\n\n\\textbf{1. Cone property:} \nLet $(a, b) \\in S$ and $\\lambda > 0$. Multiplying the given inequalities by $\\lambda$:\n\\[ \\lambda (a^T x) \\le \\lambda b \\implies (\\lambda a)^T x \\le \\lambda b, \\quad \\forall x \\in C \\]\n\\[ \\lambda (a^T x) \\ge \\lambda b \\implies (\\lambda a)^T x \\ge \\lambda b, \\quad \\forall x \\in D \\]\nThus, $\\lambda(a, b) \\in S$. The case for $\\lambda=0$ is trivial as $(0,0) \\in S$ since $0 \\le 0$ and $0 \\ge 0$.\n\n\\textbf{2. Convexity (Addition):} \nLet $(a_1, b_1), (a_2, b_2) \\in S$. Adding the respective inequalities:\n\\[ a_1^T x + a_2^T x \\le b_1 + b_2 \\implies (a_1 + a_2)^T x \\le b_1 + b_2, \\quad \\forall x \\in C \\]\n\\[ a_1^T x + a_2^T x \\ge b_1 + b_2 \\implies (a_1 + a_2)^T x \\ge b_1 + b_2, \\quad \\forall x \\in D \\]\nThus, the sum $(a_1 + a_2, b_1 + b_2)$ belongs to $S$. \n\nSince $S$ is a cone and is closed under addition, it is a pointed convex cone.\n\\end{proof}",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 273
+  },
+  "created_at": "2026-03-04T17:57:24+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-03T19:15:25.761201+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open InnerProductSpace\n\n/-\nFormalize in Lean the Theorem (separatingHyperplanes_is_pointed) from Text.\n\nThe theorem must be named `separatingHyperplanes_is_pointed`.\n   Matched text (candidate 0, theorem, label=separatingHyperplanes_is_pointed): \\begin{theorem}[separatingHyperplanes_is_pointed] Suppose that $C$ and $D$ are disjoint\n                                                                                subsets of $\\mathbb{R}^n$. Consider the set of $(a, b) \\in \\mathbb{R}^{n+1}$ for which $a^T\n                                                                                x \\le b$ for all $x \\in C$, and $a^T x \\ge b$ for all $x \\in D$. Show that this set is a\n                                                                                convex cone containing the origin. (which is the singleton $\\{0\\}$ if there is no hyperplane\n                                                                                that separates $C$ and $D$). \\end{theorem}\n-/"
+}

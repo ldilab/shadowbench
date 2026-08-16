@@ -1,0 +1,24 @@
+{
+  "id": "geometry/L1/geo_gen_L1_017",
+  "paper_id": "Boyd_Chapter2_Ex",
+  "paper_title": "",
+  "area": "geometry",
+  "level": "L1",
+  "problem_id": "geo_gen_L1_017",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[convex_partialSum]\nShow that if $S_1$ and $S_2$ are convex sets in $\\mathbb{R}^{m+n}$, then so is their partial sum\n\\[\nS = \\{(x, y_1 + y_2) \\mid x \\in \\mathbb{R}^m, y_1, y_2 \\in \\mathbb{R}^n, (x, y_1) \\in S_1, (x, y_2) \\in S_2\\}.\n\\]\n\\end{theorem}\n\n\\begin{proof}\nTo show that $S$ is convex, let $z, z' \\in S$ and let $\\theta \\in [0, 1]$. We need to show that $\\theta z + (1 - \\theta)z' \\in S$.\n\nBy the definition of $S$, we can write:\n\\begin{itemize}\n    \\item $z = (x, y_1 + y_2)$ where $(x, y_1) \\in S_1$ and $(x, y_2) \\in S_2$.\n    \\item $z' = (x', y'_1 + y'_2)$ where $(x', y'_1) \\in S_1$ and $(x', y'_2) \\in S_2$.\n\\end{itemize}\n\nNow, consider the convex combination:\n\\begin{align*}\n\\theta z + (1 - \\theta)z' &= \\theta(x, y_1 + y_2) + (1 - \\theta)(x', y'_1 + y'_2) \\\\\n&= (\\theta x + (1 - \\theta)x', \\theta(y_1 + y_2) + (1 - \\theta)(y'_1 + y'_2)) \\\\\n&= (\\theta x + (1 - \\theta)x', (\\theta y_1 + (1 - \\theta)y'_1) + (\\theta y_2 + (1 - \\theta)y'_2)).\n\\end{align*}\n\nLet $\\bar{x} = \\theta x + (1 - \\theta)x'$, $\\bar{y}_1 = \\theta y_1 + (1 - \\theta)y'_1$, and $\\bar{y}_2 = \\theta y_2 + (1 - \\theta)y'_2$. \nThen we have $\\theta z + (1 - \\theta)z' = (\\bar{x}, \\bar{y}_1 + \\bar{y}_2)$.\n\nTo verify that this point is in $S$, we check the conditions on $(\\bar{x}, \\bar{y}_1)$ and $(\\bar{x}, \\bar{y}_2)$:\n\\begin{enumerate}\n    \\item Since $S_1$ is convex and $(x, y_1), (x', y'_1) \\in S_1$, it follows that:\n    \\[\n    \\theta(x, y_1) + (1 - \\theta)(x', y'_1) = (\\theta x + (1 - \\theta)x', \\theta y_1 + (1 - \\theta)y'_1) = (\\bar{x}, \\bar{y}_1) \\in S_1.\n    \\]\n    \\item Since $S_2$ is convex and $(x, y_2), (x', y'_2) \\in S_2$, it follows that:\n    \\[\n    \\theta(x, y_2) + (1 - \\theta)(x', y'_2) = (\\theta x + (1 - \\theta)x', \\theta y_2 + (1 - \\theta)y'_2) = (\\bar{x}, \\bar{y}_2) \\in S_2.\n    \\]\n\\end{enumerate}\n\nSince $(\\bar{x}, \\bar{y}_1) \\in S_1$ and $(\\bar{x}, \\bar{y}_2) \\in S_2$, the vector $(\\bar{x}, \\bar{y}_1 + \\bar{y}_2)$ satisfies the definition of $S$. Thus, $\\theta z + (1 - \\theta)z' \\in S$, which proves that $S$ is a convex set.\n\\end{proof}",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 364
+  },
+  "created_at": "2026-03-05T15:31:21+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-03T19:15:39.408529+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Set\n\n/-\nFormalize in Lean the Theorem (convex_partialSum) from Text.\n\nThe theorem must be named `convex_partialSum`.\n   Matched text (candidate 0, theorem, label=convex_partialSum): \\begin{theorem}[convex_partialSum] Show that if $S_1$ and $S_2$ are convex sets in\n                                                                 $\\mathbb{R}^{m+n}$, then so is their partial sum \\[ S = \\{(x, y_1 + y_2) \\mid x \\in\n                                                                 \\mathbb{R}^m, y_1, y_2 \\in \\mathbb{R}^n, (x, y_1) \\in S_1, (x, y_2) \\in S_2\\}. \\]\n                                                                 \\end{theorem}\n-/"
+}

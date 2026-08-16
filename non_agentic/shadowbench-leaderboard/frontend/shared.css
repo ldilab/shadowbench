@@ -1,0 +1,146 @@
+/* =========================================================
+   ShadowBench Shared Design System
+   ========================================================= */
+
+/* ---------- Color tokens ---------- */
+:root {
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --border: #d9d9d9;
+  --fg: #111111;
+  --muted: #666666;
+
+  --accent: #111111;
+  --accent-soft: rgba(0,0,0,0.06);
+
+  --pill-bg: #f4f4f4;
+  --pill-border: #d0d0d0;
+
+  --ok: #0a7a3a;
+  --warn: #a86700;
+  --err: #b00020;
+
+  --radius: 14px;
+  --radius-sm: 10px;
+
+  --shadow-card:
+    0 2px 0 rgba(0,0,0,0.04),
+    0 10px 22px rgba(0,0,0,0.12);
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f0f0f;
+    --surface: #141414;
+    --border: #2a2a2a;
+    --fg: #eeeeee;
+    --muted: #aaaaaa;
+
+    --accent: #ffffff;
+    --accent-soft: rgba(255,255,255,0.08);
+
+    --pill-bg: rgba(255,255,255,0.06);
+    --pill-border: rgba(255,255,255,0.22);
+
+    --shadow-card:
+      0 0 0 1px rgba(255,255,255,0.12),
+      0 14px 32px rgba(0,0,0,0.75),
+      0 0 24px rgba(255,255,255,0.08);
+  }
+}
+
+/* ---------- Base ---------- */
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Roboto, sans-serif;
+}
+
+/* ---------- Surfaces ---------- */
+.panel, .card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.btn.primary {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+/* ---------- Pills ---------- */
+.pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  background: var(--pill-bg);
+  border: 1px solid var(--pill-border);
+  color: var(--fg);
+}
+
+/* ---------- Cards (used in Benchmark browse) ---------- */
+.problemCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+  transition: box-shadow 140ms ease, transform 140ms ease, border-color 140ms ease;
+}
+
+.problemCard:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-card);
+  transform: translateY(-2px);
+}
+
+/* ---------- Tables ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+th, td {
+  border-bottom: 1px solid var(--border);
+  padding: 8px;
+}
+th {
+  color: var(--muted);
+  font-weight: 600;
+  text-align: left;
+}
+
+/* ---------- Text helpers ---------- */
+.muted { color: var(--muted); }
+.small { font-size: 12px; }
+.linklike {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+header, nav {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+  margin-right: 12px;
+}
+.nav a.active {
+  color: var(--fg);
+  font-weight: 600;
+}

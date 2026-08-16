@@ -1,0 +1,36 @@
+{
+  "area": "number-theory",
+  "level": "L1",
+  "types": [
+    "theorem_stmt"
+  ],
+  "toolchain": {
+    "lean": "4.27.0-rc1",
+    "mathlib": "024fc398dbd3648262e78da99efa2ad9aeeb5d6f"
+  },
+  "translation_direction": "forward",
+  "id": "number-theory/L1/nt_gen_L1_005",
+  "problem_id": "nt_gen_L1_005",
+  "paper_id": "arXiv:1709.04039",
+  "paper_title": "Elementary Proof of Congruences Involving Sum of Binomial Coefficients",
+  "subfields": [
+    "binomial congruences",
+    "multinomial coefficients"
+  ],
+  "target_decl": "triple_trinomial_partial_sum_mod_prime",
+  "target_kind": "theorem",
+  "references": [
+    {
+      "source": "arXiv:1709.04039v2",
+      "item": "Proposition 5",
+      "url": "https://arxiv.org/abs/1709.04039v2"
+    }
+  ],
+  "metrics": {
+    "source_words": 191
+  },
+  "created_at": "2026-07-12T04:11:29+09:00",
+  "text": "\\begin{proposition}\nLet $p>2$ be a prime and let $a$ be a nonnegative integer. Then\n\\[\n\\sum_{m_1=0}^{p^a-1}\\sum_{m_2=0}^{p^a-1}\\sum_{m_3=0}^{p^a-1}\n\\frac{(m_1+m_2+m_3)!}{m_1!m_2!m_3!}\n\\equiv 1\\pmod p.\n\\]\n\\end{proposition}\n",
+  "updated_at": "2026-07-12T12:57:26.113298+00:00",
+  "formalization_rules": "\\begin{proposition}\nLet $p>2$ be a prime and let $a$ be a nonnegative integer. Then\n\\[\n\\sum_{m_1=0}^{p^a-1}\\sum_{m_2=0}^{p^a-1}\\sum_{m_3=0}^{p^a-1}\n\\frac{(m_1+m_2+m_3)!}{m_1!m_2!m_3!}\n\\equiv 1\\pmod p.\n\\]\n\\end{proposition}\n"
+}

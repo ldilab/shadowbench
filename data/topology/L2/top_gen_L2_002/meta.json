@@ -1,0 +1,25 @@
+{
+  "id": "topology/L2/top_gen_L2_002",
+  "paper_id": "mathlib4",
+  "paper_title": "",
+  "area": "topology",
+  "level": "L2",
+  "problem_id": "top_gen_L2_002",
+  "types": [
+    "theorem_stmt",
+    "proof",
+    "def"
+  ],
+  "subfields": [],
+  "text": "\\begin{definition}[isUnital_auxGroup]\n   Let $X$ be a topological space and $N$ be a finite index set.  \n   Let $\\pi_N(X,x)\\ :=\\ \\Omega^{N}(X,x)\\big/\\simeq_{\\partial I^N}$ be the set of homotopy classes relative to the boundary. Fix $i\\in N$. There is an induced identification of $N$-loops as ``loops of $(N\\setminus\\{i\\})$-loops'',\n\\[\n\\mathrm{toLoop}_i : \\Omega^{N}(X,x)\\ \\longrightarrow\\ \\Omega\\!\\bigl(\\Omega^{N\\setminus\\{i\\}}(X,x),\\,\\mathrm{const}\\bigr),\n\\]\nand hence an induced binary operation $\\ast_i$  on $\\pi_N(X,x)$ obtained by transporting the usual loop\nconcatenation in the $i$-direction. We define $\\mathrm{auxGroup}(i)$ be the group whose underlying set and binary operation are $\\pi_N(X,x)$ and $\\ast_i$, respectively.\n\\end{definition}\n\n\n\\begin{theorem}[auxGroup_indep]\nLet $i,j\\in N$. Then the groups $\\mathrm{auxGroup}(i)$ and $\\mathrm{auxGroup}(j)$ are isomorphic.\n\\end{theorem}\n\n\\begin{proof}\nIf $i=j$ there is nothing to prove, so assume $i\\neq j$.\nConsider the two unital multiplications $\\ast_i$ and $\\ast_j$ on the same set $\\pi_N(X,x)$, both\nhaving the same unit $[c]$ by the previous theorem.\n\nThe Eckmann--Hilton argument applies in the following form: if two unital binary operations\n$\\star$ and $\\diamond$ on a set have the same unit and satisfy the \\emph{interchange law}\n\\[\n(a\\star b)\\diamond(c\\star d) \\;=\\; (a\\diamond c)\\star(b\\diamond d)\n\\qquad \\forall a,b,c,d,\n\\]\nthen $\\star=\\diamond$ (and in fact the common operation is commutative).\n\nThus it suffices to verify the interchange law for $\\ast_i$ and $\\ast_j$ on $\\pi_N(X,x)$.\nLet $[a],[b],[c],[d]\\in \\pi_N(X,x)$ be represented by generalized loops $a,b,c,d\\in\\Omega^{N}(X,x)$.\nForm the two composites\n\\[\n([a]\\ast_i [b])\\ast_j([c]\\ast_i [d])\n\\qquad\\text{and}\\qquad\n([a]\\ast_j [c])\\ast_i([b]\\ast_j [d]).\n\\]\nBy construction of $\\ast_i$ and $\\ast_j$, each side is represented by a generalized $N$-loop obtained\nby concatenating maps $I^{N}\\to X$ in the $i$-direction and $j$-direction respectively.\nWhen $i\\neq j$, these two iterated concatenations correspond to the two ways of composing a map\ndefined on the square $I\\times I$ (in the $(i,j)$-coordinates) by first concatenating horizontally\nand then vertically, or vice versa. These two constructions are homotopic relative to the boundary\nof the square (and hence relative to $\\partial I^{N}$) by the standard ``grid homotopy'' that\nreparameterizes the $(i,j)$-coordinates.\n\nTherefore the two composites represent the same element of $\\pi_N(X,x)$, i.e.\\ the interchange law\nholds:\n\\[\n([a]\\ast_i [b])\\ast_j([c]\\ast_i [d])\n\\;=\\;\n([a]\\ast_j [c])\\ast_i([b]\\ast_j [d]).\n\\]\nBy Eckmann--Hilton it follows that $\\ast_i=\\ast_j$, hence the group structures\n$\\mathrm{auxGroup}(i)$ and $\\mathrm{auxGroup}(j)$ coincide.\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 348
+  },
+  "created_at": "2026-01-29T12:40:13+00:00",
+  "translation_direction": "backward",
+  "updated_at": "2026-05-16T19:03:48+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open scoped unitInterval Topology\nopen Homeomorph\n\n/-\nFormalize in Lean the following named items from Text.\n\n1. Definition (isUnital_auxGroup)\n   The definition must be named `isUnital_auxGroup`.\n   Matched text (candidate 0, definition, label=isUnital_auxGroup): \\begin{definition}[isUnital_auxGroup] Let $X$ be a topological space and $N$ be a finite\n                                                                    index set. Let $\\pi_N(X,x)\\ :=\\ \\Omega^{N}(X,x)\\big/\\simeq_{\\partial I^N}$ be the set of\n                                                                    homotopy classes relative to the boundary. Fix $i\\in N$. There is an induced identification\n                                                                    of $N$-loops as ``loops of $(N\\setminus\\{i\\})$-loops'', \\[ \\mathrm{toLoop}_i :\n                                                                    \\Omega^{N}(X,x)\\ \\longrightarrow\\ \\Omega\\!\\bigl(\\Omega^{N\\setminus\\{i\\…\n2. Theorem (auxGroup_indep)\n   The theorem must be named `auxGroup_indep`.\n   Matched text (candidate 1, theorem, label=auxGroup_indep): \\begin{theorem}[auxGroup_indep] Let $i,j\\in N$. Then the groups $\\mathrm{auxGroup}(i)$ and\n                                                              $\\mathrm{auxGroup}(j)$ are isomorphic. \\end{theorem}\n\nEvery listed named item must be formalized with exactly the stated Lean name.\n-/\n"
+}

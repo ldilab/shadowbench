@@ -1,0 +1,31 @@
+{
+  "area": "Analysis",
+  "created_at": "2026-01-01T07:29:30+00:00",
+  "id": "analysis/L1/ana_four_L1_002",
+  "level": "L1",
+  "metrics": {
+    "source_words": 248
+  },
+  "paper_id": "mathlib4",
+  "paper_title": "",
+  "problem_id": "ana_four_L1_002",
+  "references": [],
+  "subfields": [
+    "FourierTransform"
+  ],
+  "target_decl": "tendsto_integral_cexp_sq_smul",
+  "target_kind": "lemma",
+  "text": "\\begin{lemma}[Fourier_transform_integrable]\nLet $V$ be a finite-dimensional real inner product space, equipped with its Borel $\\sigma$-algebra and a measure $dv$.\n\nLet $E$ be a complex normed vector space (assumed complete when needed), and let $f : V \\to E$.\n\nWe write the Fourier transform and inverse Fourier transform as follows:\n\\[\n(\\mathcal{F}f)(w) \\;=\\; \\int_V e^{-2\\pi i \\langle w,x\\rangle}\\, f(x)\\,dx,\n\\qquad\n(\\mathcal{F}^{-}g)(v) \\;=\\; \\int_V e^{2\\pi i \\langle w,v\\rangle}\\, g(w)\\,dw.\n\\]\n\\end{lemma}\n\n\n\\begin{lemma}[tendsto_integral_cexp_sq_smul] If $f$ is integrable, then as $c$ tends to infinity,\n\\[\n\\int_V e^{-c^{-1}\\|v\\|^2}\\, f(v)\\,dv\n\\;\\xrightarrow{}\\;\n\\int_V f(v)\\,dv .\n\\]\n\\end{lemma}\n\\begin{proof}\nWe shall apply the dominated convergence theorem. \n\n(i) \\, For each fixed $v \\in V$, we have\n\\[e^{-c^{-1}\\|v\\|^2}\\, f(v)\n\\;\\longrightarrow\\;\nf(v)\\]\nas $c \\to +\\infty$. Moreover, for all sufficiently large $c$,\n\\[\n\\|e^{-c^{-1}\\|v\\|^2}\\, f(v)\\| \\le \\|f(v)\\|\n\\]\n\n(ii) \\, For each $c \\in \\mathbb{R}$, the function\n\\[\nv \\longmapsto e^{-\\frac{1}{c}\\,\\|v\\|^2}\n\\]\nis continuous, hence measurable. Since $f$ is integrable, it is\nalmost everywhere strongly measurable. Therefore the product\n\\[\nv \\longmapsto e^{-\\frac{1}{c}\\,\\|v\\|^2}\\, f(v)\n\\]\nis almost everywhere strongly measurable for each $c$.\n\n(iii) \\, Restrict to $c \\ge 0$. Then for all $v \\in V$,\n\\[\n\\bigl\\| e^{-\\frac{1}{c}\\,\\|v\\|^2}\\, f(v) \\bigr\\|\n=\n\\bigl| e^{-\\frac{1}{c}\\,\\|v\\|^2} \\bigr|\\, \\|f(v)\\|\n=\ne^{-\\frac{1}{c}\\,\\|v\\|^2}\\, \\|f(v)\\|\n\\;\\le\\;\n\\|f(v)\\|.\n\\]\nThe function $v \\mapsto \\|f(v)\\|$ is integrable by assumption, so it\ndominates the integrand for all sufficiently large $c$.\n\nNow, we may apply the dominated convergence theorem and conclude that\n\\[\n\\lim_{c \\to +\\infty}\n\\int_V e^{-\\frac{1}{c}\\,\\|v\\|^2}\\, f(v)\\, d\\mu(v)\n=\n\\int_V f(v)\\, d\\mu(v),\n\\]\nas claimed.\n\\end{proof}\n",
+  "toolchain": {
+    "lean": "4.27.0-rc1"
+  },
+  "translation_direction": "backward",
+  "types": [
+    "theorem_stmt",
+    "def",
+    "proof"
+  ],
+  "updated_at": "2026-07-03T19:11:19.615548+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Filter MeasureTheory Complex Module Metric Real Bornology\nopen scoped Topology FourierTransform RealInnerProductSpace Complex\n\n/-\nFormalize in Lean the following named items from Text.\n\n1. Lemma (Fourier_transform_integrable)\n   The lemma must be named `Fourier_transform_integrable`.\n   Matched text (candidate 0, lemma, label=Fourier_transform_integrable): \\begin{lemma}[Fourier_transform_integrable] Let $V$ be a finite-dimensional real inner\n                                                                          product space, equipped with its Borel $\\sigma$-algebra and a measure $dv$. Let $E$ be a\n                                                                          complex normed vector space (assumed complete when needed), and let $f : V \\to E$. We write\n                                                                          the Fourier transform and inverse Fourier transform as follows: \\[ (\\mathcal{F}f)(w) \\;=\\;\n                                                                          \\int_V e^{-2\\pi i \\langle w,x\\rangle}\\, f(x)\\,dx, \\qquad (\\m…\n2. Lemma (tendsto_integral_cexp_sq_smul)\n   The lemma must be named `tendsto_integral_cexp_sq_smul`.\n   Matched text (candidate 1, lemma, label=tendsto_integral_cexp_sq_smul): \\begin{lemma}[tendsto_integral_cexp_sq_smul] If $f$ is integrable, then as $c$ tends to\n                                                                           infinity, \\[ \\int_V e^{-c^{-1}\\|v\\|^2}\\, f(v)\\,dv \\;\\xrightarrow{}\\; \\int_V f(v)\\,dv . \\]\n                                                                           \\end{lemma}\n\nEvery listed named item must be formalized with exactly the stated Lean name.\n-/\n"
+}

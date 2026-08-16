@@ -1,0 +1,22 @@
+{
+  "id": "geometry/L1/geo_gen_L1_020",
+  "paper_id": "Cox-Chap8-Ex",
+  "paper_title": "",
+  "area": "geometry",
+  "level": "L1",
+  "problem_id": "geo_gen_L1_020",
+  "types": [
+    "theorem_stmt"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[exists_smooth_vectorField_on_graph]\nLet $M$ be a smooth manifold with or without boundary, let $N$ be a smooth manifold, and let $f: M \\to N$ be a smooth map. Define $F: M \\to M \\times N$ by $F(x) = (x, f(x))$. For every $X \\in \\mathfrak{X}(M)$, there is a smooth vector field $Y$ on $M \\times N$ that is $F$-related to $X$; that is, $dF_p(X_p) = Y_{F(p)}$ for every $p \\in M$.\n\\end{theorem}",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 71
+  },
+  "created_at": "2026-03-20T02:29:48+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-03T16:24:39.413634+00:00",
+  "formalization_rules": "open scoped Manifold ContDiff\n\n/-\nFormalize in Lean the Theorem (exists_smooth_vectorField_on_graph) from Text.\n\nThe theorem must be named `exists_smooth_vectorField_on_graph`.\n   Matched text (candidate 0, theorem, label=exists_smooth_vectorField_on_graph): \\begin{theorem}[exists_smooth_vectorField_on_graph] Let $M$ be a smooth manifold with or\n                                                                                  without boundary, let $N$ be a smooth manifold, and let $f: M \\to N$ be a smooth map. Define\n                                                                                  $F: M \\to M \\times N$ by $F(x) = (x, f(x))$. Show that for every $X \\in \\mathfrak{X}(M)$,\n                                                                                  there is a smooth vector field $Y$ on $M \\times N$ that is $F$-related to $X$; that is,\n                                                                                  $dF_p(X_p) = Y_{F(p)}$ for every $p \\in M$. \\end{theorem}\n-/"
+}

@@ -1,0 +1,28 @@
+{
+  "area": "Analysis",
+  "created_at": "2026-01-15T05:26:44+00:00",
+  "id": "analysis/L1/ana_gen_L1_002",
+  "level": "L1",
+  "metrics": {
+    "source_words": 60
+  },
+  "paper_id": "mathlib4",
+  "paper_title": "",
+  "problem_id": "ana_gen_L1_002",
+  "references": [],
+  "subfields": [],
+  "target_decl": "young_inequality_of_nonneg",
+  "target_kind": "theorem",
+  "text": "Theorem (young_inequality_of_nonneg)\n\nIf $a,b \\ge 0$ are non-negative real numbers and $p,q$ are positive real numbers satisfying $\\frac{1}{p} + \\frac{1}{q} = 1$, then\n$$ ab \\le \\frac{a^p}{p} + \\frac{b^q}{q}$$\n\nproof\n\nSince $p^{-1} + q^{-1} = 1$, by the weighted AM-GM inequality, we have\n$$ {a^p}^{p^{-1}}{b^q}^{q^{-1}} \\le p^{-1}a^p + q^{-1} b^q$$\nwhich is equivalent to\n$$ ab \\le \\frac{a^p}{p} + \\frac{b^q}{q}$$",
+  "toolchain": {
+    "lean": "4.27.0-rc1"
+  },
+  "translation_direction": "backward",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "updated_at": "2026-07-03T19:11:28.828797+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Finset NNReal ENNReal\nopen scoped BigOperators\n\n/-\nFormalize in Lean the Theorem (young_inequality_of_nonneg) from Text.\n\nThe theorem must be named `young_inequality_of_nonneg`.\n   Matched text (candidate 0, theorem, label=young_inequality_of_nonneg): Theorem (young_inequality_of_nonneg) If $a,b \\ge 0$ are non-negative real numbers and $p,q$\n                                                                          are positive real numbers satisfying $\\frac{1}{p} + \\frac{1}{q} = 1$, then $$ ab \\le\n                                                                          \\frac{a^p}{p} + \\frac{b^q}{q}$$\n-/"
+}

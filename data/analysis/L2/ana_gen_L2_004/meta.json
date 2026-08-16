@@ -1,0 +1,23 @@
+{
+  "id": "analysis/L2/ana_gen_L2_004",
+  "paper_id": "Analysis_problem",
+  "paper_title": "",
+  "area": "analysis",
+  "level": "L2",
+  "problem_id": "ana_gen_L2_004",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[T_spectrum]\nConsider the \\textit{Volterra integral operator} $T : L^2([0, 1]) \\to L^2([0, 1])$ defined by:\n\\begin{equation*}\n    (Tf)(x) = \\int_0^x f(y) \\, dy, \\quad x \\in [0, 1]\n\\end{equation*}\n\n\\begin{enumerate}\n    \\item Prove that $T$ is a \\textbf{compact operator}.\n    \\item Prove that the \\textbf{spectrum} of $T$ consists of only the origin, i.e., $\\sigma(T) = \\{0\\}$.\n\\end{enumerate}\n\\end{theorem}\n\n\\begin{proof}\n\\begin{enumerate}\n\\item \\textbf{$T$ is compact.}\n\nFirst, $T$ is bounded since\n\\[\n\\|Tf\\|_{L^2}^2\n=\n\\int_0^1 \\left|\\int_0^x f(y)\\,dy\\right|^2 dx\n\\le\n\\int_0^1 \\|f\\|_{L^1}^2\\,dx\n\\le\n\\|f\\|_{L^2}^2.\n\\]\nAlso, we may rewrite $T$ as\n\\[\n(Tf)(x)=\\int_0^1 k(x,y)f(y)\\,dy,\n\\]\nwhere\n\\[\nk(x,y)=\n\\begin{cases}\n1,& y\\le x,\\\\\n0,& y>x.\n\\end{cases}\n\\]\nSince $k\\in L^2([0,1]^2)$, $T$ is Hilbert--Schmidt, hence compact.\n\n\\item \\textbf{$\\sigma(T)=\\{0\\}$.}\n\nSince $T$ is compact on the infinite-dimensional space $L^2([0,1])$, we know that\n$0\\in \\sigma(T)$, and every nonzero spectral value is an eigenvalue.\n\nSuppose $\\lambda\\ne 0$ and $\\lambda\\in \\sigma(T)$. Then there exists $f\\ne 0$ such that\n\\[\nTf=\\lambda f,\n\\qquad\\text{i.e.}\\qquad\n\\int_0^x f(y)\\,dy=\\lambda f(x).\n\\]\nSince $f\\in L^1([0,1])$, by the fundamental theorem of calculus we may differentiate to obtain\n\\[\nf(x)=\\lambda f'(x),\n\\]\nso\n\\[\nf(x)=ce^{x/\\lambda}.\n\\]\nPutting $x=0$ into the integral equation gives\n\\[\n0=\\lambda f(0),\n\\]\nhence $f(0)=0$, so $c=0$. This contradicts $f\\ne 0$.\n\nTherefore no $\\lambda\\ne 0$ belongs to $\\sigma(T)$, and thus\n\\[\n\\sigma(T)=\\{0\\}.\n\\]\n\\end{enumerate}\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 208
+  },
+  "created_at": "2026-04-21T16:47:44+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-05-16T17:36:36+00:00",
+  "formalization_rules": "open MeasureTheory\n\n/-\nFormalize in Lean the Theorem (T_spectrum) from Text.\n\nThe theorem must be named `T_spectrum`.\n   Matched text (candidate 0, theorem, label=T_spectrum): \\begin{theorem}[T_spectrum] Consider the \\textit{Volterra integral operator} $T : L^2([0,\n                                                          1]) \\to L^2([0, 1])$ defined by: \\begin{equation*} (Tf)(x) = \\int_0^x f(y) \\, dy, \\quad x\n                                                          \\in [0, 1] \\end{equation*} \\begin{enumerate} \\item Prove that $T$ is a \\textbf{compact\n                                                          operator}. \\item Prove that the \\textbf{spectrum} of $T$ consists of only the origin, i.e.,\n                                                          $\\sigma(T) = \\{0\\}$. \\end{enumerate} \\end{theorem}\n-/\n"
+}

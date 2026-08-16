@@ -1,0 +1,23 @@
+{
+  "id": "geometry/L1/geo_gen_L1_003",
+  "paper_id": "",
+  "paper_title": "",
+  "area": "geometry",
+  "level": "L1",
+  "problem_id": "geo_gen_L1_003",
+  "types": [
+    "theorem_stmt"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[erdos_mordell_inequality]\\label{thm:erdos_mordell}\nIn Euclidean geometry, the Erdős–Mordell inequality states that for any triangle $ABC$ and point $P$ inside $ABC$, the sum of the distances from $P$ to the sides is less than or equal to half of the sum of the distances from $P$ to the vertices.\nLet $PL, PM, PN$ be the perpendiculars from $P$ to the sides $BC, CA, AB$ respectively. Then:\n\\[\nPA + PB + PC \\ge 2(PL + PM + PN)\n\\]\n\\end{theorem}\n\n\\begin{proof}\nLet the sides of $ABC$ be $a$ opposite $A$, $b$ opposite $B$, and $c$ opposite $C$; also let $PA=p$, $PB=q$, $PC=r$, $\\operatorname{dist}(P,BC)=x$, $\\operatorname{dist}(P,CA)=y$, and $\\operatorname{dist}(P,AB)=z$.\n\nFirst, we prove that $cr \\ge ax+by$. This is equivalent to\n\\[\n\\frac{c(r+z)}{2} \\ge \\frac{ax+by+cz}{2}.\n\\]\nThe right side is the area of triangle $ABC$, but on the left side, $r+z$ is at least the height of the triangle; consequently, the left side cannot be smaller than the right side.\n\nNow reflect $P$ in the angle bisector at $C$. We find that $cr \\ge ay+bx$ for $P$'s reflection. Similarly, $bq \\ge az+cx$ and $ap \\ge bz+cy$. We solve these inequalities for $r$, $q$, and $p$:\n\\begin{align*}\nr &\\ge \\frac{a}{c}y+\\frac{b}{c}x,\\\\\nq &\\ge \\frac{a}{b}z+\\frac{c}{b}x,\\\\\np &\\ge \\frac{b}{a}z+\\frac{c}{a}y.\n\\end{align*}\nAdding the three up, we get\n\\begin{align*}\np+q+r\n&\\ge\n\\left(\\frac{b}{c}+\\frac{c}{b}\\right)x\n+\n\\left(\\frac{a}{c}+\\frac{c}{a}\\right)y\n+\n\\left(\\frac{a}{b}+\\frac{b}{a}\\right)z.\n\\end{align*}\nSince the sum of a positive number and its reciprocal is at least $2$ by AM--GM inequality, we are finished:\n\\[\np+q+r \\ge 2x+2y+2z.\n\\]\nTherefore,\n\\[\nPA+PB+PC \\ge 2(PL+PM+PN).\n\\]\nEquality holds only for the equilateral triangle, where $P$ is its centroid.\n\\end{proof}",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 258
+  },
+  "created_at": "2026-01-29T22:19:49+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-05-24T18:39:51+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open EuclideanGeometry\n\n/-\nFormalize in Lean the Theorem (erdos_mordell_inequality) from Text.\n\nThe theorem must be named `erdos_mordell_inequality`.\n   Matched text (candidate 0, theorem, label=erdos_mordell_inequality): \\begin{theorem}[erdos_mordell_inequality]\\label{thm:erdos_mordell} In Euclidean geometry,\n                                                                        the Erdős–Mordell inequality states that for any triangle $ABC$ and point $P$ inside $ABC$,\n                                                                        the sum of the distances from $P$ to the sides is less than or equal to half of the sum of\n                                                                        the distances from $P$ to the vertices. Let $PL, PM, PN$ be the perpendiculars from $P$ to\n                                                                        the sides $BC, CA, AB$ respectively. Then: \\[ PA + PB +…\n-/"
+}

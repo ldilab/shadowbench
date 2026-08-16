@@ -1,0 +1,25 @@
+{
+  "id": "Topology/L1/top_gen_L1_001",
+  "paper_id": "mathlib4",
+  "paper_title": "",
+  "area": "Topology",
+  "level": "L1",
+  "problem_id": "top_gen_L1_001",
+  "types": [
+    "def",
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "Definition (topologicalKrullDim)\n\nLet $T$ be a topological space. \nA chain of irreducible closed subsets of $T$ is a sequence $Z_0 \\subset Z_1 \\subset \\cdots Z_n \\subset T$ with $Z_i$ closed irreducible and $Z_i \\ne Z_{i+1}$ for $i=0,\\cdots,n-1$. \nThe length of a chain $Z_0 \\subset Z_1 \\subset \\cdots Z_n \\subset T$ of irreducible closed subsets is the integer $n$.\nThe Krull dimension $\\text{dim}(T)$ of T is the supremum of lengths of chains of irreducible closed subsets.\n\n\nLet $X$, $Y$ be topological spaces.\n\nTheorem (IsInducing.topologicalKrullDim_le)\n\nIf $f: Y \\to X$ is inducing, then $\\text{dim}(Y) \\le \\text{dim}(X)$.\n\nproof\n\nIf $Z_0 \\subset Z_1 \\subset \\cdots Z_n \\subset X$ is a chain of irreducible closed subsets of $X$, then $f^{-1}(Z_0) \\subset f^{-1}(Z_1) \\subset \\cdots f^{-1}(Z_n) \\subset Y$ is a chain of irreducible closed subsets of $Y$.\n\n\nTheorem (IsHomeomorph.topologicalKrullDim_eq)\n\nThe topological Krull dimension is invariant under homeomorphisms.\n\nProof\n\nLet $f:X \\to Y$ be a homeomorphism with its inverse $f^{-1}:Y \\to X$. Then both $f$ and $f^{-1}$ are inducing, so we have $\\text{dim}(X) \\le \\text{dim}(Y)$ and $\\text{dim}(Y) \\le \\text{dim}(X)$. It follows that $\\text{dim}(X) = \\text{dim}(Y)$.\n\n\nTheorem (topologicalKrullDim_subspace_le)\n\nFor any subspace $Y \\subseteq X$, we have $\\text{dim}(Y) \\le \\text{dim}(X)$.\n\nProof\n\nSince any embedding $Y \\to X$ is inducing, we have $\\text{dim}(Y) \\le \\text{dim}(X)$.",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 205
+  },
+  "created_at": "2026-01-07T15:34:32+00:00",
+  "translation_direction": "backward",
+  "updated_at": "2026-05-20T23:11:10+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Set Function Order TopologicalSpace Topology TopologicalSpace.IrreducibleCloseds\n\n/-\nFormalize in Lean the following named items from Text.\n\n1. Definition (topologicalKrullDim)\n   The definition must be named `topologicalKrullDim`.\n   Matched text (candidate 0, definition, label=topologicalKrullDim): Definition (topologicalKrullDim) Let $T$ be a topological space. A chain of irreducible\n                                                                      closed subsets of $T$ is a sequence $Z_0 \\subset Z_1 \\subset \\cdots Z_n \\subset T$ with\n                                                                      $Z_i$ closed irreducible and $Z_i \\ne Z_{i+1}$ for $i=0,\\cdots,n-1$. The length of a chain\n                                                                      $Z_0 \\subset Z_1 \\subset \\cdots Z_n \\subset T$ of irreducible closed subsets is the integer\n                                                                      $n$. The Krull dimension $\\text{dim}(T)$ of T is the supremu…\n2. Theorem (IsInducing.topologicalKrullDim_le)\n   The theorem must be named `IsInducing.topologicalKrullDim_le`.\n   Matched text (candidate 2, theorem, label=IsInducing.topologicalKrullDim_le): Theorem (IsInducing.topologicalKrullDim_le) If $f: Y \\to X$ is inducing, then $\\text{dim}(Y)\n                                                                                 \\le \\text{dim}(X)$.\n\n\n3. Theorem (IsHomeomorph.topologicalKrullDim_eq)\n   The theorem must be named `IsHomeomorph.topologicalKrullDim_eq`.\n   Matched text (candidate 4, theorem, label=IsHomeomorph.topologicalKrullDim_eq): Theorem (IsHomeomorph.topologicalKrullDim_eq) The topological Krull dimension is invariant\n                                                                                   under homeomorphisms.\n\n4. Theorem (topologicalKrullDim_subspace_le)\n   The theorem must be named `topologicalKrullDim_subspace_le`.\n   Matched text (candidate 6, theorem, label=topologicalKrullDim_subspace_le): Theorem (topologicalKrullDim_subspace_le) For any subspace $Y \\subseteq X$, we have\n                                                                               $\\text{dim}(Y) \\le \\text{dim}(X)$.\n\nEvery listed named item must be formalized with exactly the stated Lean name.\n-/"
+}

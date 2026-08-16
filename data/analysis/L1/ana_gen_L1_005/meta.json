@@ -1,0 +1,23 @@
+{
+  "id": "analysis/L1/ana_gen_L1_005",
+  "paper_id": "Stein-Chap3-Prob",
+  "paper_title": "",
+  "area": "analysis",
+  "level": "L1",
+  "problem_id": "ana_gen_L1_005",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[ContinuousOn.absolutelyContinuousOnInterval_and_sub_eq_integral_deriv]\nSuppose that $F$ is continuous on $[a,b]$, $F'(x)$ exists for every $x \\in (a,b)$, and $F'(x)$ is integrable. Then $F$ is absolutely continuous and\n\\[\nF(b) - F(a) = \\int_a^b F'(x)\\,dx.\n\\]\n\\end{theorem}\n\n\\begin{proof}\nLet\n\\[\n  G(x) := F(a) + \\int_a^x F'(t)\\,dt .\n\\]\nThen $F$ agrees with $G$ on $[a,b]$.  \nSince $F'$ is integrable on $[a,b]$, the function\n\\[\n  x\\mapsto \\int_a^x F'(t)\\,dt\n\\]\nis absolutely continuous on $[a,b]$. The constant function\n$x\\mapsto F(a)$ is also absolutely continuous on $[a,b]$. Hence their sum\n$G$ is absolutely continuous on $[a,b]$.\nBecause $F=G$ on $[a,b]$, it follows that $F$ itself is absolutely\ncontinuous on $[a,b]$.\n\nFinally, applying the fundamental theorem of calculus on the whole interval\n$[a,b]$, using the continuity of $F$ on $[a,b]$, differentiability on\n$(a,b)$, and integrability of $F'$, we obtain\n\\[\n  \\int_a^b F'(t)\\,dt = F(b)-F(a).\n\\]\nEquivalently,\n\\[\n  F(b)-F(a)=\\int_a^b F'(t)\\,dt .\n\\]\nThus\n\\[\n  F \\text{ is absolutely continuous on } [a,b]\n  \\quad\\text{and}\\quad\n  F(b)-F(a)=\\int_a^b F'(t)\\,dt .\n\\]\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 160
+  },
+  "created_at": "2026-04-27T03:59:33+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-03T19:12:03.079111+00:00",
+  "formalization_rules": "open Set MeasureTheory\n\n/-\nFormalize in Lean the Theorem (ContinuousOn.absolutelyContinuousOnInterval_and_sub_eq_integral_deriv) from Text.\n\nThe theorem must be named `ContinuousOn.absolutelyContinuousOnInterval_and_sub_eq_integral_deriv`.\n   Matched text (candidate 0, theorem, label=ContinuousOn.absolutelyContinuousOnInterval_and_sub_eq_integral_deriv): \\begin{theorem}[ContinuousOn.absolutelyContinuousOnInterval_and_sub_eq_integral_deriv]\n                                                                                                                     Suppose that $F$ is continuous on $[a,b]$, $F'(x)$ exists for every $x \\in (a,b)$, and\n                                                                                                                     $F'(x)$ is integrable. Then $F$ is absolutely continuous and \\[ F(b) - F(a) = \\int_a^b\n                                                                                                                     F'(x)\\,dx. \\] \\end{theorem}\n-/\n"
+}

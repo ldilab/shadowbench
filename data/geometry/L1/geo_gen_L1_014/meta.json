@@ -1,0 +1,23 @@
+{
+  "id": "geometry/L1/geo_gen_L1_014",
+  "paper_id": "Lee-Chap3-Ex",
+  "paper_title": "",
+  "area": "geometry",
+  "level": "L1",
+  "problem_id": "geo_gen_L1_014",
+  "types": [
+    "theorem_stmt"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[partial_x_ne_partial_xtilde_at_p]\nLet $(x,y)$ denote the standard coordinates on $\\mathbb{R}^2$. Verify that $(\\tilde{x}, \\tilde{y})$ are global smooth coordinates on $\\mathbb{R}^2$, where\n\\[ \\tilde{x} = x, \\quad \\tilde{y} = y + x^3. \\]\nLet $p$ be the point $(1,0) \\in \\mathbb{R}^2$ (in standard coordinates), and show that\n\\[ \\frac{\\partial}{\\partial x}\\bigg|_p \\neq \\frac{\\partial}{\\partial \\tilde{x}}\\bigg|_p, \\]\neven though the coordinate functions $x$ and $\\tilde{x}$ are identically equal.\n\\end{theorem}\n\n\\begin{proof}\nConsider the map $\\Phi:\\mathbb{R}^2\\to\\mathbb{R}^2$ given by $\\Phi(x,y)=(\\tilde{x},\\tilde{y})=(x,y+x^3)$. This map is smooth, and its inverse is $\\Phi^{-1}(\\tilde{x},\\tilde{y})=(\\tilde{x},\\tilde{y}-\\tilde{x}^3)$, which is also smooth. Hence $(\\tilde{x},\\tilde{y})$ are global smooth coordinates on $\\mathbb{R}^2$.\n\nNow let $p=(1,0)$, and let $\\hat p=(x(p),y(p))=(1,0)$ denote its standard coordinate representation. By the chain rule,\n\\begin{align*}\n\\left.\\frac{\\partial}{\\partial x}\\right|_p\n&=\n\\frac{\\partial \\tilde{x}}{\\partial x}(\\hat p)\n\\left.\\frac{\\partial}{\\partial \\tilde{x}}\\right|_p\n+\n\\frac{\\partial \\tilde{y}}{\\partial x}(\\hat p)\n\\left.\\frac{\\partial}{\\partial \\tilde{y}}\\right|_p \\\\\n&=\n\\left.\\frac{\\partial}{\\partial \\tilde{x}}\\right|_p\n+\n3\\left.\\frac{\\partial}{\\partial \\tilde{y}}\\right|_p\n\\neq\n\\left.\\frac{\\partial}{\\partial \\tilde{x}}\\right|_p.\n\\end{align*}\nThus the two tangent vectors are different, even though the coordinate functions $x$ and $\\tilde{x}$ are identically equal.\n\\end{proof}",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 156
+  },
+  "created_at": "2026-02-26T19:03:03+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-03T16:24:08.744364+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Manifold Function\n\n/-\nFormalize the theorem named `partial_x_ne_partial_xtilde_at_p`.\n\nThe coordinate change is\n  Φ(x, y) = (x, y + x^3).\n\nThe fact that (x~, y~) are global smooth coordinates should be formalized\nas an auxiliary diffeomorphism `Phi`.\n\nThe theorem `partial_x_ne_partial_xtilde_at_p` should formalize only the\nmain conclusion at p = (1, 0): the standard coordinate vector ∂/∂x at p is\nnot equal to the coordinate vector ∂/∂x~ at p induced by the coordinates Φ.\n-/"
+}

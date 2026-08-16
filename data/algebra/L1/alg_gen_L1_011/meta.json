@@ -1,0 +1,28 @@
+{
+  "area": "Algebra",
+  "created_at": "2025-12-29T23:18:52+00:00",
+  "id": "algebra/L1/alg_gen_L1_011",
+  "level": "L1",
+  "metrics": {
+    "source_words": 145
+  },
+  "paper_id": "Cox-Chap4-Thm",
+  "paper_title": "",
+  "problem_id": "alg_gen_L1_011",
+  "references": [],
+  "subfields": [],
+  "target_decl": "zeroLocus_mul",
+  "target_kind": "theorem",
+  "text": "\\begin{theorem}[zeroLocus_mul]\nIf $I$ and $J$ are ideals in $k[x_1, \\dots, x_n]$, then $\\mathbf{V}(I \\cdot J) = \\mathbf{V}(I) \\cup \\mathbf{V}(J)$.\n\\end{theorem}\n\n\\begin{proof}\nLet $a \\in \\mathbf{V}(I \\cdot J)$. Then $g(a)h(a) = 0$ for all $g \\in I$ and all $h \\in J$. If $g(a) = 0$ for all $g \\in I$, then $a \\in \\mathbf{V}(I)$. If $g(a) \\neq 0$ for some $g \\in I$, then we must have $h(a) = 0$ for all $h \\in J$. In either event, $a \\in \\mathbf{V}(I) \\cup \\mathbf{V}(J)$.\n\nConversely, suppose $a \\in \\mathbf{V}(I) \\cup \\mathbf{V}(J)$. Either $g(a) = 0$ for all $g \\in I$ or $h(a) = 0$ for all $h \\in J$. Thus, $g(a)h(a) = 0$ for all $g \\in I$ and $h \\in J$. Thus, $f(a) = 0$ for all $f \\in I \\cdot J$ and, hence, $a \\in \\mathbf{V}(I \\cdot J)$.\n\\end{proof}\n",
+  "toolchain": {
+    "lean": "4.27.0-rc1"
+  },
+  "translation_direction": "forward",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "updated_at": "2026-07-03T19:09:27.640155+00:00",
+  "custom_module": "no",
+  "formalization_rules": "/-\nFormalize in Lean the Theorem (zeroLocus_mul) from Text.\n\nThe theorem must be named `zeroLocus_mul`.\n   Matched text (candidate 0, theorem, label=zeroLocus_mul): \\begin{theorem}[zeroLocus_mul] If $I$ and $J$ are ideals in $k[x_1, \\dots, x_n]$, then\n                                                             $\\mathbf{V}(I \\cdot J) = \\mathbf{V}(I) \\cup \\mathbf{V}(J)$. \\end{theorem}\n-/\n"
+}

@@ -1,0 +1,22 @@
+{
+  "id": "geometry/L1/geo_gen_L1_021",
+  "paper_id": "Cox-Chap9-Ex",
+  "paper_title": "",
+  "area": "geometry",
+  "level": "L1",
+  "problem_id": "geo_gen_L1_021",
+  "types": [
+    "theorem_stmt"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[global_integralCurve_unique_fundamental_period]\nSuppose $M$ is a smooth manifold, $X \\in \\mathfrak{X}(M)$, and $\\gamma: \\mathbb{R} \\to M$ is a global integral curve of $X$. We say $\\gamma$ is \\textbf{periodic} if there is a number $T > 0$ such that $\\gamma(t + T) = \\gamma(t)$ for all $t \\in \\mathbb{R}$. Show that if $\\gamma$ is periodic and nonconstant, then there exists a unique positive number $T$ (called the \\textbf{period} of $\\gamma$) such that $\\gamma(t) = \\gamma(t')$ if and only if $t - t' = kT$ for some $k \\in \\mathbb{Z}$.\n\\end{theorem}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 96
+  },
+  "created_at": "2026-03-20T02:31:29+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-03T19:16:35.700769+00:00",
+  "formalization_rules": "open scoped Manifold ContDiff\n\n/-\nFormalize in Lean the Theorem (global_integralCurve_unique_fundamental_period) from Text.\n\nThe theorem must be named `global_integralCurve_unique_fundamental_period`.\n   Matched text (candidate 0, theorem, label=global_integralCurve_unique_fundamental_period): \\begin{theorem}[global_integralCurve_unique_fundamental_period] Suppose $M$ is a smooth\n                                                                                              manifold, $X \\in \\mathfrak{X}(M)$, and $\\gamma: \\mathbb{R} \\to M$ is a global integral curve\n                                                                                              of $X$. We say $\\gamma$ is \\textbf{periodic} if there is a number $T > 0$ such that\n                                                                                              $\\gamma(t + T) = \\gamma(t)$ for all $t \\in \\mathbb{R}$. Show that if $\\gamma$ is periodic\n                                                                                              and nonconstant, then there exists a unique positive number $T$…\n-/\n"
+}

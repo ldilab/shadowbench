@@ -1,0 +1,39 @@
+{
+  "area": "number-theory",
+  "level": "L1",
+  "types": [
+    "def",
+    "theorem_stmt"
+  ],
+  "toolchain": {
+    "lean": "4.27.0-rc1",
+    "mathlib": "024fc398dbd3648262e78da99efa2ad9aeeb5d6f"
+  },
+  "translation_direction": "forward",
+  "id": "number-theory/L1/nt_gen_L1_013",
+  "problem_id": "nt_gen_L1_013",
+  "paper_id": "arXiv:0911.2415",
+  "paper_title": "On Congruences Related to Central Binomial Coefficients",
+  "subfields": [
+    "BinomialCongruences",
+    "FiniteFields",
+    "PrimeModuli"
+  ],
+  "target_decl": "central_binomial_reciprocal_sum",
+  "target_kind": "lemma",
+  "references": [
+    {
+      "source": "arxiv",
+      "id": "arXiv:0911.2415v16",
+      "url": "https://arxiv.org/abs/0911.2415v16",
+      "item": "Lemma 2.3"
+    }
+  ],
+  "metrics": {
+    "source_words": 14
+  },
+  "created_at": "2026-07-12T04:11:29+09:00",
+  "text": "\\begin{lemma}\nLet $p$ be an odd prime. Then\n\\[\n\\sum_{k=1}^{(p-1)/2}\\frac{4^k}{k\\binom{2k}{k}}\n\\equiv 2\\left((-1)^{(p-1)/2}-1\\right)\\pmod p.\n\\]\n\\end{lemma}\n",
+  "updated_at": "2026-07-12T14:04:26+00:00",
+  "formalization_rules": "\\begin{lemma}\nLet $p$ be an odd prime. Then\n\\[\n\\sum_{k=1}^{(p-1)/2}\\frac{4^k}{k\\binom{2k}{k}}\n\\equiv 2\\left((-1)^{(p-1)/2}-1\\right)\\pmod p.\n\\]\n\\end{lemma}\n"
+}

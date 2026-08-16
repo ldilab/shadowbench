@@ -1,0 +1,23 @@
+{
+  "id": "algebraic-geometry/L2/alg_gen_L2_005",
+  "paper_id": "EGA",
+  "paper_title": "",
+  "area": "algebraic-geometry",
+  "level": "L2",
+  "problem_id": "alg_gen_L2_005",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{definition}[IsProjective]\nLet $f : X \\to S$ be a morphism of schemes. We say that $f$ is \\emph{projective} (in the Hartshorne, or $H$-projective, sense) if there exists an integer $n \\ge 0$ and a closed immersion\n\\[\ni : X \\hookrightarrow \\mathbf{P}^n_S\n\\]\nover $S$ such that\n\\[\nf = \\pi \\circ i,\n\\]\nwhere $\\pi : \\mathbf{P}^n_S \\to S$ is the structure morphism.\n\\end{definition}\n\n\\begin{theorem}[is_projective_proper]\nLet $S$ be a scheme and $n \\ge 0$. The structure morphism\n\\[\n\\pi : \\mathbf{P}^n_S \\to S\n\\]\nis proper.\n\\end{theorem}\n\n\\begin{proof}\nThe morphism $\\pi : \\mathbf{P}^n_S \\to S$ is of finite type, separated, and universally closed.\n\nIt is of finite type because $\\mathbf{P}^n_S$ is obtained by gluing finitely many affine schemes of finite type over $S$.\n\nIt is separated because projective space is separated over the base.\n\nTo prove universal closedness, we use the valuative criterion. Let $R$ be a valuation ring with fraction field $K$. Given a morphism $\\operatorname{Spec} K \\to \\mathbf{P}^n_S$ compatible with a morphism $\\operatorname{Spec} R \\to S$, it corresponds to a point $[x_0 : \\cdots : x_n]$ with $x_i \\in K$ not all zero. After scaling, we may assume $x_i \\in R$ and at least one $x_i$ is a unit. This determines a morphism $\\operatorname{Spec} R \\to \\mathbf{P}^n_S$ extending the given one. Uniqueness follows from separatedness.\n\nThus $\\pi$ satisfies the valuative criterion for properness and is proper.\n\\end{proof}\n\n\\begin{theorem}[projective_isProper]\nEvery projective morphism is proper.\n\\end{theorem}\n\n\\begin{proof}\nLet $f : X \\to S$ be projective. Then there exists a factorization\n\\[\nX \\xrightarrow{i} \\mathbf{P}^n_S \\xrightarrow{\\pi} S\n\\]\nwhere $i$ is a closed immersion.\n\nClosed immersions are proper, hence $i$ is proper. The morphism $\\pi$ is proper by the previous theorem. Since proper morphisms are stable under composition, it follows that $f = \\pi \\circ i$ is proper.\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 299
+  },
+  "created_at": "2026-04-24T17:08:53+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-05-20T16:54:37+00:00",
+  "formalization_rules": "open CategoryTheory AlgebraicGeometry\n\n/-\nFormalize in Lean the following named items from Text.\n\n1. Definition (IsProjective)\n   The definition must be named `IsProjective`.\n   Matched text (candidate 0, definition, label=IsProjective): \\begin{definition}[IsProjective] Let $f : X \\to S$ be a morphism of schemes. We say that $f$\n                                                               is \\emph{projective} (in the Hartshorne, or $H$-projective, sense) if there exists an\n                                                               integer $n \\ge 0$ and a closed immersion \\[ i : X \\hookrightarrow \\mathbf{P}^n_S \\] over $S$\n                                                               such that \\[ f = \\pi \\circ i, \\] where $\\pi : \\mathbf{P}^n_S \\to S$ is the structure\n                                                               morphism. \\end{definition}\n2. Theorem (is_projective_proper)\n   The theorem must be named `is_projective_proper`.\n   Matched text (candidate 1, theorem, label=is_projective_proper): \\begin{theorem}[is_projective_proper] Let $S$ be a scheme and $n \\ge 0$. The structure\n                                                                    morphism \\[ \\pi : \\mathbf{P}^n_S \\to S \\] is proper. \\end{theorem}\n3. Theorem (projective_isProper)\n   The theorem must be named `projective_isProper`.\n   Matched text (candidate 2, theorem, label=projective_isProper): \\begin{theorem}[projective_isProper] Every projective morphism is proper. \\end{theorem}\n\nEvery listed named item must be formalized with exactly the stated Lean name.\n-/\n"
+}

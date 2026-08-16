@@ -1,0 +1,22 @@
+{
+  "id": "algebraic-geometry/L2/alg_gen_L2_010",
+  "paper_id": "EGAI, 5.5.10",
+  "paper_title": "",
+  "area": "algebraic-geometry",
+  "level": "L2",
+  "problem_id": "alg_gen_L2_010",
+  "types": [
+    "theorem_stmt"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[isAffineOpen_inf_preimage]\nLet \\(Y\\) be a separated scheme, and let \\(f:X\\to Y\\) be a morphism. For every affine open subset \\(U\\) of \\(X\\) and every affine open subset \\(V\\) of \\(Y\\), \\(U\\cap f^{-1}(V)\\) is affine.\n\\end{theorem}\n\n\\begin{proof}\nLet \\(p_1,p_2\\) be the projections of \\(X\\times_{\\mathbb Z}Y\\). The subspace \\(U\\cap f^{-1}(V)\\) is the image under \\(p_1\\) of \\(\\Gamma_f(X)\\cap p_1^{-1}(U)\\cap p_2^{-1}(V)\\). Now \\(p_1^{-1}(U)\\cap p_2^{-1}(V)\\) is identified with the underlying space of the scheme \\(U\\times_{\\mathbb Z}V\\), and is therefore an affine scheme. Since \\(\\Gamma_f\\) is closed in\n\\(X\\times_{\\mathbb Z}Y\\), the intersection \\(\\Gamma_f(X)\\cap p_1^{-1}(U)\\cap p_2^{-1}(V)\n\\) is closed in \\(U\\times_{\\mathbb Z}V\\). Consequently, the scheme induced by the subscheme of \\(X\\times_{\\mathbb Z}Y\\) associated with \\(\\Gamma_f\\), on the open subset \\(\\Gamma_f(X)\\cap p_1^{-1}(U)\\cap p_2^{-1}(V)\\) of its underlying space, is a closed subscheme of an affine scheme, hence is affine. The theorem then follows from the fact that \\(\\Gamma_f\\) is an immersion.\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 143
+  },
+  "created_at": "2026-05-01T00:29:33+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-03T16:20:46.413873+00:00",
+  "formalization_rules": "open CategoryTheory Opposite\nopen TopologicalSpace\n\n/-\nFormalize in Lean the Theorem (isAffineOpen_inf_preimage) from Text.\n\nThe theorem must be named `isAffineOpen_inf_preimage`.\n   Matched text (candidate 0, theorem, label=isAffineOpen_inf_preimage): \\begin{theorem}[isAffineOpen_inf_preimage] Let \\(Y\\) be a separated scheme, and let \\(f:X\\to\n                                                                         Y\\) be a morphism. For every affine open subset \\(U\\) of \\(X\\) and every affine open subset\n                                                                         \\(V\\) of \\(Y\\), \\(U\\cap f^{-1}(V)\\) is affine. \\end{theorem}\n-/\n"
+}

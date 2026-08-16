@@ -1,0 +1,29 @@
+{
+  "id": "analysis/L1/ana_mero_L1_001",
+  "paper_id": "mathlib4",
+  "paper_title": "",
+  "area": "Analysis",
+  "level": "L1",
+  "problem_id": "ana_mero_L1_001",
+  "types": [
+    "theorem_stmt",
+    "def",
+    "proof"
+  ],
+  "subfields": [
+    "MeromorphicFunctions"
+  ],
+  "text": "\\begin{definition}[divisor] Let $\\mathbb K$ be a nontrivially normed field and let $E$ be a normed vector space over $\\mathbb K$.\nLet $U \\subseteq \\mathbb K$ be a set and let $f : \\mathbb K \\to E$ be a function. The \\emph{divisor} of $f$ on $U$ is the function\n\\[\n\\operatorname{div}_U(f) : \\mathbb K \\longrightarrow \\mathbb{Z}\n\\]\ndefined by\n\\[\n\\operatorname{div}_U(f)(z)\n=\n\\begin{cases}\n\\operatorname{ord}_z(f), & \\text{if $f$ is meromorphic on $U$ and $z \\in U$},\\\\[6pt]\n0, & \\text{otherwise}.\n\\end{cases}\n\\]\n\\end{definition}\n\n\n\\begin{definition}[divisor_support]\nThe \\emph{support} of the divisor is\n\\[\n\\operatorname{supp}(\\operatorname{div}_U(f))\n=\n\\{ z \\in U \\mid \\operatorname{div}_U(f)(z) \\neq 0 \\}.\n\\]\n\nEquivalently,\n\\[\n\\operatorname{supp}(\\operatorname{div}_U(f))\n=\n\\{ z \\in U \\mid \\operatorname{ord}_z(f) \\neq 0 \\text{ and } \\operatorname{ord}_z(f) \\neq \\infty \\}.\n\\]\n\\end{definition}\n\n\n\\begin{theorem}[divisor_support_locally_finite]\nIf $f$ is meromorphic on $U$, then the support of $\\operatorname{div}_U(f)$ is locally finite in $U$.\n\\end{theorem}\n\\begin{proof}\nAssume that $f$ is meromorphic on $U$.\n\nLet $z_0 \\in \\mathbb K$. By the definition of meromorphicity, there exists a neighborhood $V$ of $z_0$ such that either:\n\\begin{itemize}\n  \\item $f$ has no zeros or poles in $V$, or\n  \\item $z_0$ is an isolated zero or pole of $f$.\n\\end{itemize}\n\nIndeed, near any point $z_0 \\in U$, there exists an integer $n$ and an analytic function $g$ with $g(z_0) \\neq 0$ such that\n\\[\nf(z) = (z - z_0)^n g(z)\n\\quad \\text{for all } z \\text{ in a punctured neighborhood of } z_0.\n\\]\n\nSince zeros of analytic functions are isolated unless the function vanishes identically, it follows that:\n\\begin{itemize}\n  \\item the set of zeros of $f$ in $V$ is finite, and\n  \\item the set of poles of $f$ in $V$ is finite.\n\\end{itemize}\n\nTherefore,\n\\[\nV \\cap \\operatorname{supp}(\\operatorname{div}_U(f))\n\\]\nis finite.\n\nSince $z_0$ was arbitrary, the support of $\\operatorname{div}_U(f)$ is locally finite in $U$.\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {
+    "lean": "4.27.0-rc1"
+  },
+  "metrics": {
+    "source_words": 295
+  },
+  "created_at": "2026-01-01T14:40:40+00:00",
+  "translation_direction": "backward",
+  "updated_at": "2026-07-03T19:12:09.502592+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Filter Topology\n\n/-\nFormalize in Lean the following named items from Text.\n\n1. Definition (divisor)\n   The definition must be named `divisor`.\n   Matched text (candidate 0, definition, label=divisor): \\begin{definition}[divisor] Let $\\mathbb K$ be a nontrivially normed field and let $E$ be a\n                                                          normed vector space over $\\mathbb K$. Let $U \\subseteq \\mathbb K$ be a set and let $f :\n                                                          \\mathbb K \\to E$ be a function. The \\emph{divisor} of $f$ on $U$ is the function \\[\n                                                          \\operatorname{div}_U(f) : \\mathbb K \\longrightarrow \\mathbb{Z} \\] defined by \\[\n                                                          \\operatorname{div}_U(f)(z) = \\begin{cases} \\operatorname{ord}_z(f), & \\text…\n2. Definition (divisor_support)\n   The definition must be named `divisor_support`.\n   Matched text (candidate 1, definition, label=divisor_support): \\begin{definition}[divisor_support] The \\emph{support} of the divisor is \\[\n                                                                  \\operatorname{supp}(\\operatorname{div}_U(f)) = \\{ z \\in U \\mid \\operatorname{div}_U(f)(z)\n                                                                  \\neq 0 \\}. \\] Equivalently, \\[ \\operatorname{supp}(\\operatorname{div}_U(f)) = \\{ z \\in U\n                                                                  \\mid \\operatorname{ord}_z(f) \\neq 0 \\text{ and } \\operatorname{ord}_z(f) \\neq \\infty \\}. \\]\n                                                                  \\end{definition}\n3. Theorem (divisor_support_locally_finite)\n   The theorem must be named `divisor_support_locally_finite`.\n   Matched text (candidate 2, theorem, label=divisor_support_locally_finite): \\begin{theorem}[divisor_support_locally_finite] If $f$ is meromorphic on $U$, then the\n                                                                              support of $\\operatorname{div}_U(f)$ is locally finite in $U$. \\end{theorem}\n\nEvery listed named item must be formalized with exactly the stated Lean name.\n-/\n"
+}

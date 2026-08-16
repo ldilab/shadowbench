@@ -1,0 +1,25 @@
+{
+  "id": "analysis/L3/ana_real_L3_001",
+  "paper_id": "Stein-Chap4-Ex",
+  "paper_title": "",
+  "area": "analysis",
+  "level": "L3",
+  "problem_id": "ana_real_L3_001",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [
+    "Real Analysis"
+  ],
+  "text": "\\begin{theorem}[hilbertT_bounded_norm_one]\nProve that the operator\n\\[\nTf(x)=\\frac{1}{\\pi}\\int_0^\\infty \\frac{f(y)}{x+y}\\,dy\n\\]\nis bounded on $L^2(0,\\infty)$ with norm $\\|T\\|=1$.\n\\end{theorem}\n\n\\begin{proof}\nWe first prove the upper bound. Since \\(C_c(0,\\infty)\\) is dense in\n\\(L^2(0,\\infty)\\), it suffices to prove the estimate first for\n\\(f,g\\in C_c(0,\\infty)\\). \n\\[\n\\begin{aligned}\n\\left|\\int_0^\\infty Tf(x)\\overline{g(x)}\\,dx\\right|\n&=\n\\left|\n\\frac1\\pi\\int_0^\\infty\\int_0^\\infty\n\\frac{f(xt)\\overline{g(x)}}{1+t}\\,dx\\,dt\n\\right|  \\\\\n&\\le\n\\frac1\\pi\\int_0^\\infty\n\\frac{1}{1+t}\n\\left|\n\\int_0^\\infty f(xt)\\overline{g(x)}\\,dx\n\\right|dt  \\\\\n&\\le\n\\frac1\\pi\\int_0^\\infty\n\\|f\\|_2\\|g\\|_2\\frac{t^{-1/2}}{1+t}\\,dt  \\\\\n&=\n\\|f\\|_2\\|g\\|_2 .\n\\end{aligned}\n\\]\nThus $\\|Tf\\|_2\\le \\|f\\|_2$, and hence $\\|T\\|\\le 1$.\n\nFor the lower bound, let $\\lambda>1$ and define\n\\[\nf_\\lambda(y)=\n\\begin{cases}\ny^{-1/2}, & 1\\le y\\le \\lambda,\\\\\n0, & \\text{otherwise}.\n\\end{cases}\n\\]\nThen\n\\[\n\\|f_\\lambda\\|_2=\\sqrt{\\log \\lambda}.\n\\]\nMoreover,\n\\[\n\\begin{aligned}\nTf_\\lambda(x)\n&=\n\\frac1\\pi\\int_1^\\lambda \\frac{y^{-1/2}}{x+y}\\,dy  \\\\\n&=\n\\frac{1}{\\pi\\sqrt{x}}\n\\int_{1/x}^{\\lambda/x}\\frac{t^{-1/2}}{1+t}\\,dt  \\\\\n&=\n\\frac{2}{\\pi\\sqrt{x}}\n\\int_{\\sqrt{1/x}}^{\\sqrt{\\lambda/x}}\n\\frac{1}{1+u^2}\\,du  \\\\\n&=\n\\frac{2}{\\pi\\sqrt{x}}\n\\left(\n\\tan^{-1}\\sqrt{\\frac{\\lambda}{x}}\n-\n\\tan^{-1}\\sqrt{\\frac1x}\n\\right) \\\\\n&=\n\\frac{2}{\\pi\\sqrt{x}}\n\\tan^{-1}\n\\left(\n\\frac{(1-\\lambda^{-1/2})\\sqrt{x}}{1+x/\\sqrt{\\lambda}}\n\\right).\n\\end{aligned}\n\\]\nHence, for any $0 < \\alpha < 1/2$,\n\\[\n\\begin{aligned}\n\\frac{\\|Tf_\\lambda\\|_2^2}{\\|f_\\lambda\\|_2^2}\n&=\n\\frac1{\\log\\lambda}\n\\int_0^\\infty |Tf_\\lambda(x)|^2\\,dx  \\\\\n&\\ge\n\\frac{4}{\\pi^2\\log\\lambda}\n\\int_{\\lambda^\\alpha}^{\\lambda^{1-\\alpha}}\n\\frac1x\n\\left[\n\\tan^{-1}\n\\left(\n\\frac{1-\\lambda^{-1/2}}{2}\\lambda^{\\alpha/2}\n\\right)\n\\right]^2\ndx  \\\\\n&=\n(1-2\\alpha)\\frac{4}{\\pi^2}\n\\left[\n\\tan^{-1}\n\\left(\n\\frac{1-\\lambda^{-1/2}}{2}\\lambda^{\\alpha/2}\n\\right)\n\\right]^2 .\n\\end{aligned}\n\\]\nLetting $\\lambda\\to\\infty$, we obtain\n\\[\n\\liminf_{\\lambda\\to\\infty}\n\\frac{\\|Tf_\\lambda\\|_2^2}{\\|f_\\lambda\\|_2^2}\n\\ge\n1-2\\alpha .\n\\]\nSince $0 < \\alpha < 1/2$ is arbitrary, $\\|T\\|\\ge 1$.  Together with\n$\\|T\\|\\le 1$, this gives\n\\[\n\\|T\\|=1.\n\\]\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 203
+  },
+  "created_at": "2026-04-28T16:04:02+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-05-16T18:23:11+00:00",
+  "formalization_rules": "open MeasureTheory Set\n\n/-\nFormalize in Lean the Theorem (hilbertT_bounded_norm_one) from Text.\n\nThe theorem must be named `hilbertT_bounded_norm_one`.\n   Matched text (candidate 0, theorem, label=hilbertT_bounded_norm_one): \\begin{theorem}[hilbertT_bounded_norm_one] Prove that the operator \\[\n                                                                         Tf(x)=\\frac{1}{\\pi}\\int_0^\\infty \\frac{f(y)}{x+y}\\,dy \\] is bounded on $L^2(0,\\infty)$ with\n                                                                         norm $\\|T\\|=1$. \\end{theorem}\n-/\n"
+}

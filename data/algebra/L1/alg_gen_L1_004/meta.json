@@ -1,0 +1,26 @@
+{
+  "area": "Algebra",
+  "created_at": "2025-12-19T02:21:30+00:00",
+  "id": "algebra/L1/alg_gen_L1_004",
+  "level": "L1",
+  "metrics": {
+    "source_words": 88
+  },
+  "paper_id": "Cox-Chap4-Ex",
+  "paper_title": "",
+  "problem_id": "alg_gen_L1_004",
+  "references": [],
+  "subfields": [],
+  "target_decl": "J",
+  "target_kind": "def",
+  "text": "\\begin{theorem}[exists_vanishingIdeal_zeroLocus_not_mem_J]\nLet $J=\\langle x^2+y^2-1,\\ y-1\\rangle$. Find $f\\in \\mathbf I(\\mathbf V(J))$ such that $f\\notin J$.\n\\end{theorem}\n\n\\begin{proof}\nTake \\(f=x\\). If \\((a,b)\\in \\mathbf V(J)\\), then \\(b-1=0\\) and\n\\(a^2+b^2-1=0\\). Hence \\(b=1\\) and \\(a^2=0\\), so \\(a=0\\). Thus\n\\(\\mathbf V(J)=\\{(0,1)\\}\\), and since \\(x(0,1)=0\\), we have\n\\(x\\in \\mathbf I(\\mathbf V(J))\\).\n\nIt remains to show \\(x\\notin J\\). Consider the specialization homomorphism\n\\(\\varphi:\\mathbb R[x,y]\\to\\mathbb R[x]\\) given by \\(\\varphi(g)=g(x,1)\\).\nThen \\(\\varphi(y-1)=0\\) and \\(\\varphi(x^2+y^2-1)=x^2\\), so\n\\(\\varphi(J)\\subseteq \\langle x^2\\rangle\\). If \\(x\\in J\\), then\n\\(x=\\varphi(x)\\in\\langle x^2\\rangle\\), impossible. Hence \\(x\\notin J\\).\nTherefore \\(f=x\\) satisfies \\(f\\in\\mathbf I(\\mathbf V(J))\\) and \\(f\\notin J\\).\n\\end{proof}",
+  "toolchain": {},
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "updated_at": "2026-05-20T18:17:31+00:00",
+  "custom_module": "no",
+  "translation_direction": "forward",
+  "formalization_rules": "open MvPolynomial\n\n/-\nFormalize in Lean the Theorem (exists_vanishingIdeal_zeroLocus_not_mem_J) from Text.\n\nThe theorem must be named `exists_vanishingIdeal_zeroLocus_not_mem_J`.\n   Matched text (candidate 0, theorem, label=exists_vanishingIdeal_zeroLocus_not_mem_J): \\begin{theorem}[exists_vanishingIdeal_zeroLocus_not_mem_J] Let $J=\\langle x^2+y^2-1,\\\n                                                                                         y-1\\rangle$. Find $f\\in \\mathbf I(\\mathbf V(J))$ such that $f\\notin J$. \\end{theorem}\n-/"
+}

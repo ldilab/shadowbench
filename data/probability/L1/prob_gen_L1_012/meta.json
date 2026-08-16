@@ -1,0 +1,38 @@
+{
+  "id": "probability/L1/prob_gen_L1_012",
+  "paper_id": "arXiv:1306.1433",
+  "paper_title": "Tight Lower Bound on the Probability of a Binomial Exceeding its Expectation",
+  "area": "probability",
+  "level": "L1",
+  "problem_id": "prob_gen_L1_012",
+  "types": [
+    "def",
+    "theorem_stmt"
+  ],
+  "subfields": [
+    "BinomialDistribution",
+    "AntiConcentration"
+  ],
+  "text": "\\begin{corollary}[A lower bound at the binomial mean]\nLet $m$ be a positive integer, let $0\\leq p\\leq1$ satisfy\n$p<1-1/m$, and let $X\\sim B(m,p)$. Then\n\\[\n\\mathbb{P}\\!\\left(X\\leq\\mathbb{E}[X]\\right)>\\frac14,\n\\qquad \\mathbb{E}[X]=mp.\n\\]\n\\end{corollary}\n",
+  "target_decl": "binomial_probability_at_most_expectation_gt_quarter",
+  "target_kind": "theorem",
+  "references": [
+    {
+      "source": "arxiv",
+      "id": "arXiv:1306.1433v3",
+      "url": "https://arxiv.org/abs/1306.1433v3",
+      "item": "Corollary 3"
+    }
+  ],
+  "toolchain": {
+    "lean": "4.27.0-rc1",
+    "mathlib": "024fc398dbd3648262e78da99efa2ad9aeeb5d6f"
+  },
+  "metrics": {
+    "source_words": 173
+  },
+  "created_at": "2026-07-12T12:00:00+09:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-12T12:57:44.355105+00:00",
+  "formalization_rules": "\\begin{corollary}[A lower bound at the binomial mean]\nLet $m$ be a positive integer, let $0\\leq p\\leq1$ satisfy\n$p<1-1/m$, and let $X\\sim B(m,p)$. Then\n\\[\n\\mathbb{P}\\!\\left(X\\leq\\mathbb{E}[X]\\right)>\\frac14,\n\\qquad \\mathbb{E}[X]=mp.\n\\]\n\\end{corollary}\n"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "algebraic-geometry/L2/alg_gen_L2_009",
+  "paper_id": "EGAI, 6.3.10",
+  "paper_title": "",
+  "area": "algebraic-geometry",
+  "level": "L2",
+  "problem_id": "alg_gen_L2_009",
+  "types": [
+    "def",
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{definition}[FiniteType]\nA morphism \\(f : X \\to Y\\) is said to be \\emph{of finite type} if \\(Y\\) is the union of a family \\((V_\\alpha)\\) of affine open subsets having the following property:\n\n\\medskip\n\n\\noindent\n(P) The inverse image \\(f^{-1}(V_\\alpha)\\) is a finite union of affine open subsets \\(U_{\\alpha i}\\) such that each of the rings \\(\\Gamma(U_{\\alpha i},\\mathcal O_X)\\) is a finitely type \\(\\Gamma(V_\\alpha,\\mathcal O_Y)\\)-algebra.\n\n\\medskip\n\nIn that case one also says that \\(X\\) is a scheme of finite type over \\(Y\\), or a \\(Y\\)-scheme of finite type.\n\\end{definition}\n\n\\begin{theorem}[surjective_iff_surjective_on_algClosed_points_of_finiteType]\nLet \\(f:X\\to Y\\) be a morphism of finite type. In order that \\(f\\) be surjective, it is necessary and sufficient that, for every algebraically closed field \\(\\Omega\\), the map \\(\nX(\\Omega)\\to Y(\\Omega)\\) corresponding to \\(f\\) be surjective.\n\\end{theorem}\n\\begin{proof}\nThe condition is sufficient, as one sees by considering, for every \\(y\\in Y\\), an algebraically closed extension \\(\\Omega\\) of \\(k(y)\\), and the commutative diagram\n\\[\n\\begin{array}{ccc}\n& \\mathrm{Spec}(\\Omega) & \\\\\n& \\swarrow \\quad \\searrow & \\\\\nX & \\xrightarrow{\\ f\\ } & Y .\n\\end{array}\n\\]\n\nConversely, suppose \\(f\\) is surjective, and let \\(g:\\{\\xi\\}=\\mathrm{Spec}(\\Omega)\\to Y\\) be a morphism, where \\(\\Omega\\) is an algebraically closed field. Consider the Cartesian diagram\n\\[\n\\begin{array}{ccc}\nX_\\Omega & \\longrightarrow & X \\\\\nf_\\Omega \\downarrow  & & \\downarrow f \\\\\n\\mathrm{Spec}(\\Omega) & \\xrightarrow{\\ g\\ } & Y .\n\\end{array}\n\\]\nIt is therefore enough to show that there exists in \\(X_\\Omega\\) a point rational over \\(\\Omega\\). Since \\(f\\) is surjective, \\(X_\\Omega\\) is not empty, and since \\(f\\) is of finite type, the same is true of \\(f_\\Omega\\). Hence \\(X_\\Omega\\) contains a nonempty affine open subset \\(Z\\) such that \\(\\Gamma(Z,\\mathcal O_{X_\\Omega})\\) is a nonzero algebra of finite type over \\(\\Omega\\). By Hilbert's Nullstellensatz, there exists an \\(\\Omega\\)-homomorphism \\(\n\\Gamma(Z,\\mathcal O_{X_\\Omega})\\to \\Omega\\), hence a section of \\(X_\\Omega\\) over \\(\\mathrm{Spec}(\\Omega)\\). \n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 303
+  },
+  "created_at": "2026-04-30T20:19:48+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-05-20T19:05:47+00:00",
+  "formalization_rules": "open CategoryTheory Opposite\n\n/-\nFormalize in Lean the following named items from Text.\n\n1. Definition (FiniteType)\n   The definition must be named `FiniteType`.\n   Matched text (candidate 0, definition, label=FiniteType): \\begin{definition}[FiniteType] A morphism \\(f : X \\to Y\\) is said to be \\emph{of finite\n                                                             type} if \\(Y\\) is the union of a family \\((V_\\alpha)\\) of affine open subsets having the\n                                                             following property: \\medskip \\noindent (P) The inverse image \\(f^{-1}(V_\\alpha)\\) is a\n                                                             finite union of affine open subsets \\(U_{\\alpha i}\\) such that each of the rings\n                                                             \\(\\Gamma(U_{\\alpha i},\\mathcal O_X)\\) is a finitely type \\(\\Gamma(V_\\alpha…\n2. Theorem (surjective_iff_surjective_on_algClosed_points_of_finiteType)\n   The theorem must be named `surjective_iff_surjective_on_algClosed_points_of_finiteType`.\n   Matched text (candidate 1, theorem, label=surjective_iff_surjective_on_algClosed_points_of_finiteType): \\begin{theorem}[surjective_iff_surjective_on_algClosed_points_of_finiteType] Let \\(f:X\\to\n                                                                                                           Y\\) be a morphism of finite type. In order that \\(f\\) be surjective, it is necessary and\n                                                                                                           sufficient that, for every algebraically closed field \\(\\Omega\\), the map \\( X(\\Omega)\\to\n                                                                                                           Y(\\Omega)\\) corresponding to \\(f\\) be surjective. \\end{theorem}\n\nEvery listed named item must be formalized with exactly the stated Lean name.\n-/\n"
+}

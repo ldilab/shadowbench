@@ -1,0 +1,19 @@
+# models.yaml — VLLM_MODEL values available for experiments (sorted by performance)
+# Copy/paste into the `models:` list of experiments.yaml.
+# Pass rate is based on non-floor experiments run so far.
+
+models:
+  # ── Gemini ────────────────────────────────────────── 23.3%
+  - op/gemini-pro
+  # ── 1.1%
+  - op/gemini-flash
+
+  # ── Claude ────────────────────────────────────────── 9.4% / 9.1% / 0.8%
+  - op/claude-sonnet-4.6
+  - op/claude-opus-4.6
+  - op/claude-haiku-4.5
+
+  # ── GPT ───────────────────────────────────────────── 7.4% / 6.8% / 1.5%
+  - op/gpt-mini
+  - op/gpt-base
+  - op/gpt-nano

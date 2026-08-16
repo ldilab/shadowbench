@@ -1,0 +1,1156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>ShadowBench • Leaderboard</title>
+  <meta name="description" content="ShadowBench (ShadowBench autoformalization leaderboard) leaderboard."/>
+
+  <!-- Put these in frontend/static/assets/ (see instructions at bottom) -->
+  <link rel="icon" href="static/assets/favicon.png"/>
+  <script>
+  // Optional API base override.
+  // - Same-origin (recommended on Cloudflare): leave window.__SHADOWBENCH_API_BASE__ undefined or set it to "".
+  // - Separate API origin: set window.__SHADOWBENCH_API_BASE__ = "https://api.example.com".
+</script>
+
+
+  <style>
+    :root{
+      color-scheme: light dark;
+      --bg: #ffffff;
+      --fg: #111827;         /* slate-900-ish */
+      --muted: #6b7280;      /* slate-500 */
+      --border: #e5e7eb;     /* gray-200 */
+      --soft: #f8fafc;       /* slate-50 */
+      --soft2:#f3f4f6;       /* gray-100 */
+      --link:#2563eb;        /* blue-600 */
+      --top1:#d97706;
+      --top2:#6b7280;
+      --top3:#92400e;
+      --ok:#059669;
+      --warn:#b45309;
+      --bad:#b91c1c;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0b0f17;
+        --fg:#e5e7eb;
+        --muted:#9ca3af;
+        --border:#1f2937;
+        --soft:#0f1623;
+        --soft2:#111827;
+        --link:#60a5fa;
+        --top1:#fbbf24;
+        --top2:#94a3b8;
+        --top3:#d97706;
+      }
+    }
+    html[data-theme="dark"]{
+      --bg:#0b0f17;
+      --fg:#e5e7eb;
+      --muted:#9ca3af;
+      --border:#1f2937;
+      --soft:#0f1623;
+      --soft2:#111827;
+      --link:#60a5fa;
+      --top1:#fbbf24;
+      --top2:#94a3b8;
+      --top3:#d97706;
+      color-scheme: dark;
+    }
+    html[data-theme="light"]{
+      --bg:#ffffff;
+      --fg:#111827;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+      --soft:#f8fafc;
+      --soft2:#f3f4f6;
+      --link:#2563eb;
+      --top1:#d97706;
+      --top2:#6b7280;
+      --top3:#92400e;
+      color-scheme: light;
+    }
+
+    /* theme toggle button */
+    #themeToggle{
+      font: inherit;
+      font-size: 15px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 5px 9px;
+      cursor: pointer;
+      color: var(--fg);
+      line-height: 1;
+    }
+    #themeToggle:hover{ background: var(--soft2); }
+
+    html,body{height:100%;}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--fg);
+      font-family:var(--sans);
+      line-height:1.45;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    a{color:var(--link); text-decoration:none;}
+    a:hover{text-decoration:underline;}
+    .container{
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 28px 18px 46px;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+    }
+
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      min-width: 280px;
+    }
+    .brand img{height:38px; width:auto; display:block;}
+    .titleblock{display:flex; flex-direction:column; gap:2px;}
+    .titleblock h1{
+      font-size: 20px;
+      line-height:1.15;
+      margin:0;
+      letter-spacing:-0.01em;
+      font-weight:800;
+    }
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      font-size: 13px;
+    }
+    .nav{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
+    }
+    .nav a{
+      font-size: 13px;
+      color:var(--fg);
+      padding:6px 10px;
+      border:1px solid var(--border);
+      border-radius: 999px;
+      background: transparent;
+    }
+    .nav a:hover{background: var(--soft2); text-decoration:none;}
+
+    .lede{
+      margin: 6px 0 14px;
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 78ch;
+    }
+
+    .controls{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      margin: 14px 0 10px;
+    }
+    .controls .left, .controls .right{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    label{
+      font-size: 12px;
+      color: var(--muted);
+      display:flex;
+      gap:6px;
+      align-items:center;
+    }
+    select, input[type="text"]{
+      font: inherit;
+      font-size: 13px;
+      padding: 7px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--fg);
+      outline: none;
+    }
+    input[type="checkbox"]{accent-color: var(--link);}
+    .pill{
+      font-size:12px;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 5px 10px;
+      background: var(--soft);
+    }
+
+    h2{
+      margin: 18px 0 8px;
+      font-size: 16px;
+      letter-spacing:-0.01em;
+    }
+    .caption{
+      color: var(--muted);
+      font-size: 12.5px;
+      margin: 0 0 10px;
+    }
+
+    table{
+      width:100%;
+      border-collapse: collapse;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow:hidden;
+      background: var(--bg);
+    }
+    thead th{
+      text-align:left;
+      font-size:12px;
+      color: var(--muted);
+      font-weight: 700;
+      padding: 10px 10px;
+      border-bottom: 1px solid var(--border);
+      background: var(--soft);
+      white-space: nowrap;
+    }
+    tbody td{
+      padding: 10px 10px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      vertical-align: middle;
+    }
+    tbody tr:nth-child(2n){
+      background: color-mix(in oklab, var(--soft) 70%, transparent);
+    }
+    .num{font-variant-numeric: tabular-nums; font-family: var(--mono); font-size: 12.5px;}
+    .right{text-align:right;}
+    .center{text-align:center;}
+    .rank{
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      width: 56px;
+    }
+
+    .modelCell{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      min-width: 240px;
+    }
+    .micon{
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--soft2);
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+    .mname{
+      font-weight: 750;
+      line-height:1.2;
+    }
+    .morg{
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .topRow{
+      background: linear-gradient(0deg, transparent, transparent) !important;
+    }
+    .topRow.top1{background: color-mix(in oklab, var(--top1) 11%, transparent) !important;}
+    .topRow.top2{background: color-mix(in oklab, var(--top2) 9%, transparent) !important;}
+    .topRow.top3{background: color-mix(in oklab, var(--top3) 8%, transparent) !important;}
+
+    /* strength profiles */
+    .profiles{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 12px;
+      margin: 10px 0 4px;
+    }
+    @media (max-width: 980px){
+      .profiles{grid-template-columns: 1fr;}
+    }
+    .profileCard{
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 10px 8px;
+      background: var(--bg);
+    }
+    .profileHead{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom: 8px;
+    }
+    .profileHead .left{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      min-width: 0;
+    }
+    .profileHead .label{
+      min-width: 0;
+    }
+    .profileHead .label .mname{font-size: 13px;}
+    .profileHead .label .morg{margin-top: 0;}
+    .overallBadge{
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 5px 8px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--soft);
+      white-space: nowrap;
+    }
+    canvas.radar{
+      width: 100%;
+      height: 200px;
+      display:block;
+      border-radius: 10px;
+      background: var(--soft);
+      border: 1px solid var(--border);
+    }
+    .smallNote{
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 6px;
+    }
+
+    /* subtable grid (BigCodeBench-like vertical flow but allows 2-col on wide screens) */
+    .subgrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 980px){
+      .subgrid{grid-template-columns: 1fr;}
+    }
+    .subtable h3{
+      margin: 0 0 6px;
+      font-size: 13px;
+      letter-spacing:-0.01em;
+    }
+    .subtable .caption{
+      margin-bottom: 8px;
+    }
+
+    /* notes */
+    .notes{
+      margin-top: 18px;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .notes ol{margin: 8px 0 0 18px;}
+    .notes li{margin: 6px 0;}
+    code, .mono{font-family: var(--mono); font-size: 12.5px;}
+    .statusline{
+      margin-top: 10px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    /* score bar cell */
+    .scoreCell{
+      position: relative;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      font-family: var(--mono);
+      font-size: 12.5px;
+    }
+    .scoreCell::before{
+      content: '';
+      position: absolute;
+      left: 0; top: 3px; bottom: 3px;
+      width: var(--pct, 0%);
+      background: color-mix(in oklab, var(--link) 14%, transparent);
+      border-radius: 3px;
+    }
+    .scoreCell span{ position: relative; }
+
+    /* letter avatar fallback */
+    .miconFallback{
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      background: var(--soft2);
+    }
+
+    /* sortable column headers */
+    th.sortable{
+      cursor: pointer;
+      user-select: none;
+    }
+    th.sortable:hover{ color: var(--fg); }
+    th.sortable::after{ content: ' ↕'; opacity: 0.4; font-size: 10px; }
+    th.sortable.asc::after{ content: ' ↑'; opacity: 0.9; }
+    th.sortable.desc::after{ content: ' ↓'; opacity: 0.9; }
+
+    /* rank medal */
+    .rankMedal{ font-size: 16px; line-height: 1; }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="titleblock">
+          <h1>ShadowBench</h1>
+          <p class="subtitle">Autoformalization leaderboard</p>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="links">
+        <a href="submit.test-run.html" title="Submit a test run">Submit</a>
+        <a href="http:/shadowbench.example.org" id="linkDataset">Dataset</a>
+        <a href="#" id="linkPaper">Paper</a>
+        <a href="#" id="linkCode">Code</a>
+        <a href="leaderboard.admin.html" id="linkAdmin" title="Administer submissions" style="display:none">Admin</a>
+        <a href="#notes">Notes</a>
+        <button id="themeToggle" title="Toggle dark/light mode" aria-label="Toggle dark/light mode">🌙</button>
+      </nav>
+    </header>
+
+    <p class="lede">
+      ShadowBench evaluates theorem-proving systems on Lean 4 autoformalization and proof checking.
+      Models are ranked by <span class="mono">overall</span> score; area and level slices show strengths across categories.
+    </p>
+
+    <div class="controls" role="region" aria-label="filters">
+      <div class="left">
+        <label>Track
+          <select id="trackSel">
+            <option value="all">All</option>
+            <option value="Open">Open</option>
+            <option value="Closed">Closed</option>
+            <option value="Academic">Academic</option>
+          </select>
+        </label>
+
+        <label>Size
+          <select id="sizeSel">
+            <option value="all">All</option>
+            <option value="lt10">&lt;10B</option>
+            <option value="lt50">&lt;50B</option>
+            <option value="lt200">&lt;200B</option>
+            <option value="gt200">&ge;200B</option>
+            <option value="unknown">Unknown</option>
+          </select>
+        </label>
+
+        <label><input type="checkbox" id="showUnknown" checked/> show unknown sizes</label>
+      </div>
+
+      <div class="right">
+        <label>Search <input id="q" type="text" placeholder="model / org" size="18"/></label>
+        <span class="pill" id="datasetPill">dataset: —</span>
+      </div>
+    </div>
+
+    <h2>Table 1. Overall performance</h2>
+    <p class="caption">
+      Ranked by <span class="mono">overall</span>. Metrics are reported as percentages unless noted.
+    </p>
+
+    <table aria-label="overall leaderboard">
+      <thead>
+        <tr>
+          <th class="rank">Rank</th>
+          <th>Model</th>
+          <th class="right sortable" data-sort="params">Params</th>
+          <th class="right sortable desc" data-sort="overall">Overall</th>
+          <th class="right sortable" data-sort="pass1">Pass@1</th>
+          <th class="right sortable" data-sort="pass5">Pass@5</th>
+          <th class="right sortable" data-sort="compile">Compile</th>
+          <th class="right sortable" data-sort="time">Avg time</th>
+        </tr>
+      </thead>
+      <tbody id="overallBody">
+        <tr><td colspan="8" style="padding:14px;color:var(--muted)">Loading…</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Strength profiles (Top 3 overall)</h2>
+    <p class="caption">
+      Radar polygons show per-area scores across five canonical areas; the faint circle radius is proportional to <span class="mono">overall</span>.
+    </p>
+    <div class="profiles" id="profiles"></div>
+
+    <h2>Table 2. Performance by area</h2>
+    <p class="caption">Top 3 systems per area (from <span class="mono">categories</span>).</p>
+    <div class="subgrid" id="areasGrid"></div>
+
+    <h2>Table 3. Performance by level</h2>
+    <p class="caption">Top 3 systems per level (from <span class="mono">levels</span>).</p>
+    <div class="subgrid" id="levelsGrid"></div>
+
+    <section class="notes" id="notes">
+      <h2>Notes</h2>
+      <ol>
+        <li>Live leaderboard data is fetched from <span class="mono" id="apiEcho">—</span><span class="mono">/api/leaderboard.json</span>. If the server is unreachable, a small preview set is shown.</li>
+        <li>Per-area scores are read from <span class="mono">run.categories</span>; per-level scores are read from <span class="mono">run.levels</span> (or <span class="mono">run.levelScores</span>).</li>
+        <li>For trusted evaluation, run submissions inside a hardened container (no network, resource limits, dropped caps). See the README “Sandbox policy”.</li>
+      </ol>
+
+      <div class="statusline">
+        <span id="updatedAt">Last updated: —</span>
+        <span>Tip: set <span class="mono">window.__SHADOWBENCH_API_BASE__</span> to override the API base.</span>
+      </div>
+    </section>
+  </div>
+
+<script>
+(() => {
+  // ---------- config ----------
+
+  const IS_LOCAL = (location.hostname === "localhost" || location.hostname === "127.0.0.1");
+  const API_BASE = (typeof window.__SHADOWBENCH_API_BASE__ === "string")
+    ? window.__SHADOWBENCH_API_BASE__.replace(/\/+$/, "")
+    : (IS_LOCAL ? "http://127.0.0.1:8000" : "");
+
+
+
+
+  // canonical five-area radar (keys should match backend `categories`)
+  const RADAR_AREAS = [
+    { key: "Analysis", label: "Analysis" },
+    { key: "Algebra", label: "Algebra" },
+    { key: "Geometry", label: "Geometry" },
+    { key: "NumberTheory", label: "Number Theory" },
+    { key: "Topology", label: "Topology" },
+  ];
+  const CANONICAL_LEVELS = ["HighSchool", "College", "Research"];
+
+  // External baseline (for reference only)
+  const SEA_LOGO_AISG = "";
+  const SEA_LOGO_ALIBABA = "";
+  const SEA_BASELINE = [
+    { rank: 1, name: "SEA-LION v4 (Qwen)", org: "AI Singapore", score: 60.82, iconUrl: SEA_LOGO_AISG },
+    { rank: 2, name: "Qwen 3 Next", org: "Alibaba", score: 60.73, iconUrl: SEA_LOGO_ALIBABA },
+    { rank: 3, name: "Qwen 3 VL", org: "Alibaba", score: 59.88, iconUrl: SEA_LOGO_ALIBABA },
+  ];
+
+  // Preview data (only used if backend cannot be fetched)
+  const SAMPLE_RUNS = [
+    {
+      id: "sample-sea-1",
+      name: "SEA-LION v4 (Qwen)",
+      org: "AI Singapore",
+      track: "Open",
+      iconUrl: SEA_LOGO_AISG,
+      params: { modelParamsB: 72 },
+      overall: 60.82,
+      pass1: 44.10,
+      pass5: 57.90,
+      compileRate: 92.0,
+      avgTimeSec: 1.58,
+      categories: { Analysis: 63.4, Algebra: 62.0, Geometry: 59.1, NumberTheory: 58.0, Topology: 61.6 },
+      levels: { HighSchool: 62.8, College: 60.9, Research: 57.3 },
+      updatedAt: "2025-12-27",
+    },
+    {
+      id: "sample-sea-2",
+      name: "Qwen 3 Next",
+      org: "Alibaba",
+      track: "Open",
+      iconUrl: SEA_LOGO_ALIBABA,
+      params: { modelParamsB: 110 },
+      overall: 60.73,
+      pass1: 43.95,
+      pass5: 57.60,
+      compileRate: 91.4,
+      avgTimeSec: 1.61,
+      categories: { Analysis: 62.7, Algebra: 61.8, Geometry: 58.7, NumberTheory: 57.5, Topology: 61.1 },
+      levels: { HighSchool: 62.2, College: 60.5, Research: 56.8 },
+      updatedAt: "2025-12-27",
+    },
+    {
+      id: "sample-sea-3",
+      name: "Qwen 3 VL",
+      org: "Alibaba",
+      track: "Open",
+      iconUrl: SEA_LOGO_ALIBABA,
+      params: { modelParamsB: 110 },
+      overall: 59.88,
+      pass1: 43.20,
+      pass5: 56.90,
+      compileRate: 90.9,
+      avgTimeSec: 1.70,
+      categories: { Analysis: 61.8, Algebra: 60.7, Geometry: 58.2, NumberTheory: 56.9, Topology: 60.4 },
+      levels: { HighSchool: 61.0, College: 59.8, Research: 55.9 },
+      updatedAt: "2025-12-27",
+    },
+  ];
+
+  // ---------- helpers ----------
+  const $ = (sel) => document.querySelector(sel);
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+  const isNum = (x) => typeof x === "number" && Number.isFinite(x);
+
+  function fmt(x, digits=2){
+    if(!isNum(x)) return "—";
+    return x.toFixed(digits);
+  }
+  function fmtPct(x){ return fmt(x, 2); }
+  function fmtTime(x){
+    if(!isNum(x)) return "—";
+    if(x < 10) return x.toFixed(2) + "s";
+    return x.toFixed(1) + "s";
+  }
+  function getParamsB(run){
+    const b = run?.params?.modelParamsB;
+    return isNum(b) ? b : null;
+  }
+  function sizeBucket(run){
+    const b = getParamsB(run);
+    if(!isNum(b)) return "unknown";
+    if(b < 10) return "lt10";
+    if(b < 50) return "lt50";
+    if(b < 200) return "lt200";
+    return "gt200";
+  }
+  function getAreaScore(run, key){
+    const cats = (run.categories && typeof run.categories === "object") ? run.categories : {};
+    if(isNum(cats[key])) return cats[key];
+
+    // tolerant matching (e.g., "Number Theory")
+    const target = String(key).toLowerCase().replaceAll(" ", "").replaceAll("_", "");
+    for(const k of Object.keys(cats)){
+      const norm = String(k).toLowerCase().replaceAll(" ", "").replaceAll("_", "");
+      if(norm === target && isNum(cats[k])) return cats[k];
+    }
+    return null;
+  }
+  function getLevelScore(run, level){
+    const lv = (run.levels && typeof run.levels === "object") ? run.levels
+             : (run.levelScores && typeof run.levelScores === "object") ? run.levelScores
+             : {};
+    if(isNum(lv[level])) return lv[level];
+
+    const target = String(level).toLowerCase().replaceAll(" ", "").replaceAll("_", "");
+    for(const k of Object.keys(lv||{})){
+      const norm = String(k).toLowerCase().replaceAll(" ", "").replaceAll("_", "");
+      if(norm === target && isNum(lv[k])) return lv[k];
+    }
+    return null;
+  }
+
+  // ---------- state ----------
+  const state = { runs: [], datasetVersion: "—", source: "—" };
+
+  // ---------- sort state ----------
+  let sortKey = "overall";
+  let sortDir = -1; // -1 = desc, 1 = asc
+
+  function sortedRuns(runs){
+    return [...runs].sort((a,b) => {
+      let av, bv;
+      if(sortKey === "params"){ av = getParamsB(a) ?? -Infinity; bv = getParamsB(b) ?? -Infinity; }
+      else if(sortKey === "pass1"){ av = a.pass1 ?? -Infinity; bv = b.pass1 ?? -Infinity; }
+      else if(sortKey === "pass5"){ av = a.pass5 ?? -Infinity; bv = b.pass5 ?? -Infinity; }
+      else if(sortKey === "compile"){ av = a.compileRate ?? -Infinity; bv = b.compileRate ?? -Infinity; }
+      else if(sortKey === "time"){ av = a.avgTimeSec ?? Infinity; bv = b.avgTimeSec ?? Infinity; }
+      else { av = a.overall ?? -Infinity; bv = b.overall ?? -Infinity; }
+      return sortDir * (bv - av);
+    });
+  }
+
+  // ---------- icon helper ----------
+  function makeIcon(r){
+    const initial = esc((r.name || r.org || "?")[0].toUpperCase());
+    const fallback = `<div class="micon miconFallback" aria-hidden="true">${initial}</div>`;
+    if(!r.iconUrl) return fallback;
+    return `<img class="micon" src="${esc(r.iconUrl)}" alt="" referrerpolicy="no-referrer" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'micon miconFallback',textContent:'${initial}',ariaHidden:'true'}))"/>`;
+  }
+
+  function applyFilters(runs){
+    const track = $("#trackSel").value;
+    const size = $("#sizeSel").value;
+    const showUnknown = $("#showUnknown").checked;
+    const q = ($("#q").value || "").trim().toLowerCase();
+
+    return runs.filter(r => {
+      if(track !== "all" && String(r.track||"") !== track) return false;
+
+      const sb = sizeBucket(r);
+      if(!showUnknown && sb === "unknown") return false;
+      if(size !== "all" && sb !== size) return false;
+
+      if(q){
+        const hay = (String(r.name||"") + " " + String(r.org||"")).toLowerCase();
+        if(!hay.includes(q)) return false;
+      }
+      return true;
+    });
+  }
+
+  async function fetchLeaderboard(){
+    // $("#apiEcho").textContent = API_BASE;
+    $("#apiEcho").textContent = API_BASE || "(same-origin)";
+    try{
+      const res = await fetch(API_BASE + "/api/leaderboard.json", { cache: "no-store" });
+      if(!res.ok) throw new Error("HTTP " + res.status);
+      const data = await res.json();
+      state.datasetVersion = data.datasetVersion || "—";
+      state.runs = Array.isArray(data.runs) ? data.runs : [];
+      state.source = "backend";
+    }catch(e){
+      console.warn("backend unreachable; using sample runs", e);
+      state.datasetVersion = "preview";
+      state.runs = SAMPLE_RUNS.slice();
+      state.source = "preview";
+    }
+    $("#datasetPill").textContent = "dataset: " + state.datasetVersion;
+    renderAll();
+  }
+
+  function renderSeaBaseline(){
+    const tb = $("#seaBody");
+    tb.innerHTML = SEA_BASELINE.map(x => `
+      <tr>
+        <td class="rank">${x.rank}</td>
+        <td>
+          <div class="modelCell">
+            <img class="micon" src="${esc(x.iconUrl)}" alt="" referrerpolicy="no-referrer"/>
+            <div>
+              <div class="mname">${esc(x.name)}</div>
+              <div class="morg">${esc(x.org)}</div>
+            </div>
+          </div>
+        </td>
+        <td class="right num">${fmt(x.score,2)}</td>
+      </tr>
+    `).join("");
+  }
+
+  function renderOverall(){
+    const runs = sortedRuns(applyFilters(state.runs));
+
+    const tb = $("#overallBody");
+    if(runs.length === 0){
+      tb.innerHTML = `<tr><td colspan="8" style="padding:14px;color:var(--muted)">No runs match the current filters.</td></tr>`;
+      return;
+    }
+
+    // For rank medals, use overall-sorted positions (not sort order)
+    const byOverall = [...applyFilters(state.runs)].sort((a,b)=>(b.overall??-Infinity)-(a.overall??-Infinity));
+    const rankMap = new Map(byOverall.map((r,i)=>[r.id, i]));
+
+    const medals = ["🥇","🥈","🥉"];
+
+    tb.innerHTML = runs.map((r) => {
+      const rank = rankMap.get(r.id) ?? 99;
+      const topCls = (rank===0) ? "topRow top1" : (rank===1) ? "topRow top2" : (rank===2) ? "topRow top3" : "";
+      const rankCell = (rank < 3)
+        ? `<span class="rankMedal">${medals[rank]}</span>`
+        : `${rank+1}`;
+
+      const pB = getParamsB(r);
+      const pTxt = isNum(pB) ? (pB.toFixed(0) + "B") : "—";
+      const parts = [];
+      if(String(r.org||"").trim()) parts.push(String(r.org).trim());
+      const tags = Array.isArray(r.tags) ? r.tags : [];
+      if(tags.includes("test")) parts.push("test");
+      const nTasks = (r.meta && isNum(r.meta.tasks)) ? r.meta.tasks : null;
+      if(nTasks !== null) parts.push("n=" + nTasks);
+      const ev = r.meta && r.meta.eval;
+      if(ev && ev.areas && ev.areas !== "ALL") parts.push("subset");
+      const orgLine = parts.join(" • ");
+
+      const pct = isNum(r.overall) ? clamp(r.overall, 0, 100).toFixed(1) : null;
+      const scoreCell = pct !== null
+        ? `<td class="scoreCell" style="--pct:${pct}%"><span>${fmtPct(r.overall)}</span></td>`
+        : `<td class="scoreCell"><span>—</span></td>`;
+
+      return `
+        <tr class="${topCls}">
+          <td class="rank">${rankCell}</td>
+          <td>
+            <div class="modelCell">
+              ${makeIcon(r)}
+              <div>
+                <div class="mname">${esc(r.name || "—")}</div>
+                <div class="morg">${esc(orgLine)}</div>
+              </div>
+            </div>
+          </td>
+          <td class="right num">${esc(pTxt)}</td>
+          ${scoreCell}
+          <td class="right num">${fmtPct(r.pass1)}</td>
+          <td class="right num">${fmtPct(r.pass5)}</td>
+          <td class="right num">${fmtPct(r.compileRate)}</td>
+          <td class="right num">${fmtTime(r.avgTimeSec)}</td>
+        </tr>
+      `;
+    }).join("");
+
+    const latest = byOverall[0]?.updatedAt || byOverall[0]?.releaseDate || "—";
+    $("#updatedAt").textContent = "Last updated: " + latest;
+  }
+
+  function renderAreaTables(){
+    const grid = $("#areasGrid");
+    grid.innerHTML = "";
+
+    const filtered = applyFilters(state.runs);
+
+    // Determine which areas to show: prefer RADAR_AREAS, then any additional category keys that exist.
+    const canonical = RADAR_AREAS.map(a=>a.key);
+    const extra = new Set();
+    for(const r of filtered){
+      const cats = (r.categories && typeof r.categories === "object") ? r.categories : {};
+      for(const k of Object.keys(cats)){
+        if(!canonical.includes(k)) extra.add(k);
+      }
+    }
+    // keep it readable: show canonical five + up to 3 extras (sorted)
+    const areasToShow = canonical.concat(Array.from(extra).sort().slice(0,3));
+
+    for(const key of areasToShow){
+      const label = (RADAR_AREAS.find(a=>a.key===key)?.label) || key;
+
+      const ranked = filtered
+        .map(r => ({ r, v: getAreaScore(r, key) }))
+        .filter(x => isNum(x.v))
+        .sort((a,b)=>b.v - a.v)
+        .slice(0,3);
+
+      const wrap = document.createElement("div");
+      wrap.className = "subtable";
+      wrap.innerHTML = `
+        <h3>${esc(label)}</h3>
+        <table>
+          <thead><tr><th class="rank">Rank</th><th>Model</th><th class="right">Score</th></tr></thead>
+          <tbody>
+            ${ranked.length ? ranked.map((x,i)=>`
+              <tr>
+                <td class="rank">${i+1}</td>
+                <td>
+                  <div class="modelCell">
+                    ${makeIcon(x.r)}
+                    <div>
+                      <div class="mname">${esc(x.r.name||"—")}</div>
+                      <div class="morg">${esc(x.r.org||"")}</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="right num">${fmtPct(x.v)}</td>
+              </tr>
+            `).join("") : `<tr><td colspan="3" style="padding:12px;color:var(--muted)">No scores yet.</td></tr>`}
+          </tbody>
+        </table>
+      `;
+      grid.appendChild(wrap);
+    }
+  }
+
+  function renderLevelTables(){
+    const grid = $("#levelsGrid");
+    grid.innerHTML = "";
+
+    const filtered = applyFilters(state.runs);
+
+    for(const level of CANONICAL_LEVELS){
+      const ranked = filtered
+        .map(r => ({ r, v: getLevelScore(r, level) }))
+        .filter(x => isNum(x.v))
+        .sort((a,b)=>b.v - a.v)
+        .slice(0,3);
+
+      const wrap = document.createElement("div");
+      wrap.className = "subtable";
+      wrap.innerHTML = `
+        <h3>${esc(level)}</h3>
+        <div class="caption">Top 3 by <span class="mono">levels["${esc(level)}"]</span></div>
+        <table>
+          <thead><tr><th class="rank">Rank</th><th>Model</th><th class="right">Score</th></tr></thead>
+          <tbody>
+            ${ranked.length ? ranked.map((x,i)=>`
+              <tr>
+                <td class="rank">${i+1}</td>
+                <td>
+                  <div class="modelCell">
+                    ${makeIcon(x.r)}
+                    <div>
+                      <div class="mname">${esc(x.r.name||"—")}</div>
+                      <div class="morg">${esc(x.r.org||"")}</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="right num">${fmtPct(x.v)}</td>
+              </tr>
+            `).join("") : `<tr><td colspan="3" style="padding:12px;color:var(--muted)">No scores yet.</td></tr>`}
+          </tbody>
+        </table>
+      `;
+      grid.appendChild(wrap);
+    }
+  }
+
+  function renderProfiles(){
+    const host = $("#profiles");
+    host.innerHTML = "";
+
+    const filtered = applyFilters(state.runs).slice().sort((a,b)=>(b.overall ?? -Infinity)-(a.overall ?? -Infinity));
+    const top3 = filtered.slice(0,3);
+
+    if(top3.length === 0){
+      host.innerHTML = `<div class="profileCard" style="grid-column: 1 / -1; color: var(--muted);">No runs available.</div>`;
+      return;
+    }
+
+    for(let i=0;i<top3.length;i++){
+      const r = top3[i];
+      const card = document.createElement("div");
+      card.className = "profileCard";
+      const cid = "radar_" + i;
+      card.innerHTML = `
+        <div class="profileHead">
+          <div class="left">
+            ${makeIcon(r)}
+            <div class="label">
+              <div class="mname">${esc(r.name||"—")}</div>
+              <div class="morg">${esc(r.org||"")}</div>
+            </div>
+          </div>
+          <div class="overallBadge">overall ${fmtPct(r.overall)}</div>
+        </div>
+        <canvas class="radar" id="${cid}" width="480" height="240"></canvas>
+        <div class="smallNote">${RADAR_AREAS.map(a=>esc(a.label)).join(" • ")}</div>
+      `;
+      host.appendChild(card);
+
+      const cv = document.getElementById(cid);
+      drawRadar(cv, r, i);
+    }
+  }
+
+  function drawRadar(canvas, run, idx){
+    const ctx = canvas.getContext("2d");
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0,0,W,H);
+
+    const dark = document.documentElement.getAttribute("data-theme") === "dark"
+      || (document.documentElement.getAttribute("data-theme") !== "light" && matchMedia("(prefers-color-scheme: dark)").matches);
+    const fg = dark ? "rgba(229,231,235,0.92)" : "rgba(17,24,39,0.92)";
+    const grid = dark ? "rgba(148,163,184,0.20)" : "rgba(100,116,139,0.20)";
+    const axis = dark ? "rgba(148,163,184,0.35)" : "rgba(100,116,139,0.35)";
+    const label = dark ? "rgba(229,231,235,0.80)" : "rgba(17,24,39,0.75)";
+
+    const colors = [
+      { stroke: dark ? "rgba(96,165,250,0.95)" : "rgba(37,99,235,0.95)", fill: dark ? "rgba(96,165,250,0.18)" : "rgba(37,99,235,0.14)", circle: dark ? "rgba(96,165,250,0.10)" : "rgba(37,99,235,0.08)" },
+      { stroke: dark ? "rgba(251,146,60,0.95)" : "rgba(234,88,12,0.95)",  fill: dark ? "rgba(251,146,60,0.18)" : "rgba(234,88,12,0.12)",  circle: dark ? "rgba(251,146,60,0.10)" : "rgba(234,88,12,0.07)" },
+      { stroke: dark ? "rgba(52,211,153,0.95)" : "rgba(5,150,105,0.95)",   fill: dark ? "rgba(52,211,153,0.18)" : "rgba(5,150,105,0.12)",   circle: dark ? "rgba(52,211,153,0.10)" : "rgba(5,150,105,0.07)" },
+    ];
+    const c = colors[idx % colors.length];
+
+    const cx = W/2, cy = H/2;
+    const pad = 26;
+    const R = Math.min(W,H)/2 - pad;
+
+    // values
+    const vals = RADAR_AREAS.map(a => getAreaScore(run, a.key));
+    const any = vals.some(v => isNum(v));
+
+    // background rings
+    ctx.lineWidth = 1;
+    for(let k=1;k<=5;k++){
+      ctx.strokeStyle = grid;
+      ctx.beginPath();
+      ctx.arc(cx, cy, (R*k)/5, 0, Math.PI*2);
+      ctx.stroke();
+    }
+
+    // axes + labels
+    const n = RADAR_AREAS.length;
+    for(let i=0;i<n;i++){
+      const ang = -Math.PI/2 + i*(2*Math.PI/n);
+      const x = cx + R*Math.cos(ang);
+      const y = cy + R*Math.sin(ang);
+      ctx.strokeStyle = axis;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(x, y);
+      ctx.stroke();
+
+      ctx.fillStyle = label;
+      ctx.font = "12px " + getComputedStyle(document.documentElement).getPropertyValue("--sans");
+      const tx = cx + (R+10)*Math.cos(ang);
+      const ty = cy + (R+10)*Math.sin(ang);
+      const text = RADAR_AREAS[i].label.replace("Number Theory","NT");
+      ctx.textAlign = (Math.cos(ang) > 0.2) ? "left" : (Math.cos(ang) < -0.2) ? "right" : "center";
+      ctx.textBaseline = (Math.sin(ang) > 0.2) ? "top" : (Math.sin(ang) < -0.2) ? "bottom" : "middle";
+      ctx.fillText(text, tx, ty);
+    }
+
+    // overall circle (faint, proportional to overall)
+    const ov = isNum(run.overall) ? clamp(run.overall, 0, 100) : 0;
+    ctx.fillStyle = c.circle;
+    ctx.beginPath();
+    ctx.arc(cx, cy, R*(ov/100), 0, Math.PI*2);
+    ctx.fill();
+
+    if(!any){
+      ctx.fillStyle = fg;
+      ctx.font = "13px " + getComputedStyle(document.documentElement).getPropertyValue("--sans");
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText("No area breakdown", cx, cy);
+      return;
+    }
+
+    // polygon — use a floor so even low scores produce a recognizable shape.
+    // Score 0 → MIN_FRAC*R, score 100 → R, linear in between.
+    const MIN_FRAC = 0.18;
+    const pts = [];
+    for(let i=0;i<n;i++){
+      const ang = -Math.PI/2 + i*(2*Math.PI/n);
+      const v = isNum(vals[i]) ? clamp(vals[i], 0, 100) : 0;
+      const rr = R * (MIN_FRAC + (1 - MIN_FRAC) * (v / 100));
+      pts.push([cx + rr*Math.cos(ang), cy + rr*Math.sin(ang)]);
+    }
+
+    ctx.strokeStyle = c.stroke;
+    ctx.fillStyle = c.fill;
+    ctx.lineWidth = 2;
+
+    ctx.beginPath();
+    ctx.moveTo(pts[0][0], pts[0][1]);
+    for(let i=1;i<pts.length;i++) ctx.lineTo(pts[i][0], pts[i][1]);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+    // vertices
+    ctx.fillStyle = c.stroke;
+    for(const [x,y] of pts){
+      ctx.beginPath();
+      ctx.arc(x,y,2.2,0,Math.PI*2);
+      ctx.fill();
+    }
+  }
+
+  function renderAll(){
+    renderOverall();
+    renderProfiles();
+    renderAreaTables();
+    renderLevelTables();
+  }
+
+  // events
+  ["trackSel","sizeSel","showUnknown","q"].forEach(id=>{
+    const el = document.getElementById(id);
+    el.addEventListener("input", renderAll);
+    el.addEventListener("change", renderAll);
+  });
+
+  // sortable column headers
+  document.querySelectorAll("th.sortable").forEach(th => {
+    th.addEventListener("click", () => {
+      const key = th.dataset.sort;
+      if(sortKey === key){
+        sortDir *= -1;
+      } else {
+        sortKey = key;
+        sortDir = (key === "time") ? 1 : -1; // time: lower is better
+      }
+      document.querySelectorAll("th.sortable").forEach(h => h.classList.remove("asc","desc"));
+      th.classList.add(sortDir === -1 ? "desc" : "asc");
+      renderOverall();
+    });
+  });
+
+  // placeholders for your links (optional)
+  $("#linkDataset").href = "http://shadowbench.example.org";
+  $("#linkPaper").href = "#";
+  $("#linkCode").href = "#";
+
+  // Show the Admin link only on localhost OR if an admin token is already stored.
+  // (Backend MUST still enforce auth — this is just a convenience.)
+  const hasAdminToken = () => {
+    try{
+      return Boolean(
+        localStorage.getItem("lift_admin_token") ||
+        localStorage.getItem("SHADOWBENCH_ADMIN_TOKEN")
+      );
+    }catch(_){ return false; }
+  };
+  const showAdmin = (location.hostname === "localhost" || location.hostname === "127.0.0.1" || hasAdminToken());
+  const adminLink = document.getElementById("linkAdmin");
+  if(adminLink && showAdmin) adminLink.style.display = "inline-block";
+
+  // ---------- theme toggle ----------
+  const THEME_KEY = "shadowbench_theme";
+  const html = document.documentElement;
+  const logoLight = "";
+  const logoDark  = "";
+
+  function isDark(){
+    const t = html.getAttribute("data-theme");
+    if(t === "dark") return true;
+    if(t === "light") return false;
+    return matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+
+  function applyTheme(theme){
+    html.setAttribute("data-theme", theme);
+    localStorage.setItem(THEME_KEY, theme);
+    const dark = theme === "dark";
+    document.getElementById("themeToggle").textContent = dark ? "☀️" : "🌙";
+    document.getElementById("brandLogo").src = dark ? logoDark : logoLight;
+    renderProfiles();
+  }
+
+  // load saved preference, or match OS
+  const savedTheme = localStorage.getItem(THEME_KEY);
+  if(savedTheme === "dark" || savedTheme === "light"){
+    applyTheme(savedTheme);
+  } else {
+    // no saved pref — sync logo and button to OS preference without persisting
+    const osDark = matchMedia("(prefers-color-scheme: dark)").matches;
+    document.getElementById("brandLogo").src = osDark ? logoDark : logoLight;
+    document.getElementById("themeToggle").textContent = osDark ? "☀️" : "🌙";
+  }
+
+  document.getElementById("themeToggle").addEventListener("click", () => {
+    applyTheme(isDark() ? "light" : "dark");
+  });
+
+  // init
+  fetchLeaderboard();
+})();
+</script>
+</body>
+</html>

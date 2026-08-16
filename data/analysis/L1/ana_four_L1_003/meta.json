@@ -1,0 +1,31 @@
+{
+  "area": "Analysis",
+  "created_at": "2026-01-01T09:06:56+00:00",
+  "id": "analysis/L1/ana_four_L1_003",
+  "level": "L1",
+  "metrics": {
+    "source_words": 253
+  },
+  "paper_id": "mathlib4",
+  "paper_title": "",
+  "problem_id": "ana_four_L1_003",
+  "references": [],
+  "subfields": [
+    "FourierTransform"
+  ],
+  "target_decl": "tendsto_integral_gaussian_smul",
+  "target_kind": "lemma",
+  "text": "\\begin{lemma}[tendsto_integral_gaussian_smul] Suppose that  $f\\in L^{1}(V;E)$ and $f$  is continuous at $v\\in V$. Then we have:\n    \\[\n\\lim_{c\\to\\infty}\n\\int_{w\\in V}\n\\Bigl((\\pi c)^{\\frac{\\dim_{\\mathbb R}V}{2}}\\;\ne^{-\\pi^{2}c\\,\\|v-w\\|^{2}}\\Bigr)\\, f(w)\\,d\\mu(w)\n= f(v),\n\\]\nunder the hypotheses that $f$ is integrable and continuous at $v$.\n\\end{lemma}\n\n\\begin{proof}\nDefine the fixed Gaussian\n\\[\n\\varphi(w) := \\pi^{\\frac n2} e^{-\\pi^2 \\|w\\|^2},\n\\qquad w \\in V.\n\\]\nConsider the family of kernels\n\\[\nK_c(w) := c^n\\, \\varphi(c w), \\qquad c > 0.\n\\]\nThen\n\\[\n\\int_V K_c(w)\\, d\\mu(w)\n=\n\\int_V c^n \\varphi(c w)\\, d\\mu(w)\n= 1,\n\\]\nby the standard Gaussian integral formula. Moreover, $K_c \\ge 0$ and the family $\\{K_c\\}_{c>0}$ concentrates at the origin:\nfor any $\\varepsilon>0$,\n\\[\n\\int_{\\|w\\|>\\varepsilon} K_c(w)\\, d\\mu(w) \\longrightarrow 0\n\\qquad (c\\to\\infty),\n\\]\nsince $\\varphi$ has exponential decay and $t^{\\alpha} e^{-t} \\to 0$ as $t \\to \\infty$ for any $\\alpha>0$.\n\nBy the standard approximate identity theorem, using the integrability of $f$ and continuity of $f$ at $v$, we obtain\n\\[\n\\lim_{c \\to \\infty}\n\\int_V c^n \\varphi\\bigl(c(v-w)\\bigr)\\, f(w)\\, d\\mu(w)\n= f(v).\n\\]\nReplacing $c$ by $c^{1/2}$ yields\n\\begin{equation} \\tag{$\\dagger$}\n\\lim_{c \\to \\infty}\n\\int_V (c^{1/2})^n \\varphi\\bigl((c^{1/2})(v-w)\\bigr)\\, f(w)\\, d\\mu(w)\n= f(v),\n\\end{equation}\nFor $c>0$ and all $w\\in V$, we compute\n\\[\n(c^{1/2})^n \\varphi\\bigl((c^{1/2})(v-w)\\bigr)\n=\n\\pi^{\\frac n2} c^{\\frac n2}\n\\exp\\!\\bigl(-\\pi^2 \\|(c^{1/2})(v-w)\\|^2\\bigr).\n\\]\nSince $\\|(c^{1/2})(v-w)\\|^2 = c\\,\\|v-w\\|^2$, this simplifies to\n\\[\n(\\pi c)^{\\frac n2} e^{-\\pi^2 c \\|v-w\\|^2}.\n\\]\n\n\nTherefore, for all sufficiently large $c$, the integrand in ($\\dagger$) coincides with the integrand in the statement. Hence,\n\\[\n\\lim_{c \\to \\infty}\n\\int_V\n(\\pi c)^{\\frac n2} e^{-\\pi^2 c \\|v-w\\|^2}\\, f(w)\\, d\\mu(w)\n= f(v),\n\\]\nas claimed.\n\\end{proof}\n",
+  "toolchain": {
+    "lean": "4.27.0-rc1"
+  },
+  "translation_direction": "backward",
+  "types": [
+    "theorem_stmt",
+    "def",
+    "proof"
+  ],
+  "updated_at": "2026-07-03T19:11:25.501886+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Filter MeasureTheory Complex Module Metric Real Bornology\nopen scoped Topology FourierTransform RealInnerProductSpace Complex\n\n/-\nFormalize in Lean the Lemma (tendsto_integral_gaussian_smul) from Text.\n\nThe lemma must be named `tendsto_integral_gaussian_smul`.\n   Matched text (candidate 0, lemma, label=tendsto_integral_gaussian_smul): \\begin{lemma}[tendsto_integral_gaussian_smul] Suppose that $f\\in L^{1}(V;E)$ and $f$ is\n                                                                            continuous at $v\\in V$. Then we have: \\[ \\lim_{c\\to\\infty} \\int_{w\\in V} \\Bigl((\\pi\n                                                                            c)^{\\frac{\\dim_{\\mathbb R}V}{2}}\\; e^{-\\pi^{2}c\\,\\|v-w\\|^{2}}\\Bigr)\\, f(w)\\,d\\mu(w) = f(v),\n                                                                            \\] under the hypotheses that $f$ is integrable and continuous at $v$. \\end{lemma}\n-/\n"
+}

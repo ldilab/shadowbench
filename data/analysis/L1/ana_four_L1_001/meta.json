@@ -1,0 +1,31 @@
+{
+  "area": "Analysis",
+  "created_at": "2026-01-01T01:27:57+00:00",
+  "id": "analysis/L1/ana_four_L1_001",
+  "level": "L1",
+  "metrics": {
+    "source_words": 142
+  },
+  "paper_id": "mathlib4",
+  "paper_title": "",
+  "problem_id": "ana_four_L1_001",
+  "references": [],
+  "subfields": [
+    "Fourier"
+  ],
+  "target_decl": "fourierIntegral_const_smul",
+  "target_kind": "theorem",
+  "text": "\\begin{definition}[fourierIntegral] Let $K$ be a commutative ring and let $V, W$ be modules over $K$. \n\nLet $E$ be a complete normed  $\\mathbb{C}$-vector space, $\\mu$ be a measure on $V$, $L : V \\times W \\to K$ a bilinear form, and let $e : K \\to \\mathbb{S}$ be an additive character.  \nFor a function $f : V \\to E$, its Fourier transform is defined:\n\\[\n\\widehat{f}_{e,\\mu,L}(w)\n\\;:=\\;\n\\int_V e\\!\\bigl(-L(v,w)\\bigr)\\, f(v)\\, d\\mu(v),\n\\qquad w \\in W.\n\\]\nWe define $\\mathcal F_{e,\\mu,L}(f) = \\widehat{f}_{e,\\mu,L}$.\n\\end{definition}\n\n\n\\begin{theorem}[fourierIntegral_const_smul]\nLet $r \\in \\mathbb{C}$. Then $\n\\mathcal F_{e,\\mu,L}(r \\cdot f)\n\\;=\\;\nr \\cdot \\widehat{f}_{e,\\mu,L}. $\n\\end{theorem}\n\\begin{proof}\n    We show that the two functions are equal at any $w \\in W$.\n\\[\n\\begin{aligned}\n\\hat{rf}_{e,\\mu,L}(w)\n&=\n\\int_V e\\!\\bigl(-L(v,w)\\bigr)\\, (r \\cdot f(v))\\, d\\mu(v) \\\\\n&=\nr \\int_V e\\!\\bigl(-L(v,w)\\bigr)\\, f(v)\\, d\\mu(v)\n\\qquad\\text{(linearity of the integral)} \\\\\n&=\nr \\cdot \\widehat{f}_{e,\\mu,L}(w).\n\\end{aligned}\n\\]\n\\end{proof}\n",
+  "toolchain": {
+    "lean": "4.27.0-rc1"
+  },
+  "translation_direction": "backward",
+  "types": [
+    "def",
+    "theorem_stmt",
+    "proof"
+  ],
+  "updated_at": "2026-07-03T19:11:15.300862+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open MeasureTheory Filter\nopen scoped Topology\n\n/-\nFormalize in Lean the following named items from Text.\n\n1. Definition (fourierIntegral)\n   The definition must be named `fourierIntegral`.\n   Matched text (candidate 0, definition, label=fourierIntegral): \\begin{definition}[fourierIntegral] Let $K$ be a commutative ring and let $V, W$ be modules\n                                                                  over $K$. Let $E$ be a complete normed $\\mathbb{C}$-vector space, $\\mu$ be a measure on $V$,\n                                                                  $L : V \\times W \\to K$ a bilinear form, and let $e : K \\to \\mathbb{S}$ be an additive\n                                                                  character. For a function $f : V \\to E$, its Fourier transform is defined: \\[\n                                                                  \\widehat{f}_{e,\\mu,L}(w) \\;:=\\; \\int_V e\\!\\bigl(-L(v,w)\\bigr)\\, f(v)\\,…\n2. Theorem (fourierIntegral_const_smul)\n   The theorem must be named `fourierIntegral_const_smul`.\n   Matched text (candidate 1, theorem, label=fourierIntegral_const_smul): \\begin{theorem}[fourierIntegral_const_smul] Let $r \\in \\mathbb{C}$. Then $ \\mathcal\n                                                                          F_{e,\\mu,L}(r \\cdot f) \\;=\\; r \\cdot \\widehat{f}_{e,\\mu,L}. $ \\end{theorem}\n\nEvery listed named item must be formalized with exactly the stated Lean name.\n-/\n"
+}

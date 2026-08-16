@@ -1,0 +1,26 @@
+{
+  "id": "analysis/L2/ana_pde_L2_001",
+  "paper_id": "",
+  "paper_title": "",
+  "area": "analysis",
+  "level": "L2",
+  "problem_id": "ana_pde_L2_001",
+  "types": [
+    "theorem_stmt"
+  ],
+  "subfields": [
+    "PDE",
+    "Analysis"
+  ],
+  "text": "\n\\begin{theorem}[Strict maximum principle for elliptic operators]\nLet $\\Omega\\subset \\mathbb{R}^n$ be connected and open. Let\n\\[\nLu\n=\n\\sum_{i,j=1}^n a^{ij}(x)u_{ij}\n+\n\\sum_{i=1}^n b^i(x)u_i\n+\nc(x)u\n\\]\nbe uniformly elliptic in $\\Omega$, where $a^{ij},b^i,c$ are continuous and\n\\[\nc(x)\\le 0 \\qquad \\text{in } \\Omega.\n\\]\nSuppose\n\\[\nu\\in C^2(\\Omega), \\qquad Lu\\ge 0 \\quad \\text{in } \\Omega.\n\\]\nIf $u$ attains a nonnegative maximum at an interior point $x_0\\in \\Omega$, i.e.\n\\[\nu(x_0)=\\max_{\\Omega}u=:M\\ge 0,\n\\]\nthen\n\\[\nu\\equiv M\n\\qquad \\text{in } \\Omega.\n\\]\n\\end{theorem}\n\\begin{proof}\nLet $M=\\max_{\\Omega}u$ and set $v:=M-u$. Then $v\\ge 0$, $v(x_0)=0$, and $Lv\\le 0$.\n\nLet $A:=\\{x\\in\\Omega:\\, v(x)=0\\}$. Then $A$ is closed and nonempty.\n\nIf $z\\in A$ is not interior, pick $y\\notin A$ and a ball $B_\\rho(y)\\subset\\Omega$ tangent to $A$ at $z_0\\in A$; then $v>0$ in $B_\\rho(y)$ and $v(z_0)=0$.\n\nBy the Hopf lemma, $\\partial_\\nu v(z_0)<0$, but $z_0$ is an interior minimum of $v$, so $\\nabla v(z_0)=0$ — contradiction.\n\nHence $A$ is open; since $\\Omega$ is connected, $A=\\Omega$, so $u\\equiv M$.\n\\end{proof}\n\n\n\n\\begin{lemma}[Hopf lemma]\nLet $\\Omega\\subset \\mathbb{R}^n$ be a domain and let $L$ be uniformly elliptic\nwith continuous coefficients and $c\\le 0$.\n\nSuppose\n\\[\nu\\in C^2(\\Omega)\\cap C(\\overline{\\Omega}),\n\\qquad\nLu\\le 0 \\quad \\text{in } \\Omega.\n\\]\nLet $x_0\\in \\partial\\Omega$ satisfy the interior sphere condition.\n\nIf\n\\[\nu(x_0)=\\min_{\\overline{\\Omega}} u,\n\\qquad\nu(x)>u(x_0)\\ \\text{for all }x\\in \\Omega,\n\\]\nthen\n\\[\n\\frac{\\partial u}{\\partial \\nu}(x_0)<0,\n\\]\nwhere $\\nu$ is the outward unit normal at $x_0$.\n\\end{lemma}\n\n\\begin{lemma}[Interior extremum condition]\nLet $u\\in C^2(\\Omega)$ and suppose $x_0\\in \\Omega$ is a local maximum (or minimum).\nThen\n\\[\n\\nabla u(x_0)=0,\n\\qquad\nD^2 u(x_0)\\le 0 \\; (\\text{resp. } \\ge 0).\n\\]\n\\end{lemma}",
+  "references": [],
+  "toolchain": {
+    "lean": "4.28.0"
+  },
+  "metrics": {
+    "source_words": 260
+  },
+  "created_at": "2026-04-30T16:09:05+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-03T19:13:22.855003+00:00"
+}

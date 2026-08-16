@@ -1,0 +1,23 @@
+{
+  "id": "geometry/L1/geo_gen_L1_006",
+  "paper_id": "",
+  "paper_title": "",
+  "area": "geometry",
+  "level": "L1",
+  "problem_id": "geo_gen_L1_006",
+  "types": [
+    "theorem_stmt"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[napoleons_theorem_inner]\\label{thm:napoleon_inner}\nLet $A,B,C$ be non-collinear points in the plane.\nOn each side of $\\triangle ABC$, construct an equilateral triangle \\emph{internally} (all three on the same ``inner'' side).\nLet $X,Y,Z$ be the centroids of the equilateral triangles on $AB,BC,CA$, respectively.\nThen $\\triangle XYZ$ is equilateral.\n\\end{theorem}\n\n\\begin{theorem}[napoleons_theorem_outer]\\label{thm:napoleon_outer}\nLet $A,B,C$ be non-collinear points in the plane.\nOn each side of $\\triangle ABC$, construct an equilateral triangle \\emph{externally} (all three on the same ``outer'' side).\nLet $X,Y,Z$ be the centroids of the equilateral triangles on $AB,BC,CA$, respectively.\nThen $\\triangle XYZ$ is equilateral.\n\\end{theorem}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 90
+  },
+  "created_at": "2026-01-29T23:13:39+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-05-24T14:23:43+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Module\nopen scoped Real RealInnerProductSpace BigOperators\n\n/-\nFormalize in Lean the following named items from Text.\n\n1. Theorem (napoleons_theorem_inner)\n   The theorem must be named `napoleons_theorem_inner`.\n   Matched text (candidate 0, theorem, label=napoleons_theorem_inner): \\begin{theorem}[napoleons_theorem_inner]\\label{thm:napoleon_inner} Let $A,B,C$ be\n                                                                       non-collinear points in the plane. On each side of $\\triangle ABC$, construct an equilateral\n                                                                       triangle \\emph{internally} (all three on the same ``inner'' side). Let $X,Y,Z$ be the\n                                                                       centroids of the equilateral triangles on $AB,BC,CA$, respectively. Then $\\triangle XYZ$ is\n                                                                       equilateral. \\end{theorem}\n2. Theorem (napoleons_theorem_outer)\n   The theorem must be named `napoleons_theorem_outer`.\n   Matched text (candidate 1, theorem, label=napoleons_theorem_outer): \\begin{theorem}[napoleons_theorem_outer]\\label{thm:napoleon_outer} Let $A,B,C$ be\n                                                                       non-collinear points in the plane. On each side of $\\triangle ABC$, construct an equilateral\n                                                                       triangle \\emph{externally} (all three on the same ``outer'' side). Let $X,Y,Z$ be the\n                                                                       centroids of the equilateral triangles on $AB,BC,CA$, respectively. Then $\\triangle XYZ$ is\n                                                                       equilateral. \\end{theorem}\n\nEvery listed named item must be formalized with exactly the stated Lean name.\n-/\n"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "probability/L1/prob_gen_L1_002",
+  "paper_id": "arXiv:2012.09942",
+  "paper_title": "On the Borel-Cantelli Lemmas, the Erdős-Rényi Theorem, and the Kochen-Stone Theorem",
+  "area": "probability",
+  "level": "L1",
+  "problem_id": "prob_gen_L1_002",
+  "types": [
+    "theorem_stmt"
+  ],
+  "subfields": [
+    "LimitTheorems",
+    "BorelCantelli"
+  ],
+  "text": "\\begin{theorem}[Quantitative second Borel--Cantelli lemma]\nLet $(A_i)_{i=1}^{\\infty}$ be mutually independent events. Suppose that\n$\\omega:\\mathbb{N}_{>0}\\to\\mathbb{N}_{>0}$ is a rate of divergence for\ntheir cumulative probabilities, meaning that\n\\[\n\\sum_{i=1}^{\\omega(N)}\\mathbb{P}(A_i)\\geq N\n\\qquad\\text{for every }N\\geq 1.\n\\]\nThen, for all $n,N\\geq 1$,\n\\[\n\\mathbb{P}\\!\\left(\\bigcup_{i=n}^{\\omega(n+N-1)}A_i\\right)\n\\geq 1-e^{-N}.\n\\]\n\\end{theorem}\n",
+  "references": [
+    {
+      "source": "arxiv",
+      "id": "arXiv:2012.09942v3",
+      "url": "https://arxiv.org/abs/2012.09942",
+      "item": "Theorem 2.2"
+    }
+  ],
+  "toolchain": {
+    "lean": "4.27.0-rc1",
+    "mathlib": "024fc398dbd3648262e78da99efa2ad9aeeb5d6f"
+  },
+  "metrics": {
+    "source_words": 169
+  },
+  "created_at": "2026-07-12T00:00:00+09:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-12T14:04:26+00:00",
+  "formalization_rules": "\\begin{theorem}[Quantitative second Borel--Cantelli lemma]\nLet $(A_i)_{i=1}^{\\infty}$ be mutually independent events. Suppose that\n$\\omega:\\mathbb{N}_{>0}\\to\\mathbb{N}_{>0}$ is a rate of divergence for\ntheir cumulative probabilities, meaning that\n\\[\n\\sum_{i=1}^{\\omega(N)}\\mathbb{P}(A_i)\\geq N\n\\qquad\\text{for every }N\\geq 1.\n\\]\nThen, for all $n,N\\geq 1$,\n\\[\n\\mathbb{P}\\!\\left(\\bigcup_{i=n}^{\\omega(n+N-1)}A_i\\right)\n\\geq 1-e^{-N}.\n\\]\n\\end{theorem}\n"
+}

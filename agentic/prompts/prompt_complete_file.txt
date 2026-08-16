@@ -1,0 +1,25 @@
+Complete the target Lean theorem file, making it sorry-free and ensuring it compiles without errors.
+
+Use the tool `lean_diagnostic_messages` to verify the file. Errors mean "severity 1" in the response.
+
+IMPORTANT:
+- Do NOT write a detailed full proof plan upfront. Instead, write a 1-2 sentence high-level idea, then implement one step at a time, checking `lean_goal` after each step to plan the next.
+- Verify the file again after each update using `lean_diagnostic_messages`.
+- You may add helper lemmas, but do not create new axioms.
+
+Tips:
+- Use `simp` first, then `simp?` to get minimal simp lemmas.
+- Use `native_decide` for computational results.
+- Use `#eval` to evaluate expressions.
+- Use `norm_cast` for type conversions.
+- Use `apply?` to find applicable lemmas.
+- If `decide` times out, do NOT simply increase `maxHeartbeats`. Instead, write a symbolic proof using mathematical reasoning and lemmas from Mathlib.
+
+At the end of your response, include:
+END_REASON:{reason}
+
+where {reason} is:
+- LIMIT — if stopped due to limits or there are still sorries/errors
+- COMPLETE — only if the file is sorry-free AND compiles without errors
+
+IMPORTANT: Use `lean_diagnostic_messages` to verify, do not use `lake build`.

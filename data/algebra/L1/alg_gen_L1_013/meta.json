@@ -1,0 +1,28 @@
+{
+  "area": "Algebra",
+  "created_at": "2025-12-30T12:53:39+00:00",
+  "id": "algebra/L1/alg_gen_L1_013",
+  "level": "L1",
+  "metrics": {
+    "source_words": 84
+  },
+  "paper_id": "Cox-Chap4-Thm",
+  "paper_title": "",
+  "problem_id": "alg_gen_L1_013",
+  "references": [],
+  "subfields": [],
+  "target_decl": "zariskiClosure_is_smallest_algebraic_set",
+  "target_kind": "theorem",
+  "text": "\\begin{theorem}[zariskiClosure_is_smallest_algebraic_set]\nIf $S \\subseteq k^n$, the affine algebraic set $\\mathbf{V}(\\mathbf{I}(S))$ is the \\emph{smallest algebraic set that contains} $S$ [in the sense that if $W \\subseteq k^n$ is any affine algebraic set containing $S$, then $\\mathbf{V}(\\mathbf{I}(S)) \\subseteq W$].\n\\end{theorem}\n\n\\begin{proof}\nIf $W \\supseteq S$, then $\\mathbf{I}(W) \\subseteq \\mathbf{I}(S)$ because $\\mathbf{I}$ is inclusion-reversing. But then $\\mathbf{V}(\\mathbf{I}(W)) \\supseteq \\mathbf{V}(\\mathbf{I}(S))$ because $\\mathbf{V}$ also reverses inclusions. Since $W$ is an affine algebraic set, $\\mathbf{V}(\\mathbf{I}(W)) = W$ by The Ideal–Variety Correspondence, and the result follows.\n\\end{proof}\n",
+  "toolchain": {
+    "lean": "4.27.0-rc1"
+  },
+  "translation_direction": "forward",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "updated_at": "2026-07-03T19:09:30.386522+00:00",
+  "custom_module": "no",
+  "formalization_rules": "/-\nFormalize in Lean the Theorem (zariskiClosure_is_smallest_algebraic_set) from Text.\n\nThe theorem must be named `zariskiClosure_is_smallest_algebraic_set`.\n   Matched text (candidate 0, theorem, label=zariskiClosure_is_smallest_algebraic_set): \\begin{theorem}[zariskiClosure_is_smallest_algebraic_set] If $S \\subseteq k^n$, the affine\n                                                                                        algebraic set $\\mathbf{V}(\\mathbf{I}(S))$ is the \\emph{smallest algebraic set that contains}\n                                                                                        $S$ [in the sense that if $W \\subseteq k^n$ is any affine algebraic set containing $S$, then\n                                                                                        $\\mathbf{V}(\\mathbf{I}(S)) \\subseteq W$]. \\end{theorem}\n-/\n"
+}

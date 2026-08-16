@@ -1,0 +1,36 @@
+{
+  "id": "number-theory/L1/nt_gen_L1_001",
+  "paper_id": "arXiv:2511.15850",
+  "paper_title": "Elementary Bounds on Digital Sums of Powers, Factorials, and LCMs",
+  "area": "number-theory",
+  "level": "L1",
+  "problem_id": "nt_gen_L1_001",
+  "types": [
+    "theorem_stmt"
+  ],
+  "subfields": [
+    "digital representations",
+    "elementary number theory"
+  ],
+  "text": "\\begin{lemma}\nLet $m$ and $r$ be positive integers, and let $b \\ge 2$ be an integer. Write the base-$b$ expansion of $m$ as\n\\[\nm=\\sum_{i\\ge 0} d_i b^i, \\qquad 0\\le d_i<b,\n\\]\nwith all but finitely many $d_i$ equal to zero, and define its base-$b$ digit sum by $s_b(m)=\\sum_{i\\ge 0}d_i$. If $b^r-1$ divides $m$, then\n\\[\ns_b(m)\\ge (b-1)r.\n\\]\n\\end{lemma}\n",
+  "target_decl": "digit_sum_lower_bound_of_pow_sub_one_dvd",
+  "target_kind": "theorem",
+  "references": [
+    {
+      "source": "arXiv:2511.15850v2",
+      "item": "Lemma 2",
+      "url": "https://arxiv.org/abs/2511.15850v2"
+    }
+  ],
+  "toolchain": {
+    "lean": "4.27.0-rc1",
+    "mathlib": "024fc398dbd3648262e78da99efa2ad9aeeb5d6f"
+  },
+  "metrics": {
+    "source_words": 232
+  },
+  "created_at": "2026-07-12T02:59:42+09:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-12T14:04:26+00:00",
+  "formalization_rules": "\\begin{lemma}\nLet $m$ and $r$ be positive integers, and let $b \\ge 2$ be an integer. Write the base-$b$ expansion of $m$ as\n\\[\nm=\\sum_{i\\ge 0} d_i b^i, \\qquad 0\\le d_i<b,\n\\]\nwith all but finitely many $d_i$ equal to zero, and define its base-$b$ digit sum by $s_b(m)=\\sum_{i\\ge 0}d_i$. If $b^r-1$ divides $m$, then\n\\[\ns_b(m)\\ge (b-1)r.\n\\]\n\\end{lemma}\n"
+}

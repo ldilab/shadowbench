@@ -1,0 +1,29 @@
+{
+  "area": "Analysis",
+  "created_at": "2026-01-01T14:12:02+00:00",
+  "id": "analysis/L1/ana_gen_L1_001",
+  "level": "L1",
+  "metrics": {
+    "source_words": 131
+  },
+  "paper_id": "mathlib4",
+  "paper_title": "",
+  "problem_id": "ana_gen_L1_001",
+  "references": [],
+  "subfields": [],
+  "target_decl": "AnalyticAt.meromorphicAt",
+  "target_kind": "lemma",
+  "text": "\\begin{definition}[MeromorphicAt] Let $\\mathbb{K}$ be a nontrivially normed field and let $E$ be a normed vector space over $\\mathbb{K}$. Let $f : \\mathbb{K} \\to E$ be an $E$-valued function on $\\mathbb K$ and let $x \\in \\mathbb{K}$. We say that $f$ is \\emph{meromorphic at $x$} if there exists $n \\in \\mathbb{N}$ such that the function\n\\[\nz \\longmapsto (z - x)^n f(z)\n\\]\nis analytic at $x$.\n\\end{definition}\n\n\\begin{lemma}[AnalyticAt.meromorphicAt] \nLet $f : \\mathbb K \\to E$ and let $x \\in \\mathbb K$. If $f$ is analytic at $x$, then $f$ is meromorphic at $x$.\n\\end{lemma}\n\n\n\\begin{proof}\nAssume that $f$ is analytic at $x$. Choose $n = 0$. Then\n\\[\n(z - x)^0 f(z) = f(z),\n\\]\nwhich is analytic at $x$ by assumption. Hence $f$ is meromorphic at $x$ by definition.\n\\end{proof}\n",
+  "toolchain": {
+    "lean": "4.27.0-rc1"
+  },
+  "translation_direction": "backward",
+  "types": [
+    "theorem_stmt",
+    "def",
+    "proof"
+  ],
+  "updated_at": "2026-05-20T16:45:37+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Filter Set\nopen scoped Topology\n\n/-\nFormalize in Lean the following named items from Text.\n\n1. Definition (MeromorphicAt)\n   The definition must be named `MeromorphicAt`.\n   Matched text (candidate 0, definition, label=MeromorphicAt): \\begin{definition}[MeromorphicAt] Let $\\mathbb{K}$ be a nontrivially normed field and let\n                                                                $E$ be a normed vector space over $\\mathbb{K}$. Let $f : \\mathbb{K} \\to E$ be an $E$-valued\n                                                                function on $\\mathbb K$ and let $x \\in \\mathbb{K}$. We say that $f$ is \\emph{meromorphic at\n                                                                $x$} if there exists $n \\in \\mathbb{N}$ such that the function \\[ z \\longmapsto (z - x)^n\n                                                                f(z) \\] is analytic at $x$. \\end{definition}\n2. Lemma (AnalyticAt.meromorphicAt)\n   The lemma must be named `AnalyticAt.meromorphicAt`.\n   Matched text (candidate 1, lemma, label=AnalyticAt.meromorphicAt): \\begin{lemma}[AnalyticAt.meromorphicAt] Let $f : \\mathbb K \\to E$ and let $x \\in \\mathbb K$.\n                                                                      If $f$ is analytic at $x$, then $f$ is meromorphic at $x$. \\end{lemma}\n\nEvery listed named item must be formalized with exactly the stated Lean name.\n-/\n"
+}

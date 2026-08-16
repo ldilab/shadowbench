@@ -1,0 +1,23 @@
+{
+  "id": "geometry/L1/geo_gen_L1_012",
+  "paper_id": "Lee-Chap4-Ex",
+  "paper_title": "",
+  "area": "geometry",
+  "level": "L1",
+  "problem_id": "geo_gen_L1_012",
+  "types": [
+    "theorem_stmt"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[gamma_is_smooth_immersion]\nLet $\\mathbb{T}^2 = \\mathbb{S}^1 \\times \\mathbb{S}^1 \\subseteq \\mathbb{C}^2$ denote the torus, and let $\\alpha$ be any irrational number. The map $\\gamma: \\mathbb{R} \\to \\mathbb{T}^2$ given by\n\\[ \\gamma(t) = \\left(e^{2\\pi i t}, e^{2\\pi i \\alpha t}\\right) \\]\nis a smooth immersion.\n\\end{theorem}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 50
+  },
+  "created_at": "2026-02-24T17:48:58+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-03T16:24:03.522138+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Complex Real Manifold\n\n/-\nFormalize in Lean the Theorem (gamma_is_smooth_immersion) from Text.\n\nThe theorem must be named `gamma_is_smooth_immersion`.\n   Matched text (candidate 0, theorem, label=gamma_is_smooth_immersion): \\begin{theorem}[gamma_is_smooth_immersion] Let $\\mathbb{T}^2 = \\mathbb{S}^1 \\times\n                                                                         \\mathbb{S}^1 \\subseteq \\mathbb{C}^2$ denote the torus, and let $\\alpha$ be any irrational\n                                                                         number. The map $\\gamma: \\mathbb{R} \\to \\mathbb{T}^2$ given by \\[ \\gamma(t) = \\left(e^{2\\pi\n                                                                         i t}, e^{2\\pi i \\alpha t}\\right) \\] is a smooth immersion. \\end{theorem}\n-/\n"
+}

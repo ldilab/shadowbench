@@ -1,0 +1,26 @@
+{
+  "area": "Algebra",
+  "created_at": "2025-12-15T14:50:52+00:00",
+  "id": "algebra/L1/alg_gen_L1_002",
+  "level": "L1",
+  "metrics": {
+    "source_words": 159
+  },
+  "paper_id": "Cox-Chap2-Ex",
+  "paper_title": "",
+  "problem_id": "alg_gen_L1_002",
+  "references": [],
+  "subfields": [],
+  "target_decl": "division_algorithm_existence",
+  "target_kind": "theorem",
+  "text": "\\begin{theorem}[exists_nonzero_remainder_of_lt_span_leadingTerms]\nSuppose that $I=\\langle f_1,\\dots,f_s\\rangle$ is an ideal such that $\\langle \\operatorname{LT}(f_1),\\dots,\\operatorname{LT}(f_s)\\rangle$ is strictly smaller than $\\langle \\operatorname{LT}(I)\\rangle$.\n\\begin{enumerate}\n\\item[(a)] Prove that there is some $f\\in I$ whose remainder on division by $f_1,\\dots,f_s$ is nonzero.\n\\end{enumerate}\n\\end{theorem}\n\n\\begin{proof}\nSince\n\\[\n  \\langle \\operatorname{LT}(f_1),\\ldots,\\operatorname{LT}(f_s)\\rangle\n  \\subsetneq\n  \\langle \\operatorname{LT}(I)\\rangle,\n\\]\nthere exists an element \\(f\\in I\\) such that\n\\[\n  \\operatorname{LT}(f)\\notin\n  \\langle \\operatorname{LT}(f_1),\\ldots,\\operatorname{LT}(f_s)\\rangle .\n\\]\nDivide \\(f\\) by \\(B=\\{f_1,\\ldots,f_s\\}\\). By the division algorithm, we get\n\\[\n  f=\\sum_{i=1}^s q_i f_i+r,\n\\]\nwhere \\(r\\) is the remainder, and no term of \\(r\\) is divisible by any\n\\(\\operatorname{LT}(f_i)\\).\n\nSuppose, for contradiction, that \\(r=0\\). Then\n\\[\n  f=\\sum_{i=1}^s q_i f_i.\n\\]\nBy the division algorithm, every nonzero term \\(q_i f_i\\) has leading term no larger\nthan \\(\\operatorname{LT}(f)\\). Hence the leading term of \\(f\\) must be divisible by\none of the \\(\\operatorname{LT}(f_i)\\). Therefore\n\\[\n  \\operatorname{LT}(f)\\in\n  \\langle \\operatorname{LT}(f_1),\\ldots,\\operatorname{LT}(f_s)\\rangle,\n\\]\ncontradicting the choice of \\(f\\).\n\nThus \\(r\\neq 0\\). Hence there exists \\(f\\in I\\) whose remainder on division by\n\\(B\\) is nonzero.\n\\end{proof}\n",
+  "toolchain": {},
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "updated_at": "2026-05-17T05:01:40+00:00",
+  "custom_module": "no",
+  "translation_direction": "forward",
+  "formalization_rules": "open MvPolynomial MonomialOrder\nopen scoped MonomialOrder\n\n/-\nFormalize in Lean the Theorem (exists_nonzero_remainder_of_lt_span_leadingTerms) from Text.\n\nThe theorem must be named `exists_nonzero_remainder_of_lt_span_leadingTerms`.\n   Matched text (candidate 0, theorem, label=exists_nonzero_remainder_of_lt_span_leadingTerms): \\begin{theorem}[exists_nonzero_remainder_of_lt_span_leadingTerms] Suppose that $I=\\langle\n                                                                                                f_1,\\dots,f_s\\rangle$ is an ideal such that $\\langle\n                                                                                                \\operatorname{LT}(f_1),\\dots,\\operatorname{LT}(f_s)\\rangle$ is strictly smaller than\n                                                                                                $\\langle \\operatorname{LT}(I)\\rangle$. \\begin{enumerate} \\item[(a)] Prove that there is some\n                                                                                                $f\\in I$ whose remainder on division by $f_1,\\dots,f_s$ is nonzero. \\end{enumerate}\n                                                                                                \\end{theorem}\n-/\n"
+}

@@ -1,0 +1,6 @@
+\begin{theorem}[isDominant_iff_forall_genericPoints_mem_fiber]
+Let \(f : X \to Y\) be a quasi-compact morphism. Then, \(f\) is dominant if and only if for every generic point \(y\) of an irreducible component of \(Y\), the fiber \(f^{-1}(y)\) contain the generic point of an irreducible component of \(X\).
+\end{theorem}
+\begin{proof}
+It is immediate that the condition is sufficient even without assuming \(f\) quasi-compact. To see that it is necessary, consider an affine open neighborhood \(U\) of \(y\); \(f^{-1}(U)\) is quasi-compact, hence a finite union of affine opens \(V_i\), and the hypothesis that \(f\) is dominant implies that \(y\) belongs to the closure in \(U\) of one of the \(f(V_i)\). One may clearly suppose \(X\) and \(Y\) reduced; since the closure in \(X\) of an irreducible component of \(V_i\) is an irreducible component of \(X\), one may replace \(X\) by \(V_i\), and \(Y\) by the reduced closed subscheme of \(U\) having \(\overline{f(V_i)}\cap U\) as underlying topological space, and one is thus reduced to proving the proposition when \(X=\mathrm{Spec}(A)\), \(Y=\mathrm{Spec}(B)\) are affine and reduced. Since \(f\) is dominant, \(B\) is then a subring of \(A\), and the proposition follows from the fact that every minimal prime ideal of \(B\) is the intersection of \(B\) with a minimal prime ideal of \(A\).
+\end{proof}

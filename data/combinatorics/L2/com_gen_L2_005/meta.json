@@ -1,0 +1,25 @@
+{
+  "id": "combinatorics/L2/com_gen_L2_005",
+  "paper_id": "",
+  "paper_title": "",
+  "area": "combinatorics",
+  "level": "L2",
+  "problem_id": "com_gen_L2_005",
+  "types": [
+    "def",
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{definition}[IsBipartiteWith]\nLet \\(G\\) be a simple graph on a vertex set \\(V\\), and let \\(s,t \\subseteq V\\).\nWe say that \\(G\\) is \\emph{bipartite with respect to \\(s\\) and \\(t\\)} if:\n\\begin{enumerate}\n\\item \\(s\\) and \\(t\\) are disjoint, and\n\\item every edge of \\(G\\) connects a vertex in \\(s\\) to a vertex in \\(t\\)\n      (in one direction or the other).\n\\end{enumerate}\n\\end{definition}\n\n\\begin{theorem}[isBipartiteWith_sum_degrees_eq_card_edges]\nLet \\(G\\) be a finite simple graph, and let \\(s,t \\subseteq V\\) be a bipartition of \\(G\\)\nin the above sense. Then\n\\[\n\\sum_{v \\in s} \\deg_G(v) \\;=\\; |E(G)|.\n\\]\n\\end{theorem}\n\n\\begin{proof}\nEach edge of a bipartite graph has exactly one endpoint in \\(s\\) and the other endpoint in \\(t\\).\nWhen summing degrees over \\(s\\), every edge is counted exactly once (via its unique endpoint in \\(s\\)).\nTherefore the sum of degrees over \\(s\\) equals the total number of edges.\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 143
+  },
+  "created_at": "2026-02-09T23:03:23+00:00",
+  "translation_direction": "backward",
+  "updated_at": "2026-05-20T17:01:05+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open BigOperators Finset Fintype\n\n/-\nFormalize in Lean the following named items from Text.\n\n1. Definition (IsBipartiteWith)\n   The definition must be named `IsBipartiteWith`.\n   Matched text (candidate 0, definition, label=IsBipartiteWith): \\begin{definition}[IsBipartiteWith] Let \\(G\\) be a simple graph on a vertex set \\(V\\), and\n                                                                  let \\(s,t \\subseteq V\\). We say that \\(G\\) is \\emph{bipartite with respect to \\(s\\) and\n                                                                  \\(t\\)} if: \\begin{enumerate} \\item \\(s\\) and \\(t\\) are disjoint, and \\item every edge of\n                                                                  \\(G\\) connects a vertex in \\(s\\) to a vertex in \\(t\\) (in one direction or the other).\n                                                                  \\end{enumerate} \\end{definition}\n2. Theorem (isBipartiteWith_sum_degrees_eq_card_edges)\n   The theorem must be named `isBipartiteWith_sum_degrees_eq_card_edges`.\n   Matched text (candidate 1, theorem, label=isBipartiteWith_sum_degrees_eq_card_edges): \\begin{theorem}[isBipartiteWith_sum_degrees_eq_card_edges] Let \\(G\\) be a finite simple\n                                                                                         graph, and let \\(s,t \\subseteq V\\) be a bipartition of \\(G\\) in the above sense. Then \\[\n                                                                                         \\sum_{v \\in s} \\deg_G(v) \\;=\\; |E(G)|. \\] \\end{theorem}\n\nEvery listed named item must be formalized with exactly the stated Lean name.\n-/\n"
+}

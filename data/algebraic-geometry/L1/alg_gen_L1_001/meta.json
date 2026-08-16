@@ -1,0 +1,29 @@
+{
+  "area": "AlgebraicGeometry",
+  "created_at": "2026-01-23T02:30:17+00:00",
+  "id": "algebraic-geometry/L1/alg_gen_L1_001",
+  "level": "L1",
+  "metrics": {
+    "source_words": 369
+  },
+  "paper_id": "mathlib4",
+  "paper_title": "",
+  "problem_id": "alg_gen_L1_001",
+  "references": [],
+  "subfields": [],
+  "target_decl": "isLocallyNoetherian_of_affine_cover",
+  "target_kind": "theorem",
+  "text": "\\begin{definition}[IsLocallyNoetherian]\nA scheme $X$ is locally Noetherian if $\\mathcal{O}_X(U)$ is Noetherian for every affine open $U$.\n\\end{definition}\n\n\\begin{theorem}[isLocallyNoetherian_of_affine_cover] \nIf a scheme $X$ has an affine open covering $X = \\cup_{i \\in I} U_i$ such that each $\\Gamma(X,U_i)$ is Noetherian, then $X$ is locally Noetherian.\n\\end{theorem}\n\n\\begin{proof}\nBy the Affine communication lemma, it suffices to prove the following:\n(1) If $U$ is an affine open such that $\\Gamma(X,U)$ is Noetherian, then $\\Gamma(X,U_f)$ is Noetherian for every $f \\in \\Gamma(X,U)$.\n(2) If there exist a finite cover $U = \\cup_{i \\in S} U_{f_i}$ by basic opens with $f_i \\in \\Gamma(X,U)$ and each $\\Gamma(X,U_{f_i})$ Noetherian, $\\Gamma(X,U)$ is Noetherian.\n\nSince $\\Gamma(X,U_f) = \\Gamma(X,U)_f$ and the localization of a Noetherian ring is Noetherian, we have (1).\nFor (2), since $f_i$'s generate the unit ideal in $\\Gamma(X,U)$ from the given condition, it suffices to prove the following:\n\\begin{claim} \nLet $R$ be a commutative ring. If $f_1,\\cdots,f_r \\in R$ generate the unit ideal and each $R_{f_i}$ is Noetherian, then $R$ is Noetherian.\n\\end{claim}\n\n\\begin{proof}\nLet $\\varphi_i:R \\to R_{f_i}$ be the localization map, $i=1,\\cdots,r$. For any ideal $\\mathfrak{a} \\subseteq R$, we have\n\\[\n\\mathfrak{a} = \\bigcap_{i=1}^r \\varphi_i^{-1} (\\varphi_i(\\mathfrak{a}) \\cdot R_{f_i}).\n\\]\nIndeed, the inclusion $\\subseteq$ is obvious. Conversely, suppose $b \\in \\cap_i \\varphi_i^{-1} (\\varphi_i(\\mathfrak{a}) \\cdot R_{f_i})$. Then $\\varphi_i(b) = a_i/f_i^{n_i}$ in $A_{f_i}$ for each $i$, where $a_i \\in \\mathfrak{a}$ and $n_i >0$. Increasing $n_i$'s if necessary, we may choose all $n_i$'s equal to a fixed $n>0$. Then,\n\\[\nf_i^{m_i}(f_i^n b - a_i) = 0\n\\]\nin $R$ for some $m_i >0$. As before, we may take all $m_i$'s equal to a fixed $m>0$. Take $N=m+n$. Then $f_1^N,\\cdots,f_r^n$ generate the unit ideal in $R$ and hence we have\n\\[ \\sum_{i=1}^r c_i f_i^N = 1\n\\]\nin $R$ for some $c_i $'s. So we have\n\\[\nb = \\sum_{i=1}^r c_i f_i^N b =  \\sum_{i=1}^r c_i f_i^m a_i \\in \\mathfrak{a}.\n\\]\n\nNow consider an ascending chain of ideals\n\\[\nI_1 \\subseteq I_2 \\subseteq \\cdots\n\\]\nin $R$. For each $i$, we have\n\\[\n\\varphi_i^{-1} (\\varphi_i(I_1) \\cdot R_{f_i}) \\subseteq \\varphi_i^{-1} (\\varphi_i(I_2) \\cdot R_{f_i}) \\subseteq \\cdots\n\\]\nwhich stabilizes since $R_{f_i}$ is Noetherian. Since there are finitely many $f_i$'s, the original chain also stabilizes from the equality we have proved.\n\\end{proof}\n\\end{proof}",
+  "toolchain": {
+    "lean": "4.27.0-rc1"
+  },
+  "translation_direction": "backward",
+  "types": [
+    "def",
+    "theorem_stmt",
+    "proof"
+  ],
+  "updated_at": "2026-07-03T19:10:14.606854+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Opposite AlgebraicGeometry Localization IsLocalization TopologicalSpace CategoryTheory\n\n/-\nFormalize in Lean the following named items from Text.\n\n1. Definition (IsLocallyNoetherian)\n   The definition must be named `IsLocallyNoetherian`.\n   Matched text (candidate 0, definition, label=IsLocallyNoetherian): \\begin{definition}[IsLocallyNoetherian] A scheme $X$ is locally Noetherian if\n                                                                      $\\mathcal{O}_X(U)$ is Noetherian for every affine open $U$. \\end{definition}\n2. Theorem (isLocallyNoetherian_of_affine_cover)\n   The theorem must be named `isLocallyNoetherian_of_affine_cover`.\n   Matched text (candidate 1, theorem, label=isLocallyNoetherian_of_affine_cover): \\begin{theorem}[isLocallyNoetherian_of_affine_cover] If a scheme $X$ has an affine open\n                                                                                   covering $X = \\cup_{i \\in I} U_i$ such that each $\\Gamma(X,U_i)$ is Noetherian, then $X$ is\n                                                                                   locally Noetherian. \\end{theorem}\n\nEvery listed named item must be formalized with exactly the stated Lean name.\n-/"
+}

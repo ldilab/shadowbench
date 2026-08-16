@@ -1,0 +1,31 @@
+{
+  "area": "Analysis",
+  "created_at": "2026-01-01T15:13:52+00:00",
+  "id": "analysis/L1/ana_mero_L1_002",
+  "level": "L1",
+  "metrics": {
+    "source_words": 238
+  },
+  "paper_id": "mathlib4",
+  "paper_title": "",
+  "problem_id": "ana_mero_L1_002",
+  "references": [],
+  "subfields": [
+    "MeromorphicFunctions"
+  ],
+  "target_decl": "min_divisor_le_divisor_add",
+  "target_kind": "theorem",
+  "text": "\\begin{theorem}[min_divisor_le_divisor_add]\nLet $f_1,f_2 : \\mathbb K \\to E$ be meromorphic on a set $U \\subseteq \\mathbb K$, and let $z \\in U$. Assume that the order of $f_1+f_2$ at $z$ is finite.  Then\n\\[\n\\min\\bigl(\\operatorname{div}_U(f_1)(z),\\operatorname{div}_U(f_2)(z)\\bigr)\n\\;\\le\\;\n\\operatorname{div}_U(f_1+f_2)(z).\n\\]\n\\end{theorem}\n\n\\begin{proof}\nWe distinguish cases.\n\n\\medskip\n\\noindent\\textbf{Case 1: $z \\notin U$.}\nBy definition of the divisor, all divisor values at $z$ vanish:\n\\[\n\\operatorname{div}_U(f_1)(z)\n=\n\\operatorname{div}_U(f_2)(z)\n=\n\\operatorname{div}_U(f_1+f_2)(z)\n=\n0.\n\\]\nHence\n\\[\n\\min(0,0) \\le 0,\n\\]\nand the inequality holds.\n\n\\medskip\n\\noindent\\textbf{Case 2: $z \\in U$.}\nSince $f_1$, $f_2$, and $f_1+f_2$ are meromorphic on $U$, their divisors at $z$ are given by their orders, with the convention that infinite order contributes zero:\n\\[\n\\operatorname{div}_U(f_i)(z)\n=\n\\begin{cases}\n\\operatorname{ord}_z(f_i), & \\text{if } \\operatorname{ord}_z(f_i) \\text{ is finite},\\\\\n0, & \\text{if } \\operatorname{ord}_z(f_i)=\\infty,\n\\end{cases}\n\\qquad (i=1,2),\n\\]\nand similarly for $f_1+f_2$.\n\n\\medskip\n\\noindent\\textbf{Case 2a: $\\operatorname{ord}_z(f_1)=\\infty$.}\nThen $\\operatorname{div}_U(f_1)(z)=0$, so\n\\[\n\\min\\bigl(\\operatorname{div}_U(f_1)(z),\\operatorname{div}_U(f_2)(z)\\bigr)=0\n\\le\n\\operatorname{div}_U(f_1+f_2)(z),\n\\]\nand the claim follows.\n\n\\medskip\n\\noindent\\textbf{Case 2b: $\\operatorname{ord}_z(f_2)=\\infty$.}\nThis is symmetric to the previous case and yields the same conclusion.\n\n\\medskip\n\\noindent\\textbf{Case 2c: $\\operatorname{ord}_z(f_1)$ and $\\operatorname{ord}_z(f_2)$ are both finite.}\nIn this case, the divisor values coincide with the actual orders, and\n\\[\n\\min\\bigl(\\operatorname{div}_U(f_1)(z),\\operatorname{div}_U(f_2)(z)\\bigr)\n=\n\\min\\bigl(\\operatorname{ord}_z(f_1),\\operatorname{ord}_z(f_2)\\bigr).\n\\]\n\nSince $f_1$ and $f_2$ are meromorphic at $z$, the standard inequality for orders of sums gives\n\\[\n\\min\\bigl(\\operatorname{ord}_z(f_1),\\operatorname{ord}_z(f_2)\\bigr)\n\\;\\le\\;\n\\operatorname{ord}_z(f_1+f_2).\n\\]\nBy the assumption that $\\operatorname{ord}_z(f_1+f_2)$ is finite, we have\n\\[\n\\operatorname{ord}_z(f_1+f_2)\n=\n\\operatorname{div}_U(f_1+f_2)(z),\n\\]\nand combining the inequalities yields the desired result.\n\\end{proof}\n",
+  "toolchain": {
+    "lean": "4.27.0-rc1"
+  },
+  "translation_direction": "backward",
+  "types": [
+    "theorem_stmt",
+    "def",
+    "proof"
+  ],
+  "updated_at": "2026-07-03T19:12:13.315064+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Filter Topology\n\n/-\nFormalize in Lean the Theorem (min_divisor_le_divisor_add) from Text.\n\nThe theorem must be named `min_divisor_le_divisor_add`.\n   Matched text (candidate 0, theorem, label=min_divisor_le_divisor_add): \\begin{theorem}[min_divisor_le_divisor_add] Let $f_1,f_2 : \\mathbb K \\to E$ be meromorphic\n                                                                          on a set $U \\subseteq \\mathbb K$, and let $z \\in U$. Assume that the order of $f_1+f_2$ at\n                                                                          $z$ is finite. Then \\[\n                                                                          \\min\\bigl(\\operatorname{div}_U(f_1)(z),\\operatorname{div}_U(f_2)(z)\\bigr) \\;\\le\\;\n                                                                          \\operatorname{div}_U(f_1+f_2)(z). \\] \\end{theorem}\n-/\n"
+}

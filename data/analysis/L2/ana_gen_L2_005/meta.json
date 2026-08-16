@@ -1,0 +1,23 @@
+{
+  "id": "analysis/L2/ana_gen_L2_005",
+  "paper_id": "Stein-Chap2-Prob",
+  "paper_title": "",
+  "area": "analysis",
+  "level": "L2",
+  "problem_id": "ana_gen_L2_005",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[integral_cos_sq_tendsto_half_measure]\nIf $f$ is integrable on $[0, 2\\pi]$, then $\\int_0^{2\\pi} f(x) e^{-inx} dx \\to 0$ as $|n| \\to \\infty$. Show as a consequence that if $E$ is a measurable subset of $[0, 2\\pi]$, then\n\\[ \\int_E \\cos^2(nx + u_n) dx \\to \\frac{m(E)}{2}, \\quad \\text{as } n \\to \\infty \\]\nfor any sequence $\\{u_n\\}$.\n\\end{theorem}\n\n\\begin{proof}\nFirst, note that $\\int_0^{2\\pi} f(x) \\cos(nx) dx \\to 0$ and $\\int_0^{2\\pi} f(x) \\sin(nx) \\to 0$ since these are the real and imaginary parts of $\\int_0^{2\\pi} f(x) e^{-inx} dx$. In particular, if we let $f(x) = \\chi_E(x)$ for some measurable $E \\subset [0, 2\\pi]$, then for any $\\epsilon > 0$, $\\exists N$ such that $\\left| \\int_0^{2\\pi} \\chi_E(x) \\sin(nx) dx \\right|$ and $\\left| \\int_0^{2\\pi} \\chi_E(x) \\cos(nx) dx \\right|$ are both less than $\\frac{\\epsilon}{2}$ provided $|n| > N$. Then for any sequence $u_n$,\n\\begin{align*}\n\\left| \\int_E \\cos(2nx + 2u_n) dx \\right| &= \\left| \\int_E \\cos(2nx) \\cos(2u_n) - \\sin(2nx) \\sin(2u_n) dx \\right| \\\\\n&= \\left| \\cos(2u_n) \\int_0^{2\\pi} \\chi_E(x) \\cos(2nx) dx - \\sin(2u_n) \\int_0^{2\\pi} \\chi_E(x) \\sin(2nx) dx \\right| \\\\\n&\\le |\\cos(2u_n)| \\left| \\int_0^{2\\pi} \\chi_E(x) \\cos(2nx) dx \\right| + |\\sin(2u_n)| \\left| \\int_0^{2\\pi} \\chi_E(x) \\sin(2nx) dx \\right| \\\\\n&\\le 1 \\cdot \\frac{\\epsilon}{2} + 1 \\cdot \\frac{\\epsilon}{2} = \\epsilon\n\\end{align*}\nfor $|n| > N$. Hence $\\int_E \\cos(2nx + 2u_n) dx \\to 0$ as $|n| \\to \\infty$. Now\n\\begin{align*}\n\\int_E \\cos^2(nx + u_n) dx &= \\int_E \\frac{1}{2} (1 + \\cos(2(nx + u_n))) dx \\\\\n&= \\frac{m(E)}{2} + \\frac{1}{2} \\int_0^{2\\pi} \\chi_E(x) \\cos(2nx + 2u_n) dx\n\\end{align*}\nand we have shown that the second term tends to $0$ as $|n| \\to \\infty$. \\qed\n\\end{proof}",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 258
+  },
+  "created_at": "2026-04-22T01:43:48+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-03T19:12:58.702628+00:00",
+  "formalization_rules": "open MeasureTheory Real Complex Set NNReal Filter Topology\n\n/-\nFormalize in Lean the Theorem (integral_cos_sq_tendsto_half_measure) from Text.\n\nThe theorem must be named `integral_cos_sq_tendsto_half_measure`.\n   Matched text (candidate 0, theorem, label=integral_cos_sq_tendsto_half_measure): \\begin{theorem}[integral_cos_sq_tendsto_half_measure] If $f$ is integrable on $[0, 2\\pi]$,\n                                                                                    then $\\int_0^{2\\pi} f(x) e^{-inx} dx \\to 0$ as $|n| \\to \\infty$. Show as a consequence that\n                                                                                    if $E$ is a measurable subset of $[0, 2\\pi]$, then \\[ \\int_E \\cos^2(nx + u_n) dx \\to\n                                                                                    \\frac{m(E)}{2}, \\quad \\text{as } n \\to \\infty \\] for any sequence $\\{u_n\\}$. \\end{theorem}\n-/"
+}

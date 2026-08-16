@@ -1,0 +1,39 @@
+{
+  "id": "probability/L1/prob_gen_L1_006",
+  "paper_id": "arXiv:1403.7739",
+  "paper_title": "Chernoff's Inequality - A very elementary proof",
+  "area": "probability",
+  "level": "L1",
+  "problem_id": "prob_gen_L1_006",
+  "types": [
+    "def",
+    "theorem_stmt"
+  ],
+  "subfields": [
+    "ConcentrationInequalities",
+    "IndicatorRandomVariables",
+    "ChernoffBounds"
+  ],
+  "text": "\\begin{theorem}[Strengthened Chernoff bound]\nLet $X_1,\\ldots,X_n$ be indicator random variables. Let $k,t$ be\nintegers with $0<k<t\\leq n$, and let $0<\\beta<1$ satisfy $t=\\beta n$.\nThen\n\\[\n\\mathbb{P}\\!\\left(\\sum_{i=1}^{n}X_i\\geq t\\right)\n\\leq\n\\frac{1}{\\binom{t}{k}}\n\\sum_{\\substack{S\\subseteq\\{1,\\ldots,n\\}\\\\|S|=k}}\n\\mathbb{P}\\!\\left(\\bigwedge_{i\\in S}(X_i=1)\\right).\n\\]\n\nIn particular, let $0<\\alpha<\\beta$ and suppose\n\\[\nk=\\left(\\frac{\\beta-\\alpha}{1-\\alpha}\\right)n\n\\]\nis an integer. If\n\\[\n\\mathbb{P}\\!\\left(\\bigwedge_{i\\in S}(X_i=1)\\right)\\leq\\alpha^k\n\\]\nfor every $k$-element subset $S\\subseteq\\{1,\\ldots,n\\}$, then\n\\[\n\\mathbb{P}\\!\\left(\\sum_{i=1}^{n}X_i\\geq t\\right)\n\\leq \\exp\\!\\left(-D(\\beta\\mathbin\\|\\alpha)n\\right),\n\\]\nwhere the binary relative entropy is\n\\[\nD(\\beta\\mathbin\\|\\alpha)\n=\\beta\\log\\!\\left(\\frac{\\beta}{\\alpha}\\right)\n+(1-\\beta)\\log\\!\\left(\\frac{1-\\beta}{1-\\alpha}\\right).\n\\]\n\\end{theorem}\n",
+  "target_decl": "strengthened_chernoff",
+  "target_kind": "theorem",
+  "references": [
+    {
+      "source": "arxiv",
+      "id": "arXiv:1403.7739v1",
+      "url": "https://arxiv.org/abs/1403.7739v1",
+      "item": "Main theorem"
+    }
+  ],
+  "toolchain": {
+    "lean": "4.27.0-rc1",
+    "mathlib": "024fc398dbd3648262e78da99efa2ad9aeeb5d6f"
+  },
+  "metrics": {
+    "source_words": 212
+  },
+  "created_at": "2026-07-12T12:00:00+09:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-12T14:04:26+00:00",
+  "formalization_rules": "\\begin{theorem}[Strengthened Chernoff bound]\nLet $X_1,\\ldots,X_n$ be indicator random variables. Let $k,t$ be\nintegers with $0<k<t\\leq n$, and let $0<\\beta<1$ satisfy $t=\\beta n$.\nThen\n\\[\n\\mathbb{P}\\!\\left(\\sum_{i=1}^{n}X_i\\geq t\\right)\n\\leq\n\\frac{1}{\\binom{t}{k}}\n\\sum_{\\substack{S\\subseteq\\{1,\\ldots,n\\}\\\\|S|=k}}\n\\mathbb{P}\\!\\left(\\bigwedge_{i\\in S}(X_i=1)\\right).\n\\]\n\nIn particular, let $0<\\alpha<\\beta$ and suppose\n\\[\nk=\\left(\\frac{\\beta-\\alpha}{1-\\alpha}\\right)n\n\\]\nis an integer. If\n\\[\n\\mathbb{P}\\!\\left(\\bigwedge_{i\\in S}(X_i=1)\\right)\\leq\\alpha^k\n\\]\nfor every $k$-element subset $S\\subseteq\\{1,\\ldots,n\\}$, then\n\\[\n\\mathbb{P}\\!\\left(\\sum_{i=1}^{n}X_i\\geq t\\right)\n\\leq \\exp\\!\\left(-D(\\beta\\mathbin\\|\\alpha)n\\right),\n\\]\nwhere the binary relative entropy is\n\\[\nD(\\beta\\mathbin\\|\\alpha)\n=\\beta\\log\\!\\left(\\frac{\\beta}{\\alpha}\\right)\n+(1-\\beta)\\log\\!\\left(\\frac{1-\\beta}{1-\\alpha}\\right).\n\\]\n\\end{theorem}\n"
+}

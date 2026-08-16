@@ -1,0 +1,25 @@
+{
+  "id": "combinatorics/L1/com_gen_L1_004",
+  "paper_id": "",
+  "paper_title": "",
+  "area": "combinatorics",
+  "level": "L1",
+  "problem_id": "com_gen_L1_004",
+  "types": [
+    "theorem_stmt",
+    "def",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[isClique_iff]\nLet \\(G\\) be a simple graph on a vertex set \\(V\\).\nA subset \\(S \\subseteq V\\) is a \\emph{clique} if it is pairwise adjacent, i.e.\nfor all distinct \\(v,w \\in S\\), the vertices \\(v\\) and \\(w\\) are adjacent in \\(G\\).\n\\end{theorem}\n\n\\begin{lemma}[not_isClique_iff]\nLet \\(S \\subseteq V\\). Then \\(S\\) is not a clique if and only if there exist distinct vertices\n\\(v,w \\in S\\) such that \\(v\\) is not adjacent to \\(w\\) in \\(G\\).\n\\end{lemma}\n\n\\begin{proof}\nIf \\(S\\) is not pairwise adjacent, then by negating the defining condition there exist\n\\(v,w \\in S\\) with \\(v \\ne w\\) and \\(\\neg\\,\\mathrm{Adj}_G(v,w)\\).\nConversely, the existence of such a pair directly contradicts pairwise adjacency.\n\\end{proof}\n\n\\begin{theorem}[isClique_iff_induce_eq]\nLet \\(S \\subseteq V\\). Then \\(S\\) is a clique in \\(G\\) if and only if the induced subgraph \\(G[S]\\)\nis the complete graph on the vertex set \\(S\\).\n\\end{theorem}\n\n\\begin{proof}\nAssume \\(S\\) is a clique. Then any two distinct vertices \\(v,w \\in S\\) are adjacent in \\(G\\),\nhence adjacent in the induced subgraph \\(G[S]\\). Therefore \\(G[S]\\) has exactly the edges of the\ncomplete graph on \\(S\\).\n\nConversely, if \\(G[S]\\) is complete, then any two distinct vertices \\(v,w \\in S\\) are adjacent in\n\\(G[S]\\), hence adjacent in \\(G\\). Thus \\(S\\) is pairwise adjacent, i.e. a clique.\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 214
+  },
+  "created_at": "2026-02-12T08:43:30+00:00",
+  "translation_direction": "backward",
+  "updated_at": "2026-05-18T10:11:13.013614+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Finset Fintype Function SimpleGraph.Walk\n\n/-\nFormalize in Lean the following named items from Text.\n\n1. Theorem (isClique_iff)\n   The theorem must be named `isClique_iff`.\n   Matched text (candidate 0, theorem, label=isClique_iff): \\begin{theorem}[isClique_iff] Let \\(G\\) be a simple graph on a vertex set \\(V\\). A subset\n                                                            \\(S \\subseteq V\\) is a \\emph{clique} if it is pairwise adjacent, i.e. for all distinct \\(v,w\n                                                            \\in S\\), the vertices \\(v\\) and \\(w\\) are adjacent in \\(G\\). \\end{theorem}\n2. Lemma (not_isClique_iff)\n   The lemma must be named `not_isClique_iff`.\n   Matched text (candidate 1, lemma, label=not_isClique_iff): \\begin{lemma}[not_isClique_iff] Let \\(S \\subseteq V\\). Then \\(S\\) is not a clique if and\n                                                              only if there exist distinct vertices \\(v,w \\in S\\) such that \\(v\\) is not adjacent to \\(w\\)\n                                                              in \\(G\\). \\end{lemma}\n3. Theorem (isClique_iff_induce_eq)\n   The theorem must be named `isClique_iff_induce_eq`.\n   Matched text (candidate 2, theorem, label=isClique_iff_induce_eq): \\begin{theorem}[isClique_iff_induce_eq] Let \\(S \\subseteq V\\). Then \\(S\\) is a clique in\n                                                                      \\(G\\) if and only if the induced subgraph \\(G[S]\\) is the complete graph on the vertex set\n                                                                      \\(S\\). \\end{theorem}\n\nEvery listed named item must be formalized with exactly the stated Lean name.\n-/\n"
+}

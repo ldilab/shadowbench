@@ -1,0 +1,24 @@
+{
+  "id": "algebraic-geometry/L3/alg_gen_L3_001",
+  "paper_id": "",
+  "paper_title": "",
+  "area": "algebraic-geometry",
+  "level": "L3",
+  "problem_id": "alg_gen_L3_001",
+  "types": [
+    "theorem_stmt"
+  ],
+  "subfields": [],
+  "text": "Theorem (CayleyBacharach)\n\nSuppose two cubic curves $C_1$ and $C_2$ on a projective plane $\\mathbb{P}^2(K)$ meet on nine distinct points. If a cubic curve $C_3$ passes eight of them, then $C_3$ passes all the nine points.\n\nProof.\n\nSuppose each $C_i$(where $i = 1, 2, 3$) is defined by a cubic homogeneous polynomial $\\varphi_i(x, y, z)$. If $\\varphi_3$ is not already a linear combination of $\\varphi_1$ and $\\varphi_2$, then for any pair of points $P, P' \\in \\mathbb{P}^2(K)$ there is a linear combination $a_1\\varphi_1 + a_2\\varphi_2 + a_3\\varphi_3$($a_i \\in K$) such that its curve passes both $P$ and $P'$.\n\nNote as a lemma that if two algebraic curves $\\Gamma_1$ and $\\Gamma_2$ each of degree $m$ and $n$ meets on more than $mn$ points, then there is an algebraic curve $\\Gamma$ which is fully contained in $\\Gamma_1 \\cap \\Gamma_2$. Thanks to this fact, among the eight intersecting points of the three cubics, no combinations of four points lie on some line, and no combinations of seven points lie on some conic.\n\nSuppose three intersecting points $P_1, P_2, P_3$ are on a line $L$. Take another point $P$ from $L$, and consider the unique conic $Q$ which goes through the five remaining intersections $P_4, P_5, P_6, P_7, P_8$. Further taking a point $P' \\notin L \\cup Q$, we have a cubic defined by a linear combination, namely $C : a_1 \\varphi_1 + a_2 \\varphi_2 + a_3 \\varphi_3 = 0$. From the above lemma, $L \\cup Q = C$, but this contradicts to $P' \\notin L \\cup Q$. Hence we obtain that no three intersecting points are collinear.\n\nWe do the same work with conics. Suppose six intersecting points $P_1, \\cdots, P_6$ are on a conic $Q$. Again, take another point $P$ from $Q$. There is a unique line $L$ going through the other two intersections $P_7$ and $P_8$; take a point $P' \\notin L \\cup Q$. Similarly considering $C : a_1 \\varphi_1 + a_2 \\varphi_2 + a_3 \\varphi_3 = 0$ which goes through $P$ and $P'$, we have $L \\cup Q = C$ from the above lemma, again contraditory to $P' \\notin L \\cup Q$. Hence no six intersecting points lie on a same conic.\n\nNow, take the line $L$ and the conic $Q$, each going through two points $P_1, P_2$ and five points $P_3, \\cdots, P_7$ respectively. Take $P$ from $L$ other than $P_1$ and $P_2$, and take $P' \\notin L \\cup Q$. Again, there is $C : a_1 \\varphi_1 + a_2 \\varphi_2 + a_3 \\varphi_3 = 0$ which goes through $P$ and $P'$. From the above lemma, $L \\cup Q = C$, hence the last intersecting point $P_8$ is in $L \\cup Q$, but this is already impossible from the previous arguments.\n\nThe contradiction bases on the assumption that $\\varphi_3$ is not a linear combination of $\\varphi_1$ and $\\varphi_2$. Therefore as a result, $\\varphi_3$ is a linear combination of $\\varphi_1$ and $\\varphi_2$, and the curve defined by $\\varphi_3$ is forced to go through the ninth intersection of the other two.",
+  "references": [],
+  "toolchain": {
+    "lean": "4.28.0"
+  },
+  "metrics": {
+    "source_words": 498
+  },
+  "created_at": "2026-05-05T09:42:50+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-05-21T09:08:08+00:00",
+  "formalization_rules": "open scoped LinearAlgebra.Projectivization\n\n/-\nFormalize in Lean the Theorem (CayleyBacharach) from Text.\n\nThe theorem must be named `CayleyBacharach`.\n   Matched text (candidate 0, theorem, label=CayleyBacharach): Theorem (CayleyBacharach) Suppose two cubic curves $C_1$ and $C_2$ on a projective plane\n                                                               $\\mathbb{P}^2(K)$ meet on nine distinct points. If a cubic curve $C_3$ passes eight of them,\n                                                               then $C_3$ passes all the nine points.\n-/"
+}

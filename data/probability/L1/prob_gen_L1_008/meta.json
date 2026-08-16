@@ -1,0 +1,39 @@
+{
+  "id": "probability/L1/prob_gen_L1_008",
+  "paper_id": "arXiv:2012.09942",
+  "paper_title": "On the Borel-Cantelli Lemmas, the Erdős-Rényi Theorem, and the Kochen-Stone Theorem",
+  "area": "probability",
+  "level": "L1",
+  "problem_id": "prob_gen_L1_008",
+  "types": [
+    "def",
+    "theorem_stmt"
+  ],
+  "subfields": [
+    "BorelCantelli",
+    "KochenStone",
+    "AsymptoticProbability"
+  ],
+  "text": "\\begin{lemma}[Convergence of the Kochen--Stone weights]\nLet $(q_n)_{n\\geq1}$ be a non-decreasing sequence in $(0,1)$ such that\n$q_n\\to q$ as $n\\to\\infty$. For $n\\geq2$, define\n\\[\nu_n=\\sum_{1\\leq i<j\\leq n}q_iq_j,\n\\qquad\nv_n=\\sum_{i=1}^{n-1}(n-i)q_i,\n\\qquad\nw_n=\\frac{u_n}{v_n}.\n\\]\nThen $w_n\\to q$ as $n\\to\\infty$.\n\\end{lemma}\n",
+  "target_decl": "kochen_stone_weight_convergence",
+  "target_kind": "theorem",
+  "references": [
+    {
+      "source": "arxiv",
+      "id": "arXiv:2012.09942v3",
+      "url": "https://arxiv.org/abs/2012.09942v3",
+      "item": "Lemma 4.8"
+    }
+  ],
+  "toolchain": {
+    "lean": "4.27.0-rc1",
+    "mathlib": "024fc398dbd3648262e78da99efa2ad9aeeb5d6f"
+  },
+  "metrics": {
+    "source_words": 181
+  },
+  "created_at": "2026-07-12T12:00:00+09:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-12T12:57:35.611819+00:00",
+  "formalization_rules": "\\begin{lemma}[Convergence of the Kochen--Stone weights]\nLet $(q_n)_{n\\geq1}$ be a non-decreasing sequence in $(0,1)$ such that\n$q_n\\to q$ as $n\\to\\infty$. For $n\\geq2$, define\n\\[\nu_n=\\sum_{1\\leq i<j\\leq n}q_iq_j,\n\\qquad\nv_n=\\sum_{i=1}^{n-1}(n-i)q_i,\n\\qquad\nw_n=\\frac{u_n}{v_n}.\n\\]\nThen $w_n\\to q$ as $n\\to\\infty$.\n\\end{lemma}\n"
+}

@@ -1,0 +1,37 @@
+{
+  "id": "number-theory/L1/nt_gen_L1_003",
+  "paper_id": "arXiv:1510.06696",
+  "paper_title": "On the Greatest Common Divisor of Binomial Coefficients (n choose q), (n choose 2q), (n choose 3q), …",
+  "area": "number-theory",
+  "level": "L1",
+  "problem_id": "nt_gen_L1_003",
+  "types": [
+    "theorem_stmt",
+    "def"
+  ],
+  "subfields": [
+    "binomial coefficients",
+    "p-adic valuations"
+  ],
+  "text": "\\begin{theorem}\nLet $n>q>0$ be integers, and let $p$ be a prime satisfying $p\\equiv 1\\pmod q$. Define\n\\[\nG_{n,q}=\\gcd\\left\\{\\binom{n}{qk}: k\\in\\mathbb{Z},\\ 0<qk<n\\right\\}.\n\\]\nFor a positive integer $M$, let $v_p(M)$ denote the largest nonnegative integer $e$ such that $p^e$ divides $M$. Also let $\\alpha_p(n)$ be the sum of the digits in the base-$p$ expansion of $n$. Then\n\\[\nv_p(G_{n,q})=\n\\begin{cases}\n1,&\\text{if }\\alpha_p(n)\\le q,\\\\\n0,&\\text{otherwise.}\n\\end{cases}\n\\]\nEquivalently, $\\alpha_p(n)$ is the smallest integer $r$ for which\n\\[\nn=p^{i_1}+\\cdots+p^{i_r}\n\\]\nwith integers $0\\le i_1\\le\\cdots\\le i_r$.\n\\end{theorem}\n",
+  "target_decl": "step_binom_gcd_padicVal",
+  "target_kind": "theorem",
+  "references": [
+    {
+      "source": "arXiv:1510.06696v5",
+      "item": "Theorem Q",
+      "url": "https://arxiv.org/abs/1510.06696v5"
+    }
+  ],
+  "toolchain": {
+    "lean": "4.27.0-rc1",
+    "mathlib": "024fc398dbd3648262e78da99efa2ad9aeeb5d6f"
+  },
+  "metrics": {
+    "source_words": 331
+  },
+  "created_at": "2026-07-12T02:59:42+09:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-12T15:08:50+00:00",
+  "formalization_rules": "\\begin{theorem}\nLet $n>q>0$ be integers, and let $p$ be a prime satisfying $p\\equiv 1\\pmod q$. Define\n\\[\nG_{n,q}=\\gcd\\left\\{\\binom{n}{qk}: k\\in\\mathbb{Z},\\ 0<qk<n\\right\\}.\n\\]\nFor a positive integer $M$, let $v_p(M)$ denote the largest nonnegative integer $e$ such that $p^e$ divides $M$. Also let $\\alpha_p(n)$ be the sum of the digits in the base-$p$ expansion of $n$. Then\n\\[\nv_p(G_{n,q})=\n\\begin{cases}\n1,&\\text{if }\\alpha_p(n)\\le q,\\\\\n0,&\\text{otherwise.}\n\\end{cases}\n\\]\nEquivalently, $\\alpha_p(n)$ is the smallest integer $r$ for which\n\\[\nn=p^{i_1}+\\cdots+p^{i_r}\n\\]\nwith integers $0\\le i_1\\le\\cdots\\le i_r$.\n\\end{theorem}\n"
+}

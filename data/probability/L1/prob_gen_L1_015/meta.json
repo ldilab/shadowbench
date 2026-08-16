@@ -1,0 +1,39 @@
+{
+  "id": "probability/L1/prob_gen_L1_015",
+  "paper_id": "arXiv:1306.1433",
+  "paper_title": "Tight Lower Bound on the Probability of a Binomial Exceeding its Expectation",
+  "area": "probability",
+  "level": "L1",
+  "problem_id": "prob_gen_L1_015",
+  "types": [
+    "def",
+    "theorem_stmt"
+  ],
+  "subfields": [
+    "NormalApproximation",
+    "BinomialDistributions",
+    "AnalyticInequalities"
+  ],
+  "text": "\\begin{lemma}[A standard-normal CDF comparison]\nLet $m>1$ and $k\\in\\{1,\\ldots,m-1\\}$. Define\n\\[\n\\beta_k=\\frac{1}{1+k}\\left(1+\\frac1k\\right)^{2/3},\n\\qquad\n\\gamma_{m,k}=\\frac{1}{m-k},\n\\]\nand\n\\[\n\\theta=\\frac{17}{3\\,2^{1/3}}-3\\,2^{1/3}.\n\\]\nIf $\\Phi$ is the cumulative distribution function of the standard normal\ndistribution, then\n\\[\n\\Phi\\!\\left(\n\\frac{\\beta_k\\theta+\\frac13\\gamma_{m,k}}\n{\\sqrt{\\beta_k+\\gamma_{m,k}}}\n\\right)\n\\leq\n\\Phi\\!\\left(\n\\frac{\\beta_k\\theta+\\frac13}{\\sqrt{\\beta_k+1}}\n\\right).\n\\]\n\\end{lemma}\n",
+  "target_decl": "normal_cdf_beta_gamma_bound",
+  "target_kind": "lemma",
+  "references": [
+    {
+      "source": "arxiv",
+      "id": "arXiv:1306.1433v3",
+      "url": "https://arxiv.org/abs/1306.1433v3",
+      "item": "Lemma 3"
+    }
+  ],
+  "toolchain": {
+    "lean": "4.27.0-rc1",
+    "mathlib": "024fc398dbd3648262e78da99efa2ad9aeeb5d6f"
+  },
+  "metrics": {
+    "source_words": 50
+  },
+  "created_at": "2026-07-12T12:00:00+09:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-12T14:04:26+00:00",
+  "formalization_rules": "\\begin{lemma}[A standard-normal CDF comparison]\nLet $m>1$ and $k\\in\\{1,\\ldots,m-1\\}$. Define\n\\[\n\\beta_k=\\frac{1}{1+k}\\left(1+\\frac1k\\right)^{2/3},\n\\qquad\n\\gamma_{m,k}=\\frac{1}{m-k},\n\\]\nand\n\\[\n\\theta=\\frac{17}{3\\,2^{1/3}}-3\\,2^{1/3}.\n\\]\nIf $\\Phi$ is the cumulative distribution function of the standard normal\ndistribution, then\n\\[\n\\Phi\\!\\left(\n\\frac{\\beta_k\\theta+\\frac13\\gamma_{m,k}}\n{\\sqrt{\\beta_k+\\gamma_{m,k}}}\n\\right)\n\\leq\n\\Phi\\!\\left(\n\\frac{\\beta_k\\theta+\\frac13}{\\sqrt{\\beta_k+1}}\n\\right).\n\\]\n\\end{lemma}\n"
+}

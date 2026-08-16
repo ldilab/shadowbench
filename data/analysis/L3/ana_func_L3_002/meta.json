@@ -1,0 +1,25 @@
+{
+  "id": "analysis/L3/ana_func_L3_002",
+  "paper_id": "Analysis_problem",
+  "paper_title": "",
+  "area": "analysis",
+  "level": "L3",
+  "problem_id": "ana_func_L3_002",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [
+    "Functional Analysis"
+  ],
+  "text": "\\begin{theorem}[exists_unitary_near_of_approx_unitary]\nLet $\\mathcal A$ be a unital $C^*$-algebra. Show that for any $\\varepsilon > 0$ there exists a\n$\\delta_\\varepsilon > 0$ such that if $a \\in \\mathcal A$ obeys\n\\[\n    \\max\\left\\{ \\|a^*a-\\mathbf 1\\|,\\ \\|aa^*-\\mathbf 1\\| \\right\\} \\le \\delta_\\varepsilon,\n\\]\nthen there exists a unitary $u \\in \\mathcal A$ with\n\\[\n    \\|a-u\\| \\le \\varepsilon.\n\\]\n\\end{theorem}\n\n\\begin{proof}\nFix $\\varepsilon>0$ and put\n\\[\n    \\delta_\\varepsilon:=\\min\\left\\{\\frac12,\\varepsilon\\right\\}.\n\\]\nSuppose that\n\\[\n    \\max\\{\\|a^*a-\\mathbf 1\\|,\\|aa^*-\\mathbf 1\\|\\}\\le \\delta_\\varepsilon.\n\\]\nSet\n\\[\n    b:=a^*a.\n\\]\nThen $b$ is positive, hence $b=b^*$ and $\\sigma(b)\\subset[0,\\infty)$. Moreover,\n\\[\n    \\|b-\\mathbf 1\\|\\le\\delta_\\varepsilon<1,\n\\]\nso $b$ is invertible. Also, since $b=b^*$, for every $\\lambda\\in\\sigma(b)$ we have\n\\[\n    |\\lambda-1|\\le \\|b-\\mathbf 1\\|\\le \\delta_\\varepsilon.\n\\]\nThus\n\\[\n    \\sigma(b)\\subset[1-\\delta_\\varepsilon,1+\\delta_\\varepsilon].\n\\]\n\nBy the square root lemma, let\n\\[\n    h:=\\sqrt b.\n\\]\nThen\n\\[\n    h=h^*,\\qquad \\sigma(h)\\subset[0,\\infty),\\qquad h^2=b.\n\\]\nSince $b$ is invertible, $h$ is invertible. Define\n\\[\n    u:=ah^{-1}.\n\\]\nThen\n\\[\n    u^*u\n    =\n    h^{-1}a^*ah^{-1}\n    =\n    h^{-1}bh^{-1}\n    =\n    \\mathbf 1.\n\\]\n\nAlso, since $\\|aa^*-\\mathbf 1\\|<1$, the element $aa^*$ is invertible. Thus $a$ has a left inverse\n\\[\n    (a^*a)^{-1}a^*\n\\]\nand a right inverse\n\\[\n    a^*(aa^*)^{-1}.\n\\]\nHence $a$ is invertible, and so $u=ah^{-1}$ is invertible. Since $u^*u=\\mathbf 1$, we get\n\\[\n    u^{-1}=u^*.\n\\]\nTherefore\n\\[\n    uu^*=\\mathbf 1.\n\\]\nThus $u$ is unitary.\n\nFinally, since $a=uh$,\n\\[\n    a-u=u(h-\\mathbf 1).\n\\]\nAs multiplication by a unitary preserves the norm,\n\\[\n    \\|a-u\\|=\\|h-\\mathbf 1\\|.\n\\]\nBy spectral mapping,\n\\[\n    \\sigma(h)\n    \\subset\n    \\left[\n        \\sqrt{1-\\delta_\\varepsilon},\n        \\sqrt{1+\\delta_\\varepsilon}\n    \\right].\n\\]\nSince $h=h^*$,\n\\[\n    \\|h-\\mathbf 1\\|\n    =\n    \\sup_{\\lambda\\in\\sigma(h)}|\\lambda-1|\n    \\le\n    \\max\\left\\{\n        1-\\sqrt{1-\\delta_\\varepsilon},\n        \\sqrt{1+\\delta_\\varepsilon}-1\n    \\right\\}.\n\\]\nFor $0<\\delta_\\varepsilon\\le 1$,\n\\[\n    1-\\sqrt{1-\\delta_\\varepsilon}\\le\\delta_\\varepsilon,\n    \\qquad\n    \\sqrt{1+\\delta_\\varepsilon}-1\\le\\delta_\\varepsilon.\n\\]\nTherefore\n\\[\n    \\|a-u\\|\n    =\n    \\|h-\\mathbf 1\\|\n    \\le\n    \\delta_\\varepsilon\n    \\le\n    \\varepsilon.\n\\]\nThis proves the claim.\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 266
+  },
+  "created_at": "2026-05-01T02:14:15+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-05-16T18:22:35+00:00",
+  "formalization_rules": "open scoped Topology\n\n/-\nFormalize in Lean the Theorem (exists_unitary_near_of_approx_unitary) from Text.\n\nThe theorem must be named `exists_unitary_near_of_approx_unitary`.\n   Matched text (candidate 0, theorem, label=exists_unitary_near_of_approx_unitary): \\begin{theorem}[exists_unitary_near_of_approx_unitary] Let $\\mathcal A$ be a unital\n                                                                                     $C^*$-algebra. Show that for any $\\varepsilon > 0$ there exists a $\\delta_\\varepsilon > 0$\n                                                                                     such that if $a \\in \\mathcal A$ obeys \\[ \\max\\left\\{ \\|a^*a-\\mathbf 1\\|,\\ \\|aa^*-\\mathbf 1\\|\n                                                                                     \\right\\} \\le \\delta_\\varepsilon, \\] then there exists a unitary $u \\in \\mathcal A$ with \\[\n                                                                                     \\|a-u\\| \\le \\varepsilon. \\] \\end{theorem}\n-/\n"
+}

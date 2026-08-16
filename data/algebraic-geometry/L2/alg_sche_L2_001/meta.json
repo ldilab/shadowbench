@@ -1,0 +1,28 @@
+{
+  "area": "AlgebraicGeometry",
+  "created_at": "2025-12-25T17:33:02+00:00",
+  "id": "algebraic-geometry/L2/alg_sche_L2_001",
+  "level": "L2",
+  "metrics": {
+    "source_words": 228
+  },
+  "paper_id": "mathlib4",
+  "paper_title": "",
+  "problem_id": "alg_sche_L2_001",
+  "references": [],
+  "subfields": [
+    "Schemes"
+  ],
+  "target_decl": "notMem_prime_iff_unit_in_stalk",
+  "target_kind": "theorem",
+  "text": "\\begin{theorem}[toΓSpec] Let $X$ be a scheme. There is a  canonical morphism $\\varphi : X \\to \\mathrm{Spec}\\Gamma(X)$ from $X$ to the spectrum of its global sections  where the underlying continuous map is given by sending a point $x \\in X$ to the prime ideal $p$ of global sections that do not map to units in the stalk of the structure sheaf at $x$. \n\\end{theorem}\n\\begin{proof}\n  Let $x \\in X$ and $U$ be an affine open neighborhood of $x$. Consider the ring homomorphism $\\Gamma(X) \\to \\Gamma(U) \\to \\mathcal O_{X,x}$ given by restriction and taking germs at $x$.\n  Let \\[\np\n\\;=\\;\n\\{\\, s \\in \\Gamma(X) \\mid s_x \\text{ is not a unit in } \\mathcal O_{X,x} \\,\\}.\n\\]\n We need to show that the induced map $\\varphi^\\sharp_x : (\\Gamma(X) - p)^{-1} \\Gamma(X) \\to \\mathcal O_{X,x}$ is local. Let $ t \\in (\\Gamma(X) - p)^{-1} \\Gamma(X)$ which can be written as $r/s$ for some $s \\not\\in p$. We claim that $t \\in  (\\Gamma(X) - p)^{-1}p$ if and only if its germ $t_x$ is not a unit in $\\mathcal O_{X,x}$. If $t \\in  (\\Gamma(X) - p)^{-1}p$, then $r \\in p$ and $r_x$ is not a unit hence $t_x$ is not a unit in $\\mathcal O_{X,x}$. Conversely, if $t_x$ is not a unit in $\\mathcal O_{X,x}$, then $r_x$ is not a unit in $\\mathcal O_{X,x}$ and hence $r \\in p$ by definition.\n\n\n\\end{definition}\n",
+  "toolchain": {
+    "lean": "4.27.0-rc1"
+  },
+  "types": [
+    "theorem_stmt"
+  ],
+  "updated_at": "2026-05-17T02:20:16+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open PrimeSpectrum\nopen Opposite\nopen CategoryTheory\nopen StructureSheaf\nopen Spec (structureSheaf)\nopen TopologicalSpace\nopen AlgebraicGeometry.LocallyRingedSpace\nopen TopCat.Presheaf\nopen TopCat.Presheaf.SheafCondition\n\n/-\nFormalize in Lean the Theorem (toΓSpec) from Text.\n\nThe theorem must be named `toΓSpec`.\n   Matched text (candidate 0, theorem, label=toΓSpec): \\begin{theorem}[toΓSpec] Let $X$ be a scheme. There is a canonical morphism $\\varphi : X \\to\n                                                       \\mathrm{Spec}\\Gamma(X)$ from $X$ to the spectrum of its global sections where the underlying\n                                                       continuous map is given by sending a point $x \\in X$ to the prime ideal $p$ of global\n                                                       sections that do not map to units in the stalk of the structure sheaf at $x$. \\end{theorem}\n-/\n"
+}

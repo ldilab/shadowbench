@@ -1,0 +1,24 @@
+{
+  "id": "geometry/L1/geo_gen_L1_018",
+  "paper_id": "Boyd_Chapter2_Ex",
+  "paper_title": "",
+  "area": "geometry",
+  "level": "L1",
+  "problem_id": "geo_gen_L1_018",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[affineSubspace_image_of_linear_constraints]\n\\textbf{Affine set.} Show that the set $\\{Ax + b \\mid Fx = g\\}$ is affine. Here $A \\in \\mathbb{R}^{m \\times n}$, $b \\in \\mathbb{R}^m$, $F \\in \\mathbb{R}^{p \\times n}$, and $g \\in \\mathbb{R}^p$.\n\\end{theorem}\n\n\\begin{proof}\nA set $S$ is affine if for every $z_1, z_2 \\in S$ and $\\theta \\in \\mathbb{R}$, the point $\\theta z_1 + (1 - \\theta)z_2$ is also in $S$.\n\nLet $S = \\{Ax + b \\mid Fx = g\\}$. Suppose $z_1, z_2 \\in S$. Then there exist $x_1, x_2 \\in \\mathbb{R}^n$ such that:\n\\begin{align*}\nz_1 &= Ax_1 + b, \\quad Fx_1 = g \\\\\nz_2 &= Ax_2 + b, \\quad Fx_2 = g\n\\end{align*}\nNow, for any $\\theta \\in \\mathbb{R}$, consider the affine combination:\n\\begin{align*}\n\\theta z_1 + (1 - \\theta)z_2 &= \\theta(Ax_1 + b) + (1 - \\theta)(Ax_2 + b) \\\\\n&= A(\\theta x_1 + (1 - \\theta)x_2) + (\\theta + (1 - \\theta))b \\\\\n&= A(\\theta x_1 + (1 - \\theta)x_2) + b.\n\\end{align*}\nLet $\\bar{x} = \\theta x_1 + (1 - \\theta)x_2$. We then check the condition $F\\bar{x} = g$:\n\\[\nF\\bar{x} = F(\\theta x_1 + (1 - \\theta)x_2) = \\theta Fx_1 + (1 - \\theta)Fx_2 = \\theta g + (1 - \\theta)g = g.\n\\]\nSince $\\theta z_1 + (1 - \\theta)z_2 = A\\bar{x} + b$ with $F\\bar{x} = g$, it follows that $\\theta z_1 + (1 - \\theta)z_2 \\in S$. Therefore, $S$ is affine.\n\\end{proof}",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 235
+  },
+  "created_at": "2026-03-10T15:09:47+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-03T19:15:43.224855+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Matrix\n\n/-\nFormalize in Lean the Theorem (affineSubspace_image_of_linear_constraints) from Text.\n\nThe theorem must be named `affineSubspace_image_of_linear_constraints`.\n   Matched text (candidate 0, theorem, label=affineSubspace_image_of_linear_constraints): \\begin{theorem}[affineSubspace_image_of_linear_constraints] \\textbf{Affine set.} Show that\n                                                                                          the set $\\{Ax + b \\mid Fx = g\\}$ is affine. Here $A \\in \\mathbb{R}^{m \\times n}$, $b \\in\n                                                                                          \\mathbb{R}^m$, $F \\in \\mathbb{R}^{p \\times n}$, and $g \\in \\mathbb{R}^p$. \\end{theorem}\n-/"
+}

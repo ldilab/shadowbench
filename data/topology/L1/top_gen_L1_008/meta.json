@@ -1,0 +1,25 @@
+{
+  "id": "topology/L1/top_gen_L1_008",
+  "paper_id": "",
+  "paper_title": "",
+  "area": "topology",
+  "level": "L1",
+  "problem_id": "top_gen_L1_008",
+  "types": [
+    "def",
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{definition}[paths_homotopic]\nA topological space $X$ is simply connected if its fundamental groupoid is equivalent to the the groupoid with one object and the identity morphism.\n\\end{definition}\n\n\\begin{theorem}[simply_connected_iff_paths_homotopic]\nA topological space is simply connected if and only if it is path connected, and there is at most one path up to homotopy between any two points.\n\\end{theorem}\n\\begin{proof}\nLet $X$ be a simply connected space. The fundamental groupoid $\\Pi X$ being equivalent to a groupoid $\\mathcal{E}$ with one object $e$ and the identity morphism, is equivalent to being a groupoid having a unique morphism between any two objects. It is equivalent to say that any two points of $X$ have a unique path between them up to homotopy equivalence. In partiular, $X$ is path connected in such case.\n\\end{proof}",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 128
+  },
+  "created_at": "2026-01-30T02:09:57+00:00",
+  "translation_direction": "backward",
+  "updated_at": "2026-05-20T23:55:07+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open CategoryTheory\nopen ContinuousMap\nopen scoped ContinuousMap\n\n/-\nFormalize in Lean the following named items from Text.\n\n1. Definition (paths_homotopic)\n   The definition must be named `paths_homotopic`.\n   Matched text (candidate 0, definition, label=paths_homotopic): \\begin{definition}[paths_homotopic] A topological space $X$ is simply connected if its\n                                                                  fundamental groupoid is equivalent to the the groupoid with one object and the identity\n                                                                  morphism. \\end{definition}\n2. Theorem (simply_connected_iff_paths_homotopic)\n   The theorem must be named `simply_connected_iff_paths_homotopic`.\n   Matched text (candidate 1, theorem, label=simply_connected_iff_paths_homotopic): \\begin{theorem}[simply_connected_iff_paths_homotopic] A topological space is simply\n                                                                                    connected if and only if it is path connected, and there is at most one path up to homotopy\n                                                                                    between any two points. \\end{theorem}\n\nEvery listed named item must be formalized with exactly the stated Lean name.\n-/"
+}

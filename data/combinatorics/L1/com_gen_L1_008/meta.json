@@ -1,0 +1,38 @@
+{
+  "id": "combinatorics/L1/com_gen_L1_008",
+  "paper_id": "arXiv:2405.17639",
+  "paper_title": "Some new Bollobás-type inequalities",
+  "area": "combinatorics",
+  "level": "L1",
+  "problem_id": "com_gen_L1_008",
+  "types": [
+    "def",
+    "theorem_stmt"
+  ],
+  "subfields": [
+    "extremal set theory",
+    "probabilistic method"
+  ],
+  "text": "For a nonnegative integer \\(q\\), write \\([q]=\\{1,\\ldots,q\\}\\), with \\([0]=\\varnothing\\).\nA family of ordered pairs\n\\[\n\\mathcal P=\\{(A_i,B_i)\\mid i\\in[m]\\},\\qquad A_i,B_i\\subseteq[n],\n\\]\nis a \\emph{skew Bollobás system} if\n\\[\nA_i\\cap B_i=\\varnothing\\quad\\text{for every }i\\in[m],\n\\]\nand\n\\[\nA_i\\cap B_j\\ne\\varnothing\\quad\\text{whenever }i<j.\n\\]\n\n\\begin{theorem}[Skew Bollobás Inequality]\nIf \\(\\mathcal P=\\{(A_i,B_i)\\mid i\\in[m]\\}\\) is a skew Bollobás system with\n\\(A_i,B_i\\subseteq[n]\\), then\n\\[\n\\sum_{i=1}^m\n\\frac{1}{(1+|A_i|+|B_i|)\\binom{|A_i|+|B_i|}{|A_i|}}\n\\le 1.\n\\]\n\\end{theorem}\n",
+  "target_decl": "skew_bollobas_inequality",
+  "target_kind": "theorem",
+  "references": [
+    {
+      "source": "arxiv",
+      "id": "arXiv:2405.17639v2",
+      "url": "https://arxiv.org/abs/2405.17639v2",
+      "item": "Theorem 1.5"
+    }
+  ],
+  "toolchain": {
+    "lean": "4.27.0-rc1",
+    "mathlib": "024fc398dbd3648262e78da99efa2ad9aeeb5d6f"
+  },
+  "metrics": {
+    "source_words": 60
+  },
+  "created_at": "2026-07-12T03:15:00+09:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-12T14:00:23+00:00",
+  "formalization_rules": "For a nonnegative integer \\(q\\), write \\([q]=\\{1,\\ldots,q\\}\\), with \\([0]=\\varnothing\\).\nA family of ordered pairs\n\\[\n\\mathcal P=\\{(A_i,B_i)\\mid i\\in[m]\\},\\qquad A_i,B_i\\subseteq[n],\n\\]\nis a \\emph{skew Bollobás system} if\n\\[\nA_i\\cap B_i=\\varnothing\\quad\\text{for every }i\\in[m],\n\\]\nand\n\\[\nA_i\\cap B_j\\ne\\varnothing\\quad\\text{whenever }i<j.\n\\]\n\n\\begin{theorem}[Skew Bollobás Inequality]\nIf \\(\\mathcal P=\\{(A_i,B_i)\\mid i\\in[m]\\}\\) is a skew Bollobás system with\n\\(A_i,B_i\\subseteq[n]\\), then\n\\[\n\\sum_{i=1}^m\n\\frac{1}{(1+|A_i|+|B_i|)\\binom{|A_i|+|B_i|}{|A_i|}}\n\\le 1.\n\\]\n\\end{theorem}\n"
+}

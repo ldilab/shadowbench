@@ -1,0 +1,24 @@
+{
+  "id": "combinatorics/L2/com_gen_L2_003",
+  "paper_id": "",
+  "paper_title": "",
+  "area": "combinatorics",
+  "level": "L2",
+  "problem_id": "com_gen_L2_003",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{lemma}[contract_closure_eq_contract_delete]\nFor any \\(C\\subseteq E(M)\\),\n\\[\nM/\\mathrm{cl}_M(C)= (M/C)\\setminus\\bigl(\\mathrm{cl}_M(C)\\setminus C\\bigr).\n\\]\n\\end{lemma}\n\\begin{proof}\nReduce to the case \\(C\\subseteq E(M)\\). Choose a basis \\(I\\) of \\(C\\).\nThen \\(\\mathrm{cl}_M(C)=\\mathrm{cl}_M(I)\\), and contracting \\(\\mathrm{cl}_M(I)\\) can be expressed as\ncontracting \\(I\\) and deleting the remaining elements \\(\\mathrm{cl}_M(I)\\setminus I\\).\nRearranging with associativity/commutativity of contraction/deletion gives the displayed equality.\n\\end{proof}\n\n\\begin{lemma}[contract_closure_eq]\nFor any sets \\(C,X\\),\n\\[\n\\mathrm{cl}_{M/C}(X)=\\mathrm{cl}_M(X\\cup C)\\setminus C.\n\\]\n\\end{lemma}\n\\begin{proof}\nUsing the loop description \\(\\mathrm{loops}(M/C)=\\mathrm{cl}_M(C)\\setminus C\\) and the fact that\nclosure can be characterized via loops after contracting, one shows both inclusions:\nelements in \\(\\mathrm{cl}_{M/C}(X)\\) correspond exactly to elements in \\(\\mathrm{cl}_M(X\\cup C)\\)\nthat are not in \\(C\\). A straightforward manipulation of closure axioms completes the proof.\n\\end{proof}\n\n\\begin{lemma}[contract_spanning_iff]\nAssume \\(C\\subseteq E(M)\\). Then\n\\[\nX \\text{ is spanning in } M/C\n\\;\\Longleftrightarrow\\;\n\\bigl(X\\cup C \\text{ is spanning in } M\\bigr)\\ \\wedge\\ \\mathrm{Disjoint}(X,C).\n\\]\n\\end{lemma}\n\\begin{proof}\nBy definition, \\(X\\) is spanning in \\(N\\) iff \\(\\mathrm{cl}_N(X)=E(N)\\).\nApply the closure formula \\(\\mathrm{cl}_{M/C}(X)=\\mathrm{cl}_M(X\\cup C)\\setminus C\\) and the ground-set\nformula \\(E(M/C)=E(M)\\setminus C\\), and rewrite equality of set-differences as spanning of \\(X\\cup C\\)\ntogether with \\(X\\cap C=\\varnothing\\).\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 182
+  },
+  "created_at": "2026-02-09T12:44:50+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-05-20T17:00:19+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Set\n\n/-\nFormalize in Lean the following named items from Text.\n\n1. Lemma (contract_closure_eq_contract_delete)\n   The lemma must be named `contract_closure_eq_contract_delete`.\n   Matched text (candidate 0, lemma, label=contract_closure_eq_contract_delete): \\begin{lemma}[contract_closure_eq_contract_delete] For any \\(C\\subseteq E(M)\\), \\[\n                                                                                 M/\\mathrm{cl}_M(C)= (M/C)\\setminus\\bigl(\\mathrm{cl}_M(C)\\setminus C\\bigr). \\] \\end{lemma}\n2. Lemma (contract_closure_eq)\n   The lemma must be named `contract_closure_eq`.\n   Matched text (candidate 1, lemma, label=contract_closure_eq): \\begin{lemma}[contract_closure_eq] For any sets \\(C,X\\), \\[\n                                                                 \\mathrm{cl}_{M/C}(X)=\\mathrm{cl}_M(X\\cup C)\\setminus C. \\] \\end{lemma}\n3. Lemma (contract_spanning_iff)\n   The lemma must be named `contract_spanning_iff`.\n   Matched text (candidate 2, lemma, label=contract_spanning_iff): \\begin{lemma}[contract_spanning_iff] Assume \\(C\\subseteq E(M)\\). Then \\[ X \\text{ is\n                                                                   spanning in } M/C \\;\\Longleftrightarrow\\; \\bigl(X\\cup C \\text{ is spanning in } M\\bigr)\\\n                                                                   \\wedge\\ \\mathrm{Disjoint}(X,C). \\] \\end{lemma}\n\nEvery listed named item must be formalized with exactly the stated Lean name.\n-/\n"
+}

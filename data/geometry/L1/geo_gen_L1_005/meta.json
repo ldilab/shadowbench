@@ -1,0 +1,23 @@
+{
+  "id": "geometry/L1/geo_gen_L1_005",
+  "paper_id": "",
+  "paper_title": "",
+  "area": "geometry",
+  "level": "L1",
+  "problem_id": "geo_gen_L1_005",
+  "types": [
+    "theorem_stmt"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[monges_circle_theorem]\\label{thm:monge}\nMonge's theorem, in the affine-plane case where the three radii are pairwise distinct.\n\nNamed after Gaspard Monge, this theorem states that for any three circles in a plane, none of which is completely inside one of the others, the intersection points of each of the three pairs of external tangent lines are collinear.\n\nIn this formalization, the external tangent intersection point of two circles is represented by their external homothetic center. \nWe assume the radii are pairwise distinct so that these points are finite points in the affine plane, rather than points at infinity.\nDegenerate circles of radius zero are allowed, provided the radii remain pairwise distinct.\n\\end{theorem}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 109
+  },
+  "created_at": "2026-01-29T22:27:54+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-03T19:13:37.680672+00:00",
+  "custom_module": "no",
+  "formalization_rules": "/-\nFormalize in Lean the Theorem (monges_circle_theorem) from Text.\n\nThe theorem must be named `monges_circle_theorem`.\n   Matched text (candidate 0, theorem, label=monges_circle_theorem): \\begin{theorem}[monges_circle_theorem]\\label{thm:monge} Monge's theorem, in the affine-plane\n                                                                     case where the three radii are pairwise distinct. Named after Gaspard Monge, this theorem\n                                                                     states that for any three circles in a plane, none of which is completely inside one of the\n                                                                     others, the intersection points of each of the three pairs of external tangent lines are\n                                                                     collinear. In this formalization, the external tangent…\n-/\n"
+}

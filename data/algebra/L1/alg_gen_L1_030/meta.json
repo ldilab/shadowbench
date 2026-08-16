@@ -1,0 +1,24 @@
+{
+  "id": "algebra/L1/alg_gen_L1_030",
+  "paper_id": "Cox-Chap4-Ex",
+  "paper_title": "",
+  "area": "algebra",
+  "level": "L1",
+  "problem_id": "alg_gen_L1_030",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[isCoprime_iff_zeroLocus_inter_eq_empty]\nTwo ideals $I$ and $J$ of $k[x_1,\\ldots,x_n]$ are said to be \\emph{coprime} if and only if\n$I+J = k[x_1,\\ldots,x_n]$. Show the following:\n\\begin{enumerate}\n  \\item If $k=\\mathbb C$, then $I$ and $J$ are coprime if and only if\n  $\\mathbf V(I)\\cap \\mathbf V(J)=\\varnothing$.\n  \\item If $I$ and $J$ are coprime, then $IJ = I \\cap J$.\n\\end{enumerate}\n\\end{theorem}\n\n\\begin{proof}\n\\begin{enumerate}\n  \\item First note that\n  \\[\n    \\mathbf V(I)\\cap \\mathbf V(J)=\\mathbf V(I+J).\n  \\]\n  Indeed, a point lies in $\\mathbf V(I)\\cap \\mathbf V(J)$ iff it vanishes on every polynomial in $I$\n  and in $J$, equivalently on every polynomial in the sum $I+J$.\n\n  If $I$ and $J$ are coprime, then $I+J=k[x_1,\\ldots,x_n]$, hence $\\mathbf V(I+J)=\\varnothing$ and\n  therefore $\\mathbf V(I)\\cap \\mathbf V(J)=\\varnothing$.\n\n  Conversely, assume $\\mathbf V(I)\\cap \\mathbf V(J)=\\varnothing$. Then $\\mathbf V(I+J)=\\varnothing$.\n  Over $k=\\mathbb C$, Hilbert's Nullstellensatz implies that $\\mathbf V(K)=\\varnothing$ if and only if\n  $\\sqrt{K}=k[x_1,\\ldots,x_n]$. Applying this to $K=I+J$ gives $\\sqrt{I+J}=k[x_1,\\ldots,x_n]$, hence\n  $I+J=k[x_1,\\ldots,x_n]$ and $I,J$ are coprime.\n\n  \\item We always have $IJ\\subseteq I\\cap J$.\n\n  For the reverse inclusion, let $f\\in I\\cap J$. Since $I$ and $J$ are coprime, we can write\n  $1=a+b$ with $a\\in I$ and $b\\in J$. Then\n  \\[\n    f=f\\cdot 1=f(a+b)=fa+fb.\n  \\]\n  Here $fa\\in JI=IJ$ because $f\\in J$ and $a\\in I$, and similarly $fb\\in IJ$ because $f\\in I$ and\n  $b\\in J$. Hence $f\\in IJ$, so $I\\cap J\\subseteq IJ$.\n\\end{enumerate}\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 214
+  },
+  "created_at": "2025-12-26T00:51:41+00:00",
+  "updated_at": "2026-05-20T19:15:42+00:00",
+  "custom_module": "no",
+  "translation_direction": "forward",
+  "formalization_rules": "open MvPolynomial\n\n/-\nFormalize in Lean the Theorem (isCoprime_iff_zeroLocus_inter_eq_empty) from Text.\n\nThe theorem must be named `isCoprime_iff_zeroLocus_inter_eq_empty`.\n   Matched text (candidate 0, theorem, label=isCoprime_iff_zeroLocus_inter_eq_empty): \\begin{theorem}[isCoprime_iff_zeroLocus_inter_eq_empty] Two ideals $I$ and $J$ of\n                                                                                      $k[x_1,\\ldots,x_n]$ are said to be \\emph{coprime} if and only if $I+J = k[x_1,\\ldots,x_n]$.\n                                                                                      Show the following: \\begin{enumerate} \\item If $k=\\mathbb C$, then $I$ and $J$ are coprime\n                                                                                      if and only if $\\mathbf V(I)\\cap \\mathbf V(J)=\\varnothing$. \\item If $I$ and $J$ are\n                                                                                      coprime, then $IJ = I \\cap J$. \\end{enumerate} \\end{theorem}\n-/\n"
+}

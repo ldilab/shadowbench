@@ -1,0 +1,24 @@
+{
+  "id": "probability/L2/prob_gen_L2_001",
+  "paper_id": "thebook",
+  "paper_title": "Proofs from THE BOOK",
+  "area": "probability",
+  "level": "L2",
+  "problem_id": "prob_gen_L2_001",
+  "types": [
+    "theorem_stmt"
+  ],
+  "subfields": [],
+  "text": "Definition(BuffonMeasure)\n\nConsider the uniform probability space $[0, d] \\times [0, \\pi]$, where each coordinate means the midpoint position relative to the closest lower line and the angle relative to a fixed direction of the ruling respectively.\n\nTheorem(BuffonNeedle)\n\nSuppose a short needle of length $\\ell$ is dropped onto a paper ruled with equally spaced lines of distance $d \\ge \\ell$. Then the probability that the needle crosses a line on the paper is $\\frac{2\\ell}{\\pi d}$.\n\nProof.\n\nUnder the setting of the probability measure above, the needle crosses a line with angle $\\theta$ exactly when its height $y$ of midpoint is lower than $\\frac{\\ell \\sin \\theta}{2}$ or higher than $d - \\frac{\\ell \\sin \\theta}{2}$. Thus the marginal probability for $\\theta$ is $\\frac{\\ell \\sin \\theta}{d}$. Now we get the probability as the average of probability over $\\theta$, namely\n$$\n\\frac{1}{\\pi} \\int_0^\\pi \\frac{\\ell \\sin \\theta}{d} d\\theta = \\frac{2\\ell}{\\pi d}.\n$$",
+  "references": [],
+  "toolchain": {
+    "lean": "4.28.0"
+  },
+  "metrics": {
+    "source_words": 146
+  },
+  "created_at": "2026-05-04T10:20:33+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-03T16:25:50.071476+00:00",
+  "formalization_rules": "/-\nFormalize in Lean the following named items from Text.\n\n1. Definition (BuffonMeasure)\n   The definition must be named `BuffonMeasure`.\n   Matched text (candidate 0, definition, label=BuffonMeasure): Definition(BuffonMeasure) Consider the uniform probability space $[0, d] \\times [0, \\pi]$, where each coordinate means the midpoint position relative to the closest lower line and the angle relative to a fixed direction of the ruling respectively.\n2. Theorem (BuffonNeedle)\n   The theorem must be named `BuffonNeedle`.\n   Matched text (candidate 1, theorem, label=BuffonNeedle): Theorem (BuffonNeedle) Suppose a short needle of length $\\ell$ is dropped onto a paper ruled\n                                                            with equally spaced lines of distance $d \\ge \\ell$. Then the probability that the needle\n                                                            crosses a line on the paper is $\\frac{2\\ell}{\\pi d}$.\n\nEvery listed named item must be formalized with exactly the stated Lean name.\n-/"
+}

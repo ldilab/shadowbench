@@ -1,0 +1,25 @@
+{
+  "area": "Algebra",
+  "created_at": "2025-12-19T04:00:37+00:00",
+  "id": "algebra/L1/alg_gen_L1_005",
+  "level": "L1",
+  "metrics": {
+    "source_words": 40
+  },
+  "paper_id": "Cox-Chap4-Ex",
+  "paper_title": "",
+  "problem_id": "alg_gen_L1_005",
+  "references": [],
+  "subfields": [],
+  "target_decl": "S",
+  "target_kind": "def",
+  "text": "\\begin{theorem}[zeroLocus_nonempty_of_disjoint_noZeros]\nLet $k$ be an arbitrary field and let $S$ be the subset of all polynomials in $k[x_1,\\dots,x_n]$ that have no zeros in $k^n$. If $I$ is any ideal in $k[x_1,\\dots,x_n]$ such that $I \\cap S=\\varnothing$, then $\\mathbf V(I)\\neq\\varnothing$.\n\\end{theorem}\n",
+  "toolchain": {},
+  "types": [
+    "theorem_stmt"
+  ],
+  "updated_at": "2026-07-03T19:08:58.600424+00:00",
+  "custom_module": "no",
+  "translation_direction": "forward",
+  "formalization_rules": "/-\nFormalize in Lean the Theorem (zeroLocus_nonempty_of_disjoint_noZeros) from Text.\n\nThe theorem must be named `zeroLocus_nonempty_of_disjoint_noZeros`.\n   Matched text (candidate 0, theorem, label=zeroLocus_nonempty_of_disjoint_noZeros): \\begin{theorem}[zeroLocus_nonempty_of_disjoint_noZeros] Let $k$ be an arbitrary field and\n                                                                                      let $S$ be the subset of all polynomials in $k[x_1,\\dots,x_n]$ that have no zeros in $k^n$.\n                                                                                      If $I$ is any ideal in $k[x_1,\\dots,x_n]$ such that $I \\cap S=\\varnothing$, then $\\mathbf\n                                                                                      V(I)\\neq\\varnothing$. \\end{theorem}\n-/\n"
+}

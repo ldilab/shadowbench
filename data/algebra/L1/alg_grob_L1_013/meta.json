@@ -1,0 +1,30 @@
+{
+  "area": "Algebra",
+  "created_at": "2026-01-01T07:29:19+00:00",
+  "id": "algebra/L1/alg_grob_L1_013",
+  "level": "L1",
+  "metrics": {
+    "source_words": 123
+  },
+  "paper_id": "Cox-Chap2",
+  "paper_title": "",
+  "problem_id": "alg_grob_L1_013",
+  "references": [],
+  "subfields": [
+    "grobner-basis"
+  ],
+  "target_decl": "lm_add_le_of_both_lm_le_mon",
+  "target_kind": "lemma",
+  "text": "Lemma (lm_add_le_of_both_lm_le_mon)\nUpper bound of the leading monomial of addition\n\nLet $f_1, f_2 \\in R[\\sigma]$ be multivariate polynomials (which might be zero). Here, $\\sigma$ is a set of variable symbols over which a monomial order $>$ is fixed, and $R$ is a nontrivial commutative semiring. Given a monomial $x^\\delta$ such that $\\mathrm{LM}(f_1) \\le x^\\delta$ and $\\mathrm{LM}(f_2) \\le x^\\delta$, we have $\\mathrm{LM}(f_1 + f_2) \\le x^\\delta$.\n\nProof)\nIt suffices to take a polynomial $g \\in R[\\sigma]$ whose leading monomial is $\\delta$. Such polynomial exists from $R \\ne \\{0\\}$; in particular, $g$ can be taken as the monomial $cx^\\delta$ for some $c \\in R \\setminus \\{0\\}$. Now we obtain the result from the same inequality for $f_1, f_2$ and $g$.\n",
+  "toolchain": {
+    "lean": "4.27.0-rc1"
+  },
+  "translation_direction": "forward",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "updated_at": "2026-07-03T19:09:42.384948+00:00",
+  "custom_module": "no",
+  "formalization_rules": "/-\nFormalize in Lean the Lemma (lm_add_le_of_both_lm_le_mon) from Text.\n\nThe lemma must be named `lm_add_le_of_both_lm_le_mon`.\n   Matched text (candidate 0, lemma, label=lm_add_le_of_both_lm_le_mon): Lemma (lm_add_le_of_both_lm_le_mon) Upper bound of the leading monomial of addition Let\n                                                                         $f_1, f_2 \\in R[\\sigma]$ be multivariate polynomials (which might be zero). Here, $\\sigma$\n                                                                         is a set of variable symbols over which a monomial order $>$ is fixed, and $R$ is a\n                                                                         nontrivial commutative semiring. Given a monomial $x^\\delta$ such that $\\mathrm{LM}(f_1) \\le\n                                                                         x^\\delta$ and $\\mathrm{LM}(f_2) \\le x^\\delta$, we have $\\mathrm…\n-/\n"
+}

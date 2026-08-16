@@ -1,0 +1,26 @@
+{
+  "area": "algebra",
+  "created_at": "2026-01-15T23:53:10+00:00",
+  "id": "algebra/L2/alg_gen_L2_005",
+  "level": "L2",
+  "metrics": {
+    "source_words": 170
+  },
+  "paper_id": "Cox-Chap4-Ex",
+  "paper_title": "",
+  "problem_id": "alg_gen_L2_005",
+  "references": [],
+  "subfields": [],
+  "target_decl": "I",
+  "target_kind": "def",
+  "text": "\\begin{theorem}\nLet $I = \\langle x^2, xy, y^2 \\rangle \\subseteq k[x, y]$.\n\\begin{enumerate}\n    \\item[I_isPrimary] $I$ is primary.\n    \\item[I_not_infIrred] $I = \\langle x^2, y \\rangle \\cap \\langle x, y^2 \\rangle$ and conclude that $I$ is not irreducible.\n\\end{enumerate}\n\\end{theorem}\n\n\\begin{proof}\nLet $\\mathfrak m:=\\langle x,y\\rangle$. Then\n\\[\n  I=\\langle x^2,xy,y^2\\rangle=\\mathfrak m^2,\n  \\qquad\n  \\sqrt I=\\sqrt{\\mathfrak m^2}=\\mathfrak m.\n\\]\nSince $k[x,y]/\\mathfrak m\\simeq k$, $\\mathfrak m$ is maximal. Thus $\\sqrt I$ is maximal, and hence $I$ is primary.\n\nNow put $J:=\\langle x^2,y\\rangle$ and $K:=\\langle x,y^2\\rangle$. We show that $I=J\\cap K$. Clearly $I\\subseteq J\\cap K$. Conversely, for a monomial $x^ay^b$,\n\\[\n  x^ay^b\\in J\\cap K\n  \\iff\n  (a\\ge2 \\text{ or } b\\ge1)\n  \\text{ and }\n  (a\\ge1 \\text{ or } b\\ge2).\n\\]\nThis implies $a\\ge2$, or $a,b\\ge1$, or $b\\ge2$, so $x^ay^b$ is divisible by $x^2$, $xy$, or $y^2$. Hence $x^ay^b\\in I$. Since these are monomial ideals, $J\\cap K\\subseteq I$, and therefore $I=J\\cap K$.\n\nFinally, $I\\subsetneq J$ because $y\\in J\\setminus I$, and $I\\subsetneq K$ because $x\\in K\\setminus I$. Thus $I=J\\cap K$ is a nontrivial intersection, so $I$ is not irreducible.\n\\end{proof}",
+  "toolchain": {},
+  "translation_direction": "forward",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "updated_at": "2026-05-20T12:31:29+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open MvPolynomial\n\n/-\nFormalize in Lean the following named items from Text.\n\n1. Theorem (I_isPrimary)\n   The theorem must be named `I_isPrimary`.\n   Matched text (candidate 0, theorem, label=I_isPrimary): \\begin{theorem} Let $I = \\langle x^2, xy, y^2 \\rangle \\subseteq k[x, y]$.\n                                                              \\begin{enumerate} \\item[I_isPrimary] $I$ is primary. \n                                                              \\end{enumerate} \\end{theorem}\n2. Theorem (I_not_infIrred)\n   The theorem must be named `I_not_infIrred`.\n   Matched text (candidate 0, theorem, label=I_not_infIrred): \\begin{theorem} Let $I = \\langle x^2, xy, y^2 \\rangle \\subseteq k[x, y]$.\n                                                              \\begin{enumerate} \\item[I_not_infIrred] $I = \\langle x^2,\n                                                              y \\rangle \\cap \\langle x, y^2 \\rangle$ and conclude that $I$ is not irreducible.\n                                                              \\end{enumerate} \\end{theorem}\n\nEvery listed named item must be formalized with exactly the stated Lean name.\n-/"
+}

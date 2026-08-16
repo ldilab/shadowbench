@@ -1,0 +1,1315 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ShadowBench • Submit test run</title>
+  <meta name="description" content="Queue a test run to debug your benchmark runner. Not part of the official leaderboard." />
+  <style>
+    :root{
+      --bg: #f7f8fb;
+      --panel: #ffffff;
+      --panel-2: #fbfbfd;
+      --border: #e5e7eb;
+      --border-2: #d9dde5;
+      --text: #0f172a;
+      --muted: #475569;
+      --faint: #64748b;
+      --accent: #2563eb;
+      --accent-2: #1d4ed8;
+      --accent-soft: rgba(37, 99, 235, 0.10);
+      --good: #059669;
+      --bad:  #dc2626;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      --radius: 12px;
+      --shadow: 0 1px 0 rgba(15, 23, 42, 0.04), 0 8px 30px rgba(15, 23, 42, 0.07);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0b1220;
+        --panel:#0f172a;
+        --panel-2:#0b1220;
+        --border: rgba(255,255,255,0.10);
+        --border-2: rgba(255,255,255,0.14);
+        --text: rgba(255,255,255,0.92);
+        --muted: rgba(255,255,255,0.72);
+        --faint: rgba(255,255,255,0.60);
+        --accent: #7aa7ff;
+        --accent-2: #9b7cff;
+        --accent-soft: rgba(122, 167, 255, 0.14);
+        --shadow: 0 1px 0 rgba(255,255,255,0.03), 0 20px 60px rgba(0,0,0,0.45);
+      }
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(1100px 520px at 18% -8%, rgba(37,99,235,0.10), transparent 55%),
+        var(--bg);
+    }
+    a{color:inherit;text-decoration:none}
+    button, input, select, textarea{font:inherit}
+
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      background: color-mix(in srgb, var(--bg) 82%, transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar-inner{
+      max-width:980px;margin:0 auto;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:12px 18px;
+    }
+    .brand{font-weight:900}
+    .nav{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    .nav a{
+      padding:8px 10px;border-radius:10px;
+      border:1px solid transparent;
+      color: var(--muted);
+    }
+    .nav a:hover{background: var(--panel-2); border-color: var(--border); color: var(--text)}
+    .nav a.active{background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 35%, var(--border)); color: var(--text)}
+
+    .container{max-width:980px;margin:0 auto;padding:18px}
+    .card{
+      background: var(--panel);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+    h1{margin:6px 0 6px;font-size:26px;letter-spacing:-.4px}
+    .lede{margin:0;color: var(--muted);line-height:1.55;font-size:14.5px}
+    .mono{font-family: var(--mono)}
+    .grid{margin-top:14px;display:grid;grid-template-columns: 1fr 1fr;gap:10px}
+    @media (max-width: 820px){ .grid{grid-template-columns:1fr} }
+    label{font-size:12px;color: var(--muted)}
+    input, select, textarea{
+      width:100%;
+      background: var(--panel-2);
+      border:1px solid var(--border);
+      border-radius: 10px;
+      padding:10px 12px;
+      outline:none;
+      color: var(--text);
+    }
+    textarea{min-height:200px;resize:vertical;font-family: var(--mono);font-size:12px;line-height:1.45}
+    .row{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .btn{
+      padding:9px 11px;border-radius:10px;
+      border:1px solid var(--border-2);
+      background: var(--panel-2);
+      cursor:pointer;
+      color: var(--text);
+      display:inline-flex;align-items:center;gap:8px;
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, var(--accent-soft), color-mix(in srgb, var(--accent) 10%, var(--panel)));
+      border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+    }
+    .btn:disabled{opacity:.55;cursor:not-allowed}
+    .badge{
+      padding:6px 10px;border-radius:999px;
+      border:1px solid var(--border);
+      background: var(--panel-2);
+      font-size:12px;color: var(--muted);
+      display:inline-flex;gap:8px;align-items:center;
+    }
+    .badge.good{border-color: color-mix(in srgb, var(--good) 30%, var(--border)); background: color-mix(in srgb, var(--good) 10%, var(--panel)); color: color-mix(in srgb, var(--text) 92%, var(--good))}
+    .badge.bad{border-color: color-mix(in srgb, var(--bad) 30%, var(--border)); background: color-mix(in srgb, var(--bad) 10%, var(--panel)); color: color-mix(in srgb, var(--text) 92%, var(--bad))}
+    pre{
+      background: var(--panel-2);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding:12px;
+      overflow:auto;
+      white-space:pre-wrap;
+      color: color-mix(in srgb, var(--text) 92%, var(--muted));
+      font-family: var(--mono);
+      font-size:12px;
+    }
+
+    /* checkbox layout */
+    input[type="checkbox"]{
+      width:auto !important;
+      padding:0 !important;
+      border:none !important;
+      background:transparent !important;
+      accent-color: var(--accent);
+    }
+    .checkgrid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:8px;
+      max-height: 190px;
+      overflow:auto;
+      padding-right: 4px;
+      margin-top: 6px;
+    }
+    .chk{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      font-size: 13px;
+      user-select:none;
+    }
+    .chk:hover{
+      background: var(--panel-2);
+      border-color: var(--border);
+      color: var(--text);
+    }
+    .sectionTitle{
+      margin-top: 14px;
+      font-weight: 900;
+    }
+    .tinyNote{
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
+
+    /* progress UI */
+    .progressPanel{
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--panel-2) 88%, var(--panel));
+    }
+    .progressHead{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .progressTitle{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .progressBar{
+      margin-top: 10px;
+      height: 10px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: color-mix(in srgb, var(--border) 70%, transparent);
+    }
+    .progressBar > div{
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width .25s ease;
+    }
+    .kpis{
+      margin-top: 10px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .kpi{
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      font-size: 12px;
+      color: var(--muted);
+      display:inline-flex;
+      gap:6px;
+      align-items:baseline;
+    }
+    .kpi b{color: var(--text); font-weight: 900}
+    .monoSmall{font-family: var(--mono); font-size: 12px; color: var(--muted)}
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">ShadowBench • Submit test run</div>
+      <nav class="nav" aria-label="Primary">
+        <a href="leaderboard.html">Leaderboard</a>
+        <a class="active" href="submit.test-run.html">Submit test run</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h1>Submit a test run</h1>
+      <p class="lede">
+        This page is for debugging and iteration. Results here are tagged as <span class="mono">test</span> and should not be treated as official entries.
+        Requests are sent to <span class="mono" id="apiText">—</span>.
+      </p>
+
+      <div class="grid">
+        <div>
+          <label>System name</label>
+          <input id="name" placeholder="e.g., DS32B Autoformalizer (dev)" />
+        </div>
+        <div>
+          <label>Org</label>
+          <input id="org" placeholder="e.g., local" />
+        </div>
+        <div>
+          <label>Track</label>
+          <select id="track">
+            <option value="Open">Open</option>
+            <option value="Closed">Closed</option>
+            <option value="Academic">Academic</option>
+          </select>
+        </div>
+        <div>
+          <label>License</label>
+          <input id="license" placeholder="e.g., MIT" />
+        </div>
+      </div>
+
+      <div class="sectionTitle">Test scope</div>
+      <div class="tinyNote">
+        Choose how many problems to run, and which <span class="mono">areas</span> / <span class="mono">levels</span> to include.
+        These settings are merged into <span class="mono">submissionSpec.bench</span> when you submit.
+      </div>
+
+      <div class="sectionTitle">Formalization mode</div>
+      <div class="tinyNote">
+        Choose how the runner uses target templates.
+        <span class="mono">target completion</span> uses the Lean template (when available) and asks the model to fill all <span class="mono">sorry</span>.
+        <span class="mono">full completion</span> ignores any target template and always formalizes the informal statement from scratch.
+      </div>
+
+      <div class="grid">
+        <div>
+          <label>Mode</label>
+          <select id="formalizeMode">
+            <option value="target" selected>target completion (use target when present)</option>
+            <option value="full">full completion (ignore target; NL → Lean)</option>
+          </select>
+        </div>
+        <div>
+          <label class="monoSmall">Where it goes in JSON</label>
+          <div class="monoSmall">submissionSpec.eval.formalization_mode</div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div>
+          <label>Number of problems</label>
+          <input id="benchLimit" type="number" min="1" step="1" value="22" />
+        </div>
+        <div>
+          <label>Seed (reproducible sampling)</label>
+          <input id="benchSeed" type="number" step="1" value="1337" />
+        </div>
+        <div>
+          <label>Sampling</label>
+          <select id="benchSampling">
+            <option value="hash" selected>hash (recommended)</option>
+            <option value="first">first (by task_id)</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:flex;gap:8px;align-items:center">
+            <input id="useBenchUI" type="checkbox" checked />
+            Use these scope filters
+          </label>
+          <div class="tinyNote" style="margin-top:6px">
+            If unchecked, we do <b>not</b> merge the scope filters into your JSON.
+            (The <span class="mono">formalization_mode</span> dropdown still applies unless you set it in JSON yourself.)
+          </div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div>
+          <label>Areas</label>
+          <div id="areasBox" class="checkgrid">(loading…)</div>
+          <div class="row" style="margin-top:10px">
+            <button class="btn" id="areasAllBtn" type="button">Select all</button>
+            <button class="btn" id="areasNoneBtn" type="button">Clear</button>
+          </div>
+        </div>
+        <div>
+          <label>Levels</label>
+          <div id="levelsBox" class="checkgrid">(loading…)</div>
+          <div class="row" style="margin-top:10px">
+            <button class="btn" id="levelsAllBtn" type="button">Select all</button>
+            <button class="btn" id="levelsNoneBtn" type="button">Clear</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <span class="badge" id="benchBadge"><span class="mono">(scope not loaded)</span></span>
+        <button class="btn" id="applyToJsonBtn" type="button">Apply scope → JSON</button>
+        <button class="btn" id="syncFromJsonBtn" type="button">Sync scope ← JSON</button>
+      </div>
+
+      <div style="margin-top:12px">
+        <label>submissionSpec (JSON)</label>
+        <textarea id="spec" spellcheck="false">
+            
+             {
+  "model_cmd": "models/qwen235b_remote/model.py",
+  "env": {
+    "VLLM_BASE_URL": "http://127.0.0.1:1235/v1",
+    "VLLM_MODEL": "Qwen3-235B-A22B",
+    "VLLM_MAX_TOKENS": "2048",
+    "VLLM_TEMPERATURE": "0.0",
+    "VLLM_CONNECT_TIMEOUT": "3.0",
+    "VLLM_READ_TIMEOUT": "540.0",
+    "SHADOWBENCH_MAX_TASKS": "22"
+  },
+  "eval": {
+    "num_problems": 22,
+    "areas": ["Topology", "algebra"],
+    "levels": ["L1", "L2"],
+    "seed": 1337,
+    "sampling": "hash"
+  },
+  "runtime": {
+    "docker_image": "shadowbench/lean-eval:lean4.26.0-data",
+    "eval_project_dir": "leanproblems",
+    "docker_network": "none",
+    "model_timeout_sec": 600,
+    "compile_timeout_sec": 180
+  }
+}
+</textarea>
+      </div>
+
+      <div class="row">
+        <button class="btn primary" id="submitBtn">Queue test run</button>
+        <span class="badge" id="statusBadge"><span class="mono">idle</span></span>
+        <button class="btn" id="copyCurlBtn">Copy curl</button>
+      </div>
+
+      <div style="margin-top:14px;font-weight:900">Progress</div>
+      <div class="progressPanel" role="region" aria-label="Run progress">
+        <div class="progressHead">
+          <div class="progressTitle">
+            <span class="badge" id="progressPhase"><span class="mono">—</span></span>
+            <span class="monoSmall" id="progressSummary">waiting for runner…</span>
+          </div>
+          <div class="monoSmall" id="progressEta">—</div>
+        </div>
+        <div class="progressBar" aria-hidden="true"><div id="progressBarFill"></div></div>
+        <div class="kpis" id="kpisRow">
+          <span class="kpi"><span>done</span><b id="kpiDone">—</b></span>
+          <span class="kpi"><span>passed</span><b id="kpiPassed">—</b></span>
+          <span class="kpi"><span>failed</span><b id="kpiFailed">—</b></span>
+          <span class="kpi"><span>pass%</span><b id="kpiPassPct">—</b></span>
+          <span class="kpi"><span>avg model</span><b id="kpiAvgModel">—</b></span>
+          <span class="kpi"><span>avg compile</span><b id="kpiAvgCompile">—</b></span>
+          <span class="kpi"><span>elapsed</span><b id="kpiElapsed">—</b></span>
+        </div>
+        <div class="tinyNote mono" id="progressTask">(no task yet)</div>
+      </div>
+
+      <div style="margin-top:14px;font-weight:900">Result</div>
+      <pre id="result">(nothing yet)</pre>
+
+      <div style="margin-top:14px;font-weight:900">Logs</div>
+      <pre id="logs">(nothing yet)</pre>
+    </section>
+  </main>
+
+<script>
+(() => {
+  // ---------- API base ----------
+  // Allow override via `window.__SHADOWBENCH_API_BASE__`:
+  //  - "https://api.leaderboard.example.org" (explicit)
+  //  - "" (same-origin)
+  // Local default: http://127.0.0.1:8000
+  const override =
+    (typeof window.__SHADOWBENCH_API_BASE__ === "string") ? window.__SHADOWBENCH_API_BASE__ : null;
+
+  const API_BASE =
+    (location.hostname === "localhost" || location.hostname === "127.0.0.1")
+      ? (override ?? "http://127.0.0.1:8000")
+      : (override ?? "https://api.leaderboard.example.org");
+
+  const $ = (s) => document.querySelector(s);
+
+  function apiUrl(path){
+    return (API_BASE === "") ? path : (API_BASE + path);
+  }
+  function apiAbsBase(){
+    if(/^https?:\/\//.test(API_BASE)) return API_BASE;
+    if(API_BASE === "") return location.origin;
+    if(API_BASE.startsWith("/")) return location.origin + API_BASE;
+    return location.origin + "/" + String(API_BASE).replace(/^\/+/, "");
+  }
+
+  $("#apiText").textContent = apiAbsBase() + "/api/submissions";
+
+  // ---------- helpers ----------
+  function escapeHtml(s){
+    return String(s ?? "")
+      .replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;").replaceAll("'","&#039;");
+  }
+
+  function setBadge(kind, text){
+    const b = $("#statusBadge");
+    b.className = "badge " + (kind || "");
+    b.innerHTML = `<span class="mono">${escapeHtml(text)}</span>`;
+  }
+
+  function setBenchBadge(text){
+    const b = $("#benchBadge");
+    b.innerHTML = `<span class="mono">${escapeHtml(text)}</span>`;
+  }
+
+  async function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
+
+  // ---------- progress (parsed from runner logs) ----------
+  // The Python runner emits lines like:
+  //   SHADOWBENCH_PROGRESS {"type":"task_done", ...}
+  // We parse them out of logs to render a live progress bar.
+
+  const PROG = {
+    total: null,
+    done: 0,
+    passed: 0,
+    failed: 0,
+    avg_model_sec: null,
+    avg_compile_sec: null,
+    elapsed_sec: null,
+    eta_sec: null,
+    last_task_id: "",
+    last_ok: null,
+    last_err: "",
+    started_at_ms: null,
+  };
+
+  // Track per-task completion parsed from logs (fallback when SHADOWBENCH_PROGRESS events are absent)
+  const TASK_MAP = new Map();
+
+  let _logLen = 0;
+  let _logCarry = "";
+
+  function fmtSec(sec){
+    if(sec == null || !Number.isFinite(sec)) return "—";
+    if(sec < 1) return `${sec.toFixed(2)}s`;
+    if(sec < 60) return `${sec.toFixed(1)}s`;
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    if(m < 60) return `${m}m ${s}s`;
+    const h = Math.floor(m / 60);
+    const mm = m % 60;
+    return `${h}h ${mm}m`;
+  }
+
+  function setProgressPhase(text, kind=""){
+    const b = $("#progressPhase");
+    b.className = "badge " + (kind || "");
+    b.innerHTML = `<span class="mono">${escapeHtml(text)}</span>`;
+  }
+
+  function resetProgressUI(){
+    _logLen = 0;
+    _logCarry = "";
+    TASK_MAP.clear();
+    PROG.total = null;
+    PROG.done = 0;
+    PROG.passed = 0;
+    PROG.failed = 0;
+    PROG.avg_model_sec = null;
+    PROG.avg_compile_sec = null;
+    PROG.elapsed_sec = null;
+    PROG.eta_sec = null;
+    PROG.last_task_id = "";
+    PROG.last_ok = null;
+    PROG.last_err = "";
+    PROG.started_at_ms = Date.now();
+
+    $("#progressBarFill").style.width = "0%";
+    $("#progressSummary").textContent = "waiting for runner…";
+    $("#progressEta").textContent = "—";
+    $("#progressTask").textContent = "(no task yet)";
+    $("#kpiDone").textContent = "—";
+    $("#kpiPassed").textContent = "—";
+    $("#kpiFailed").textContent = "—";
+    $("#kpiPassPct").textContent = "—";
+    $("#kpiAvgModel").textContent = "—";
+    $("#kpiAvgCompile").textContent = "—";
+    $("#kpiElapsed").textContent = "—";
+    setProgressPhase("idle", "");
+  }
+
+  function updateProgressUI(){
+    const total = (PROG.total != null && Number.isFinite(PROG.total)) ? PROG.total : null;
+    const done = Number.isFinite(PROG.done) ? PROG.done : 0;
+    const pct = (total && total > 0) ? Math.max(0, Math.min(100, 100 * done / total)) : 0;
+
+    $("#progressBarFill").style.width = `${pct.toFixed(1)}%`;
+
+    const totalTxt = total ? String(total) : "—";
+    $("#progressSummary").textContent = `${done} / ${totalTxt} (${pct.toFixed(1)}%)`;
+
+    $("#kpiDone").textContent = total ? `${done}/${total}` : String(done);
+    $("#kpiPassed").textContent = String(PROG.passed ?? 0);
+    $("#kpiFailed").textContent = String(PROG.failed ?? 0);
+
+    const denom = Math.max(done, 1);
+    const passPct = 100 * (Number(PROG.passed ?? 0) / denom);
+    $("#kpiPassPct").textContent = (done ? `${passPct.toFixed(1)}%` : "—");
+
+    $("#kpiAvgModel").textContent = (PROG.avg_model_sec != null) ? fmtSec(PROG.avg_model_sec) : "—";
+    $("#kpiAvgCompile").textContent = (PROG.avg_compile_sec != null) ? fmtSec(PROG.avg_compile_sec) : "—";
+
+    const elapsed = (PROG.elapsed_sec != null) ? PROG.elapsed_sec
+      : (PROG.started_at_ms != null ? (Date.now() - PROG.started_at_ms)/1000 : null);
+    $("#kpiElapsed").textContent = fmtSec(elapsed);
+
+    const eta = PROG.eta_sec;
+    $("#progressEta").textContent = (eta != null && Number.isFinite(eta)) ? `ETA ${fmtSec(eta)}` : "—";
+
+    if(PROG.last_task_id){
+      const okTxt = (PROG.last_ok == null) ? "" : (PROG.last_ok ? "ok" : "fail");
+      const errTxt = (PROG.last_ok === false && PROG.last_err) ? ` • ${PROG.last_err}` : "";
+      $("#progressTask").textContent = `${PROG.last_task_id}${okTxt ? " • " + okTxt : ""}${errTxt}`;
+    }
+  }
+
+  function handleProgressEvent(ev){
+    if(!ev || typeof ev !== "object") return;
+
+    if(typeof ev.total === "number" && Number.isFinite(ev.total)) PROG.total = ev.total;
+
+    // allow either i or done
+    if(typeof ev.done === "number" && Number.isFinite(ev.done)) PROG.done = ev.done;
+    if(typeof ev.i === "number" && Number.isFinite(ev.i)) PROG.done = ev.i;
+
+    if(typeof ev.passed === "number" && Number.isFinite(ev.passed)) PROG.passed = ev.passed;
+    if(typeof ev.failed === "number" && Number.isFinite(ev.failed)) PROG.failed = ev.failed;
+    if(typeof ev.avg_model_sec === "number" && Number.isFinite(ev.avg_model_sec)) PROG.avg_model_sec = ev.avg_model_sec;
+    if(typeof ev.avg_compile_sec === "number" && Number.isFinite(ev.avg_compile_sec)) PROG.avg_compile_sec = ev.avg_compile_sec;
+    if(typeof ev.elapsed_sec === "number" && Number.isFinite(ev.elapsed_sec)) PROG.elapsed_sec = ev.elapsed_sec;
+    if(typeof ev.eta_sec === "number" && Number.isFinite(ev.eta_sec)) PROG.eta_sec = ev.eta_sec;
+    if(typeof ev.task_id === "string") PROG.last_task_id = ev.task_id;
+    if(typeof ev.last_task_id === "string") PROG.last_task_id = ev.last_task_id;
+    if(typeof ev.ok === "boolean") PROG.last_ok = ev.ok;
+    if(typeof ev.last_ok === "boolean") PROG.last_ok = ev.last_ok;
+    if(typeof ev.last_err === "string") PROG.last_err = ev.last_err;
+
+    if(ev.type === "start"){
+      setProgressPhase("running", "");
+      if(PROG.started_at_ms == null) PROG.started_at_ms = Date.now();
+    }
+    if(ev.type === "done"){
+      setProgressPhase("done", "good");
+    }
+    if(ev.type === "failed"){
+      setProgressPhase("failed", "bad");
+    }
+    if(ev.type === "completed"){
+      setProgressPhase("completed", "good");
+    }
+
+    updateProgressUI();
+  }
+
+    function _recomputeAggFromTaskMap(){
+    const n = TASK_MAP.size;
+    if(n <= 0){
+      PROG.passed = 0;
+      PROG.failed = 0;
+      PROG.avg_model_sec = null;
+      PROG.avg_compile_sec = null;
+      return;
+    }
+    let passed = 0;
+    let failed = 0;
+    let sumModel = 0;
+    let sumCompile = 0;
+    for(const v of TASK_MAP.values()){
+      if(v && v.ok) passed++;
+      else failed++;
+      if(v && Number.isFinite(v.model_sec)) sumModel += v.model_sec;
+      if(v && Number.isFinite(v.compile_sec)) sumCompile += v.compile_sec;
+    }
+    PROG.passed = passed;
+    PROG.failed = failed;
+    PROG.avg_model_sec = sumModel / n;
+    PROG.avg_compile_sec = sumCompile / n;
+  }
+
+  function ingestLogsForProgress(allLogs){
+    const text = String(allLogs ?? "");
+
+    // If the backend only returns a tail of logs (or truncates), resync safely.
+    if(text.length < _logLen){
+      _logLen = 0;
+      _logCarry = "";
+      TASK_MAP.clear();
+      PROG.done = 0;
+      PROG.passed = 0;
+      PROG.failed = 0;
+    }
+
+    let chunk = text.slice(_logLen);
+    _logLen = text.length;
+    chunk = _logCarry + chunk;
+    const lines = chunk.split(/\r?\n/);
+    _logCarry = lines.pop() || "";
+
+    for(const rawLine of lines){
+      const line = String(rawLine ?? "");
+
+      // ------------------------------------------------------------
+      // 1) Preferred: structured progress events.
+      //    We accept SHADOWBENCH_PROGRESS anywhere in the line (prefix-safe).
+      // ------------------------------------------------------------
+      const idx = line.indexOf("SHADOWBENCH_PROGRESS ");
+      if(idx >= 0){
+        const js = line.slice(idx + "SHADOWBENCH_PROGRESS ".length).trim();
+        try{
+          const ev = JSON.parse(js);
+          handleProgressEvent(ev);
+        }catch{}
+        continue;
+      }
+
+      // ------------------------------------------------------------
+      // 2) Fallback: parse stock runner output lines like:
+      //    [1/3] algebra/L1/... ok=False model=2.23s compile=1.77s mode=completion
+      //    (prefix-safe: allow leading timestamps/text before the bracket)
+      // ------------------------------------------------------------
+      const mTask = line.match(/(?:^|\s)\[(\d+)\s*\/\s*(\d+)\]\s+(\S+)\s+ok=(True|False|true|false)\s+model=([0-9.]+)s\s+compile=([0-9.]+)s/i);
+      if(mTask){
+        const i = parseInt(mTask[1], 10);
+        const total = parseInt(mTask[2], 10);
+        const task_id = mTask[3];
+        const ok = /^true$/i.test(mTask[4]);
+        const model_sec = parseFloat(mTask[5]);
+        const compile_sec = parseFloat(mTask[6]);
+
+        if(PROG.started_at_ms == null) PROG.started_at_ms = Date.now();
+        if(Number.isFinite(total)) PROG.total = total;
+        if(Number.isFinite(i)) PROG.done = Math.max(PROG.done || 0, i);
+
+        TASK_MAP.set(task_id, { ok, model_sec, compile_sec, i });
+
+        PROG.last_task_id = task_id;
+        PROG.last_ok = ok;
+        PROG.last_err = "";
+
+        _recomputeAggFromTaskMap();
+
+        // ETA heuristic
+        const elapsed = (PROG.started_at_ms != null) ? (Date.now() - PROG.started_at_ms) / 1000 : null;
+        if(elapsed != null){
+          PROG.elapsed_sec = elapsed;
+          if(PROG.total != null && PROG.total > 0 && PROG.done > 0){
+            const perTask = elapsed / PROG.done;
+            const remaining = Math.max(0, PROG.total - PROG.done);
+            PROG.eta_sec = remaining * perTask;
+          }
+        }
+
+        setProgressPhase("running", "");
+        updateProgressUI();
+        continue;
+      }
+
+      // ------------------------------------------------------------
+      // 3) Fallback: detect total tasks early.
+      //    Example: "[info] ShadowBench eval starting: tasks=3 (requested=3, serverCap=None)"
+      // ------------------------------------------------------------
+      const mStart = line.match(/ShadowBench eval starting:\s*tasks=(\d+)/i);
+      if(mStart){
+        const total = parseInt(mStart[1], 10);
+        if(Number.isFinite(total)){
+          handleProgressEvent({ type:"start", total, done: PROG.done ?? 0 });
+        }
+        continue;
+      }
+    }
+  }
+
+  function renderLogsTail(allLogs){
+    const text = String(allLogs ?? "");
+    if(!text){
+      $("#logs").textContent = "(no logs yet)";
+      return;
+    }
+    // keep UI responsive by showing only the tail
+    const lines = text.split(/\r?\n/)
+      // don't spam the visible log pane with progress events
+      .filter(l => !String(l || "").includes("SHADOWBENCH_PROGRESS "));
+    const tail = lines.slice(-350).join("\n");
+    $("#logs").textContent = tail || "(no logs yet)";
+  }
+
+  // ---------- CANONICAL AREAS ----------
+  const AREA_ABBREV = {
+    "algebra": "alg",
+    "topology": "top",
+    "analysis": "ana",
+    "number-theory": "nt",
+    "logic": "log",
+    "category-theory": "cat",
+    "probability": "prob",
+    "geometry": "geo",
+    "college-math-competition": "cmc",
+  };
+
+  function normalizeAreaSlug(x){
+    const s0 = String(x ?? "").trim();
+    if(!s0) return "";
+    const s = s0.toLowerCase().replace(/_/g, "-").replace(/\s+/g, "-");
+
+    // common legacy aliases
+    const alias = {
+      "numbertheory": "number-theory",
+      "number-theory": "number-theory",
+      "categorytheory": "category-theory",
+      "category-theory": "category-theory",
+      "collegemathcompetition": "college-math-competition",
+      "college-math-competition": "college-math-competition",
+    };
+
+    const t = alias[s] || s;
+    if(Object.prototype.hasOwnProperty.call(AREA_ABBREV, t)) return t;
+    if(Object.prototype.hasOwnProperty.call(AREA_ABBREV, s)) return s;
+    return t;
+  }
+
+  // ---------- manifest (optional) ----------
+  const DEFAULT_AREAS = Object.keys(AREA_ABBREV);
+  const DEFAULT_LEVELS = ["L1","L2","L3","L4"];
+
+  let MANIFEST = { areas: DEFAULT_AREAS.slice(), levels: DEFAULT_LEVELS.slice(), total_tasks: null };
+
+  async function fetchManifest(){
+    try{
+      const res = await fetch(apiUrl("/api/benchmark_manifest.json"), { cache: "no-store" });
+      if(!res.ok) return null;
+      const data = await res.json();
+      if(!data || typeof data !== "object") return null;
+
+      const areas = Array.isArray(data.areas)
+        ? data.areas.map(normalizeAreaSlug).filter(Boolean)
+        : null;
+
+      const levels = Array.isArray(data.levels) ? data.levels.map(String) : null;
+      const total = (typeof data.total_tasks === "number" && Number.isFinite(data.total_tasks)) ? data.total_tasks : null;
+
+      if(areas && areas.length) MANIFEST.areas = Array.from(new Set(areas));
+      if(levels && levels.length) MANIFEST.levels = levels;
+      MANIFEST.total_tasks = total;
+
+      return data;
+    }catch(e){
+      return null;
+    }
+  }
+
+  function renderChecks(containerSel, name, items){
+    const box = $(containerSel);
+    box.innerHTML = items.map((it) => {
+      const v = (name === "areas") ? normalizeAreaSlug(it) : String(it);
+      const tag = (name === "areas" && AREA_ABBREV[v]) ? AREA_ABBREV[v] : "";
+      return `
+        <label class="chk">
+          <input type="checkbox" name="${escapeHtml(name)}" value="${escapeHtml(v)}" checked />
+          <span class="mono">${escapeHtml(v)}</span>
+          ${tag ? `<span class="badge" style="margin-left:auto"><span class="mono">${escapeHtml(tag)}</span></span>` : ``}
+        </label>
+      `;
+    }).join("");
+  }
+
+  function readChecked(name){
+    const vals = Array.from(document.querySelectorAll(`input[name="${name}"]:checked`))
+      .map(x => x.value);
+    if(name === "areas") return vals.map(normalizeAreaSlug).filter(Boolean);
+    return vals.map(v => String(v));
+  }
+
+  function setAll(name, checked){
+    document.querySelectorAll(`input[name="${name}"]`).forEach(cb => { cb.checked = checked; });
+    updateBenchBadgeFromUI();
+  }
+
+  // ---------- spec merge ----------
+  function parseSpecText(){
+    try{
+      return JSON.parse($("#spec").value);
+    }catch{
+      return null;
+    }
+  }
+
+//   function mergeBenchSelectionIntoSpec(spec){
+//     if(!spec || typeof spec !== "object") return spec;
+
+//     // if UI toggled off, do not merge
+//     if(!$("#useBenchUI").checked) return spec;
+
+//     const limit = parseInt($("#benchLimit").value || "20", 10);
+//     const seed = parseInt($("#benchSeed").value || "1337", 10);
+//     const sampling = $("#benchSampling").value;
+
+//     const areas = readChecked("areas");
+//     const levels = readChecked("levels");
+
+//     if(!spec.bench || typeof spec.bench !== "object") spec.bench = {};
+//     spec.bench.limit = Number.isFinite(limit) && limit > 0 ? limit : 20;
+//     spec.bench.seed = Number.isFinite(seed) ? seed : 1337;
+//     spec.bench.sampling = (sampling === "first") ? "first" : "hash";
+
+//     // If user selects none, interpret as ALL (delete field)
+//     if(areas.length) spec.bench.areas = areas;
+//     else delete spec.bench.areas;
+
+//     if(levels.length) spec.bench.levels = levels;
+//     else delete spec.bench.levels;
+
+//     return spec;
+//   }
+
+function mergeBenchSelectionIntoSpec(spec){
+  if(!spec || typeof spec !== "object") return spec;
+
+  // ---- Global formalization mode (applies to *all* problems) ----
+  // Behavior:
+  //   - If "Use these scope filters" is checked: dropdown ALWAYS overrides JSON.
+  //   - If unchecked: we only set formalization_mode if the JSON doesn't already specify it.
+  const fm0 = String($("#formalizeMode")?.value || "target").trim().toLowerCase();
+  const formalization_mode = (fm0 === "full") ? "full" : "target";
+
+  const uiOn = !!$("#useBenchUI").checked;
+  const jsonHasMode = !!(
+    (spec.eval && typeof spec.eval === "object" && typeof spec.eval.formalization_mode === "string") ||
+    (spec.bench && typeof spec.bench === "object" && typeof spec.bench.formalization_mode === "string") ||
+    (typeof spec.formalization_mode === "string")
+  );
+
+  if(uiOn || !jsonHasMode){
+    if(!spec.eval || typeof spec.eval !== "object") spec.eval = {};
+    spec.eval.formalization_mode = formalization_mode;
+    if(uiOn){
+      // mirror into bench only when UI overrides are enabled (legacy/debug)
+      if(!spec.bench || typeof spec.bench !== "object") spec.bench = {};
+      spec.bench.formalization_mode = formalization_mode;
+    }
+  }
+
+  // if UI toggled off, do not merge scope filters
+  if(!uiOn) return spec;
+
+  const limit = parseInt($("#benchLimit").value || "22", 10);
+  const seed = parseInt($("#benchSeed").value || "1337", 10);
+  const sampling = $("#benchSampling").value;
+
+  const areas = readChecked("areas");   // canonical slugs
+  const levels = readChecked("levels");
+
+  // ---- write BENCH (UI legacy) ----
+  if(!spec.bench || typeof spec.bench !== "object") spec.bench = {};
+
+  // preserve any other bench fields (like glob) and only update scope fields
+  spec.bench.limit = Number.isFinite(limit) && limit > 0 ? limit : 22;
+  spec.bench.seed = Number.isFinite(seed) ? seed : 1337;
+  spec.bench.sampling = (sampling === "first") ? "first" : "hash";
+
+  // If user selects none, interpret as ALL (delete field)
+  if(areas.length) spec.bench.areas = areas;
+  else delete spec.bench.areas;
+
+  if(levels.length) spec.bench.levels = levels;
+  else delete spec.bench.levels;
+
+  // ---- MIRROR into EVAL (scorer contract) ----
+  if(!spec.eval || typeof spec.eval !== "object") spec.eval = {};
+
+  // eval uses num_problems naming
+  spec.eval.num_problems = spec.bench.limit;
+  spec.eval.seed = spec.bench.seed;
+  spec.eval.sampling = spec.bench.sampling;
+
+  if(spec.bench.areas) spec.eval.areas = spec.bench.areas;
+  else delete spec.eval.areas;
+
+  if(spec.bench.levels) spec.eval.levels = spec.bench.levels;
+  else delete spec.eval.levels;
+
+  return spec;
+}
+
+  function applyScopeToJson(){
+    const spec = parseSpecText();
+    if(!spec){
+      setBadge("bad", "invalid JSON");
+      return false;
+    }
+    const merged = mergeBenchSelectionIntoSpec(spec);
+    $("#spec").value = JSON.stringify(merged, null, 2);
+    setBadge("good", "scope applied");
+    setTimeout(()=>setBadge("", "idle"), 800);
+    return true;
+  }
+
+//   function syncScopeFromJson(){
+//     const spec = parseSpecText();
+//     if(!spec || typeof spec !== "object"){
+//       setBadge("bad", "invalid JSON");
+//       return false;
+//     }
+//     const bench = (spec.bench && typeof spec.bench === "object") ? spec.bench : {};
+//     if(typeof bench.limit === "number") $("#benchLimit").value = String(bench.limit);
+//     if(typeof bench.seed === "number") $("#benchSeed").value = String(bench.seed);
+//     if(typeof bench.sampling === "string") $("#benchSampling").value = (bench.sampling === "first") ? "first" : "hash";
+
+//     // Areas
+//     const wantAreas = Array.isArray(bench.areas)
+//       ? bench.areas.map(normalizeAreaSlug).filter(Boolean)
+//       : null;
+
+//     if(wantAreas){
+//       document.querySelectorAll(`input[name="areas"]`).forEach(cb => {
+//         cb.checked = wantAreas.includes(cb.value);
+//       });
+//     }else{
+//       // if absent: treat as ALL
+//       setAll("areas", true);
+//     }
+
+//     // Levels
+//     const wantLevels = Array.isArray(bench.levels) ? bench.levels.map(String) : null;
+//     if(wantLevels){
+//       document.querySelectorAll(`input[name="levels"]`).forEach(cb => {
+//         cb.checked = wantLevels.includes(cb.value);
+//       });
+//     }else{
+//       setAll("levels", true);
+//     }
+
+//     updateBenchBadgeFromUI();
+//     setBadge("good", "synced");
+//     setTimeout(()=>setBadge("", "idle"), 800);
+//     return true;
+//   }
+
+  function updateBenchBadgeFromUI(){
+    const limit = parseInt($("#benchLimit").value || "22", 10);
+    const areas = readChecked("areas");
+    const levels = readChecked("levels");
+    const sampling = $("#benchSampling").value;
+    const seed = parseInt($("#benchSeed").value || "1337", 10);
+    const fm0 = String($("#formalizeMode")?.value || "target").trim().toLowerCase();
+    const formalization_mode = (fm0 === "full") ? "full" : "target";
+
+    const aTxt = areas.length ? areas.join(",") : "ALL";
+    const lTxt = levels.length ? levels.join(",") : "ALL";
+    const totalTxt = (MANIFEST.total_tasks != null) ? ` (max≈${MANIFEST.total_tasks})` : "";
+    setBenchBadge(`mode=${formalization_mode} • n=${Number.isFinite(limit)?limit:"—"}${totalTxt} • areas=${aTxt} • levels=${lTxt} • ${sampling} seed=${Number.isFinite(seed)?seed:"—"}`);
+  }
+
+  // ---------- polling ----------
+  async function poll(id){
+    for(;;){
+      const res = await fetch(apiUrl("/api/submissions/" + encodeURIComponent(id) + "?_ts=" + Date.now()), { cache:"no-store" });
+      let s = null;
+      try{ s = await res.json(); }catch{}
+      if(!res.ok || !s){
+        setBadge("bad", "status check failed");
+        return null;
+      }
+
+      // status badge
+      setBadge("", s.status);
+
+      // progress phase badge
+      if(s.status === "completed") setProgressPhase("completed", "good");
+      else if(s.status === "failed") setProgressPhase("failed", "bad");
+      else setProgressPhase(s.status || "running", "");
+
+      // live logs + progress parsing (if the API returns logs during execution)
+      const logsText =
+        (typeof s.logs === "string") ? s.logs :
+        (typeof s.log === "string") ? s.log :
+        (typeof s.stdout === "string") ? s.stdout :
+        (typeof s.runner_logs === "string") ? s.runner_logs :
+        null;
+
+      if(logsText != null){
+        ingestLogsForProgress(logsText);
+        renderLogsTail(logsText);
+      }
+
+      // if the backend exposes a structured progress object, prefer it
+      if(s.progress && typeof s.progress === "object"){
+        handleProgressEvent(s.progress);
+      }
+
+      // optionally show partial run JSON while running
+      if(s.run){
+        $("#result").textContent = JSON.stringify(s.run, null, 2);
+      }
+
+      // If the backend does NOT stream logs/progress while running, we can still
+      // show a correct final progress bar once `run` exists.
+      if((s.status === "failed" || s.status === "completed") && s.run && typeof s.run === "object"){
+        try{
+          const meta = (s.run.meta && typeof s.run.meta === "object") ? s.run.meta : {};
+          const total = Number(meta.tasks);
+          const passed = Number(meta.passed);
+          const avgModel = Number(meta.avgModelSec);
+          const avgCompile = Number(s.run.avgTimeSec);
+
+          if(Number.isFinite(total) && total > 0){
+            // Preserve the phase (completed/failed) set above.
+            PROG.total = total;
+            PROG.done = total;
+
+            if(Number.isFinite(passed)){
+              PROG.passed = passed;
+              PROG.failed = Math.max(0, total - passed);
+            }
+
+            if(Number.isFinite(avgModel)) PROG.avg_model_sec = avgModel;
+            if(Number.isFinite(avgCompile)) PROG.avg_compile_sec = avgCompile;
+
+            if(PROG.started_at_ms != null){
+              PROG.elapsed_sec = (Date.now() - PROG.started_at_ms) / 1000;
+            }
+
+            PROG.eta_sec = 0;
+            updateProgressUI();
+          }
+        }catch{}
+      }
+
+      if(s.status === "failed" || s.status === "completed") return s;
+      await sleep(1000);
+    }
+  }
+
+  function buildPayload(){
+    const name = $("#name").value.trim() || "Test run";
+    const org = $("#org").value.trim() || "local";
+    const track = $("#track").value;
+    const license = $("#license").value.trim() || "—";
+
+    let spec = parseSpecText();
+    if(!spec) return { name, org, track, license, tags:["test"], submissionSpec: null };
+
+    // merge UI selection into spec unless disabled
+    spec = mergeBenchSelectionIntoSpec(spec);
+
+    return { name, org, track, license, tags:["test"], submissionSpec: spec };
+  }
+
+  // ---------- wire UI ----------
+  $("#areasAllBtn").onclick = () => setAll("areas", true);
+  $("#areasNoneBtn").onclick = () => setAll("areas", false);
+  $("#levelsAllBtn").onclick = () => setAll("levels", true);
+  $("#levelsNoneBtn").onclick = () => setAll("levels", false);
+
+  $("#applyToJsonBtn").onclick = applyScopeToJson;
+  $("#syncFromJsonBtn").onclick = syncScopeFromJson;
+
+  // keep badge fresh
+  ["benchLimit","benchSeed","benchSampling","useBenchUI","formalizeMode"].forEach(id=>{
+    $("#"+id).addEventListener("input", updateBenchBadgeFromUI);
+    $("#"+id).addEventListener("change", updateBenchBadgeFromUI);
+  });
+
+  function attachCheckboxListeners(){
+    document.querySelectorAll(`input[name="areas"], input[name="levels"]`).forEach(cb=>{
+      cb.addEventListener("change", updateBenchBadgeFromUI);
+    });
+  }
+
+  $("#copyCurlBtn").onclick = async () => {
+    const payload = buildPayload();
+    if(!payload.submissionSpec){
+      setBadge("bad","invalid JSON");
+      return;
+    }
+
+    const absBase = apiAbsBase();
+    const url = absBase + "/api/submissions";
+    const cmd = `curl -X POST ${url} \\\n  -H 'content-type: application/json' \\\n  -d '${JSON.stringify(payload).replaceAll("'", "'\\''")}'`;
+
+    await navigator.clipboard.writeText(cmd);
+    setBadge("good","copied curl");
+    setTimeout(()=>setBadge("", "idle"), 900);
+  };
+
+  $("#submitBtn").onclick = async () => {
+    const btn = $("#submitBtn");
+    btn.disabled = true;
+    $("#result").textContent = "(waiting)";
+    $("#logs").textContent = "(waiting)";
+    resetProgressUI();
+    setBadge("", "submitting…");
+
+    const payload = buildPayload();
+    if(!payload.submissionSpec){
+      setBadge("bad", "invalid JSON");
+      btn.disabled = false;
+      return;
+    }
+
+    try{
+      const res = await fetch(apiUrl("/api/submissions"), {
+        method: "POST",
+        headers: { "Content-Type":"application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      let data = null;
+      try{ data = await res.json(); }catch{}
+
+      if(!res.ok){
+        setBadge("bad", "HTTP " + res.status);
+        $("#result").textContent = JSON.stringify(data, null, 2);
+        btn.disabled = false;
+        return;
+      }
+
+      const id = data.submission_id;
+      setBadge("", "queued: " + id);
+      setProgressPhase("queued", "");
+
+      const done = await poll(id);
+      if(!done){
+        btn.disabled = false;
+        return;
+      }
+
+      $("#result").textContent = JSON.stringify(done.run || done, null, 2);
+      if(typeof done.logs === "string"){
+        ingestLogsForProgress(done.logs);
+        renderLogsTail(done.logs);
+      }else{
+        $("#logs").textContent = "(no logs)";
+      }
+
+      setBadge(done.status === "completed" ? "good" : "bad", done.status);
+
+    }catch(e){
+      console.error(e);
+      setBadge("bad", "network error");
+      $("#result").textContent = String(e);
+    }finally{
+      btn.disabled = false;
+    }
+  };
+
+  // ---------- init ----------
+  (async () => {
+    await fetchManifest();
+
+    // Ensure manifest areas are canonical and stable
+    MANIFEST.areas = (MANIFEST.areas || []).map(normalizeAreaSlug).filter(Boolean);
+    if(!MANIFEST.areas.length) MANIFEST.areas = Object.keys(AREA_ABBREV);
+
+    renderChecks("#areasBox", "areas", MANIFEST.areas);
+    renderChecks("#levelsBox", "levels", MANIFEST.levels);
+    attachCheckboxListeners();
+
+    resetProgressUI();
+
+    // Initialize UI from JSON if pre-filled
+    syncScopeFromJson();
+    updateBenchBadgeFromUI();
+  })();
+
+
+function syncScopeFromJson(){
+  const spec = parseSpecText();
+  if(!spec || typeof spec !== "object"){
+    setBadge("bad", "invalid JSON");
+    return false;
+  }
+
+  const evalObj  = (spec.eval  && typeof spec.eval  === "object") ? spec.eval  : null;
+  const benchObj = (spec.bench && typeof spec.bench === "object") ? spec.bench : null;
+
+  // Prefer eval if it looks populated; else fall back to bench.
+  const hasEvalScope =
+    evalObj && (
+      typeof evalObj.num_problems === "number" ||
+      Array.isArray(evalObj.areas) ||
+      Array.isArray(evalObj.levels) ||
+      typeof evalObj.seed === "number" ||
+      typeof evalObj.sampling === "string"
+    );
+
+  // Read from chosen source
+  const src = hasEvalScope ? evalObj : benchObj || {};
+
+  // Map source -> UI controls
+  const srcLimit =
+    (typeof src.num_problems === "number") ? src.num_problems :
+    (typeof src.limit === "number") ? src.limit :
+    null;
+
+  const srcSeed = (typeof src.seed === "number") ? src.seed : null;
+  const srcSampling = (typeof src.sampling === "string") ? src.sampling : null;
+  const srcMode =
+    (typeof evalObj?.formalization_mode === "string") ? String(evalObj.formalization_mode) :
+    (typeof benchObj?.formalization_mode === "string") ? String(benchObj.formalization_mode) :
+    (typeof spec.formalization_mode === "string") ? String(spec.formalization_mode) :
+    null;
+
+  if(srcLimit != null) $("#benchLimit").value = String(srcLimit);
+  if(srcSeed != null) $("#benchSeed").value = String(srcSeed);
+  if(srcSampling != null) $("#benchSampling").value = (srcSampling === "first") ? "first" : "hash";
+  if(srcMode != null){
+    const m = String(srcMode).trim().toLowerCase();
+    $("#formalizeMode").value = (m === "full") ? "full" : "target";
+  }
+
+  // Areas (normalize incoming JSON list: handles "Topology" etc.)
+  const wantAreas = Array.isArray(src.areas)
+    ? src.areas.map(normalizeAreaSlug).filter(Boolean)
+    : null;
+
+  if(wantAreas){
+    document.querySelectorAll(`input[name="areas"]`).forEach(cb => {
+      cb.checked = wantAreas.includes(cb.value);
+    });
+  }else{
+    // if absent: treat as ALL
+    setAll("areas", true);
+  }
+
+  // Levels
+  const wantLevels = Array.isArray(src.levels) ? src.levels.map(String) : null;
+  if(wantLevels){
+    document.querySelectorAll(`input[name="levels"]`).forEach(cb => {
+      cb.checked = wantLevels.includes(cb.value);
+    });
+  }else{
+    setAll("levels", true);
+  }
+
+  updateBenchBadgeFromUI();
+  setBadge("good", hasEvalScope ? "synced from eval" : "synced from bench");
+  setTimeout(()=>setBadge("", "idle"), 800);
+  return true;
+}
+
+})();
+</script>
+
+</body>
+</html>

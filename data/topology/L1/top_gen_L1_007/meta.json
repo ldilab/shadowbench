@@ -1,0 +1,24 @@
+{
+  "id": "topology/L1/top_gen_L1_007",
+  "paper_id": "",
+  "paper_title": "mathlib4",
+  "area": "topology",
+  "level": "L1",
+  "problem_id": "top_gen_L1_007",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[IsQuasiSeparated.image_of_isEmbedding]\nLet $S \\subseteq X$ be a quasiseparated set and $h:X \\to Y$ is a topological embedding. Then, $f(S)$ is quasiseparated.\n\\end{theorem}\n\n\\begin{proof}\nLet $U,V$ be compact open subsets of $f(S)$. Since $f$ is an embedding, $f^{-1}(U), f^{-1}(V)$ are compact open subsets of $S$. Then $f^{-1}(U) \\cap f^{-1}(V)$ is compact since $S$ is quasiseparated. Hence, $U \\cap V = f(f^{-1}(U) \\cap f^{-1}(V))$ is compact and thus $f(S)$ is quasiseparated.",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 69
+  },
+  "created_at": "2026-01-29T21:55:57+00:00",
+  "translation_direction": "backward",
+  "updated_at": "2026-06-18T15:26:37.148333+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Set TopologicalSpace Topology\n\n/-\nFormalize in Lean the Theorem (IsQuasiSeparated.image_of_isEmbedding) from Text.\n\nThe theorem must be named `IsQuasiSeparated.image_of_isEmbedding`.\n   Matched text (candidate 0, theorem, label=IsQuasiSeparated.image_of_isEmbedding): \\begin{theorem}[IsQuasiSeparated.image_of_isEmbedding] Let $S \\subseteq X$ be a\n                                                                                     quasiseparated set and $h:X \\to Y$ is a topological embedding. Then, $f(S)$ is\n                                                                                     quasiseparated. \\end{theorem}\n-/"
+}

@@ -1,0 +1,30 @@
+# MiniF2F evaluation config
+#
+# Option 1: Use from-folder command (recommended for running all files in a folder)
+#   python -m scripts.run_claude from-folder leanproblems/Minif2f --prompt-file prompts/prompt_complete_file.txt --max-rounds 5
+#
+# Option 2: Use batch command with this config (for explicit control over individual tasks)
+#   python -m scripts.run_claude batch config/config_minif2f.yaml
+
+defaults:
+  task_type: file
+  prompt_file: prompts/prompt_complete_file.txt
+  cwd: .
+  check_after_complete: true
+  permission_mode: bypassPermissions
+  result_dir: results/minif2f
+  mcp_log_dir: mcp_logs/minif2f
+  max_rounds: 2
+
+tasks:
+  - target_path: leanproblems/Minif2f/algebra_sqineq_2atp2bpge2ab.lean
+    mcp_log_name: algebra_sqineq_2atp2bpge2ab
+  - target_path: leanproblems/Minif2f/amc12a_2021_p7.lean
+    mcp_log_name: amc12a_2021_p7
+  - target_path: leanproblems/Minif2f/mathd_algebra_478.lean
+    mcp_log_name: mathd_algebra_478
+  - target_path: leanproblems/Minif2f/mathd_numbertheory_284.lean
+    mcp_log_name: mathd_numbertheory_284
+  - target_path: leanproblems/Minif2f/imo_1964_p1.lean
+    mcp_log_name: imo_1964_p1
+    max_rounds: 5

@@ -1,0 +1,24 @@
+{
+  "id": "algebraic-geometry/L2/alg_gen_L2_013",
+  "paper_id": "EGAI, 0.7.4.1, EGAII, 6.2.1",
+  "paper_title": "",
+  "area": "algebraic-geometry",
+  "level": "L2",
+  "problem_id": "alg_gen_L2_013",
+  "types": [
+    "def",
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{definition}[IsQuasiFiniteModule] Given a local ring $A$ with the maximal ideal \\(\\mathfrak{m}\\), we say that an \\(A\\)-module \\(M\\) is quasi-finite over \\(A\\) if \\(M/\\mathfrak{m} M \\) has finite rank over the residue field \\(k = A/\\mathfrak{m}\\).\n\\end{definition}\n\\begin{theorem}[isolated_in_fiber_iff_stalk_quasiFinite]\nLet \\(f:X\\to Y\\) be a morphism locally of finite type, and let \\(x\\) be a point of \\(X\\). The following conditions are equivalent:\n\\begin{enumerate}[label=(\\alph*)]\n    \\item The point \\(x\\) is isolated in its fiber \\(f^{-1}(f(x))\\).\n    \\item The ring \\(\\mathcal O_x\\) is a quasi-finite \\(\\mathcal O_{f(x)}\\)-module \\((0,7.4.1)\\).\n\\end{enumerate}\n\\end{theorem}\n\n\\begin{proof}\nThe question being evidently local on \\(X\\) and on \\(Y\\), one may suppose \\(X=\\mathrm{Spec}(A)\\) and \\(Y=\\mathrm{Spec}(B)\\) affine, \\(A\\) being a \\(B\\)-algebra of finite type. Moreover, one may replace \\(X\\) by \\(X\\times_Y\\mathrm{Spec}(\\mathcal O_{f(x)})\\) without changing the fiber \\(f^{-1}(f(x))\\) nor the local ring \\(\\mathcal O_x\\); thus one may suppose that \\(B\\) is a local ring, equal to \\(\\mathcal O_{f(x)}\\).\n\nIf \\(\\mathfrak n\\) is the maximal ideal of \\(B\\), then \\(f^{-1}(f(x))\\) is an affine scheme with ring \\(A/\\mathfrak n A\\), of finite type over \\(k(f(x))=B/\\mathfrak n\\). This being so, if \\((a)\\) holds, one may moreover suppose that \\(f^{-1}(f(x))\\) is reduced to the point \\(x\\); hence \\(A/\\mathfrak n A\\) is of finite rank over \\(B/\\mathfrak n\\), in other words \\(A\\) is a quasi-finite \\(B\\)-module.\n\nConversely, if (b) holds, \\(f^{-1}(f(x))\\) is an affine Artinian scheme, hence discrete; consequently \\(x\\) is isolated in its fiber \\(f^{-1}(f(x))\\).\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 226
+  },
+  "created_at": "2026-05-07T05:30:48+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-05-20T19:06:52+00:00",
+  "formalization_rules": "open CategoryTheory\n\n/-\nFormalize in Lean the following named items from Text.\n\n1. Definition (IsQuasiFiniteModule)\n   The definition must be named `IsQuasiFiniteModule`.\n   Matched text (candidate 0, definition, label=IsQuasiFiniteModule): \\begin{definition}[IsQuasiFiniteModule] Given a local ring $A$ with the maximal ideal\n                                                                      \\(\\mathfrak{m}\\), we say that an \\(A\\)-module \\(M\\) is quasi-finite over \\(A\\) if\n                                                                      \\(M/\\mathfrak{m} M \\) has finite rank over the residue field \\(k = A/\\mathfrak{m}\\).\n                                                                      \\end{definition}\n2. Theorem (isolated_in_fiber_iff_stalk_quasiFinite)\n   The theorem must be named `isolated_in_fiber_iff_stalk_quasiFinite`.\n   Matched text (candidate 1, theorem, label=isolated_in_fiber_iff_stalk_quasiFinite): \\begin{theorem}[isolated_in_fiber_iff_stalk_quasiFinite] Let \\(f:X\\to Y\\) be a morphism\n                                                                                       locally of finite type, and let \\(x\\) be a point of \\(X\\). The following conditions are\n                                                                                       equivalent: \\begin{enumerate}[label=(\\alph*)] \\item The point \\(x\\) is isolated in its fiber\n                                                                                       \\(f^{-1}(f(x))\\). \\item The ring \\(\\mathcal O_x\\) is a quasi-finite \\(\\mathcal\n                                                                                       O_{f(x)}\\)-module \\((0,7.4.1)\\). \\end{enumerate} \\end{theorem}\n\nEvery listed named item must be formalized with exactly the stated Lean name.\n-/\n"
+}

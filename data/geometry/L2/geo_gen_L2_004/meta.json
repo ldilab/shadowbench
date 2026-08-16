@@ -1,0 +1,22 @@
+{
+  "id": "geometry/L2/geo_gen_L2_004",
+  "paper_id": "Lee-Chap8-Ex",
+  "paper_title": "",
+  "area": "geometry",
+  "level": "L2",
+  "problem_id": "geo_gen_L2_004",
+  "types": [
+    "theorem_stmt"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[smoothVectorField_infinite_dimensional]\nLet $M$ be a nonempty positive-dimensional smooth manifold with or without boundary. Then $\\mathfrak{X}(M)$, the space of smooth vector fields on $M$, is infinite-dimensional.\n\\end{theorem}\n\n\\begin{proof}\nSuppose $\\mathfrak{X}(M)$ is finite-dimensional with dimension $k$. \nSince $\\dim M \\ge 1$, we can choose $k+1$ distinct points $x_1, \\dots, x_{k+1}$ in a coordinate chart $U \\subseteq M$. \nBecause $M$ is Hausdorff, there exist pairwise disjoint open neighborhoods $U_1, \\dots, U_{k+1} \\subseteq U$ for these points.\n\nFor each $i$, let $f_i \\in C^\\infty(M)$ be a smooth bump function supported on $U_i$ such that $f_i(x_i) = 1$. \nLet $V = \\frac{\\partial}{\\partial x^1}$ be a local coordinate vector field on $U$, and define global vector fields $X_i = f_i V$ (extended by $0$ outside $U$). \nSince the $X_i$ have disjoint supports, they are linearly independent: $\\sum c_i X_i = 0$ implies $c_j X_j(x_j) = c_j V|_{x_j} = 0$, so each $c_j = 0$.\n\nThis contradicts the assumption $\\dim \\mathfrak{X}(M) = k$. Therefore, $\\mathfrak{X}(M)$ is infinite-dimensional.\n\\end{proof}",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 161
+  },
+  "created_at": "2026-03-19T15:27:18+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-05-17T10:14:30+00:00",
+  "formalization_rules": "open scoped Manifold ContDiff\n\n/-\nFormalize in Lean the Theorem (smoothVectorField_infinite_dimensional) from Text.\n\nThe theorem must be named `smoothVectorField_infinite_dimensional`.\n   Matched text (candidate 0, theorem, label=smoothVectorField_infinite_dimensional): \\begin{theorem}[smoothVectorField_infinite_dimensional] Let $M$ be a nonempty positive-\n                                                                                      dimensional smooth manifold with or without boundary. Then $\\mathfrak{X}(M)$, the space of\n                                                                                      smooth vector fields on $M$, is infinite-dimensional. \\end{theorem}\n-/"
+}

@@ -1,0 +1,27 @@
+{
+  "area": "Algebra",
+  "created_at": "2026-01-01T22:44:01+00:00",
+  "id": "algebra/L1/alg_gen_L1_016",
+  "level": "L1",
+  "metrics": {
+    "source_words": 30
+  },
+  "paper_id": "Cox-Chap4-Ex",
+  "paper_title": "",
+  "problem_id": "alg_gen_L1_016",
+  "references": [],
+  "subfields": [],
+  "target_decl": "span_pow_card_mul_le_span_image_pow",
+  "target_kind": "theorem",
+  "text": "\\begin{theorem}[span_pow_card_mul_le_span_image_pow]\nLet $s=\\{g_1,\\dots,g_r\\}$ be a finite subset of $k[x_1,\\dots,x_n]$.\nSet $J := \\langle s\\rangle$ and let $M\\ge 0$. Then\n\\[\n  J^{\\,rM}\n  \\;\\subseteq\\;\n  \\left\\langle\\, g^M \\mid g\\in s \\,\\right\\rangle.\n\\]\n\\end{theorem}",
+  "toolchain": {
+    "lean": "4.27.0-rc1"
+  },
+  "translation_direction": "forward",
+  "types": [
+    "theorem_stmt"
+  ],
+  "updated_at": "2026-07-03T19:09:33.093331+00:00",
+  "custom_module": "no",
+  "formalization_rules": "/-\nFormalize in Lean the Theorem (span_pow_card_mul_le_span_image_pow) from Text.\n\nThe theorem must be named `span_pow_card_mul_le_span_image_pow`.\n   Matched text (candidate 0, theorem, label=span_pow_card_mul_le_span_image_pow): \\begin{theorem}[span_pow_card_mul_le_span_image_pow] Let $s=\\{g_1,\\dots,g_r\\}$ be a finite\n                                                                                   subset of $k[x_1,\\dots,x_n]$. Set $J := \\langle s\\rangle$ and let $M\\ge 0$. Then \\[ J^{\\,rM}\n                                                                                   \\;\\subseteq\\; \\left\\langle\\, g^M \\mid g\\in s \\,\\right\\rangle. \\] \\end{theorem}\n-/"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "analysis/L1/ana_comp_L1_002",
+  "paper_id": "Wunsch-Chap3-Ex",
+  "paper_title": "",
+  "area": "analysis",
+  "level": "L1",
+  "problem_id": "ana_comp_L1_002",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [
+    "Complex Analysis"
+  ],
+  "text": "\\begin{theorem}[norm_cos_eq]\nShow that $|\\cos z| = \\sqrt{\\sinh^2 y + \\cos^2 x}$.\n\\end{theorem}\n\n\\begin{proof}\n\\[\n\\begin{aligned}\n|\\cos z| &= |\\cos x \\cosh y - i \\sin x \\sinh y| \\\\\n&= \\sqrt{\\cos^2 x \\cosh^2 y + \\sin^2 x \\sinh^2 y} \\\\\n&= \\sqrt{\\cos^2 x (1 + \\sinh^2 y) + \\sin^2 x \\sinh^2 y} \\\\\n&= \\sqrt{\\cos^2 x + \\sinh^2 y (\\cos^2 x + \\sin^2 x)} \\\\\n&= \\sqrt{\\cos^2 x + \\sinh^2 y}\n\\end{aligned}\n\\]\n\\end{proof}",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 74
+  },
+  "created_at": "2026-04-23T13:20:48+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-03T19:11:05.088226+00:00",
+  "formalization_rules": "/-\nFormalize in Lean the Theorem (norm_cos_eq) from Text.\n\nThe theorem must be named `norm_cos_eq`.\n   Matched text (candidate 0, theorem, label=norm_cos_eq): \\begin{theorem}[norm_cos_eq] Show that $|\\cos z| = \\sqrt{\\sinh^2 y + \\cos^2 x}$.\n                                                           \\end{theorem}\n-/"
+}

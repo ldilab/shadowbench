@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "lean-lsp": {
+      "command": "lean-lsp-mcp/numina-lean-mcp.sh",
+      "args": []
+    }
+  }
+}

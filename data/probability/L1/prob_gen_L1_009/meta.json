@@ -1,0 +1,39 @@
+{
+  "id": "probability/L1/prob_gen_L1_009",
+  "paper_id": "arXiv:2604.23791",
+  "paper_title": "Finite-sample Borel--Cantelli inequalities under mixing conditions",
+  "area": "probability",
+  "level": "L1",
+  "problem_id": "prob_gen_L1_009",
+  "types": [
+    "def",
+    "theorem_stmt"
+  ],
+  "subfields": [
+    "MixingConditions",
+    "DependentEvents",
+    "ApproximateIndependence"
+  ],
+  "text": "\\begin{lemma}[Approximate independence under $\\varphi$-mixing]\nFor sub-sigma-algebras $\\mathcal{A},\\mathcal{B}$ of a probability space,\nwrite\n\\[\n\\varphi(\\mathcal{A},\\mathcal{B})\n=\\sup\\left\\{\n\\left\\lvert\\frac{\\mathbb{P}(E\\cap F)}{\\mathbb{P}(E)}\n-\\mathbb{P}(F)\\right\\rvert:\nE\\in\\mathcal{A},\\ F\\in\\mathcal{B},\\ \\mathbb{P}(E)>0\n\\right\\}.\n\\]\nLet $M\\geq1$ and $\\varphi_{\\star}\\geq0$. Let\n$\\mathcal{A}_1,\\ldots,\\mathcal{A}_M$ be sub-sigma-algebras such\nthat, for $1\\leq r\\leq M-1$,\n\\[\n\\varphi\\!\\left(\n\\sigma(\\mathcal{A}_1\\cup\\cdots\\cup\\mathcal{A}_r),\n\\mathcal{A}_{r+1}\\right)\\leq\\varphi_{\\star}.\n\\]\nLet $C_j\\in\\mathcal{A}_j$ and set $u_j=\\mathbb{P}(C_j)$. Then\n\\[\n\\mathbb{P}\\!\\left(\\bigcap_{j=1}^{M}C_j^c\\right)\n\\leq\n\\prod_{j=1}^{M}\\min\\!\\left(1,1-u_j+\\varphi_{\\star}\\right)\n\\leq\n\\exp\\!\\left(-\\sum_{j=1}^{M}(u_j-\\varphi_{\\star})_+\\right),\n\\]\nwhere $(x)_+=\\max(x,0)$.\n\\end{lemma}\n",
+  "target_decl": "approximate_independence_phi",
+  "target_kind": "lemma",
+  "references": [
+    {
+      "source": "arxiv",
+      "id": "arXiv:2604.23791v2",
+      "url": "https://arxiv.org/abs/2604.23791v2",
+      "item": "Lemma 2.8"
+    }
+  ],
+  "toolchain": {
+    "lean": "4.27.0-rc1",
+    "mathlib": "024fc398dbd3648262e78da99efa2ad9aeeb5d6f"
+  },
+  "metrics": {
+    "source_words": 42
+  },
+  "created_at": "2026-07-12T12:00:00+09:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-12T14:04:26+00:00",
+  "formalization_rules": "\\begin{lemma}[Approximate independence under $\\varphi$-mixing]\nFor sub-sigma-algebras $\\mathcal{A},\\mathcal{B}$ of a probability space,\nwrite\n\\[\n\\varphi(\\mathcal{A},\\mathcal{B})\n=\\sup\\left\\{\n\\left\\lvert\\frac{\\mathbb{P}(E\\cap F)}{\\mathbb{P}(E)}\n-\\mathbb{P}(F)\\right\\rvert:\nE\\in\\mathcal{A},\\ F\\in\\mathcal{B},\\ \\mathbb{P}(E)>0\n\\right\\}.\n\\]\nLet $M\\geq1$ and $\\varphi_{\\star}\\geq0$. Let\n$\\mathcal{A}_1,\\ldots,\\mathcal{A}_M$ be sub-sigma-algebras such\nthat, for $1\\leq r\\leq M-1$,\n\\[\n\\varphi\\!\\left(\n\\sigma(\\mathcal{A}_1\\cup\\cdots\\cup\\mathcal{A}_r),\n\\mathcal{A}_{r+1}\\right)\\leq\\varphi_{\\star}.\n\\]\nLet $C_j\\in\\mathcal{A}_j$ and set $u_j=\\mathbb{P}(C_j)$. Then\n\\[\n\\mathbb{P}\\!\\left(\\bigcap_{j=1}^{M}C_j^c\\right)\n\\leq\n\\prod_{j=1}^{M}\\min\\!\\left(1,1-u_j+\\varphi_{\\star}\\right)\n\\leq\n\\exp\\!\\left(-\\sum_{j=1}^{M}(u_j-\\varphi_{\\star})_+\\right),\n\\]\nwhere $(x)_+=\\max(x,0)$.\n\\end{lemma}\n"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "geometry/L1/geo_gen_L1_007",
+  "paper_id": "",
+  "paper_title": "",
+  "area": "geometry",
+  "level": "L1",
+  "problem_id": "geo_gen_L1_007",
+  "types": [
+    "theorem_stmt"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[brahmagupta_formula]\\label{thm:brahmagupta_formula}\nIn Euclidean geometry, Brahmagupta's formula gives the area $K$ of a convex cyclic quadrilateral (a quadrilateral inscribed in a circle) given the lengths of its sides. \nFormally, let $A, B, C, D$ be the vertices of a convex cyclic quadrilateral in order. Let $a = |AB|, b = |BC|, c = |CD|$, and $d = |DA|$ be the lengths of the sides, and let $s$ be the semiperimeter, defined as:\n\\[\ns = \\frac{a + b + c + d}{2}\n\\]\nThen the area $K$ of the quadrilateral is given by:\n\\[\nK = \\sqrt{(s - a)(s - b)(s - c)(s - d)}\n\\]\n\\end{theorem}\n\n\\begin{proof}\nLet $\\alpha=\\angle DAB$ and $\\gamma=\\angle BCD$. Since the quadrilateral is cyclic, the opposite angles are supplementary, so $\\alpha+\\gamma=\\pi$. Hence $\\sin\\gamma=\\sin\\alpha$ and $\\cos\\gamma=-\\cos\\alpha$.\n\nThe area $K$ of the quadrilateral is the sum of the areas of $\\triangle DAB$ and $\\triangle BCD$. Therefore\n\\[\nK=\\frac12 ad\\sin\\alpha+\\frac12 bc\\sin\\gamma\n=\\frac12(ad+bc)\\sin\\alpha.\n\\]\nThus\n\\begin{align*}\n4K^2\n&=(ad+bc)^2\\sin^2\\alpha \\\\\n&=(ad+bc)^2(1-\\cos^2\\alpha) \\\\\n&=(ad+bc)^2-\\bigl((ad+bc)\\cos\\alpha\\bigr)^2.\n\\end{align*}\n\nNow solve for the common diagonal $DB$. By the law of cosines in $\\triangle DAB$ and $\\triangle BCD$,\n\\[\na^2+d^2-2ad\\cos\\alpha=b^2+c^2-2bc\\cos\\gamma.\n\\]\nSince $\\cos\\gamma=-\\cos\\alpha$, this becomes\n\\[\na^2+d^2-2ad\\cos\\alpha=b^2+c^2+2bc\\cos\\alpha.\n\\]\nRearranging, we get\n\\[\n(ad+bc)\\cos\\alpha=\\frac12(a^2+d^2-b^2-c^2).\n\\]\nSubstituting this into the equation for the area gives\n\\begin{align*}\n4K^2\n&=(ad+bc)^2-\\frac14(a^2+d^2-b^2-c^2)^2,\\\\\n16K^2\n&=4(ad+bc)^2-(a^2+d^2-b^2-c^2)^2.\n\\end{align*}\nThe right-hand side is a difference of squares, so\n\\begin{align*}\n16K^2\n&=\\bigl(2(ad+bc)-a^2-d^2+b^2+c^2\\bigr)\n  \\bigl(2(ad+bc)+a^2+d^2-b^2-c^2\\bigr) \\\\\n&=\\bigl((b+c)^2-(a-d)^2\\bigr)\n  \\bigl((a+d)^2-(b-c)^2\\bigr) \\\\\n&=(-a+b+c+d)(a+b+c-d)(a-b+c+d)(a+b-c+d).\n\\end{align*}\nSince $s=\\frac{a+b+c+d}{2}$, this becomes\n\\[\n16K^2=16(s-a)(s-b)(s-c)(s-d).\n\\]\nTherefore\n\\[\nK^2=(s-a)(s-b)(s-c)(s-d).\n\\]\nTaking the positive square root, since $K$ is the area of the quadrilateral, we obtain\n\\[\nK=\\sqrt{(s-a)(s-b)(s-c)(s-d)}.\n\\]\n\\end{proof}",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 261
+  },
+  "created_at": "2026-02-11T21:44:20+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-07-03T19:15:17.490392+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Real MeasureTheory\n\n/-\nFormalize in Lean the Theorem (brahmagupta_formula) from Text.\n\nThe theorem must be named `brahmagupta_formula`.\n   Matched text (candidate 0, theorem, label=brahmagupta_formula): \\begin{theorem}[brahmagupta_formula]\\label{thm:brahmagupta_formula} In Euclidean geometry,\n                                                                   Brahmagupta's formula gives the area $K$ of a convex cyclic quadrilateral (a quadrilateral\n                                                                   inscribed in a circle) given the lengths of its sides. Formally, let $A, B, C, D$ be the\n                                                                   vertices of a convex cyclic quadrilateral in order. Let $a = |AB|, b = |BC|, c = |CD|$, and\n                                                                   $d = |DA|$ be the lengths of the sides, and let $s$ be t…\n-/"
+}

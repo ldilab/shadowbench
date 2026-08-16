@@ -1,0 +1,23 @@
+{
+  "id": "geometry/L1/geo_gen_L1_010",
+  "paper_id": "Lee-Chap3-Ex",
+  "paper_title": "",
+  "area": "geometry",
+  "level": "L1",
+  "problem_id": "geo_gen_L1_010",
+  "types": [
+    "theorem_stmt"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[circle_tangent_bundle_trivialization]\n$T\\mathbb{S}^1$ is diffeomorphic to $\\mathbb{S}^1 \\times \\mathbb{R}$.\n\\end{theorem}",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 9
+  },
+  "created_at": "2026-02-23T18:22:51+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-05-21T03:16:19+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open scoped Manifold ContDiff\nopen Complex\n\n/-\nFormalize in Lean the Theorem (circle_tangent_bundle_trivialization) from Text.\n\nThe theorem must be named `circle_tangent_bundle_trivialization`.\n   Matched text (candidate 0, theorem, label=circle_tangent_bundle_trivialization): \\begin{theorem}[circle_tangent_bundle_trivialization] $T\\mathbb{S}^1$ is diffeomorphic to\n                                                                                    $\\mathbb{S}^1 \\times \\mathbb{R}$. \\end{theorem}\n-/"
+}

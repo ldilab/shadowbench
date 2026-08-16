@@ -1,0 +1,25 @@
+{
+  "area": "Algebra",
+  "created_at": "2025-12-25T22:27:06+00:00",
+  "id": "algebra/L1/alg_gen_L1_009",
+  "level": "L1",
+  "metrics": {
+    "source_words": 75
+  },
+  "paper_id": "Cox-Chap4-Ex",
+  "paper_title": "",
+  "problem_id": "alg_gen_L1_009",
+  "references": [],
+  "subfields": [],
+  "target_decl": "J",
+  "target_kind": "def",
+  "text": "\\begin{theorem}[radical_mul_eq_radical_inf]\\label{thm:radical_mul_eq_radical_inf}\nLet $k$ be an arbitrary field, and let $I,J$ be ideals in\n$k[x_1,\\ldots,x_n]$. Then\n\\[\n\\sqrt{IJ} = \\sqrt{I \\cap J}.\n\\]\n\\end{theorem}\n\n\\begin{theorem}[span_X_pair_radical_not_mul]\\label{thm:span_X_pair_radical_not_mul}\nLet $k$ be an arbitrary field. In $k[x,y]$, let\n$I=\\langle x\\rangle$ and $J=\\langle x,y\\rangle$.\nThen $I$ and $J$ are radical ideals, but $IJ$ is not a radical ideal.\n\\end{theorem}\n\n\\begin{theorem}[radical_mul_ne_mul_radicals_example]\\label{thm:radical_mul_ne_mul_radicals_example}\nLet $k$ be an arbitrary field. In $k[x,y]$, let\n$I=\\langle x\\rangle$ and $J=\\langle x,y\\rangle$.\nThen\n\\[\n\\sqrt{IJ} \\neq \\sqrt{I}\\sqrt{J}.\n\\]\n\\end{theorem}",
+  "toolchain": {},
+  "types": [
+    "theorem_stmt"
+  ],
+  "updated_at": "2026-07-03T19:09:24.390934+00:00",
+  "custom_module": "no",
+  "translation_direction": "forward",
+  "formalization_rules": "open scoped BigOperators\nopen MvPolynomial\n\n/-\nFormalize in Lean the following named items from Text.\n\nIn addition to the listed theorems, the formalization must introduce the following\nnamed auxiliary declarations exactly as named:\n\n* `σ'` : the two-variable index type, representing the variables of `k[x,y]`\n* `x`  : the first coordinate polynomial variable\n* `y`  : the second coordinate polynomial variable\n* `I`  : the ideal `⟨x⟩` in `k[x,y]`\n* `J`  : the ideal `⟨x,y⟩` in `k[x,y]`\n\nThese declarations should be used in the statements of the second and third theorems.\n\n1. Theorem (radical_mul_eq_radical_inf)\n   The theorem must be named `radical_mul_eq_radical_inf`.\n   Matched text (candidate 0, theorem, label=radical_mul_eq_radical_inf):\n   \\begin{theorem}[radical_mul_eq_radical_inf]\\label{thm:radical_mul_eq_radical_inf}\n   Let $k$ be an arbitrary field, and let $I,J$ be ideals in $k[x_1,\\ldots,x_n]$.\n   Then\n   \\[\n   \\sqrt{IJ} = \\sqrt{I \\cap J}.\n   \\]\n   \\end{theorem}\n\n2. Theorem (span_X_pair_radical_not_mul)\n   The theorem must be named `span_X_pair_radical_not_mul`.\n   Matched text (candidate 1, theorem, label=span_X_pair_radical_not_mul):\n   \\begin{theorem}[span_X_pair_radical_not_mul]\\label{thm:span_X_pair_radical_not_mul}\n   Let $k$ be an arbitrary field. In $k[x,y]$, let $I=\\langle x\\rangle$ and\n   $J=\\langle x,y\\rangle$. Then $I$ and $J$ are radical ideals, but $IJ$ is\n   not a radical ideal.\n   \\end{theorem}\n\n3. Theorem (radical_mul_ne_mul_radicals_example)\n   The theorem must be named `radical_mul_ne_mul_radicals_example`.\n   Matched text (candidate 2, theorem, label=radical_mul_ne_mul_radicals_example):\n   \\begin{theorem}[radical_mul_ne_mul_radicals_example]\\label{thm:radical_mul_ne_mul_radicals_example}\n   Let $k$ be an arbitrary field. In $k[x,y]$, let $I=\\langle x\\rangle$ and\n   $J=\\langle x,y\\rangle$. Then\n   \\[\n   \\sqrt{IJ} \\neq \\sqrt{I}\\sqrt{J}.\n   \\]\n   \\end{theorem}\n\nEvery listed named item must be formalized with exactly the stated Lean name.\n-/"
+}

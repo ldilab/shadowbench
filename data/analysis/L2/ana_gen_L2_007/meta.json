@@ -1,0 +1,23 @@
+{
+  "id": "analysis/L2/ana_gen_L2_007",
+  "paper_id": "Stein-Chap4-Ex",
+  "paper_title": "",
+  "area": "analysis",
+  "level": "L2",
+  "problem_id": "ana_gen_L2_007",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{theorem}[diagonal_compact_iff_tendsto_zero]\nSuppose $T$ is a bounded operator on a Hilbert space $\\mathcal{H}$ which is diagonal with respect to an orthonormal basis $\\{\\varphi_k\\}_{k=1}^{\\infty}$, that is,\n\\[\nT\\varphi_k = \\lambda_k \\varphi_k .\n\\]\nThen $T$ is compact if and only if $\\lambda_k \\to 0$.\n\\end{theorem}\n\n\\begin{proof}\nSuppose first that $T$ is compact. Since $\\{\\varphi_k\\}$ is bounded, \n$\\{T\\varphi_k\\}$ has a convergent subsequence. But\n\\[\nT\\varphi_k=\\lambda_k\\varphi_k.\n\\]\nIf $\\lambda_k\\nrightarrow 0$, then for some $\\varepsilon>0$ there is a subsequence\n$\\{\\lambda_{k_j}\\}$ with $|\\lambda_{k_j}|\\ge \\varepsilon$. Then, for $i\\ne j$,\n\\[\n\\|T\\varphi_{k_i}-T\\varphi_{k_j}\\|^2\n=\n|\\lambda_{k_i}|^2+|\\lambda_{k_j}|^2\n\\ge 2\\varepsilon^2,\n\\]\nso this subsequence has no convergent subsequence, a contradiction. Hence\n$\\lambda_k\\to 0$.\n\nConversely, assume $\\lambda_k\\to 0$. Let $P_n$ be the orthogonal projection onto\n$\\operatorname{span}\\{\\varphi_1,\\dots,\\varphi_n\\}$. Then $P_nT$ has finite rank, hence is compact. Moreover,\n\\[\n\\|P_nT-T\\|\n=\n\\sup_{k>n}|\\lambda_k|\n\\to 0.\n\\]\nThus $T$ is the norm limit of compact operators, and therefore compact.\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 145
+  },
+  "created_at": "2026-04-29T15:59:48+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-05-16T18:15:47+00:00",
+  "formalization_rules": "open Filter\nopen scoped Topology\n\n/-\nFormalize in Lean the Theorem (diagonal_compact_iff_tendsto_zero) from Text.\n\nThe theorem must be named `diagonal_compact_iff_tendsto_zero`.\n   Matched text (candidate 0, theorem, label=diagonal_compact_iff_tendsto_zero): \\begin{theorem}[diagonal_compact_iff_tendsto_zero] Suppose $T$ is a bounded operator on a\n                                                                                 Hilbert space $\\mathcal{H}$ which is diagonal with respect to an orthonormal basis\n                                                                                 $\\{\\varphi_k\\}_{k=1}^{\\infty}$, that is, \\[ T\\varphi_k = \\lambda_k \\varphi_k . \\] Then $T$\n                                                                                 is compact if and only if $\\lambda_k \\to 0$. \\end{theorem}\n-/\n"
+}

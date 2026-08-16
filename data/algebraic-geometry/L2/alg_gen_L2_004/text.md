@@ -1,0 +1,33 @@
+\begin{theorem}[Scheme.Hom.exists_isIso_morphismRestrict_toNormalization]
+    Let $f: X \to Y$ be a morphism of schemes. Assume $f$ is of finite type and separated. Let $Y'$ be the normalization of $Y$ in $X$ so that $f$ factors as $X \xrightarrow{f'} Y' \xrightarrow{\nu} Y$. Then there exists an open subscheme $U' \subset Y'$ such that
+    \begin{enumerate}
+        \item $(f')^{-1}(U') \to U'$ is an isomorphism, and
+        \item $(f')^{-1}(U') \subset X$ is the set of points at which $f$ is quasi-finite.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    The subset $U \subset X$ of points where $f$ is quasi-finite is open. The theorem is equivalent to
+    \begin{enumerate}[label=(\alph*)]
+        \item $U' = f'(U) \subset Y'$ is open,
+        \item $U = (f')^{-1}(U')$, and
+        \item $U \to U'$ is an isomorphism.
+    \end{enumerate}
+
+    Let $x \in U$ be arbitrary. We claim that there exists an open neighborhood $f'(x) \in V \subset Y'$ such that $(f')^{-1}V \to V$ is an isomorphism. We first prove that the claim implies the lemma. Indeed,, then $(f')^{-1}V \simeq V$ is both locally of finite type over $Y$ (as an open subscheme of $X$) and for $v \in V$ the residue field extension $\kappa(v)/\kappa(\nu(v))$ is algebraic (as $V \subset Y'$ and $Y'$ is integral over $Y$). Hence the fibers of $V \to Y$ are discrete and $(f')^{-1}V \to Y$ is locally quasi-finite. This implies $(f')^{-1}V \subset U$ and $V \subset U'$. Since $x$ was arbitrary we see that (a),(b), and (c) are true.
+
+    Let $y = f(x)$. Let $(Z,z) \to (Y,y)$ be an elementary étale neighbourhood. Denote by a subscript $_Z$ the base change to $Z$. Let $x'=(x,z) \in X_Z$ be the unique point in the fiber $X_z$ lying over $x$. Note that $U_Z \subset X_Z$ is the set of points where $f_Z$ is quasi-finite. Note that
+    \[
+        X_Z \xrightarrow{f_Z'} Y_Z' \xrightarrow{\nu_Z} Z 
+    \]
+    is the normalization of $Z$ in $X_Z$. Suppose that the claim holds for $x' \in U_Z \subset X_Z \to Y_Z' \to Z$, i.e., suppose that we can find an open neighborhood $f_Z'(x') \in V' \subset Y_Z'$ such that $(f_Z')^{-1}V' \to V'$ is an isomorphism. The morphism $Y_Z' \to Y'$ is étale hence the image $V \subset Y'$ of $V'$ is open. Observe that $f'(x) \in V$ as $f_Z'(x') \in V'$ and $(f_Z')^{-1}V' = (f')^{-1}V \times_V V'$ as $Y'_Z \times_{Y'} X = X_Z$. Since the map $(f_Z')^{-1}V' \to V'$ is an isomorphism and $\{V' \to V\}$ is an étale covering, we conclude that $(f')^{-1}V \to V$ is an isomorphism by descent. In other words, the claim holds for $x \in U \subset X \to Y' \to Y$.
+
+    By the result of the previous paragraph we may replace $Y$ by an elementary étale neighbourhood of $y = f(x)$ in order to prove the claim. Thus we may assume there is a decomposition
+    \[
+        X = V \coprod W
+    \]
+    into open and closed subschemes where $V \to Y$ is finite and $x \in V$. Since $X$ is a disjoint union of $V$ and $W$ over $Y$ and since $V \to Y$ is finite we see that the normalization of $Y$ in $X$ is the morphism
+    \[
+        X = V \coprod W \to V \coprod W' \to Y
+    \]
+    where $W'$ is the normalization of $Y$ in $W$. Hence, the claim follows and we win. 
+ \end{proof}

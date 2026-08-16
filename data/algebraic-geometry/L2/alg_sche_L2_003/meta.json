@@ -1,0 +1,26 @@
+{
+  "id": "algebraic-geometry/L2/alg_sche_L2_003",
+  "paper_id": "EGA",
+  "paper_title": "",
+  "area": "algebraic-geometry",
+  "level": "L2",
+  "problem_id": "alg_sche_L2_003",
+  "types": [
+    "theorem_stmt",
+    "proof",
+    "def"
+  ],
+  "subfields": [
+    "Schemes"
+  ],
+  "text": "\\begin{theorem}[projective_isProper]\nLet $S$ be a scheme, and let $f : X \\to S$ be a projective morphism. Then $f$ is proper.\n\\end{theorem}\n\n\\begin{proof}\nBy definition, a morphism $f : X \\to S$ is projective if there exists an integer $n \\ge 0$ and a closed immersion\n\\[\ni : X \\hookrightarrow \\mathbb{P}^n_S\n\\]\nsuch that $f$ factors as\n\\[\nX \\xrightarrow{i} \\mathbb{P}^n_S \\xrightarrow{\\pi} S,\n\\]\nwhere $\\pi$ is the structure morphism.\n\nThus it suffices to show that:\n\\begin{enumerate}\n\\item the morphism $\\pi : \\mathbb{P}^n_S \\to S$ is proper, and\n\\item proper morphisms are stable under composition and closed immersions.\n\\end{enumerate}\n\nFirst, the projection $\\pi : \\mathbb{P}^n_S \\to S$ is proper. Indeed, $\\mathbb{P}^n_S$ is covered by finitely many affine opens of the form\n\\[\nD_+(x_i) \\cong \\operatorname{Spec}(\\mathcal{O}_S[x_0/x_i,\\dots,x_n/x_i]),\n\\]\nso $\\pi$ is of finite type. It is separated because projective space is separated over the base. Finally, $\\pi$ is universally closed; this follows from the fact that projective space over a base is universally closed (for instance, by the valuative criterion or by standard results on Proj). Hence $\\pi$ is proper.\n\nSecond, closed immersions are proper morphisms. Indeed, a closed immersion is finite, hence proper.\n\nFinally, proper morphisms are stable under composition. Therefore, since $f = \\pi \\circ i$ is a composition of proper morphisms, it follows that $f$ is proper.\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 220
+  },
+  "created_at": "2026-04-22T15:45:53+00:00",
+  "translation_direction": "forward",
+  "updated_at": "2026-05-07T11:43:57.582254+00:00",
+  "formalization_rules": "open CategoryTheory AlgebraicGeometry\n\n/-\nFormalize in Lean the Theorem (projective_isProper) from Text.\n\nThe theorem must be named `projective_isProper`.\n   Matched text (candidate 0, theorem, label=projective_isProper): \\begin{theorem}[projective_isProper] Let $S$ be a scheme, and let $f : X \\to S$ be a\n                                                                   projective morphism. Then $f$ is proper. \\end{theorem}\n-/\n"
+}

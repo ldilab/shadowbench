@@ -1,0 +1,26 @@
+{
+  "area": "Algebra",
+  "created_at": "2025-12-23T16:05:10+00:00",
+  "id": "algebra/L2/alg_gen_L2_002",
+  "level": "L2",
+  "metrics": {
+    "source_words": 136
+  },
+  "paper_id": "Cox-Chap4-Ex",
+  "paper_title": "",
+  "problem_id": "alg_gen_L2_002",
+  "references": [],
+  "subfields": [],
+  "target_decl": "zeroLocus",
+  "target_kind": "def",
+  "text": "\\begin{theorem}[ideal_xsq_add_one_radical_and_zeroLocus_empty]\nShow that $\\langle x^2 + 1\\rangle \\subseteq \\mathbb{R}[x]$ is a radical ideal, but that $V(x^2 + 1)$ is the empty set.\n\\end{theorem}\n\n\\begin{proof}\nLet $f(x)=x^2+1\\in\\mathbb{R}[x]$ and $I=\\langle f\\rangle$.\n\n\\medskip\n\\noindent\\textbf{(Radicality.)}\nFirst, $f$ has no real root: for every $r\\in\\mathbb{R}$ we have\n\\[\nf(r)=r^2+1>0,\n\\]\nso $f(r)\\neq 0$. Hence $f$ is irreducible in $\\mathbb{R}[x]$.\nSince $\\mathbb{R}[x]$ is a UFD, an irreducible element is prime; therefore $f$ is prime, hence radical as an element.\nUsing the equivalence that $f$ is radical if and only if the principal ideal $\\langle f\\rangle$ is radical,\nwe conclude that $I$ is a radical ideal.\n\n\\medskip\n\\noindent\\textbf{(Zero locus is empty.)}\nBy definition,\n\\[\n\\mathbf{V}(I)=\\{\\, r\\in\\mathbb{R}\\mid \\forall g\\in I,\\ g(r)=0 \\,\\}.\n\\]\nIf $r\\in\\mathbf{V}(I)$, then since $f\\in I$ we must have $f(r)=0$.\nBut $f(r)=r^2+1\\neq 0$ for all $r\\in\\mathbb{R}$, a contradiction.\nThus $\\mathbf{V}(x^2+1)=\\varnothing$.\n\\end{proof}",
+  "toolchain": {},
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "updated_at": "2026-07-03T19:10:10.729800+00:00",
+  "custom_module": "no",
+  "translation_direction": "forward",
+  "formalization_rules": "open scoped BigOperators\nopen Polynomial\n\n/-\nFormalize in Lean the Theorem (ideal_xsq_add_one_radical_and_zeroLocus_empty) from Text.\n\nThe theorem must be named `ideal_xsq_add_one_radical_and_zeroLocus_empty`.\n\nMatched text (candidate 0, theorem):\n\\begin{theorem}[ideal_xsq_add_one_radical_and_zeroLocus_empty]\nShow that $\\langle x^2 + 1\\rangle \\subseteq \\mathbb{R}[x]$ is a radical ideal,\nbut that $V(x^2 + 1)$ is the empty set.\n\\end{theorem}\n-/"
+}

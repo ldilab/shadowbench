@@ -1,0 +1,28 @@
+{
+  "area": "Topology",
+  "created_at": "2026-01-15T03:26:12+00:00",
+  "id": "topology/L1/top_gen_L1_004",
+  "level": "L1",
+  "metrics": {
+    "source_words": 250
+  },
+  "paper_id": "",
+  "paper_title": "mathlib4",
+  "problem_id": "top_gen_L1_004",
+  "references": [],
+  "subfields": [],
+  "target_decl": "exists_preirreducible",
+  "target_kind": "theorem",
+  "text": "Theorem (exists_preirreducible)\n\nLet $X$ be a topological space. Let $S$ be a preirreducible subset of $X$. Then there exists a maximal preirreducible subset $T$ of $X$ containing $S$.\n\nProof\n\nWe use Zorn's Lemma. Consider the set $\\mathcal{S} = \\{T \\subseteq X | T \\text{ is preirreducible and } S \\subseteq T\\}$. It is nonempty since $S \\in \\mathcal{S}$.\nIf $\\mathcal{C}$ is a chain of $\\mathcal{S}$, we claim that $C_0:=\\cup_{C \\in \\mathcal{C}} C$ is the upper bound of the chain $\\mathcal{C}$.\nIt suffices to show that $C_0$ is preirreducible. Suppose $U,V$ are open subsets of $X$ such that $C_0 \\cap U \\ne \\emptyset$, $C_0 \\cap V \\ne \\emptyset$.\nPick $x \\in C_0 \\cap U$ and $y \\in C_0 \\cap V$. Then there exist $P,Q \\in \\mathcal{C}$ such that $x \\in P \\cap U$ and $y \\in Q \\cap V$.\nSince $\\mathcal{C}$ is a chain, we have $P \\subseteq Q$ or $Q \\subseteq P$.\nIf $P \\subseteq Q$, then $Q \\cap U \\ne \\emptyset$ and $Q \\cap V \\ne \\emptyset$. Since $Q$ is preirreducible, $Q \\cap (U \\cap V) \\ne \\emptyset$ and thus $C_0 \\cap (U \\cap V) \\ne \\emptyset$.\nConversely, if $ Q \\subseteq P$, then $P \\cap U \\ne \\emptyset$ and $Q \\cap V \\ne \\emptyset$. Since $P$ is preirreducible, $P \\cap (U \\cap V) \\ne \\emptyset$ and hence $C_0 \\cap (U \\cap V) \\ne \\emptyset$.\nTherefore, $C_0$ is an upper bound of the chain $\\mathcal{C}$. By Zorn's Lemma, $\\mathcal{S}$ has the maximal element $T$ which satisfies the desired conditions.",
+  "toolchain": {
+    "lean": "4.27.0-rc1"
+  },
+  "translation_direction": "backward",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "updated_at": "2026-05-20T23:35:06+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open Set Topology\n\n/-\nFormalize in Lean the Theorem (exists_preirreducible) from Text.\n\nThe theorem must be named `exists_preirreducible`.\n   Matched text (candidate 0, theorem, label=exists_preirreducible): Theorem (exists_preirreducible) Let $X$ be a topological space. Let $S$ be a preirreducible\n                                                                     subset of $X$. Then there exists a maximal preirreducible subset $T$ of $X$ containing $S$.\n-/"
+}

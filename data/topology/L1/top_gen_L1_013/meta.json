@@ -1,0 +1,25 @@
+{
+  "id": "topology/L1/top_gen_L1_013",
+  "paper_id": "mathlib4",
+  "paper_title": "",
+  "area": "topology",
+  "level": "L1",
+  "problem_id": "top_gen_L1_013",
+  "types": [
+    "def",
+    "theorem_stmt",
+    "proof"
+  ],
+  "subfields": [],
+  "text": "\\begin{definition}[IsLocallySurjective]\nA map of presheaves \\( T : \\mathcal{F} \\to \\mathcal{G} \\) is \\emph{locally surjective} if for every open set \\( U \\), every section \\( t \\in \\mathcal{G}(U) \\), and every point \\( x \\in U \\), there exists an open set \\( V \\) such that \\( x \\in V \\subseteq U \\) and a section \\( s \\in \\mathcal{F}(V) \\) such that \\( T(s) = t|_V \\).\n\\end{definition}\n\n\\begin{theorem}[locally_surjective_iff_surjective_on_stalks]\nA morphism \\( T : \\mathcal{F} \\to \\mathcal{G} \\) of presheaves is locally surjective if and only if for every point \\( x \\in X \\), the induced map on stalks \\( \\mathcal{F}_x \\to \\mathcal{G}_x \\) is surjective.\n\\end{theorem}\n\\begin{proof}\nSuppose \\( T \\) is locally surjective. Let \\( x \\in X \\) and let \\( g \\in \\mathcal{G}_x \\) be a germ. Represent \\( g \\) as \\( \\langle t, U \\rangle \\) for some open set \\( U \\subseteq X \\) containing \\( x \\) and some section \\( t \\in \\mathcal{G}(U) \\). By local surjectivity, there exists an open set \\( V \\subseteq U \\) containing \\( x \\) and a section \\( s \\in \\mathcal{F}(V) \\) such that \\( T(s) = t|_V \\). The germ of \\( s \\) at \\( x \\) maps to \\( \\langle t|_V ,V \\rangle = g \\), proving surjectivity on stalks.\n\nConversely, suppose that for every \\( x \\in X \\), the induced map on stalks is surjective. Let \\( U \\subseteq X \\) be an open set, \\( t \\in \\mathcal{G}(U) \\), and \\( x \\in U \\). The germ \\( t_x \\) of \\( t \\) at \\( x \\) is in \\( \\mathcal{G}_x \\), so by surjectivity, there exists a germ \\( s_x \\in \\mathcal{F}_x \\) mapping to \\( t_x \\). Represent \\( s_x \\) as \\( \\langle s, V \\rangle \\) for some open \\( V \\subseteq X \\) containing \\( x \\) and some \\( s \\in \\mathcal{F}(V) \\). There exists an open set \\( W \\subseteq V \\cap U \\) containing \\( x \\) such that \\( T(s)|_W = t|_W \\). Thus, \\( T \\) is locally surjective.\n\\end{proof}\n",
+  "references": [],
+  "toolchain": {},
+  "metrics": {
+    "source_words": 357
+  },
+  "created_at": "2026-03-03T07:22:18+00:00",
+  "translation_direction": "backward",
+  "updated_at": "2026-07-03T19:17:10.680975+00:00",
+  "custom_module": "no",
+  "formalization_rules": "open CategoryTheory\nopen TopologicalSpace\nopen Opposite\nopen scoped AlgebraicGeometry\n\n/-\nFormalize in Lean the following named items from Text.\n\n1. Definition (IsLocallySurjective)\n   The definition must be named `IsLocallySurjective`.\n   Matched text (candidate 0, definition, label=IsLocallySurjective): \\begin{definition}[IsLocallySurjective] A map of presheaves \\( T : \\mathcal{F} \\to\n                                                                      \\mathcal{G} \\) is \\emph{locally surjective} if for every open set \\( U \\), every section \\(\n                                                                      t \\in \\mathcal{G}(U) \\), and every point \\( x \\in U \\), there exists an open set \\( V \\)\n                                                                      such that \\( x \\in V \\subseteq U \\) and a section \\( s \\in \\mathcal{F}(V) \\) such that \\(\n                                                                      T(s) = t|_V \\). \\end{definition}\n2. Theorem (locally_surjective_iff_surjective_on_stalks)\n   The theorem must be named `locally_surjective_iff_surjective_on_stalks`.\n   Matched text (candidate 1, theorem, label=locally_surjective_iff_surjective_on_stalks): \\begin{theorem}[locally_surjective_iff_surjective_on_stalks] A morphism \\( T : \\mathcal{F}\n                                                                                           \\to \\mathcal{G} \\) of presheaves is locally surjective if and only if for every point \\( x\n                                                                                           \\in X \\), the induced map on stalks \\( \\mathcal{F}_x \\to \\mathcal{G}_x \\) is surjective.\n                                                                                           \\end{theorem}\n\nEvery listed named item must be formalized with exactly the stated Lean name.\n-/\n"
+}

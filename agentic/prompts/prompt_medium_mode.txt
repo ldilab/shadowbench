@@ -1,0 +1,216 @@
+Please analyze all sorries in the file and choose ONLY ONE that you believe is most approachable or strategically important to work on.
+
+# YOUR TASK: WRITE LEAN FORMAL PROOFS
+
+Your task is to write Lean 4 formal proofs that compile successfully.
+Replace `sorry` with executable Lean code (tactics, term-mode proofs, etc.) that passes the Lean compiler.
+You should choose ONLY ONE target lemma/sorry for this entire session, focus on it and try your best to complete it (in lean4 formal way).
+
+---
+
+# ⛔️ CRITICAL PROHIBITION: NO NATURAL LANGUAGE PROOFS ⛔️
+
+**THIS IS THE MOST IMPORTANT RULE OF THIS SESSION.**
+
+1. **ZERO TOLERANCE FOR NARRATIVE COMMENTS:** You are **STRICTLY FORBIDDEN** from using comments (`/- ... -/` or `--`) to write mathematical derivations, proof plans, or natural language explanations.
+* **VIOLATION EXAMPLE:** `/- First we prove x > 0, then we use induction on n... [long text] -/` -> **THIS IS BANNED.**
+* **VIOLATION EXAMPLE:** `-- We apply theorem X to get Y...` -> **THIS IS BANNED.**
+
+
+2. **STRICT COMMENT LENGTH LIMIT:** No single comment block may exceed **42 lines**. Comments are ONLY allowed for:
+* Tagging: `/- (by claude) Helper for [lemma] -/`
+* Brief directives: `/- (by claude) Case 1: n = 0 -/`
+
+
+3. **CODE IS THE EXPLANATION:** If a logic step is complex enough to need an explanation, it is complex enough to be a **separate Lemma**.
+* Instead of explaining logic in comments, **extract it into a new helper lemma**. The lemma's name and type signature act as the documentation.
+
+
+4. **CONSTRAINT COMMENT:** Prohibit continuous sequences of **5 or more** comment blocks (/- (by claude) ... -/ or /- ... -/ ) unless they are interleaved with valid Lean code.
+
+---
+
+
+# MINDSET:
+These tasks require DEEP THINKING and sustained effort. Work systematically and thoroughly, exploring different approaches and thinking critically about each proof step.
+* DO NOT say 'Mathlib lacks in some infrastructure'. You are powerful, you can create a new file and implement the missing infrastructure. (remember to state that it is created by you)
+* DO NOT replace a hard formal proof with a long natural-language proof in comments and leave the actual Lean proof as a single `by sorry` (or equivalent). If you cannot finish, you MUST still write a Lean proof *skeleton*:
+* At minimum, write a readable Lean proof outline (structure + intermediate steps) even if some parts still use `sorry`.
+* Add brief `/- (by claude) ... -/` notes near any remaining `sorry` stating what is missing next; do not replace the formal proof with long prose.
+* Frequently check the length of code and comments in a single formal lemma/theorem, if over 500 lines. Please create lemmas to prove it.
+
+
+# SESSION FOCUS RULES (CRITICAL):
+
+At session start, you MUST:
+1. Identify all remaining sorries or failed proofs in the files (There may be some lemmas with failed proofs, you should use tools to check the files)
+2. SELECT EXACTLY ONE target lemma/sorry that you believe is:
+* Most approachable given your capabilities
+* Strategically important (e.g., helper lemma that unblocks other proofs)
+3. Announce: "TARGET FOR THIS SESSION: [lemma_name] at line [line_number]"
+
+During session:
+* ONLY work on your selected target and any NEW helper lemmas you create for it
+* DO NOT switch to other existing sorries, even if they seem easier
+* New helper lemmas with sorry become part of your current work scope
+* Goal: MEANINGFUL PROGRESS on selected target, not superficial touches on many goals
+
+End session with ONE of:
+* SELECTED_TARGET_COMPLETE — selected target fully proven and compiles, but other sorries exist
+* COMPLETE — ALL sorries in ENTIRE FOLDER are proven and compile
+* LIMIT — stopped due to: token limits, stuck, compilation errors, or target still has sorry
+
+# COMMENTS GUIDELINES (CRITICAL):
+
+## YOUR COMMENTS:
+Your comments MUST use this format:
+/- (by claude) Your explanation here -/
+You CANNOT use comments in the `--` format.
+Keep your comments concise, focused, and insightful. Don't restate obvious code.
+
+# TRACKING FOR NEW LEMMAS (IMPORTANT):
+
+* When creating new helper lemmas to support a proof:
+* Add a comment indicating which lemma it supports: "/- (by claude) Helper for [original_lemma_name] -/"
+* New lemmas can have `sorry` placeholders - they will be proven later
+* This tracking ensures all related work is properly marked
+
+
+## Example:
+```lean4
+/- (by claude) Helper for main_result -/
+lemma helper (n : ℕ) : n + n = 2 * n := by
+sorry
+
+theorem main_result (n : ℕ) : n + n = 2 * n := by
+exact helper n
+```
+
+## VERIFICATION (IMPORTANT):
+* You MUST use the tool `lean_diagnostic_messages` (with only file path argument and declaration_name argument, which means it will verify the entire file) to verify the file after each update
+* As sometimes you may input the wrong line, which will not give you the correct information.
+* Errors mean "severity 1" in the response of `lean_diagnostic_messages`
+* NEVER use `lake build` or `lean_build` - always use lean_diagnostic_messages instead
+
+
+# INCREMENTAL PLANNING (CRITICAL):
+
+Do NOT write a detailed full proof plan upfront. Instead, use incremental sketch-and-refine:
+
+1. **Abstract sketch first**: Write only a 1-2 sentence high-level proof idea (e.g., "Use contradiction, derive inequality, reach contradiction"). Do NOT enumerate all steps or list multiple alternative approaches.
+2. **One step at a time**: Implement only the NEXT concrete tactic/step from your sketch.
+3. **Check reality**: After each step, use `lean_goal` to see the actual proof state. The proof state is your ground truth — not your plan.
+4. **Re-plan from state**: Based on the actual `lean_goal` output, decide your next step. Do NOT blindly follow your initial sketch if the proof state looks different from what you expected.
+5. **Adapt**: If a step fails, do NOT rewrite the entire plan. Just adjust the current step and continue.
+
+**WHY**: Large upfront plans hallucinate non-existent lemmas, waste tokens, and are expensive to revise. Small incremental steps grounded in actual proof state are more effective.
+
+# WORKFLOW:
+
+1. Analyze all sorries and SELECT EXACTLY ONE target based on approachability and strategic importance
+2. Write a 1-2 sentence abstract proof sketch (NOT a detailed plan)
+3. Implement one step, then verify with `lean_diagnostic_messages` and check state with `lean_goal`
+4. (IMPORTANT) Check the length of code and comments in a single formal lemma/theorem, if over 500 lines. Please create lemmas to prove it.
+5. Create helper lemmas if needed (mark them with "/- (by claude) Helper for ... -/")
+6. Stay focused on target until complete
+7. End with appropriate END_REASON
+
+# OTHER TIPS:
+
+## You are a MATHEMATICIAN, not a MODEL CHECKER. Proofs must rely on insight, not exhaustion.
+1. **THE "NO 2^N" RULE (Combinatorial Explosion):**
+* **STRICTLY FORBIDDEN:** You must **NOT** attempt to prove a goal by blindly splitting on every possible combination of variables.
+* **BANNED PATTERN:** Nesting `cases` / `rcases` / `induction` / `fin_cases` more than **3 levels deep** without an extremely specific mathematical justification.
+* **BAD:** `rcases a; rcases b; rcases c; rcases d; ...` (This creates 16+ branches).
+* **GOOD:** Use **Symmetry (WLOG)**, **Contradiction**, or the **Pigeonhole Principle** to handle multiple cases at once.
+
+2. **THE "DRY" PRINCIPLE (Don't Repeat Yourself):**
+* **STRICTLY FORBIDDEN:** If you find yourself writing the exact same proof script inside `| case 1 => ...`, `| case 2 => ...`, `| case 3 => ...`.
+* **ACTION:** If the logic is identical, you **MUST** abstract it into a **Helper Lemma**.
+* **ACTION:** If the logic is symmetric, use `wlog` tactic or prove a symmetric helper lemma.
+
+3. **NO "WALL OF TACTICS" WITH `all_goals`:**
+* **BANNED:** Using `rcases ... <;> rcases ... <;> ... <;> all_goals (try simp; try linarith ...)` hoping that a massive tactic shotgun will solve the 30 subgoals you just created.
+* **REQUIREMENT:** If you split cases, you must explain *why* distinct cases are mathematically necessary (e.g.,  vs  is valid;  is usually invalid).
+
+
+## COMPLETING SORRIES:
+A sorry is "completed" only when replaced with Lean code that compiles without errors.
+Partial progress must be in Lean code, not comments.
+
+## TOOLS:
+* `lean_leandex` is a powerful semantic search engine - describe what you're looking for in natural language or use Lean terms. Example queries: "theorem about sum of list elements", "Finset induction", "n + 1 <= m if n < m", "LinearMap.IsPositive.add"
+* Actively use `lean_leandex` to search for relevant theorems and lemmas in mathlib
+* Every time when you are stuck or try to solve a somehow claddical goal, you should use `lean_leandex` to search for relevant theorems and lemmas in mathlib.
+* Use `lean_goal` frequently to check proof state and understand what needs to be proven
+* Don't hesitate to explore and search - discovering available theorems is part of the deep thinking process
+* You can use `gemini_informal_prover` to solve and analyze mathematical problems.
+* `discussion_partner` is a great partner to discuss any topic with him, not limited to math.
+* `create_formal_sketch` can be used to create a formal sketch according to the informal solution which give by `gemini_informal_prover`.
+
+## GEMINI HELPING (STRATEGIC DECOMPOSITION):
+* Call 'gemini_informal_prover' frequently to get fine-grained informal proofs that help guide your formal proving.
+* **CRITICAL - COMPLEX PROOF HANDLING:** If the solution from `gemini_informal_prover` is complex, long, or involves multiple distinct steps, **DO NOT** attempt to formalize it directly in one block.
+* **MANDATORY:** You MUST break the informal solution down into a series of separate `lemma`s (helper lemmas).
+* Define these lemmas first (using `sorry` if needed initially), and then compose them to prove the main target.
+* This prevents unmanageable proof states and makes the code modular.
+* Consider whether to use `create_formal_sketch` to create a formal sketch if the solution from `gemini_informal_prover` is complex.
+
+## CODE STRUCTURE & REFACTORING (CRITICAL):
+* **Avoid "Wall of Text/Code":** If a formal statement currently has a very long comment block explaining the logic, or if the code itself is becoming excessively long/unreadable:
+1. **Split it:** Extract parts of the logic into separate helper lemmas.
+2. **Clean up:** Once extracted, **REMOVE** the long explanatory comments from the code. The structure of the lemmas should be self-explanatory.
+3. Do not leave massive comment blocks in the final code; use the modularity of lemmas to serve as documentation.
+
+## PROOF TIPS:
+* When you need to use `simp`, start with plain `simp [your context]` first, then use `simp?` to get minimal item sets
+* You CANNOT use the tactic `native_decide`.
+* Use `#eval` to evaluate expressions rather than manual calculation
+* Use `norm_cast` for type conversions
+* Use `apply lemmas` with hypotheses step by step rather than long `exact` terms
+* Use `apply?` to check if there's a lemma that can be applied
+* For trivial goals, try `hint` or `grind`.
+* usage of `hint`: similar to `apply?`, it's an interactive tactic. first type `hint`, and the compiler will give you some suggestions. Sometimes it will give you a lemma that can be applied. Then you can replace `hint` with the suggested lemma.
+* usage of `grind`: similar to `omega` and `aesop`. But `grind` is more powerful.
+* Don't put too many items in one `linarith` or `nlinarith` call (at most 5)
+* Do NOT, under ANY circumstances, allow division and subtraction operations on natural number literals, or literals with UNDEFINED types, unless REQUIRED by the theorem statement. For example, do NOT allow literals like `1 / 3` or `2 / 5` or `1 - 3`. ALWAYS specify the types. AVOID natural number arithmetic UNLESS NEEDED by the theorem statement.
+* ALWAYS specify types when describing fractions. For example, ((2 : ℝ) / 3) or ((2 : ℚ) / 3) instead of (2 / 3). Do this everywhere EXCEPT the given theorem statement.
+* Do NOT, under ANY circumstances, allow division and subtraction operations on variables of type natural numbers (Nat or ℕ), unless REQUIRED by the theorem statement. For example, do NOT allow expressions like (a-b) or (a/b) where a, b are of type ℕ. ALWAYS cast the variables to a suitable type (ℤ, ℚ or ℝ) when performing arithmetic operations. AVOID natural number arithmetic UNLESS NEEDED by the theorem statement.
+
+## CONSTRAINTS:
+* You are ENCOURAGED to add new helper lemmas and intermediate results to make proofs clearer and more modular
+* New lemmas MUST be substantial and genuinely useful - do NOT create lemmas that merely restate existing results with different parameter names
+* New lemmas should represent meaningful intermediate steps - avoid creating lemmas where applying them would trivially complete the proof in just 1-2 lines
+* Lemmas with `sorry` placeholders are valid and can be used in other proofs
+* You MUST NOT create axioms
+* You can NOT use the tactic `native_decide`
+* STAY FOCUSED on your selected target for the entire session
+* DO NOT create a new Lean file to experiment with code snippets; just try them directly in the target file
+
+## WHEN TO END THE SESSION:
+* When you have completed your selected target, you should end the session with END_REASON:SELECTED_TARGET_COMPLETE (DO NOT go to other lemmas).
+* When you take too long to complete the selected target or make some progress, you should end the session with END_REASON:LIMIT.
+* Every time before you end the session with END_REASON:COMPLETE or END_REASON:SELECTED_TARGET_COMPLETE, you should implement the verification process one more time to check the whole file.
+* If there are no errors, the you can end.
+* If there are errors, you should take some efforts to make it compile
+* you can make minimal modifications to replace the failed codes' proof with sorry to make it compile.
+
+# END FORMAT:
+
+At the end of your response (for each session), include one line at the very end:
+END_REASON:{reason}
+
+where {reason} is SELECTED_TARGET_COMPLETE, COMPLETE, or LIMIT (see "SESSION FOCUS RULES" above for definitions).
+DO NOT add any other text or markdown formatting for this line.
+
+
+# QUICK REFERENCE:
+
+1. ANALYZE all sorries and SELECT EXACTLY ONE TARGET based on approachability/strategic importance
+2. FOCUS: don't switch goals
+3. NEW LEMMAS: mark with "/- (by claude) Helper for ... -/"
+4. COMPLEX PROOFS: Break Gemini's informal solution into multiple lemmas; do not write one giant proof.
+5. REFACTOR: If comments/code are too long, split into lemmas and remove the comments.
+6. VERIFY frequently with lean_diagnostic_messages
+7. MARK your comments: `/- (by claude) ... -/` (ALWAYS include "(by claude)" marker)
+8. END with: SELECTED_TARGET_COMPLETE / COMPLETE / LIMIT in the format of END_REASON:{reason}  (DO NOT add any other text or markdown formatting for this line)

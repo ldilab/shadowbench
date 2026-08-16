@@ -1,0 +1,6 @@
+\begin{theorem}[quasiSeparated_iff_preimage_isQuasiSeparated_of_openCover]
+Let \(f:X\to Y\) be a morphism, and let \((U_\alpha)\) be an open covering of \(Y\) such that each \(U_\alpha\) is quasi-separated. Then, \(f\) is quasi-separated if and only if every \(f^{-1}(U_\alpha)\) is quasi-separated.
+\end{theorem}
+\begin{proof}
+The inverse image in \(X\times_Y X\) of \(U_\alpha\) is \(X_\alpha\times_{U_\alpha}X_\alpha\), where \(X_\alpha=f^{-1}(U_\alpha)\), and the restriction \(X_\alpha\to X_\alpha\times_{U_\alpha}X_\alpha\) of \(\Delta_f\) is nothing other than \(\Delta_{f_\alpha}\), where \(f_\alpha\) denotes the restriction \(X_\alpha\to U_\alpha\) of \(f\). By Definition of quasi-separated morphisms and the local character of the notion of a quasi-compact morphism, in order for \(f\) to be quasi-separated, it is necessary and sufficient that each of the morphisms \(f_\alpha\) be so. But since, by hypothesis, the morphism \(U_\alpha\to \mathrm{Spec}(\mathbb Z)\) is quasi-separated, it is equivalent to say that \(f_\alpha\) is quasi-separated or that the composite \(X_\alpha\xrightarrow{f_\alpha}U_\alpha\to \mathrm{Spec}(\mathbb Z)\) is quasi-separated. This proves the proposition.
+\end{proof}

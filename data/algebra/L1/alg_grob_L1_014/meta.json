@@ -1,0 +1,30 @@
+{
+  "area": "Algebra",
+  "created_at": "2026-01-01T07:35:57+00:00",
+  "id": "algebra/L1/alg_grob_L1_014",
+  "level": "L1",
+  "metrics": {
+    "source_words": 98
+  },
+  "paper_id": "Cox-Chap2",
+  "paper_title": "",
+  "problem_id": "alg_grob_L1_014",
+  "references": [],
+  "subfields": [
+    "grobner-basis"
+  ],
+  "target_decl": "lm_sum_le_of_all_lm_le",
+  "target_kind": "lemma",
+  "text": "Lemma (lm_sum_le_of_all_lm_le)\nUpper bound of the leading monomial of finite sum\n\nLet $f_1, f_2, \\cdots, f_n \\in R[\\sigma]$ be multivariate polynomials (which might be zero). Here, $\\sigma$ is a set of variable symbols over which a monomial order $>$ is fixed, and $R$ is a nontrivial commutative semiring. Given a monomial $x^\\delta$ such that $\\mathrm{LM}(f_i) \\le x^\\delta$ for every $i = 1, 2, \\cdots, n$, we have $\\mathrm{LM}(\\sum_{i=1}^n f_i) \\le x^\\delta$.\n\nProof)\nInduction on $n$, with initial case $n = 1$ assumed and $n = 2$ already proven, directly gives the conclusion.\n",
+  "toolchain": {
+    "lean": "4.27.0-rc1"
+  },
+  "translation_direction": "forward",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "updated_at": "2026-07-03T19:09:45.311994+00:00",
+  "custom_module": "no",
+  "formalization_rules": "/-\nFormalize in Lean the Lemma (lm_sum_le_of_all_lm_le) from Text.\n\nThe lemma must be named `lm_sum_le_of_all_lm_le`.\n   Matched text (candidate 0, lemma, label=lm_sum_le_of_all_lm_le): Lemma (lm_sum_le_of_all_lm_le) Upper bound of the leading monomial of finite sum Let $f_1,\n                                                                    f_2, \\cdots, f_n \\in R[\\sigma]$ be multivariate polynomials (which might be zero). Here,\n                                                                    $\\sigma$ is a set of variable symbols over which a monomial order $>$ is fixed, and $R$ is a\n                                                                    nontrivial commutative semiring. Given a monomial $x^\\delta$ such that $\\mathrm{LM}(f_i) \\le\n                                                                    x^\\delta$ for every $i = 1, 2, \\cdots, n$, we have $\\…\n-/\n"
+}

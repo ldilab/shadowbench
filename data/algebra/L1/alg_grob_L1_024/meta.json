@@ -1,0 +1,30 @@
+{
+  "area": "Algebra",
+  "created_at": "2026-01-05T17:17:58+00:00",
+  "id": "algebra/L1/alg_grob_L1_024",
+  "level": "L1",
+  "metrics": {
+    "source_words": 101
+  },
+  "paper_id": "Cox-Chap2",
+  "paper_title": "Ideals, Varieties, and Algorithms (4th_ed.)",
+  "problem_id": "alg_grob_L1_024",
+  "references": [],
+  "subfields": [
+    "grobner-basis"
+  ],
+  "target_decl": "mem_monmul_supp_iff",
+  "target_kind": "lemma",
+  "text": "Lemma (mem_monmul_supp_iff)\n\nLet $K[\\sigma]$ be a ring of multivariate polynomials, where $\\sigma$ is a set of variable symbols, and $K$ is a field. For two exponent tuples $\\mu, \\nu \\in \\mathbb{Z}_{\\ge 0}^{\\oplus \\sigma}$, $x^\\mu$ divides $x^\\nu$ if and only if there exists a polynomial $f \\in K[\\sigma]$ such that $x^\\nu$ is in $x^\\mu f$.\n\nProof)\n(==>) It suffices to take $f$ as $x^{\\nu - \\mu}$.\n(<==) Take $f$ satisfying the assumption. Then there exists a monomial $x^\\alpha$ in $f$ such that $x^\\nu = x^{\\alpha + \\mu}$, and thus $x^\\mu \\mid x^{\\alpha + \\mu} = x^\\nu$.\n",
+  "toolchain": {
+    "lean": "4.27.0-rc1"
+  },
+  "translation_direction": "forward",
+  "types": [
+    "theorem_stmt",
+    "proof"
+  ],
+  "updated_at": "2026-07-03T19:09:54.284088+00:00",
+  "custom_module": "no",
+  "formalization_rules": "/-\nFormalize in Lean the Lemma (mem_monmul_supp_iff) from Text.\n\nThe lemma must be named `mem_monmul_supp_iff`.\n   Matched text (candidate 0, lemma, label=mem_monmul_supp_iff): Lemma (mem_monmul_supp_iff) Let $K[\\sigma]$ be a ring of multivariate polynomials, where\n                                                                 $\\sigma$ is a set of variable symbols, and $K$ is a field. For two exponent tuples $\\mu, \\nu\n                                                                 \\in \\mathbb{Z}_{\\ge 0}^{\\oplus \\sigma}$, $x^\\mu$ divides $x^\\nu$ if and only if there exists\n                                                                 a polynomial $f \\in K[\\sigma]$ such that $x^\\nu$ is in $x^\\mu f$.\n-/\n"
+}
