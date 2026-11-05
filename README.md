@@ -395,6 +395,23 @@ The request body wraps the user config inside a `submissionSpec` envelope (`mode
 
 Result post-processing scripts (judges, BEQ scoring, MCP stats) live under `agentic/scripts/`.
 
+### Agentic run configurations
+
+| Setting | Value |
+| --- | --- |
+| Task timeout | 3600 s wall-clock per problem |
+| Max rounds | Adaptive, from the problem's initial `sorry` count (minimum 3, buffer 3). Most problems got 5, the largest 27 |
+| Stuck threshold | 3 rounds |
+| Max passes | 5 (failed problems are retried in later passes) |
+| Effort | `medium` |
+| Cooldown safety | 60 s (Claude only) |
+
+| Limit | Value | Notes |
+| --- | --- | --- |
+| Compile wall-clock | 120 s per Lean file | Applies separately to the standalone file and to each checker file. Going over gives `COMPILE_TIMEOUT`, which counts as a failed compile. The `compile_timeout_sec: 180` in `submit_one.sh` does not take effect on the hosted instance. |
+| `maxHeartbeats` | 200000 per command | Lean default. The evaluator does not change it. |
+| `synthInstance.maxHeartbeats` | 20000 per instance problem | Lean default. The evaluator does not change it. |
+
 ---
 
 <a id="quick-start"></a>
