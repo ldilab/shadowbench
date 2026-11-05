@@ -395,9 +395,7 @@ The request body wraps the user config inside a `submissionSpec` envelope (`mode
 
 Result post-processing scripts (judges, BEQ scoring, MCP stats) live under `agentic/scripts/`.
 
-### Post-paper agentic runs
-
-The leaderboard's eight agentic rows added after the paper (Claude Code with Claude Opus 5.5 and Sonnet 5.5, Codex with GPT-6.1 Sol and GPT-6 Luna, each with and without Numina-Lean-Agent) used these settings.
+### Agentic run configurations
 
 | Setting | Value |
 | --- | --- |
@@ -406,23 +404,13 @@ The leaderboard's eight agentic rows added after the paper (Claude Code with Cla
 | Stuck threshold | 3 rounds |
 | Max passes | 5 (failed problems are retried in later passes) |
 | Effort | `medium` |
-| Parallel workers | Claude: 2. Codex: `gpt-6.1-sol` 4, `gpt-6-luna` 2 |
 | Cooldown safety | 60 s (Claude only) |
-
-> [!NOTE]
-> The harness that ran these is not in this repository. `agentic/commands/` takes a fixed round count and runs Claude Code only, so it cannot reproduce these settings.
-
-### Evaluation limits
-
-The hosted evaluator uses these limits.
 
 | Limit | Value | Notes |
 | --- | --- | --- |
 | Compile wall-clock | 120 s per Lean file | Applies separately to the standalone file and to each checker file. Going over gives `COMPILE_TIMEOUT`, which counts as a failed compile. The `compile_timeout_sec: 180` in `submit_one.sh` does not take effect on the hosted instance. |
 | `maxHeartbeats` | 200000 per command | Lean default. The evaluator does not change it. |
 | `synthInstance.maxHeartbeats` | 20000 per instance problem | Lean default. The evaluator does not change it. |
-
-A submission can change the heartbeat limits with `set_option`. The wall-clock limit still applies.
 
 ---
 
